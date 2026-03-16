@@ -18,7 +18,6 @@
 #' @export
 #' @seealso [report_to_redaction_rules()] [redact()]
 auto_replace <- function(frm, replacement.f, filter = F) {
-
   if (filter) {
     frm <- dplyr::filter(frm, .data$From != .data$To)
   }
@@ -38,15 +37,13 @@ auto_replace <- function(frm, replacement.f, filter = F) {
 #' @return `function`
 #'
 #' @examples
-#' replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+#' replace_by <- hashing_replacement.f(key = "PIDPOS", salt = "SALT")
 #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-#'
 #'
 #' @importFrom openssl sha256
 #' @export
 #' @seealso [auto_replace()]
 hashing_replacement.f <- function(key, salt = "", hash = sha256) {
-
   key <- as.character(key)
 
   hash_function <- function(x) {
@@ -142,7 +139,6 @@ RandomReplacer <- R6Class(
 #' @seealso [auto_replace()]
 random_replacement.f <- function(replacement_size = 10,
                                  replacement_space = LETTERS) {
-
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
   function(x) {
@@ -186,8 +182,6 @@ random_replacement.f <- function(replacement_size = 10,
 #' @seealso [auto_replace()]
 all_random_replacement.f <- function(replacement_size = 10,
                                      replacement_space = LETTERS) {
-  
-
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
   function(x) {

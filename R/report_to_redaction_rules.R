@@ -24,7 +24,7 @@
 #' }
 #'
 #' @export
-#' 
+#'
 #' @seealso
 #' * To produce the report: [pid_pos()]
 #' * To automatically replace the `To` column: [auto_replace()]

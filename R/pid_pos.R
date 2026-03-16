@@ -61,10 +61,10 @@
 #' @importFrom glue glue
 #' @importFrom progress progress_bar
 #' @importFrom tibble as_tibble
-#' 
-#' @seealso 
-#' * To summarize the results: [summary.pid_pos()] 
-#' * To help with redaction of PID: [report_to_redaction_rules()] 
+#'
+#' @seealso
+#' * To summarize the results: [summary.pid_pos()]
+#' * To help with redaction of PID: [report_to_redaction_rules()]
 #' * To report on a data repository: [report_on_folder()]
 #' * for help constructing a custom tagger: [custom_tagger()]
 pid_pos <- function(frm,

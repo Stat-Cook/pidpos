@@ -23,7 +23,7 @@ summary.pid_pos <- function(object, ...) {
   #' @importFrom purrr map
   #' @importFrom stringr str_detect str_extract_all
   #' @exportS3Method
-  #' 
+  #'
   #' @seealso [pid_pos]
 
   object <- as_tibble(object)
