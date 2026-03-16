@@ -6,10 +6,10 @@
 #'
 #' @param frm A data frame to check for proper nouns
 #' @param tagger   Either a string naming a UDPipe model (see  [udpipe::udpipe_download_model]
-#'   for the list of models) or a custom tagging function (see [Custom Functions](../articles/custom-functions.html)
+#'   for the list of models) or a custom tagging function (see `vignette("custom-functions")`
 #'   for details of what is required).
 #' @param filter_func   A function to filter the tagged instances. See
-#'   the 'Custom Filtering Functions' section of [Custom Functions](../articles/custom-functions.html
+#'   the 'Custom Filtering Functions' section of `vignette("custom-functions")`
 #'   for more details.
 #' @param chunk_size   The number of sentences to tag at a time.  The optimal value
 #'   has yet to be determined.
@@ -61,7 +61,12 @@
 #' @importFrom glue glue
 #' @importFrom progress progress_bar
 #' @importFrom tibble as_tibble
-#'
+#' 
+#' @seealso 
+#' * To summarize the results: [summary.pid_pos()] 
+#' * To help with redaction of PID: [report_to_redaction_rules()] 
+#' * To report on a data repository: [report_on_folder()]
+#' * for help constructing a custom tagger: [custom_tagger()]
 pid_pos <- function(frm,
                     tagger = "english-ewt",
                     filter_func = filter_to_proper_nouns,
@@ -106,6 +111,6 @@ pid_pos <- function(frm,
 
   structure(
     report,
-    class = c("pid_report", class(report))
+    class = c("pid_pos", class(report))
   )
 }
