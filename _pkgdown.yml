@@ -6,6 +6,7 @@ reference:
   desc: >
   contents:
   - pid_pos
+  - summary.pid_pos
   - tag_data_frame
   - udpipe_factory
   - custom_tagger
