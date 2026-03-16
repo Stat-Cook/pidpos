@@ -17,7 +17,7 @@ pid_pos(
 \item{frm}{A data frame to check for proper nouns}
 
 \item{tagger}{Either a string naming a UDPipe model (see  \link[udpipe:udpipe_download_model]{udpipe::udpipe_download_model}
-for the list of models) or a custom tagging function (see \href{../articles/custom-functions.html}{Custom Functions}
+for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
 for details of what is required).}
 
 \item{filter_func}{A function to filter the tagged instances. See
@@ -75,4 +75,12 @@ pid_pos(example.data,
   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 )
 
+}
+\seealso{
+\itemize{
+\item To summarize the results: \code{\link[=summary.pid_pos]{summary.pid_pos()}}
+\item To help with redaction of PID: \code{\link[=report_to_redaction_rules]{report_to_redaction_rules()}}
+\item To report on a data repository: \code{\link[=report_on_folder]{report_on_folder()}}
+\item for help constructing a custom tagger: \code{\link[=custom_tagger]{custom_tagger()}}
+}
 }

@@ -11,7 +11,7 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
 \item{salt}{The hash salt}
 
-\item{hash}{The desired hash function (default is \code{sha256} from \code{openssl} package).
+\item{hash}{The desired hash function (default is \link[openssl:hash]{openssl::sha256}).
 NB: other functions can be used, if they take \code{key} as a key word argument.}
 }
 \value{
@@ -25,4 +25,7 @@ replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
 
 
+}
+\seealso{
+\code{\link[=auto_replace]{auto_replace()}}
 }

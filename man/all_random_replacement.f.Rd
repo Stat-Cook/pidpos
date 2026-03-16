@@ -28,3 +28,6 @@ replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replac
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
 
 }
+\seealso{
+\code{\link[=auto_replace]{auto_replace()}}
+}

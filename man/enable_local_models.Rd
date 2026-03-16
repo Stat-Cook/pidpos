@@ -18,11 +18,11 @@ Intended if you want to use local udpipe models for a specific R project.
 }
 \examples{
 \dontrun{
-  tmp <- withr::local_tempdir()
-  withr::local_dir(tmp)
+tmp <- withr::local_tempdir()
+withr::local_dir(tmp)
 
-  enable_local_models()
-  enable_local_models(sub_folder=FALSE)
+enable_local_models()
+enable_local_models(sub_folder = FALSE)
 }
 
 }

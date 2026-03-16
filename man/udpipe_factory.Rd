@@ -19,6 +19,9 @@ udpipe_factory(
 }
 \value{
 A function that takes a character vector of documents and returns a \link[tibble:tibble]{tibble::tibble}
+
+A function that takes a character vector of documents and returns a \code{tibble}
+
 with columns:
 \describe{
 \item{ID}{Document identifier}
@@ -26,7 +29,7 @@ with columns:
 \item{Sentence}{Sentence containing the token}
 \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 }
-and all columns returned by the \link[udpipe:udpipe]{udpipe()}
+and all columns returned by the <\link[udpipe:udpipe]{udpipe()`}>
 function for each token.
 }
 \description{

@@ -21,7 +21,7 @@ report_on_folder(
 \item{report_dir}{The location to write PID reports to}
 
 \item{tagger}{Either a string naming a UDPipe model (see  \link[udpipe:udpipe_download_model]{udpipe::udpipe_download_model}
-for the list of models) or a custom tagging function (see \href{../articles/custom-functions.html}{Custom Functions}
+for the list of models) or a custom tagging function (see \code{vignette("custom-functions")}
 for details of what is required).}
 
 \item{filter_func}{A function to filter the tagged instances. See
