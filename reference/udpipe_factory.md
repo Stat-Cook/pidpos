@@ -33,6 +33,10 @@ udpipe_factory(
 
 A function that takes a character vector of documents and returns a
 [tibble::tibble](https://tibble.tidyverse.org/reference/tibble.html)
+
+A function that takes a character vector of documents and returns a
+`tibble`
+
 with columns:
 
 - ID:
@@ -53,8 +57,8 @@ with columns:
   https://universaldependencies.org/format.html
 
 and all columns returned by the
-[udpipe()](https://rdrr.io/pkg/udpipe/man/udpipe.html) function for each
-token.
+\<[udpipe()\`](https://rdrr.io/pkg/udpipe/man/udpipe.html)\> function
+for each token.
 
 ## See also
 

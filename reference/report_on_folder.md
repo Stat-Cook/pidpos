@@ -32,8 +32,8 @@ report_on_folder(
 
   Either a string naming a UDPipe model (see
   [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
-  for the list of models) or a custom tagging function (see [Custom
-  Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  for the list of models) or a custom tagging function (see
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
@@ -88,6 +88,6 @@ report_on_folder(
   paths
 }
 #> $example
-#> [1] "/tmp/RtmppegJbj/file1c367e50ad3f/example.csv"
+#> [1] "/tmp/RtmpYlTyDD/file1c4268788b6c/example.csv"
 #> 
 ```

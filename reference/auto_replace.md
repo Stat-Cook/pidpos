@@ -1,8 +1,10 @@
 # Apply a replacement function to a `rules.frm`.
 
 Several function factories have been implemented to create replacement
-functions (`hashing_replacement.f`, `random_replacement.f`,
-`all_random_replacement.f`)
+functions
+([`hashing_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/hashing_replacement.f.md),
+[`random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/random_replacement.f.md),
+[`all_random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/all_random_replacement.f.md)).
 
 ## Usage
 
@@ -29,6 +31,11 @@ auto_replace(frm, replacement.f, filter = F)
 
 A `data.frame` like `frm` but with the `To` column transformed by
 `replacement.f`.
+
+## See also
+
+[`report_to_redaction_rules()`](https://stat-cook.github.io/pid.pos/reference/report_to_redaction_rules.md)
+[`redact()`](https://stat-cook.github.io/pid.pos/reference/redact.md)
 
 ## Examples
 

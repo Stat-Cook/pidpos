@@ -1,7 +1,8 @@
 # Initialize redaction rules
 
-Convert the output of `pid_pos` to a csv file for editing. It is
-intended the user changes the `To` column to define desired redactions.
+Convert the output of `pid_pos` to a `tibble` or csv file for editing.
+It is intended the user changes the `To` column to define desired
+redactions.
 
 ## Usage
 
@@ -17,7 +18,7 @@ report_to_redaction_rules(report, path = NULL, include_context = FALSE)
 
 - path:
 
-  File path for write.
+  Optional file path to write to.
 
 - include_context:
 
@@ -34,6 +35,17 @@ A tibble with columns:
 - `From`: The original token.
 
 - `To`: The replacement token.
+
+## See also
+
+- To produce the report:
+  [`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
+
+- To automatically replace the `To` column:
+  [`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
+
+- For redaction:
+  [`redact()`](https://stat-cook.github.io/pid.pos/reference/redact.md)
 
 ## Examples
 

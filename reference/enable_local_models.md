@@ -24,10 +24,10 @@ The path to the model folder.
 
 ``` r
 if (FALSE) { # \dontrun{
-  tmp <- withr::local_tempdir()
-  withr::local_dir(tmp)
+tmp <- withr::local_tempdir()
+withr::local_dir(tmp)
 
-  enable_local_models()
-  enable_local_models(sub_folder=FALSE)
+enable_local_models()
+enable_local_models(sub_folder = FALSE)
 } # }
 ```

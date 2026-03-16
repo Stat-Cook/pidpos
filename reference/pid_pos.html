@@ -70,7 +70,7 @@ proper noun, and how often the <code>Document</code> occurs.</p>
 
 <dt id="arg-tagger">tagger<a class="anchor" aria-label="anchor" href="#arg-tagger"></a></dt>
 <dd><p>Either a string naming a UDPipe model (see  <a href="https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html" class="external-link">udpipe::udpipe_download_model</a>
-for the list of models) or a custom tagging function (see <a href="../articles/custom-functions.html">Custom Functions</a>
+for the list of models) or a custom tagging function (see <code><a href="../articles/custom-functions.html">vignette("custom-functions")</a></code>
 for details of what is required).</p></dd>
 
 
@@ -105,6 +105,15 @@ not in the data frame.</p></dd>
 <li><p><code>Repeats</code>: The number of times the <code>Document</code> occurs in the data frame.</p></li>
 <li><p><code>Affected Columns</code>: The columns in the data frame where the <code>Document</code> occurs.</p></li>
 </ul><p>If no proper nouns are detected, an empty data frame is returned.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index">
+<ul><li><p>To summarize the results: <code><a href="summary.pid_pos.html">summary.pid_pos()</a></code></p></li>
+<li><p>To help with redaction of PID: <code><a href="report_to_redaction_rules.html">report_to_redaction_rules()</a></code></p></li>
+<li><p>To report on a data repository: <code><a href="report_on_folder.html">report_on_folder()</a></code></p></li>
+<li><p>for help constructing a custom tagger: <code><a href="custom_tagger.html">custom_tagger()</a></code></p></li>
+</ul></div>
     </div>
 
     <div class="section level2">

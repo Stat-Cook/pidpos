@@ -27,8 +27,8 @@ pid_pos(
 
   Either a string naming a UDPipe model (see
   [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
-  for the list of models) or a custom tagging function (see [Custom
-  Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  for the list of models) or a custom tagging function (see
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
@@ -74,6 +74,20 @@ A `pid_report` (inheriting from tibble) containing:
   occurs.
 
 If no proper nouns are detected, an empty data frame is returned.
+
+## See also
+
+- To summarize the results:
+  [`summary.pid_pos()`](https://stat-cook.github.io/pid.pos/reference/summary.pid_pos.md)
+
+- To help with redaction of PID:
+  [`report_to_redaction_rules()`](https://stat-cook.github.io/pid.pos/reference/report_to_redaction_rules.md)
+
+- To report on a data repository:
+  [`report_on_folder()`](https://stat-cook.github.io/pid.pos/reference/report_on_folder.md)
+
+- for help constructing a custom tagger:
+  [`custom_tagger()`](https://stat-cook.github.io/pid.pos/reference/custom_tagger.md)
 
 ## Examples
 

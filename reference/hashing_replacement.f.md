@@ -20,13 +20,18 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
 - hash:
 
-  The desired hash function (default is `sha256` from `openssl`
-  package). NB: other functions can be used, if they take `key` as a key
-  word argument.
+  The desired hash function (default is
+  [openssl::sha256](https://jeroen.r-universe.dev/openssl/reference/hash.html)).
+  NB: other functions can be used, if they take `key` as a key word
+  argument.
 
 ## Value
 
 `function`
+
+## See also
+
+[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
 
 ## Examples
 

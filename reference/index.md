@@ -4,12 +4,21 @@
 
 - [`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
   : Proper Noun Detection
+
+- [`summary(`*`<pid_pos>`*`)`](https://stat-cook.github.io/pid.pos/reference/summary.pid_pos.md)
+  :
+
+  Summarize a `pid_pos` report.
+
 - [`tag_data_frame()`](https://stat-cook.github.io/pid.pos/reference/tag_data_frame.md)
   : Tags a data frame with part of speech tags
+
 - [`udpipe_factory()`](https://stat-cook.github.io/pid.pos/reference/udpipe_factory.md)
   : Create a UDPipe tagging function
+
 - [`custom_tagger()`](https://stat-cook.github.io/pid.pos/reference/custom_tagger.md)
   : Convert a POS tagging function to a tagger for the pid_pos package
+
 - [`filter_to_proper_nouns()`](https://stat-cook.github.io/pid.pos/reference/filter_to_proper_nouns.md)
   : Filter a tagged data frame to proper nouns
 
