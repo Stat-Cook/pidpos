@@ -5,7 +5,7 @@ test_that("pid_pos returns pid_report", {
 
   result <- pid_pos(df)
 
-  expect_s3_class(result, "pid_report")
+  expect_s3_class(result, "pid_pos")
   expect_s3_class(result, "tbl_df")
 })
 
