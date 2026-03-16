@@ -1,24 +1,24 @@
+#' Apply a replacement function to a `rules.frm`.
+#'
+#' Several function factories have been implemented to create replacement functions
+#' ([hashing_replacement.f()], [random_replacement.f()], [all_random_replacement.f()]).
+#'
+#' @param frm A `data.frame` with columns `If`, `From`, and `To`.
+#' @param replacement.f A function for transforming the `To` column.
+#' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
+#'
+#' @return A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
+#' @importFrom rlang .data
+#'
+#' @examples
+#'
+#' replace_by <- random_replacement.f()
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#' @export
+#' @seealso [report_to_redaction_rules()] [redact()]
 auto_replace <- function(frm, replacement.f, filter = F) {
-  #' Apply a replacement function to a `rules.frm`.
-  #'
-  #'
-  #' Several function factories have been implemented to create replacement functions
-  #' (`hashing_replacement.f`, `random_replacement.f`, `all_random_replacement.f`)
-  #'
-  #' @param frm A `data.frame` with columns `If`, `From`, and `To`.
-  #' @param replacement.f A function for transforming the `To` column.
-  #' @param filter Logical.  If `TRUE` will only apply to rows where `From` and `To` are different.
-  #'
-  #' @return A `data.frame` like `frm` but with the `To` column transformed by `replacement.f`.
-  #' @importFrom rlang .data
-  #'
-  #' @examples
-  #'
-  #' replace_by <- random_replacement.f()
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #' @export
-  #'
+
   if (filter) {
     frm <- dplyr::filter(frm, .data$From != .data$To)
   }
@@ -28,23 +28,24 @@ auto_replace <- function(frm, replacement.f, filter = F) {
 }
 
 
+#' Function factory for hashing replacement.
+#'
+#' @param key The hash key (passed to `hash`)
+#' @param salt The hash salt
+#' @param hash The desired hash function (default is [openssl::sha256]).
+#'    NB: other functions can be used, if they take `key` as a key word argument.
+#'
+#' @return `function`
+#'
+#' @examples
+#' replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#'
+#' @importFrom openssl sha256
+#' @export
+#' @seealso [auto_replace()]
 hashing_replacement.f <- function(key, salt = "", hash = sha256) {
-  #' Function factory for hashing replacement.
-  #'
-  #' @param key The hash key (passed to `hash`)
-  #' @param salt The hash salt
-  #' @param hash The desired hash function (default is `sha256` from `openssl` package).
-  #'    NB: other functions can be used, if they take `key` as a key word argument.
-  #'
-  #' @return `function`
-  #'
-  #' @examples
-  #' replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #'
-  #' @importFrom openssl sha256
-  #' @export
 
   key <- as.character(key)
 
@@ -118,29 +119,29 @@ RandomReplacer <- R6Class(
   )
 )
 
-
+#' Function factory for random replacement.
+#'
+#' It is designed to generate a replacement by a random combination of
+#' alpha-numeric characters, and apply the same replacement if the input is repeated.
+#'
+#'
+#' @param replacement_size The size of the replacement (number of characters in each replacement).
+#' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
+#'
+#' @return `function`
+#'
+#' @examples
+#'
+#' replace_by <- random_replacement.f()
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#' replace_by <- random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#' @export
+#' @seealso [auto_replace()]
 random_replacement.f <- function(replacement_size = 10,
                                  replacement_space = LETTERS) {
-  #' Function factory for random replacement.
-  #'
-  #' It is designed to generate a replacement by a random combination of
-  #' alpha-numeric characters, and apply the same replacement if the input is repeated.
-  #'
-  #'
-  #' @param replacement_size The size of the replacement (number of characters in each replacement).
-  #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
-  #'
-  #' @return `function`
-  #'
-  #' @examples
-  #'
-  #' replace_by <- random_replacement.f()
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #' replace_by <- random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #' @export
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
@@ -161,29 +162,31 @@ random_replacement.f <- function(replacement_size = 10,
 }
 
 
+#' Function factory for random replacement.
+#'
+#' It is designed to generate a replacement by a random combination of
+#' alpha-numeric characters, and apply a unique replacement to each instance
+#' of the same input.
+#'
+#'
+#' @param replacement_size The size of the replacement (number of characters in each replacement).
+#' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
+#'
+#' @return `function`
+#'
+#' @examples
+#'
+#' replace_by <- all_random_replacement.f()
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#' replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
+#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#'
+#' @export
+#' @seealso [auto_replace()]
 all_random_replacement.f <- function(replacement_size = 10,
                                      replacement_space = LETTERS) {
-  #' Function factory for random replacement.
-  #'
-  #' It is designed to generate a replacement by a random combination of
-  #' alpha-numeric characters, and apply a unique replacement to each instance
-  #' of the same input.
-  #'
-  #'
-  #' @param replacement_size The size of the replacement (number of characters in each replacement).
-  #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
-  #'
-  #' @return `function`
-  #'
-  #' @examples
-  #'
-  #' replace_by <- all_random_replacement.f()
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #' replace_by <- all_random_replacement.f(replacement_space = LETTERS[1:10], replacement_size = 20)
-  #' auto_replace(raw_redaction_rules, replacement.f = replace_by)
-  #'
-  #' @export
+  
 
   .replace <- RandomReplacer$new(replacement_size, replacement_space)
 
