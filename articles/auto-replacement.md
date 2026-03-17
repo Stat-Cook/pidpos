@@ -4,9 +4,9 @@ This package is designed to support the identification and redaction of
 personally identifiable data (PID) within textual datasets.
 
 The
-[`report_to_redaction_rules()`](https://stat-cook.github.io/pid.pos/reference/report_to_redaction_rules.md)
+[`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
 function generates a `replacement_rules` table from the output of
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md).
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md).
 This table specifies candidate values for redaction and provides a `To`
 column in which users can define replacement values.
 
@@ -14,20 +14,20 @@ In many cases, users may wish to manually populate the `To` column (for
 example, replacing names with consistent pseudonyms). However, when a
 dataset contains a large volume of PID, manual specification may be
 impractical. In such cases, the
-[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
 utility can be used to automatically generate replacement values.
 
-[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
 operates on a `replacement_rules` table and encodes the `To` column
 according to a user-defined replacement function. The package provides
 three built-in replacement strategies:
 
-- [`hashing_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/hashing_replacement.f.md)
+- [`hashing_replacement.f()`](https://stat-cook.github.io/pidpos/reference/hashing_replacement.f.md)
   — hashes values using a key and salt, producing deterministic and
   reproducible replacements.
-- [`random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/random_replacement.f.md)
+- [`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md)
   — generates random replacements from a defined character space.
-- [`all_random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/all_random_replacement.f.md)
+- [`all_random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/all_random_replacement.f.md)
   — generates random replacements while ensuring all outputs are unique.
 
 ------------------------------------------------------------------------
@@ -38,9 +38,9 @@ We begin by generating a PID report and converting it into redaction
 rules:
 
 ``` r
-library(pid.pos)
+library(pidpos)
 
-report <- pid_pos(the_one_in_massapequa)
+report <- pidpos(the_one_in_massapequa)
 replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
@@ -57,7 +57,7 @@ replacement_rules
 To automatically populate the `To` column, we first initialise a
 replacement function.  
 In this example, we use
-[`random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/random_replacement.f.md)
+[`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md)
 to generate five-character replacements drawn from uppercase letters:
 
 ``` r
@@ -68,7 +68,7 @@ replacement.f <- random_replacement.f(
 ```
 
 We then apply this function using
-[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md):
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md):
 
 ``` r
 set.seed(101)

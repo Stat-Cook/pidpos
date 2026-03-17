@@ -1,11 +1,11 @@
-# Summarize a `pid_pos` report.
+# Summarize a `pidpos` report.
 
-Summarize a `pid_pos` report.
+Summarize a `pidpos` report.
 
 ## Usage
 
 ``` r
-# S3 method for class 'pid_pos'
+# S3 method for class 'pidpos'
 summary(object, ...)
 ```
 
@@ -13,7 +13,7 @@ summary(object, ...)
 
 - object:
 
-  An object of class `pid_pos`.
+  An object of class `pidpos`.
 
 ## Value
 
@@ -32,4 +32,4 @@ A data frame describing any column determined to contain PID.
 
 ## See also
 
-[pid_pos](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
+[pidpos](https://stat-cook.github.io/pidpos/reference/pid_pos.md)

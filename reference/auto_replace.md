@@ -2,9 +2,9 @@
 
 Several function factories have been implemented to create replacement
 functions
-([`hashing_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/hashing_replacement.f.md),
-[`random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/random_replacement.f.md),
-[`all_random_replacement.f()`](https://stat-cook.github.io/pid.pos/reference/all_random_replacement.f.md)).
+([`hashing_replacement.f()`](https://stat-cook.github.io/pidpos/reference/hashing_replacement.f.md),
+[`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md),
+[`all_random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/all_random_replacement.f.md)).
 
 ## Usage
 
@@ -34,8 +34,8 @@ A `data.frame` like `frm` but with the `To` column transformed by
 
 ## See also
 
-[`report_to_redaction_rules()`](https://stat-cook.github.io/pid.pos/reference/report_to_redaction_rules.md)
-[`redact()`](https://stat-cook.github.io/pid.pos/reference/redact.md)
+[`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
+[`redact()`](https://stat-cook.github.io/pidpos/reference/redact.md)
 
 ## Examples
 

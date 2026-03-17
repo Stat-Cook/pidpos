@@ -1,4 +1,4 @@
-# Set the model folder to a local 'pid_pos_models' sub-folder.
+# Set the model folder to a local 'pidpos_models' sub-folder.
 
 Intended if you want to use local udpipe models for a specific R
 project.
@@ -13,7 +13,7 @@ enable_local_models(sub_folder = TRUE)
 
 - sub_folder:
 
-  Logical. If TRUE, use a 'pid_pos_models' sub-folder of the current
+  Logical. If TRUE, use a 'pidpos_models' sub-folder of the current
   working directory. If FALSE use the current working directory.
 
 ## Value

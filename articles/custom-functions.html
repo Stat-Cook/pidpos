@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Using custom functions in `pid_pos` • pid.pos</title>
+<title>Using custom functions in `pidpos` • pidpos</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using custom functions in `pid_pos`">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Using custom functions in `pidpos`">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">pid.pos</a>
+    <a class="navbar-brand me-2" href="../index.html">pidpos</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
@@ -38,11 +38,11 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+<li><a class="dropdown-item" href="../articles/paper-vignette.html">pidpos: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
-    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
   </ul>
 </li>
       </ul>
@@ -62,7 +62,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Using custom functions in `pid_pos`</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Using custom functions in `pidpos`</h1>
             
       
 
@@ -71,10 +71,10 @@
 
     
     
-<p>Out of the box, <code><a href="../reference/pid_pos.html">pid_pos()</a></code> relies on the
+<p>Out of the box, <code><a href="../reference/pid_pos.html">pidpos()</a></code> relies on the
 <code>udpipe</code> package to perform part-of-speech (POS)
 tagging.<br>
-However, the <code>pid_pos</code> API is intentionally flexible and
+However, the <code>pidpos</code> API is intentionally flexible and
 allows users to:</p>
 <ul>
 <li>Supply their own custom POS tagging functions</li>
@@ -94,7 +94,7 @@ allows users to:</p>
 </ul>
 <p>We begin by loading the package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span></code></pre></div>
 <p>We will use the example dataset:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">20</span><span class="op">)</span></span>
@@ -152,7 +152,7 @@ from <em>Friends</em> as proper nouns.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> in      XXX  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Central XXX  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Perk    XXX</span></span></code></pre></div>
-<p>To use this with <code><a href="../reference/pid_pos.html">pid_pos()</a></code>, we wrap it with
+<p>To use this with <code><a href="../reference/pid_pos.html">pidpos()</a></code>, we wrap it with
 <code><a href="../reference/custom_tagger.html">custom_tagger()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">friends_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/custom_tagger.html">custom_tagger</a></span><span class="op">(</span><span class="va">sentence_tagger</span><span class="op">)</span></span>
@@ -172,9 +172,9 @@ from <em>Friends</em> as proper nouns.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Mon      XXX       2 Oh, Ross, Mon, is it okay if I bring someone to your pa…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> is       XXX       2 Oh, Ross, Mon, is it okay if I bring someone to your pa…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 253 more rows</span></span></span></code></pre></div>
-<p>We can now supply it to <code><a href="../reference/pid_pos.html">pid_pos()</a></code>:</p>
+<p>We can now supply it to <code><a href="../reference/pid_pos.html">pidpos()</a></code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pid_pos</a></span><span class="op">(</span><span class="va">example.data</span>, tagger <span class="op">=</span> <span class="va">friends_tagger</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span>, tagger <span class="op">=</span> <span class="va">friends_tagger</span><span class="op">)</span></span>
 <span><span class="va">result</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
 <span><span class="co">#&gt;    ID                Token    Sentence       Document Repeats `Affected Columns`</span></span>
@@ -233,7 +233,7 @@ filter.</p>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p>Now use both:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pid_pos.html">pid_pos</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span></span>
 <span>  <span class="va">example.data</span>,</span>
 <span>  tagger <span class="op">=</span> <span class="va">friends_tagger2</span>,</span>
 <span>  filter <span class="op">=</span> <span class="va">custom_filter</span></span>
@@ -301,7 +301,7 @@ If these are not available, the code below will be skipped.</p>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">frm</span>, <span class="va">POS</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NNP"</span>, <span class="st">"NNPS"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/pid_pos.html">pid_pos</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span></span>
 <span>  <span class="va">example.data</span>,</span>
 <span>  tagger <span class="op">=</span> <span class="va">nltk_tagger</span>,</span>
 <span>  filter <span class="op">=</span> <span class="va">nltk_filter</span></span>
@@ -311,7 +311,7 @@ If these are not available, the code below will be skipped.</p>
 <div class="section level2">
 <h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
-<p>The <code><a href="../reference/pid_pos.html">pid_pos()</a></code> API separates:</p>
+<p>The <code><a href="../reference/pid_pos.html">pidpos()</a></code> API separates:</p>
 <ul>
 <li><strong>Tagging logic</strong></li>
 <li><strong>Filtering logic</strong></li>
@@ -328,7 +328,7 @@ If these are not available, the code below will be skipped.</p>
 <li>Taggers return a token-level data frame</li>
 <li>Filters return a subset of that data frame</li>
 </ul>
-<p><code><a href="../reference/pid_pos.html">pid_pos()</a></code> can operate with virtually any POS tagging
+<p><code><a href="../reference/pid_pos.html">pidpos()</a></code> can operate with virtually any POS tagging
 system.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

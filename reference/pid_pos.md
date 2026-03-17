@@ -7,7 +7,7 @@ containing the proper noun, and how often the `Document` occurs.
 ## Usage
 
 ``` r
-pid_pos(
+pidpos(
   frm,
   tagger = "english-ewt",
   filter_func = filter_to_proper_nouns,
@@ -28,14 +28,14 @@ pid_pos(
   Either a string naming a UDPipe model (see
   [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
   for the list of models) or a custom tagging function (see
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pidpos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
 
   A function to filter the tagged instances. See the 'Custom Filtering
   Functions' section of
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pidpos/articles/custom-functions.md)
   for more details.
 
 - chunk_size:
@@ -78,16 +78,16 @@ If no proper nouns are detected, an empty data frame is returned.
 ## See also
 
 - To summarize the results:
-  [`summary.pid_pos()`](https://stat-cook.github.io/pid.pos/reference/summary.pid_pos.md)
+  [`summary.pidpos()`](https://stat-cook.github.io/pidpos/reference/summary.pid_pos.md)
 
 - To help with redaction of PID:
-  [`report_to_redaction_rules()`](https://stat-cook.github.io/pid.pos/reference/report_to_redaction_rules.md)
+  [`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
 
 - To report on a data repository:
-  [`report_on_folder()`](https://stat-cook.github.io/pid.pos/reference/report_on_folder.md)
+  [`report_on_folder()`](https://stat-cook.github.io/pidpos/reference/report_on_folder.md)
 
 - for help constructing a custom tagger:
-  [`custom_tagger()`](https://stat-cook.github.io/pid.pos/reference/custom_tagger.md)
+  [`custom_tagger()`](https://stat-cook.github.io/pidpos/reference/custom_tagger.md)
 
 ## Examples
 
@@ -95,7 +95,7 @@ If no proper nouns are detected, an empty data frame is returned.
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa, 50)
 try(
-  pid_pos(example.data, to_ignore = c("scene", "utterance"))
+  pidpos(example.data, to_ignore = c("scene", "utterance"))
 )
 #> # A tibble: 52 × 6
 #>    ID                Token   Sentence        Document Repeats `Affected Columns`
@@ -112,13 +112,13 @@ try(
 #> 10 Col:speaker Row:4 Geller  Ross Geller     Ross Ge…       8 `speaker`         
 #> # ℹ 42 more rows
 
-pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
-#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-gum-ud-2.5-191206.udpipe to /home/runner/.cache/R/pid.pos/english-gum-ud-2.5-191206.udpipe
+pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
+#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-gum-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-gum-ud-2.5-191206.udpipe
 #>  - This model has been trained on version 2.5 of data from https://universaldependencies.org
 #>  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
 #>  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
 #>  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-#> Downloading finished, model stored at '/home/runner/.cache/R/pid.pos/english-gum-ud-2.5-191206.udpipe'
+#> Downloading finished, model stored at '/home/runner/.cache/R/pidpos/english-gum-ud-2.5-191206.udpipe'
 #> # A tibble: 46 × 6
 #>    ID                Token   Sentence        Document Repeats `Affected Columns`
 #>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
@@ -135,7 +135,7 @@ pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum
 #> # ℹ 36 more rows
 
 tag_ewt <- udpipe_factory("english-ewt")
-pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
+pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
 #> # A tibble: 52 × 6
 #>    ID                Token   Sentence        Document Repeats `Affected Columns`
 #>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
@@ -158,7 +158,7 @@ filter_to_long_proper_nouns <- function(frm) {
   filter_to_proper_nouns(frm)
 }
 
-pid_pos(example.data,
+pidpos(example.data,
   to_ignore = c("scene", "utterance"),
   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 )

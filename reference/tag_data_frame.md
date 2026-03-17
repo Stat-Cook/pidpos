@@ -121,12 +121,12 @@ tag_data_frame(example.data, tagger = "english-gum")
 #> # ℹ 16 more rows
 #> 
 tag_data_frame(example.data, tagger = "english-lines")
-#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-lines-ud-2.5-191206.udpipe to /home/runner/.cache/R/pid.pos/english-lines-ud-2.5-191206.udpipe
+#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-lines-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-lines-ud-2.5-191206.udpipe
 #>  - This model has been trained on version 2.5 of data from https://universaldependencies.org
 #>  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
 #>  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
 #>  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-#> Downloading finished, model stored at '/home/runner/.cache/R/pid.pos/english-lines-ud-2.5-191206.udpipe'
+#> Downloading finished, model stored at '/home/runner/.cache/R/pidpos/english-lines-ud-2.5-191206.udpipe'
 #> $AllTags
 #> # A tibble: 354 × 18
 #>    ID          Token Sentence upos  paragraph_id sentence_id start   end term_id

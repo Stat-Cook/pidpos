@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Reporting on every file in a folder • pid.pos</title>
+<title>Reporting on every file in a folder • pidpos</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">pid.pos</a>
+    <a class="navbar-brand me-2" href="../index.html">pidpos</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
@@ -38,11 +38,11 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+<li><a class="dropdown-item" href="../articles/paper-vignette.html">pidpos: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
-    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
   </ul>
 </li>
       </ul>
@@ -72,7 +72,7 @@
     
     
 <div class="section level2">
-<h2 id="the-pid-pos-report">The <code>PID.POS</code> report<a class="anchor" aria-label="anchor" href="#the-pid-pos-report"></a>
+<h2 id="the-pidpos-report">The <code>pidpos</code> report<a class="anchor" aria-label="anchor" href="#the-pidpos-report"></a>
 </h2>
 <p>A common struggle in research is how data controllers can gain some
 level of confidence that large data sets don’t contain personally
@@ -84,7 +84,7 @@ shifted - placing PID in harder to detect locations. If the data sets
 consist of ~10,000 or more observations manual inspection of rare PID
 has only a limited chance of finding problems, let alone the resource
 cost required to do any pass of the data.</p>
-<p>To help overcome these issues, as part of the <code>PID.POS</code>
+<p>To help overcome these issues, as part of the <code>pidpos</code>
 package we have implemented an API for the automated production of
 proper noun reports on all files found within the same directory. The
 intention is that should a collection of data sets be required for
@@ -116,15 +116,15 @@ in</li>
 <li><code>utterance</code></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">data_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, package <span class="op">=</span> <span class="st">"pid.pos"</span><span class="op">)</span></span>
+<span><span class="va">data_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, package <span class="op">=</span> <span class="st">"pidpos"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">data_path</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "The_One_After_I_Do.csv"           "The_One_Where_Rachel_Tells.csv"  </span></span>
 <span><span class="co">#&gt; [3] "The_One_with_the_Red_Sweater.csv"</span></span></code></pre></div>
 <p>and we check the files are the intended data:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rachell_tells</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, <span class="st">"The_One_Where_Rachel_Tells.csv"</span>, package <span class="op">=</span> <span class="st">"pid.pos"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">rachell_tells</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, <span class="st">"The_One_Where_Rachel_Tells.csv"</span>, package <span class="op">=</span> <span class="st">"pidpos"</span><span class="op">)</span></span>
 <span><span class="va">rachell</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">rachell_tells</span>, nrows <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p>To generate reports we call <code>report_on_folder</code> which has
 two key arguments:</p>
@@ -879,7 +879,7 @@ in the data set</li>
 <span><span class="co">#&gt; 177       1           `text`</span></span>
 <span><span class="co">#&gt; 178       1           `text`</span></span></code></pre>
 <p>The <code>report_on_folder</code> function is a high level API for
-the <code>pid_pos</code> package and allows for various options to
+the <code>pidpos</code> package and allows for various options to
 control the reporting process. These optional arguments are:</p>
 <ul>
 <li>

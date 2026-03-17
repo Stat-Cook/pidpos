@@ -9,8 +9,8 @@ returns a tibble with tokens, sentences, and token metadata.
 ``` r
 udpipe_factory(
   model = "english-ewt",
-  model_dir = pid.pos_env$model_folder,
-  udpipe_repo = pid.pos_env$udpipe_repo
+  model_dir = pidpos_env$model_folder,
+  udpipe_repo = pidpos_env$udpipe_repo
 )
 ```
 
@@ -62,10 +62,10 @@ for each token.
 
 ## See also
 
-[`enable_local_models()`](https://stat-cook.github.io/pid.pos/reference/enable_local_models.md),
-[`enable_package_models()`](https://stat-cook.github.io/pid.pos/reference/enable_package_models.md)
+[`enable_local_models()`](https://stat-cook.github.io/pidpos/reference/enable_local_models.md),
+[`enable_package_models()`](https://stat-cook.github.io/pidpos/reference/enable_package_models.md)
 and
-[`set_udpipe_version()`](https://stat-cook.github.io/pid.pos/reference/set_udpipe_version.md)
+[`set_udpipe_version()`](https://stat-cook.github.io/pidpos/reference/set_udpipe_version.md)
 for control of the configuration environment.
 
 ## Examples

@@ -33,14 +33,14 @@ report_on_folder(
   Either a string naming a UDPipe model (see
   [udpipe::udpipe_download_model](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
   for the list of models) or a custom tagging function (see
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pidpos/articles/custom-functions.md)
   for details of what is required).
 
 - filter_func:
 
   A function to filter the tagged instances. See the 'Custom Filtering
   Functions' section of
-  [`vignette("custom-functions")`](https://stat-cook.github.io/pid.pos/articles/custom-functions.md)
+  [`vignette("custom-functions")`](https://stat-cook.github.io/pidpos/articles/custom-functions.md)
   for more details.
 
 - chunk_size:
@@ -88,6 +88,6 @@ report_on_folder(
   paths
 }
 #> $example
-#> [1] "/tmp/RtmpYlTyDD/file1c4268788b6c/example.csv"
+#> [1] "/tmp/Rtmpytuv4u/file1c5e20524ceb/example.csv"
 #> 
 ```

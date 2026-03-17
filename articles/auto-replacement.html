@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Automatic Replacement Tools • pid.pos</title>
+<title>Automatic Replacement Tools • pidpos</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="../index.html">pid.pos</a>
+    <a class="navbar-brand me-2" href="../index.html">pidpos</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
@@ -38,11 +38,11 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/paper-vignette.html">PID.POS: An R package for the detection of personally identifiable data</a></li>
+<li><a class="dropdown-item" href="../articles/paper-vignette.html">pidpos: An R package for the detection of personally identifiable data</a></li>
     <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
-    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pid_pos`</a></li>
+    <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
   </ul>
 </li>
       </ul>
@@ -75,7 +75,7 @@
 of personally identifiable data (PID) within textual datasets.</p>
 <p>The <code><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> function generates a
 <code>replacement_rules</code> table from the output of
-<code><a href="../reference/pid_pos.html">pid_pos()</a></code>. This table specifies candidate values for
+<code><a href="../reference/pid_pos.html">pidpos()</a></code>. This table specifies candidate values for
 redaction and provides a <code>To</code> column in which users can
 define replacement values.</p>
 <p>In many cases, users may wish to manually populate the
@@ -106,9 +106,9 @@ replacements while ensuring all outputs are unique.</li>
 <p>We begin by generating a PID report and converting it into redaction
 rules:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pid.pos/">pid.pos</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pid_pos</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
+<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
 <span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span><span class="va">replacement_rules</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>

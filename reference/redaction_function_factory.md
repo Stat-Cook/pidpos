@@ -21,7 +21,7 @@ redaction_function_factory(rules.frm)
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa)
 
-raw_rules <- pid_pos(example.data) |>
+raw_rules <- pidpos(example.data) |>
   report_to_redaction_rules()
 
 redaction_rules <- auto_replace(raw_rules,

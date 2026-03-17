@@ -1,7 +1,7 @@
 # Tag a set of documents
 
 `tag_documents()` applies a tagging function (defaulting to a
-[`udpipe_factory()`](https://stat-cook.github.io/pid.pos/reference/udpipe_factory.md))
+[`udpipe_factory()`](https://stat-cook.github.io/pidpos/reference/udpipe_factory.md))
 to a vector of text documents, optionally splitting them into chunks for
 memory efficiency. The function returns a tibble containing tokens,
 sentences, and token-level metadata.
@@ -26,7 +26,7 @@ tag_documents(docs, doc_ids = NULL, tagger = NULL, chunk_size = 100)
 - tagger:
 
   Function. A tagging function, typically created with
-  [`udpipe_factory()`](https://stat-cook.github.io/pid.pos/reference/udpipe_factory.md).
+  [`udpipe_factory()`](https://stat-cook.github.io/pidpos/reference/udpipe_factory.md).
 
 - chunk_size:
 
@@ -47,13 +47,13 @@ example_text <- c(
 
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
-ewt_result <- pid.pos:::tag_documents(example_text, tagger = ewt_tagger)
+ewt_result <- pidpos:::tag_documents(example_text, tagger = ewt_tagger)
 
 # Create a tagger for the English GUM model
 gum_tagger <- udpipe_factory("english-gum")
-gum_result <- pid.pos:::tag_documents(example_text, tagger = gum_tagger)
+gum_result <- pidpos:::tag_documents(example_text, tagger = gum_tagger)
 
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
-lines_result <- pid.pos:::tag_documents(example_text, tagger = lines_tagger)
+lines_result <- pidpos:::tag_documents(example_text, tagger = lines_tagger)
 ```

@@ -1,4 +1,4 @@
-# Convert a POS tagging function to a tagger for the pid_pos package
+# Convert a POS tagging function to a tagger for the pidpos package
 
 This function converts a function for the tagging of a single sentence
 into a function that can be used for the tagging of a whole document.
@@ -55,7 +55,7 @@ docs <- c("Alice is here", "Bob is there", "Charlie is everywhere")
 #> 9 everywhere OTHER Charlie is everywhere  3
 
 doc.frm <- data.frame(Text = docs)
-pid_pos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
+pidpos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
 #> # A tibble: 3 × 6
 #>   ID             Token   Sentence            Document Repeats `Affected Columns`
 #> * <glue>         <chr>   <chr>               <chr>      <int> <chr>             

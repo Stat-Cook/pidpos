@@ -32,7 +32,7 @@ An error object with the specified message and classes
 ``` r
 #' # Example of using type_error
 f <- function() {
-  pid.pos:::file_not_found_error("This is a type error", call = rlang::caller_env())
+  pidpos:::file_not_found_error("This is a type error", call = rlang::caller_env())
 }
 
 # Trigger the error safely without stopping R

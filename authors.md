@@ -10,13 +10,13 @@
 
 ## Citation
 
-Cook R, Assaduzaman M, Jones S (2026). *pid.pos: PID detection via NLP*.
-R package version 0.1.0, <https://stat-cook.github.io/pid.pos/>.
+Cook R, Assaduzaman M, Jones S (2026). *pidpos: PID detection via NLP*.
+R package version 0.1.0, <https://stat-cook.github.io/pidpos/>.
 
     @Manual{,
-      title = {pid.pos: PID detection via NLP},
+      title = {pidpos: PID detection via NLP},
       author = {Robert Cook and Md Assaduzaman and Sarahjane Jones},
       year = {2026},
       note = {R package version 0.1.0},
-      url = {https://stat-cook.github.io/pid.pos/},
+      url = {https://stat-cook.github.io/pidpos/},
     }

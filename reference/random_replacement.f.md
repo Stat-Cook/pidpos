@@ -27,7 +27,7 @@ random_replacement.f(replacement_size = 10, replacement_space = LETTERS)
 
 ## See also
 
-[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
 
 ## Examples
 

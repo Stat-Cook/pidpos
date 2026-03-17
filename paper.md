@@ -1,6 +1,6 @@
 # Summary
 
-The `PID.POS` package is designed to aid with the identification of
+The `pidpos` package is designed to aid with the identification of
 personal identifiability risks in data sets. By applying existing
 natural language processing techniques, the package is able to identify
 proper nouns within a data set. The extraction of proper nouns reduced
@@ -29,10 +29,10 @@ personally identifiable data (PID) with a reasonable time investment.
 However, in the case of modern large data sets which may comprise
 millions of observations, a manual inspection may miss PID if it is
 embedded within a passage of text, or is a rarity for the given
-variable. The `PID.POS` (Personal Identifiability Detection by Part Of
+variable. The `pidpos` (Personal Identifiability Detection by Part Of
 Speech tagging) package is designed to aid with the identification of
 PID risks in data sets. In comparison to existing packages which rely on
-a curated list of common names and string-matching, `PID.POS` builds on
+a curated list of common names and string-matching, `pidpos` builds on
 the existing `udpipe` framework\[@straka2016udpipe; @udpipecran\],
 extracting all examples of proper nouns and providing a mechanism for
 the review and redaction of PID risks.
@@ -45,26 +45,26 @@ The most notable of these are the `PII` package \[@pii\], which is
 designed to identify personally identifiable features via pattern
 matching. These approaches can be effective in identifying PID, but have
 a risk of missing edge cases e.g. relying on sentence case to identify
-names. The approach taken in `PID.POS` conversely takes the approach of
+names. The approach taken in `pidpos` conversely takes the approach of
 purposefully extracting all proper-nouns, and hence increase the false
 positive rate, with the intention of supplying a simplified extract to
 aid human interpretation rather than fully automate it.
 
 # In practice
 
-To install the current version of `PID.POS` package, use the following
+To install the current version of `pidpos` package, use the following
 code:
 
 ``` r
 # install.packages("pak")
-pak::pkg_install("Stat-Cook/PID.POS")
+pak::pkg_install("Stat-Cook/pidpos")
 ```
 
-To assist with understanding the `PID.POS` package, we include a subset
+To assist with understanding the `pidpos` package, we include a subset
 of the ‘friends’ data set from the `friends` package.
 
 ``` r
-library(pid.pos)
+library(pidpos)
 the_one_in_massapequa
 ```
 
@@ -184,11 +184,11 @@ the_one_in_massapequa |>
 
 Further utilities are available, notably tools to automatically encode
 the `To` column (see [Auto
-Replacements](https://stat-cook.github.io/pid.pos/articles/AutoReplacement.html)).
+Replacements](https://stat-cook.github.io/pidpos/articles/AutoReplacement.html)).
 
 # Current applications
 
-The `PID.POS` package was developed for applications in the NuRS and
+The `pidpos` package was developed for applications in the NuRS and
 AmReS research projects which aim to extract and analyse retrospective
 operational data from NHS Trusts to understand staff retention and
 patient safety.
@@ -201,7 +201,7 @@ Funding for the work was won by RC and SJ.
 
 # Acknowledgements
 
-The development of `PID.POS` was part of the NuRS and AmReS projects
+The development of `pidpos` was part of the NuRS and AmReS projects
 funded by the Health Foundation.
 
 # References

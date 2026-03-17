@@ -1,8 +1,8 @@
 # Trouble shooting the UDpipe Model
 
-The part of sentence (POS) tagging performed in `PID.POS` leverage’s the
+The part of sentence (POS) tagging performed in `pidpos` leverage’s the
 pretrained `udpipe` model framework. This model is not included in
-`PID.POS` due to its size, and hence has to be downloaded when the
+`pidpos` due to its size, and hence has to be downloaded when the
 package is first used. For most users this process is seamless, but if
 users are behind a firewall or have limited permission to write to the
 hard-drive the automated model download may fail.
@@ -11,14 +11,14 @@ Here we provide brief advice on how to diagnose and fix common problems.
 
 ## Step 1
 
-When first installed and loaded `PID.POS` will not have the udpipe
-model. The first time `data_frame_report` is run, an attempt is made to
+When first installed and loaded `pidpos` will not have the udpipe model.
+The first time `data_frame_report` is run, an attempt is made to
 download the model. Hence, it is recommended to start by evaluating the
 `data_frame_report` function with the example data
 (`the_one_in_massapequa`):
 
 ``` r
-library(pid.pos)
+library(pidpos)
 
 report <- data_frame_report(the_one_in_massapequa)
 browse_udpipe_repo()
@@ -32,7 +32,7 @@ functions `browse_model_location` and `browse_udpipe_repo`.
 
 Assuming the `data_frame_report` throws an error, the next step is to
 check if the model is present. This can be done by running
-[`browse_model_location()`](https://stat-cook.github.io/pid.pos/reference/browse_model_location.md)
+[`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md)
 and checking for a file named ‘english-ewt-ud-2.5-191206.udpipe’ or
 similar. If the user does not have permission to write to this location,
 the model will not be downloaded and `browse_model_location` may throw
@@ -44,7 +44,7 @@ its own error. If this happens, there are two approaches we suggest:
 2.  Change the default model location using
     `set_model_folder('new/path')`.
 
-The former of these is the more reliable, and will allow `PID.POS` to
+The former of these is the more reliable, and will allow `pidpos` to
 operate as intended in future sessions. The latter is a temporary fix,
 and will need to be repeated each time the package is loaded.
 
@@ -57,13 +57,13 @@ this case, there are two steps to consider:
 1.  Contact your IT team and ask them to allow downloads from
     `github.com`
 2.  Navigate to the `udpipe` repository via
-    [`browse_udpipe_repo()`](https://stat-cook.github.io/pid.pos/reference/browse_udpipe_repo.md)
+    [`browse_udpipe_repo()`](https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.md)
     and download the model manually. It will then need to be deposited
     in the folder opened by
-    [`browse_model_location()`](https://stat-cook.github.io/pid.pos/reference/browse_model_location.md).
+    [`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md).
 
 ## Step 4
 
-If further problems persist please raise an issue on the `PID.POS`
-github page. We will be striving to expand this document as new
-problems/ solutions present.
+If further problems persist please raise an issue on the `pidpos` github
+page. We will be striving to expand this document as new problems/
+solutions present.

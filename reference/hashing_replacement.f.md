@@ -31,12 +31,12 @@ hashing_replacement.f(key, salt = "", hash = sha256)
 
 ## See also
 
-[`auto_replace()`](https://stat-cook.github.io/pid.pos/reference/auto_replace.md)
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
 
 ## Examples
 
 ``` r
-replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+replace_by <- hashing_replacement.f(key = "PIDPOS", salt = "SALT")
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
 #> # A tibble: 10 × 3
 #>    If                                                                From  To   
@@ -51,5 +51,4 @@ auto_replace(raw_redaction_rules, replacement.f = replace_by)
 #>  8 "Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  97f0…
 #>  9 "[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… 0d22…
 #> 10 "[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… eee5…
-
 ```

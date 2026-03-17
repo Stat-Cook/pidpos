@@ -1,6 +1,6 @@
 # Reporting on every file in a folder
 
-## The `PID.POS` report
+## The `pidpos` report
 
 A common struggle in research is how data controllers can gain some
 level of confidence that large data sets don’t contain personally
@@ -13,7 +13,7 @@ consist of ~10,000 or more observations manual inspection of rare PID
 has only a limited chance of finding problems, let alone the resource
 cost required to do any pass of the data.
 
-To help overcome these issues, as part of the `PID.POS` package we have
+To help overcome these issues, as part of the `pidpos` package we have
 implemented an API for the automated production of proper noun reports
 on all files found within the same directory. The intention is that
 should a collection of data sets be required for transfer, they can be
@@ -40,9 +40,9 @@ With each file consisting of 6 columns:
 - `utterance`
 
 ``` r
-library(pid.pos)
+library(pidpos)
 
-data_path <- system.file("vignette_data", package = "pid.pos")
+data_path <- system.file("vignette_data", package = "pidpos")
 list.files(data_path)
 #> [1] "The_One_After_I_Do.csv"           "The_One_Where_Rachel_Tells.csv"  
 #> [3] "The_One_with_the_Red_Sweater.csv"
@@ -51,7 +51,7 @@ list.files(data_path)
 and we check the files are the intended data:
 
 ``` r
-rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pid.pos")
+rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
 rachell <- read.csv(rachell_tells, nrows = 5)
 ```
 
@@ -803,7 +803,7 @@ read.csv("Proper Noun Report/The_One_Where_Rachel_Tells.csv")
     #> 177       1           `text`
     #> 178       1           `text`
 
-The `report_on_folder` function is a high level API for the `pid_pos`
+The `report_on_folder` function is a high level API for the `pidpos`
 package and allows for various options to control the reporting process.
 These optional arguments are:
 

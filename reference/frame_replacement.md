@@ -33,7 +33,7 @@ This function is being deprecated as the API is formalized Please use
 ``` r
 if (FALSE) { # \dontrun{
 example.data <- head(the_one_in_massapequa)
-report <- pid_pos(example.data)
+report <- pidpos(example.data)
 redactions.raw <- report_to_redaction_rules(report)
 
 replace_by <- random_replacement.f()

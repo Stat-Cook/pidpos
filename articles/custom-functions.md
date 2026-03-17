@@ -1,11 +1,10 @@
-# Using custom functions in \`pid_pos\`
+# Using custom functions in \`pidpos\`
 
 Out of the box,
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
 relies on the `udpipe` package to perform part-of-speech (POS)
 tagging.  
-However, the `pid_pos` API is intentionally flexible and allows users
-to:
+However, the `pidpos` API is intentionally flexible and allows users to:
 
 - Supply their own custom POS tagging functions
 - Implement custom filtering logic
@@ -26,7 +25,7 @@ A custom filter must:
 We begin by loading the package:
 
 ``` r
-library(pid.pos)
+library(pidpos)
 ```
 
 We will use the example dataset:
@@ -96,9 +95,9 @@ sentence_tagger("Joey sat in Central Perk")
 ```
 
 To use this with
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md),
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md),
 we wrap it with
-[`custom_tagger()`](https://stat-cook.github.io/pid.pos/reference/custom_tagger.md):
+[`custom_tagger()`](https://stat-cook.github.io/pidpos/reference/custom_tagger.md):
 
 ``` r
 friends_tagger <- custom_tagger(sentence_tagger)
@@ -121,10 +120,10 @@ friends_tagger(example.data$text)
 ```
 
 We can now supply it to
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md):
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md):
 
 ``` r
-result <- pid_pos(example.data, tagger = friends_tagger)
+result <- pidpos(example.data, tagger = friends_tagger)
 result
 #> # A tibble: 10 × 6
 #>    ID                Token    Sentence       Document Repeats `Affected Columns`
@@ -188,7 +187,7 @@ friends_tagger2 <- custom_tagger(function(sentence) {
 Now use both:
 
 ``` r
-pid_pos(
+pidpos(
   example.data,
   tagger = friends_tagger2,
   filter = custom_filter
@@ -264,7 +263,7 @@ nltk_filter <- function(frm) {
   dplyr::filter(frm, POS %in% c("NNP", "NNPS"))
 }
 
-pid_pos(
+pidpos(
   example.data,
   tagger = nltk_tagger,
   filter = nltk_filter
@@ -276,7 +275,7 @@ pid_pos(
 ## Summary
 
 The
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
 API separates:
 
 - **Tagging logic**
@@ -294,5 +293,5 @@ By adhering to the simple contract:
 - Taggers return a token-level data frame
 - Filters return a subset of that data frame
 
-[`pid_pos()`](https://stat-cook.github.io/pid.pos/reference/pid_pos.md)
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
 can operate with virtually any POS tagging system.

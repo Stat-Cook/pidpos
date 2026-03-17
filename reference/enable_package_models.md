@@ -17,5 +17,5 @@ The path to the model folder.
 
 ``` r
 enable_package_models()
-#> [1] "/home/runner/.cache/R/pid.pos"
+#> [1] "/home/runner/.cache/R/pidpos"
 ```

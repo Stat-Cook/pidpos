@@ -1,4 +1,4 @@
-# pid.pos
+# pidpos
 
 A package of tools for the detection of personally identifiable data
 (PID) in data sets via natural language processing. Considers there to
@@ -8,7 +8,7 @@ considered to be a ‘proper noun’.
 To install from github straight into R, use:
 
 ``` r
-devtools::install_github("Stat-Cook/pid.pos")
+devtools::install_github("Stat-Cook/pidpos")
 ```
 
 The point of entry for most users will be the `report_on_folder`
@@ -36,6 +36,6 @@ github. Any feature requests, or requests for guidance on using the
 package can also be submitted this way though please read the
 documentation first.
 
-Contribution to pid.pos is welcome, to do so please open an issue so the
+Contribution to pidpos is welcome, to do so please open an issue so the
 development team can check it is compatible with the design principles
 or feel free to fork the repository.

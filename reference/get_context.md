@@ -1,7 +1,7 @@
 # NB: to set the context window size, use `set_context_window()`.
 
 NB: to set the context window size, use
-[`set_context_window()`](https://stat-cook.github.io/pid.pos/reference/set_context_window.md).
+[`set_context_window()`](https://stat-cook.github.io/pidpos/reference/set_context_window.md).
 
 ## Usage
 
@@ -9,7 +9,7 @@ NB: to set the context window size, use
 get_context(
   sentence,
   token,
-  context_window = getOption("pid_pos_context_window")
+  context_window = getOption("pidpos_context_window")
 )
 ```
 
