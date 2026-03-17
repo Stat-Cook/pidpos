@@ -68,11 +68,11 @@
 #' * To report on a data repository: [report_on_folder()]
 #' * for help constructing a custom tagger: [custom_tagger()]
 pidpos <- function(frm,
-                    tagger = "english-ewt",
-                    filter_func = filter_to_proper_nouns,
-                    chunk_size = 1e2,
-                    to_ignore = c(),
-                    warn_if_missing = FALSE) {
+                   tagger = "english-ewt",
+                   filter_func = filter_to_proper_nouns,
+                   chunk_size = 1e2,
+                   to_ignore = c(),
+                   warn_if_missing = FALSE) {
   if (!is.data.frame(frm)) {
     stop("`frm` must be a data frame.", call. = FALSE)
   }
