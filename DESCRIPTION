@@ -1,4 +1,4 @@
-Package: pid.pos
+Package: pid_pos
 Type: Package
 Title: PID detection via NLP
 Version: 0.1.0
