@@ -61,7 +61,7 @@ report_to_redaction_rules <- function(report, path = NULL,
         Context = map2(.data$If, .data$From, get_context)
       )
   }
-  
+
   .frm <- structure(
     .frm,
     class = c("redaction_rules", "tbl_df", "tbl", "data.frame")
