@@ -1,7 +1,7 @@
 # Mock all external dependencies
 mock_udpipe_factory <- function(tagger) function(vec) vec
 mock_read_data <- function(file) data.frame(text = c("Alice", "Bob"))
-mock_pid_pos <- function(frm, ...) paste0("report_", nrow(frm))
+mock_pidpos <- function(frm, ...) paste0("report_", nrow(frm))
 mock_export_as_tree <- function(report, name, path) paste0("exported_", name)
 
 # Begin test suite
@@ -13,7 +13,7 @@ test_that("process_supported_files runs with default parameters", {
   stubbed_process <- process_supported_files
   mockery::stub(stubbed_process, "udpipe_factory", mock_udpipe_factory)
   mockery::stub(stubbed_process, "read_data", mock_read_data)
-  mockery::stub(stubbed_process, "pid_pos", mock_pid_pos)
+  mockery::stub(stubbed_process, "pidpos", mock_pidpos)
   mockery::stub(stubbed_process, "export_as_tree", mock_export_as_tree)
 
   # Minimal input
@@ -33,7 +33,7 @@ test_that("process_supported_files uses custom tagger and export function", {
 
   stubbed_process <- process_supported_files
   mockery::stub(stubbed_process, "read_data", mock_read_data)
-  mockery::stub(stubbed_process, "pid_pos", mock_pid_pos)
+  mockery::stub(stubbed_process, "pidpos", mock_pidpos)
 
   file_list <- list("file1.txt")
 

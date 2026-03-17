@@ -2,7 +2,7 @@
 % Please edit documentation in R/custom_tagger.R
 \name{custom_tagger}
 \alias{custom_tagger}
-\title{Convert a POS tagging function to a tagger for the pid_pos package}
+\title{Convert a POS tagging function to a tagger for the pidpos package}
 \usage{
 custom_tagger(pos_function)
 }
@@ -39,6 +39,6 @@ docs <- c("Alice is here", "Bob is there", "Charlie is everywhere")
 .tagger(docs)
 
 doc.frm <- data.frame(Text = docs)
-pid_pos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
+pidpos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
 
 }

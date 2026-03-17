@@ -1,6 +1,6 @@
 get_implemented_extensions <- function() {
   #' @importFrom stringr str_remove
-  names(pid.pos_env$file_readers)
+  names(pidpos_env$file_readers)
 }
 
 

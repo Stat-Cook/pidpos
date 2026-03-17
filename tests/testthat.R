@@ -8,6 +8,6 @@
 
 library(testthat)
 library(mockery)
-library(pid.pos)
+library(pidpos)
 
-test_check("pid.pos")
+test_check("pidpos")

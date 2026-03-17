@@ -1,10 +1,10 @@
 ---
-title: 'PID.POS: An R package for the detection of personally identifiable data'
+title: 'pidpos: An R package for the detection of personally identifiable data'
 bibliography: ../JOSS_utilities/paper.bib
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{PID.POS: An R package for the detection of personally identifiable data}
+  %\VignetteIndexEntry{pidpos: An R package for the detection of personally identifiable data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -1,8 +1,8 @@
 ---
-title: "Using custom functions in `pid_pos`"
+title: "Using custom functions in `pidpos`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using custom functions in `pid_pos`}
+  %\VignetteIndexEntry{Using custom functions in `pidpos`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,8 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-Out of the box, `pid_pos()` relies on the `udpipe` package to perform part-of-speech (POS) tagging.  
-However, the `pid_pos` API is intentionally flexible and allows users to:
+Out of the box, `pidpos()` relies on the `udpipe` package to perform part-of-speech (POS) tagging.  
+However, the `pidpos` API is intentionally flexible and allows users to:
 
 - Supply their own custom POS tagging functions
 - Implement custom filtering logic
@@ -36,7 +36,7 @@ A custom filter must:
 We begin by loading the package:
 
 ```{r setup}
-library(pid.pos)
+library(pidpos)
 ```
 
 We will use the example dataset:
@@ -73,7 +73,7 @@ sentence_tagger <- function(sentence) {
 sentence_tagger("Joey sat in Central Perk")
 ```
 
-To use this with `pid_pos()`, we wrap it with `custom_tagger()`:
+To use this with `pidpos()`, we wrap it with `custom_tagger()`:
 
 ```{r}
 friends_tagger <- custom_tagger(sentence_tagger)
@@ -81,10 +81,10 @@ friends_tagger <- custom_tagger(sentence_tagger)
 friends_tagger(example.data$text)
 ```
 
-We can now supply it to `pid_pos()`:
+We can now supply it to `pidpos()`:
 
 ```{r}
-result <- pid_pos(example.data, tagger = friends_tagger)
+result <- pidpos(example.data, tagger = friends_tagger)
 result
 ```
 
@@ -134,7 +134,7 @@ friends_tagger2 <- custom_tagger(function(sentence) {
 Now use both:
 
 ```{r}
-pid_pos(
+pidpos(
   example.data,
   tagger = friends_tagger2,
   filter = custom_filter
@@ -192,7 +192,7 @@ nltk_filter <- function(frm) {
   dplyr::filter(frm, POS %in% c("NNP", "NNPS"))
 }
 
-pid_pos(
+pidpos(
   example.data,
   tagger = nltk_tagger,
   filter = nltk_filter
@@ -203,7 +203,7 @@ pid_pos(
 
 # Summary
 
-The `pid_pos()` API separates:
+The `pidpos()` API separates:
 
 - **Tagging logic**
 - **Filtering logic**
@@ -220,5 +220,5 @@ By adhering to the simple contract:
 - Taggers return a token-level data frame
 - Filters return a subset of that data frame
 
-`pid_pos()` can operate with virtually any POS tagging system.
+`pidpos()` can operate with virtually any POS tagging system.
 

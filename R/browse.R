@@ -9,8 +9,8 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   #' @importFrom utils browseURL
   #'
 
-  .date <- pid.pos_env$repo_dates[[pid.pos_env$udpipe_repo]]
-  .version <- pid.pos_env$udpipe_repo
+  .date <- pidpos_env$repo_dates[[pidpos_env$udpipe_repo]]
+  .version <- pidpos_env$udpipe_repo
   .version.number <- stringr::str_extract(.version, "\\d.\\d$")
 
   url_root <- sprintf(
@@ -34,5 +34,5 @@ browse_model_location <- function() {
   #'
   #' @export
 
-  browseURL(pid.pos_env$model_folder)
+  browseURL(pidpos_env$model_folder)
 }

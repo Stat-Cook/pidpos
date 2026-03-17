@@ -9,8 +9,8 @@ test_that("find_supported_files finds correct files", {
   file.create(file.path(tmp, "sub", "d.csv"), recursive = TRUE)
 
   # Stub file readers for testing
-  old_readers <- pid.pos_env$file_readers
-  pid.pos_env$file_readers <- list(csv = TRUE, rds = TRUE)
+  old_readers <- pidpos_env$file_readers
+  pidpos_env$file_readers <- list(csv = TRUE, rds = TRUE)
 
   extensions <- get_implemented_extensions()
 
@@ -37,7 +37,7 @@ test_that("unsupported files are ignored", {
   file.create(file.path(tmp, "unsupported.xyz"))
   file.create(file.path(tmp, "unsupported.csv"))
 
-  pid.pos_env$file_readers <- list(csv = TRUE)
+  pidpos_env$file_readers <- list(csv = TRUE)
 
   expect_message(
     find_supported_files(tmp, verbose = TRUE),
@@ -50,7 +50,7 @@ test_that("unsupported files are ignored", {
 test_that("empty folder warns", {
   tmp <- withr::local_tempdir()
 
-  pid.pos_env$file_readers <- list(csv = TRUE)
+  pidpos_env$file_readers <- list(csv = TRUE)
 
   expect_warning(
     find_supported_files(tmp),

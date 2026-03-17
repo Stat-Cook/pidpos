@@ -13,7 +13,7 @@ md_style <- md_document("markdown_github", df_print = kable_head)
 attr <- xfun::attr2
 render("JOSS_utilities/paper.rmd", md_style, output_file = "paper.md", output_dir = getwd())
 
-# render("JOSS_utilities/paper.rmd", output_file = "pid_pos.docx", output_dir = getwd())
+# render("JOSS_utilities/paper.rmd", output_file = "pidpos.docx", output_dir = getwd())
 
 joss_preamble <- read_lines("JOSS_utilities/joss_preamble.txt")
 
@@ -28,5 +28,5 @@ vignette_preamble <- read_lines("JOSS_utilities/vignette_preamble.txt")
 c(vignette_preamble, paper.md) |>
   readr::write_lines("vignettes/PaperVignette.Rmd")
 
-detach("package:pid.pos", unload = TRUE)
+detach("package:pidpos", unload = TRUE)
 pkgdown::build_site()

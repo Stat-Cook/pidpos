@@ -1,12 +1,12 @@
-url: https://stat-cook.github.io/pid.pos/
+url: https://stat-cook.github.io/pidpos/
 template:
   bootstrap: 5
 reference:
-- title: "PID.POS"
+- title: "pidpos"
   desc: >
   contents:
-  - pid_pos
-  - summary.pid_pos
+  - pidpos
+  - summary.pidpos
   - tag_data_frame
   - udpipe_factory
   - custom_tagger

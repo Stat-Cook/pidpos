@@ -1,10 +1,10 @@
 ---
-title: 'pid_pos: An R package for the detection of personally identifiable data'
+title: 'pidpos: An R package for the detection of personally identifiable data'
 bibliography: ../JOSS_utilities/paper.bib
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{PID.POS: An R package for the detection of personally identifiable data}
+  %\VignetteIndexEntry{pidpos: An R package for the detection of personally identifiable data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ options(tibble.print_min = 4, tibble.print_max = 4)
 
 # Summary
 
-The `pid_pos` package aids in identifying personal identifiability risks in datasets. Using part-of-speech (POS) tagging, it extracts proper nouns from text fields, reducing the complexity of the review process and enabling faster human oversight. The package also provides tools for designing and implementing a redaction workflow.
+The `pidpos` package aids in identifying personal identifiability risks in datasets. Using part-of-speech (POS) tagging, it extracts proper nouns from text fields, reducing the complexity of the review process and enabling faster human oversight. The package also provides tools for designing and implementing a redaction workflow.
 
 # Statement of need  
 
@@ -24,28 +24,28 @@ Data collection and analysis has grown enormously in scale and scope, prompting 
 
 For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII [@pii] address this through pattern matching against curated name lists, which risks missing edge cases.
 
-`pid.pos` takes a different approach. Building on *part-of-speech* tagging (by default the udpipe framework [@straka2016udpipe; @udpipecran], with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate,  and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.
+`pidpos` takes a different approach. Building on *part-of-speech* tagging (by default the udpipe framework [@straka2016udpipe; @udpipecran], with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate,  and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.
 
 # In practice
 
-To install the current version of `pid_pos` package, use the following code:
+To install the current version of `pidpos` package, use the following code:
 
 ``` {r install.1, eval=F}
 # install.packages("pak")
-pak::pkg_install("Stat-Cook/PID.POS")
+pak::pkg_install("Stat-Cook/pidpos")
 ```
 
 
 The intended workflow breaks down into three stages: 
 
-1. Detection of PID risks via `pid_pos()`
+1. Detection of PID risks via `pidpos()`
 2. Preparation of redaction rules via `report_to_redaction_rules()` and `auto_replace()`
 3. Redaction of the original data via `redact()`
 
 To illustrate this, we include a subset of the `friends` package data set:
 
 ``` {r load, warning = F, message = F, results="hide"}
-library(pid.pos)
+library(pidpos)
 example_data <- head(the_one_in_massapequa, 20)
 example_data
 ```
@@ -57,11 +57,11 @@ example_data
 First, generate a PID report:
 
 ``` {r}
-report <- pid_pos(example_data)
+report <- pidpos(example_data)
 head(report)
 ```
 
-The report lists all detected proper nouns alongside their source variable and position. By default, `pid_pos()` uses the `udpipe` framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in  [Custom Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.html).  
+The report lists all detected proper nouns alongside their source variable and position. By default, `pidpos()` uses the `udpipe` framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in  [Custom Functions](https://stat-cook.github.io/pidpos/articles/custom-functions.html).  
 
 Should the user wish to not only identify, but redact the data, the  report can be 
 converted into redaction rules and apply replacements:
@@ -73,7 +73,7 @@ prepared_replacements <- auto_replace(raw_rules, replacement.f)
 head(prepared_replacements)
 ```
 
-Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in [Automatic Replacement Tools](https://stat-cook.github.io/pid.pos/articles/auto-replacement.html). Finally, apply the rules to produce a redacted dataset:
+Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in [Automatic Replacement Tools](https://stat-cook.github.io/pidpos/articles/auto-replacement.html). Finally, apply the rules to produce a redacted dataset:
 
 ``` {r}
 redacted_data <- redact(example_data, prepared_replacements)
@@ -90,7 +90,7 @@ When a project involves multiple files, three additional functions support batch
 
 # Current applications
 
-The `pid_pos` package was developed for applications in the NuRS and AmReS research projects
+The `pidpos` package was developed for applications in the NuRS and AmReS research projects
 which aim to extract and analyse retrospective operational data from NHS Trusts to understand
 staff retention and patient safety.
 
@@ -101,7 +101,7 @@ done by MA. Documentation was written by RC. Funding for the work was won by RC 
 
 # Acknowledgements
 
-The development of `pid_pos` was part of the NuRS and AmReS projects funded by the
+The development of `pidpos` was part of the NuRS and AmReS projects funded by the
 Health Foundation.
 
 # References

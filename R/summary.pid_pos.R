@@ -4,10 +4,10 @@ most_common <- function(cnt, names) {
 }
 
 
-summary.pid_pos <- function(object, ...) {
-  #' Summarize a  `pid_pos` report.
+summary.pidpos <- function(object, ...) {
+  #' Summarize a  `pidpos` report.
   #'
-  #' @param object An object of class `pid_pos`.
+  #' @param object An object of class `pidpos`.
   #'
   #' @return A data frame describing any column determined to contain PID.
   #' \itemize{
@@ -24,7 +24,7 @@ summary.pid_pos <- function(object, ...) {
   #' @importFrom stringr str_detect str_extract_all
   #' @exportS3Method
   #'
-  #' @seealso [pid_pos]
+  #' @seealso [pidpos]
 
   object <- as_tibble(object)
 

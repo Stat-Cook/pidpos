@@ -21,9 +21,8 @@ NB: other functions can be used, if they take \code{key} as a key word argument.
 Function factory for hashing replacement.
 }
 \examples{
-replace_by <- hashing_replacement.f(key="PIDPOS", salt="SALT")
+replace_by <- hashing_replacement.f(key = "PIDPOS", salt = "SALT")
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
-
 
 }
 \seealso{

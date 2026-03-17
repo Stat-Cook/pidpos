@@ -15,10 +15,10 @@ knitr::opts_chunk$set(
   comment = "#>",
   rows.print = 6
 )
-library(pid.pos)
+library(pidpos)
 
 .tmp <- tempdir()
-pid.pos:::set_model_folder(.tmp)
+pidpos:::set_model_folder(.tmp)
 
 {
   model <- "english-ewt-ud-2.5-191206.udpipe"
@@ -30,7 +30,7 @@ pid.pos:::set_model_folder(.tmp)
 
 This package is designed to support the identification and redaction of personally identifiable data (PID) within textual datasets.
 
-The `report_to_redaction_rules()` function generates a `replacement_rules` table from the output of `pid_pos()`. This table specifies candidate values for redaction and provides a `To` column in which users can define replacement values.
+The `report_to_redaction_rules()` function generates a `replacement_rules` table from the output of `pidpos()`. This table specifies candidate values for redaction and provides a `To` column in which users can define replacement values.
 
 In many cases, users may wish to manually populate the `To` column (for example, replacing names with consistent pseudonyms). However, when a dataset contains a large volume of PID, manual specification may be impractical. In such cases, the `auto_replace()` utility can be used to automatically generate replacement values.
 
@@ -47,15 +47,15 @@ In many cases, users may wish to manually populate the `To` column (for example,
 We begin by generating a PID report and converting it into redaction rules:
 
 ```{r, results="hide", message=FALSE, eval=F}
-library(pid.pos)
+library(pidpos)
 
-report <- pid_pos(the_one_in_massapequa)
+report <- pidpos(the_one_in_massapequa)
 replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
 
 ```{r, echo=FALSE, message=FALSE}
-report <- pid_pos(the_one_in_massapequa)
+report <- pidpos(the_one_in_massapequa)
 replacement_rules <- report_to_redaction_rules(report)
 
 head(replacement_rules, 5)

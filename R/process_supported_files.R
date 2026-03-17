@@ -24,7 +24,7 @@ process_supported_files <- function(file_list,
       {
         frm <- read_data(.x)
 
-        report <- pid_pos(
+        report <- pidpos(
           frm,
           tagger = .tagger,
           filter_func = filter_func,

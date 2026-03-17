@@ -12,7 +12,7 @@ empty.report <- data.frame(
 #' The reports are saved in the specified `report directory`.
 #'
 #' @inheritParams find_supported_files
-#' @inheritParams pid_pos
+#' @inheritParams pidpos
 #' @param export_function A function to control exporting the reports to disk.  Current
 #'  options  are `export_as_tree` and `export_flat`
 #' @param report_dir The location to write PID reports to

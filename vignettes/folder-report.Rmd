@@ -15,11 +15,11 @@ knitr::opts_chunk$set(
 library(knitr)
 ```
 
-## The `PID.POS` report
+## The `pidpos` report
 
 A common struggle in research is how data controllers can gain some level of confidence that large data sets don't contain personally identifiable data.  In some cases, this job only requires a brief inspection and columns that often contain PID such as name, or ID are obvious.  However, data sets can contain broad free text fields, fields that are only needed in a small number of cases, or may have been shifted - placing PID in harder to detect locations.  If the data sets consist of ~10,000  or more observations manual inspection of rare PID has only a limited chance of finding problems, let alone the resource cost required to do any pass of the data.   
 
-To help overcome these issues, as part of the `PID.POS` package we have implemented an API for the automated production  of proper noun reports on all files found within the same directory.  The intention is that should a collection of data sets be required for transfer, they can be placed in a single location, and the reports generated. 
+To help overcome these issues, as part of the `pidpos` package we have implemented an API for the automated production  of proper noun reports on all files found within the same directory.  The intention is that should a collection of data sets be required for transfer, they can be placed in a single location, and the reports generated. 
 
 To demonstrate how this function works - we have supplied a collection of data sets featuring free text with the package.  The free text data draws on the `friends` package - containing the scripts for three episodes of season 8:
 
@@ -39,16 +39,16 @@ With each file consisting of 6 columns:
 * `utterance`
 
 ```{r setup}
-library(pid.pos)
+library(pidpos)
 
-data_path <- system.file("vignette_data", package = "pid.pos")
+data_path <- system.file("vignette_data", package = "pidpos")
 list.files(data_path)
 ```
 
 and we check the files are the intended data:
 
 ``` {r}
-rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pid.pos")
+rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
 rachell <- read.csv(rachell_tells, nrows = 5)
 ```
 
@@ -81,10 +81,10 @@ read.csv("Proper Noun Report/The_One_Where_Rachel_Tells.csv")
 ```
 
 ``` {r, echo=F}
-read.csv(system.file("vignette_reports", "The_One_Where_Rachel_Tells.csv", package = "pid.pos"))
+read.csv(system.file("vignette_reports", "The_One_Where_Rachel_Tells.csv", package = "pidpos"))
 ```
 
-The `report_on_folder` function is a high level API for the `pid_pos` package and 
+The `report_on_folder` function is a high level API for the `pidpos` package and 
 allows for various options to control the reporting process.  These optional arguments are:
 
 * `tagger` - The proper noun tagger to use.  The default is the "english-ewt" 
@@ -108,7 +108,7 @@ The first step is to create a set of replacement rules modelled on the PID repor
 distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
 ```
 ``` {r, echo=F}
-distinct_rules <- get_distinct_redaction_rules(system.file("vignette_reports", package = "pid.pos"))
+distinct_rules <- get_distinct_redaction_rules(system.file("vignette_reports", package = "pidpos"))
 ```
 
 The replacements will be based on this data frame.  The most conservative approach

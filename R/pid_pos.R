@@ -34,13 +34,13 @@
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa, 50)
 #' try(
-#'   pid_pos(example.data, to_ignore = c("scene", "utterance"))
+#'   pidpos(example.data, to_ignore = c("scene", "utterance"))
 #' )
 #'
-#' pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
+#' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
 #'
 #' tag_ewt <- udpipe_factory("english-ewt")
-#' pid_pos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
+#' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
 #'
 #'
 #' filter_to_long_proper_nouns <- function(frm) {
@@ -49,7 +49,7 @@
 #'   filter_to_proper_nouns(frm)
 #' }
 #'
-#' pid_pos(example.data,
+#' pidpos(example.data,
 #'   to_ignore = c("scene", "utterance"),
 #'   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 #' )
@@ -63,11 +63,11 @@
 #' @importFrom tibble as_tibble
 #'
 #' @seealso
-#' * To summarize the results: [summary.pid_pos()]
+#' * To summarize the results: [summary.pidpos()]
 #' * To help with redaction of PID: [report_to_redaction_rules()]
 #' * To report on a data repository: [report_on_folder()]
 #' * for help constructing a custom tagger: [custom_tagger()]
-pid_pos <- function(frm,
+pidpos <- function(frm,
                     tagger = "english-ewt",
                     filter_func = filter_to_proper_nouns,
                     chunk_size = 1e2,
@@ -111,6 +111,6 @@ pid_pos <- function(frm,
 
   structure(
     report,
-    class = c("pid_pos", class(report))
+    class = c("pidpos", class(report))
   )
 }

@@ -1,5 +1,5 @@
 ---
-title: 'PID.POS: An R package for the detection of personally identifiable data'
+title: 'pidpos: An R package for the detection of personally identifiable data'
 tags:
   - R
 authors:

@@ -7,7 +7,7 @@
 get_context(
   sentence,
   token,
-  context_window = getOption("pid_pos_context_window")
+  context_window = getOption("pidpos_context_window")
 )
 }
 \arguments{

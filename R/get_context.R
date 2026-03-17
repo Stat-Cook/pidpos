@@ -13,7 +13,7 @@
 #' @keywords internal
 
 get_context <- function(sentence, token,
-                        context_window = getOption("pid_pos_context_window")) {
+                        context_window = getOption("pidpos_context_window")) {
   loc <- stringr::str_locate(sentence, token)
 
   # If token not found, return NA
@@ -36,7 +36,7 @@ get_context <- function(sentence, token,
 
 # get_context <- function(sentences, tokens) {
 #
-#   context_window <- getOption("pid.pos.context_window")
+#   context_window <- getOption("pidpos.context_window")
 #
 #   context.frm <- str_locate(sentences, tokens) |>
 #     as_tibble() |>
@@ -63,7 +63,7 @@ set_context_window <- function(x) {
   #'   before and after the token in the context.
   #'
   #' @keywords internal
-  .opt <- list("pid_pos_context_window" = x)
+  .opt <- list("pidpos_context_window" = x)
 
   options(.opt)
 }

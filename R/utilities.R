@@ -1,15 +1,15 @@
 set_model_folder <- function(path) {
-  unlockBinding("model_folder", pid.pos_env)
-  pid.pos_env$model_folder <- path
+  unlockBinding("model_folder", pidpos_env)
+  pidpos_env$model_folder <- path
   path
 }
 
 
-#' Set the model folder to a local 'pid_pos_models' sub-folder.
+#' Set the model folder to a local 'pidpos_models' sub-folder.
 #'
 #' Intended if you want to use local udpipe models for a specific R project.
 #'
-#' @param sub_folder Logical. If TRUE, use a 'pid_pos_models' sub-folder
+#' @param sub_folder Logical. If TRUE, use a 'pidpos_models' sub-folder
 #'   of the current working directory. If FALSE use the current working directory.
 #'
 #' @return The path to the model folder.
@@ -28,7 +28,7 @@ set_model_folder <- function(path) {
 enable_local_models <- function(sub_folder = TRUE) {
   local_dir <- getwd()
   if (sub_folder) {
-    local_dir <- file.path(local_dir, "pid_pos_models")
+    local_dir <- file.path(local_dir, "pidpos_models")
   }
 
   if (!dir.exists(local_dir)) {
@@ -51,7 +51,7 @@ enable_local_models <- function(sub_folder = TRUE) {
 #' @examples
 #' enable_package_models()
 enable_package_models <- function() {
-  cache_dir <- tools::R_user_dir("pid.pos", which = "cache")
+  cache_dir <- tools::R_user_dir("pidpos", which = "cache")
 
   if (!dir.exists(cache_dir)) {
     if (!dir.create(cache_dir, recursive = TRUE)) {
@@ -73,20 +73,20 @@ enable_package_models <- function() {
 #' @export
 #'
 set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
-  pkg_env <- getNamespace("pid.pos")
-  if (!exists("pid.pos_env", envir = pkg_env)) {
-    stop("pid.pos_env does not exist. Initialize it first.")
+  pkg_env <- getNamespace("pidpos")
+  if (!exists("pidpos_env", envir = pkg_env)) {
+    stop("pidpos_env does not exist. Initialize it first.")
   }
 
   version <- match.arg(version)
 
-  if (!version %in% names(pid.pos_env$allowed_repos)) {
+  if (!version %in% names(pidpos_env$allowed_repos)) {
     validation_error("No repository defined for version")
   }
 
-  pid.pos_env$udpipe_version <- pid.pos_env$allowed_repos[[version]]
+  pidpos_env$udpipe_version <- pidpos_env$allowed_repos[[version]]
 
-  invisible(pid.pos_env$udpipe_version)
+  invisible(pidpos_env$udpipe_version)
 }
 
 

@@ -17,7 +17,7 @@ register_reader <- function(fun, ext) {
     stop("The reader must be a function.", call. = FALSE)
   }
 
-  pid.pos_env$file_readers[[tolower(ext)]] <- fun
+  pidpos_env$file_readers[[tolower(ext)]] <- fun
   invisible(TRUE)
 }
 

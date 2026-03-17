@@ -12,7 +12,7 @@
 #' @examples
 #' #' # Example of using type_error
 #' f <- function() {
-#'   pid.pos:::type_error("This is a type error")
+#'   pidpos:::type_error("This is a type error")
 #' }
 #'
 #' # Trigger the error safely without stopping R

@@ -26,7 +26,7 @@ test_that("new_error_type returns a constructor function", {
     error = function(e) e
   )
 
-  expect_s3_class(e, c("mypkg_bad_thing", "bad_thing", "pid_pos_error", "error"))
+  expect_s3_class(e, c("mypkg_bad_thing", "bad_thing", "pidpos_error", "error"))
   expect_match(conditionMessage(e), "uh oh")
 })
 
@@ -39,7 +39,7 @@ test_that("new_error_type supports parent class inheritance", {
     error = function(e) e
   )
 
-  expect_s3_class(e, c("mypkg_child", "child", "parent", "pid_pos_error", "error"))
+  expect_s3_class(e, c("mypkg_child", "child", "parent", "pidpos_error", "error"))
   expect_match(conditionMessage(e), "fail")
 })
 

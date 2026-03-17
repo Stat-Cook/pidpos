@@ -1,5 +1,5 @@
 test_that("summary works", {
-  report <- pid_pos(the_one_in_massapequa)
+  report <- pidpos(the_one_in_massapequa)
   .summary <- summary(report)
 
   expect_equal(nrow(.summary), 2)

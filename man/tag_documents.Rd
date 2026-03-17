@@ -34,15 +34,15 @@ example_text <- c(
 
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
-ewt_result <- pid.pos:::tag_documents(example_text, tagger = ewt_tagger)
+ewt_result <- pidpos:::tag_documents(example_text, tagger = ewt_tagger)
 
 # Create a tagger for the English GUM model
 gum_tagger <- udpipe_factory("english-gum")
-gum_result <- pid.pos:::tag_documents(example_text, tagger = gum_tagger)
+gum_result <- pidpos:::tag_documents(example_text, tagger = gum_tagger)
 
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
-lines_result <- pid.pos:::tag_documents(example_text, tagger = lines_tagger)
+lines_result <- pidpos:::tag_documents(example_text, tagger = lines_tagger)
 
 }
 \keyword{internal}

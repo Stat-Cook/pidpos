@@ -39,8 +39,8 @@
 #' lines_tagger <- udpipe_factory("english-lines")
 #' lines_tagger(docs)
 udpipe_factory <- function(model = "english-ewt",
-                           model_dir = pid.pos_env$model_folder,
-                           udpipe_repo = pid.pos_env$udpipe_repo) {
+                           model_dir = pidpos_env$model_folder,
+                           udpipe_repo = pidpos_env$udpipe_repo) {
   function(docs, doc_ids = NULL) {
     if (!is.character(docs) || length(docs) == 0) {
       type_error("`docs` must be a non-empty character vector.")

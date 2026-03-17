@@ -1,8 +1,8 @@
-# pid.pos <a href="https://stat-cook.github.io/pid.pos/"><img src="man/figures/logo.png" align="right" height="136" /></a>
+# pidpos <a href="https://stat-cook.github.io/pidpos/"><img src="man/figures/logo.png" align="right" height="136" /></a>
 
 <!-- badges: start -->
-[![codecov: master](https://codecov.io/gh/Stat-Cook/pid.pos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pid.pos)
-[![R-CMD-check](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pid.pos/actions/workflows/R-CMD-check.yaml)
+[![codecov: master](https://codecov.io/gh/Stat-Cook/pidpos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pidpos)
+[![R-CMD-check](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 A package of tools for the detection of personally identifiable data (PID) in data sets via natural language processing.  Considers there to be a risk of PID when a data set contains any text element that is considered to be a 'proper noun'.
@@ -10,7 +10,7 @@ A package of tools for the detection of personally identifiable data (PID) in da
 To install from github straight into R, use:
 
 ```r
-devtools::install_github("Stat-Cook/pid.pos")
+devtools::install_github("Stat-Cook/pidpos")
 
 ```
 
@@ -24,5 +24,5 @@ The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/
 
 If you encounter a bug, please file a minimal reproducible example on github. Any feature requests, or requests for guidance on using the package can also be submitted this way though please read the documentation first.
 
-Contribution to pid.pos is welcome, to do so please open an issue so the development team can check it is compatible with the design principles or feel free to fork the repository.
+Contribution to pidpos is welcome, to do so please open an issue so the development team can check it is compatible with the design principles or feel free to fork the repository.
 

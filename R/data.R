@@ -30,7 +30,7 @@
 
 
 #' raw_redaction_rules
-#' An example of a redaction rules produced by the `pid_pos` function.
+#' An example of a redaction rules produced by the `pidpos` function.
 #' It is made using the first 20 rows of `the_one_in_massapequa` data set.
 #'
 #' \describe{

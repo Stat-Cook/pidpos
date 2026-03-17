@@ -2,12 +2,12 @@
 % Please edit documentation in R/utilities.R
 \name{enable_local_models}
 \alias{enable_local_models}
-\title{Set the model folder to a local 'pid_pos_models' sub-folder.}
+\title{Set the model folder to a local 'pidpos_models' sub-folder.}
 \usage{
 enable_local_models(sub_folder = TRUE)
 }
 \arguments{
-\item{sub_folder}{Logical. If TRUE, use a 'pid_pos_models' sub-folder
+\item{sub_folder}{Logical. If TRUE, use a 'pidpos_models' sub-folder
 of the current working directory. If FALSE use the current working directory.}
 }
 \value{

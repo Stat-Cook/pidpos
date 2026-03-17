@@ -14,11 +14,11 @@ docs/*
 
 JOSS_utilities/paper.html
 
-pid_pos.docx
+pidpos.docx
 
 rjavaenv/
 
-pid_pos_models/
+pidpos_models/
 
 .Rprofile
 /doc/

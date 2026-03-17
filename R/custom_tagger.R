@@ -1,4 +1,4 @@
-#' Convert a POS tagging function to a tagger for the pid_pos package
+#' Convert a POS tagging function to a tagger for the pidpos package
 #'
 #' This function converts a function for the tagging of a single sentence
 #' into a function that can be used for the tagging of a whole document. The function
@@ -30,7 +30,7 @@
 #' .tagger(docs)
 #'
 #' doc.frm <- data.frame(Text = docs)
-#' pid_pos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
+#' pidpos(doc.frm, tagger = .tagger, filter_func = filter_to_proper_nouns)
 #'
 custom_tagger <- function(pos_function) {
   if (!is.function(pos_function)) {

@@ -1,4 +1,4 @@
-Package: pid_pos
+Package: pidpos
 Type: Package
 Title: PID detection via NLP
 Version: 0.1.0
@@ -15,7 +15,7 @@ Description: A package for the detection and contextualization of personally
     This package is a wraper to the 'english-ewt-2.5' UDPipe model intended to 
     extract 'proper nouns' and provide a report of their usage/ context in a 
     set of free text documents.  The main point of entry to the package is via 
-    the `pid_pos` function (see `Troubleshooting` vignette for 
+    the `pidpos` function (see `Troubleshooting` vignette for 
     possible issues with the automated downloading of the pretrained UDPipe 
     model).
 License: MIT + file LICENSE
@@ -55,4 +55,4 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
-URL: https://stat-cook.github.io/pid.pos/
+URL: https://stat-cook.github.io/pidpos/

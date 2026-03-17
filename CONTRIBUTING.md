@@ -1,10 +1,10 @@
-# Contributing to pid_pos
+# Contributing to pidpos
 
-This outlines how to contribute to the pid_pos package.
+This outlines how to contribute to the pidpos package.
 
 ## General contributions
 
-Contributions to pid_pos are welcome, and intended to the scale of the change. 
+Contributions to pidpos are welcome, and intended to the scale of the change. 
 - Typos: feel free to correct these using the GitHub web-interface or by forking the repository. 
   The project uses ROxygen so please make changes in the `.R` files *not* in the `.Rd` files. 
 - Bug reports: please file a minimal reproducible example on GitHub.
@@ -23,7 +23,7 @@ Contributions to pid_pos are welcome, and intended to the scale of the change.
 * Ensure that all checks pass (e.g., R CMD check, tests, etc.)
 * Address any review comments from the maintainers
 * Once approved, your changes will be merged into the main repository
-* Thank you for contributing to pid_pos!
+* Thank you for contributing to pidpos!
 
 ## Code of Conduct
 This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). 

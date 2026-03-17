@@ -14,7 +14,7 @@ base_error <- function(subclass,
                        message,
                        ...,
                        call) {
-  cls <- c(subclass, "pid_pos_error", "error")
+  cls <- c(subclass, "pidpos_error", "error")
 
   abort(
     message = message,

@@ -1,6 +1,6 @@
 tagger_factory <- function(model = "english-ewt", 
-                           model_dir = pid.pos_env$model_folder,
-                           udpipe_repo = pid.pos_env$udpipe_version) {
+                           model_dir = pidpos_env$model_folder,
+                           udpipe_repo = pidpos_env$udpipe_version) {
   #' 
   #' Creates a tagging function using the specified UDPipe model.
   #' 
@@ -192,7 +192,7 @@ filter_to_proper_nouns <- function(tag_frm) {
 }
 
 
-pid_pos <- function(frm,
+pidpos <- function(frm,
                     tagger = "english-ewt",
                     filter = filter_to_proper_nouns,
                     chunk_size = 1e2,
@@ -232,19 +232,19 @@ pid_pos <- function(frm,
   #' data(the_one_in_massapequa)
   #' example.data <- head(the_one_in_massapequa, 20)
   #' try(
-  #'   pid_pos(example.data, to_ignore=c("scene", "utterance"))
+  #'   pidpos(example.data, to_ignore=c("scene", "utterance"))
   #' )
   #' 
-  #' pid_pos(example.data, to_ignore=c("scene", "utterance"), tagger="english-gum")
+  #' pidpos(example.data, to_ignore=c("scene", "utterance"), tagger="english-gum")
   #' 
   #' tag_ewt <- tagger_factory("english-ewt")
-  #' pid_pos(example.data, to_ignore=c("scene", "utterance"), tagger=tag_ewt)
+  #' pidpos(example.data, to_ignore=c("scene", "utterance"), tagger=tag_ewt)
   #' 
   #' filter_to_long_proper_nouns <- function(frm){
   #'   filter_to_proper_nouns(frm) |>
   #'     filter(nchar(Token) > 1)
   #' }
-  #' pid_pos(example.data, to_ignore=c("scene", "utterance"), 
+  #' pidpos(example.data, to_ignore=c("scene", "utterance"), 
   #'   tagger=tag_ewt, filter=filter_to_long_proper_nouns)
   #' 
   #' @export

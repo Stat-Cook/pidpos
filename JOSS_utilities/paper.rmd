@@ -5,7 +5,7 @@ options(tibble.print_min = 4, tibble.print_max = 4)
 
 # Summary
 
-The `PID.POS` package is designed to aid with the identification of personal identifiability risks in data sets.
+The `pidpos` package is designed to aid with the identification of personal identifiability risks in data sets.
 By applying existing natural language processing techniques, the package is able to identify proper nouns within a
 data set.  The extraction of proper nouns reduced the complexity of the data, allowing for a quicker review and 
 oversight of the data.  The package also includes a basic tool for the design, and 
@@ -27,10 +27,10 @@ Where data  is structured  and comprises only a few hundred observations, a manu
 identify variables which contain directly personally identifiable data (PID) with a reasonable time
 investment.  However, in the case of  modern large data sets which may comprise millions of
 observations,  a manual inspection may miss PID if it is  embedded within a passage of text, or is
-a rarity for the given variable.  The `PID.POS` (Personal Identifiability Detection by Part Of 
+a rarity for the given variable.  The `pidpos` (Personal Identifiability Detection by Part Of 
 Speech tagging) package is designed to aid with the identification of PID risks in data sets.   In
 comparison to existing packages which rely on a curated list of common names and string-matching,
-`PID.POS` builds on the existing `udpipe` framework[@straka2016udpipe; @udpipecran], extracting all examples of 
+`pidpos` builds on the existing `udpipe` framework[@straka2016udpipe; @udpipecran], extracting all examples of 
 proper nouns and providing a mechanism for the review and redaction of PID risks.
 
 
@@ -41,24 +41,24 @@ The need to review data sets to identify risks is not new, and there are a numbe
 to aid in this process.  The most notable of these are the `PII` package  [@pii], which is designed to 
 identify personally identifiable features via pattern matching. These approaches can be effective in 
 identifying PID, but have a risk of missing edge cases e.g. relying on sentence case  to identify names. The 
-approach taken in `PID.POS` conversely takes the approach of purposefully extracting all proper-nouns, and hence
+approach taken in `pidpos` conversely takes the approach of purposefully extracting all proper-nouns, and hence
 increase the false positive rate, with the intention of supplying a simplified extract to aid  human interpretation 
 rather than fully automate it.
 
 # In practice
 
-To install the current version of `PID.POS` package, use the following code:
+To install the current version of `pidpos` package, use the following code:
 
 ``` {r install.1, eval=F}
 # install.packages("pak")
-pak::pkg_install("Stat-Cook/PID.POS")
+pak::pkg_install("Stat-Cook/pidpos")
 ```
 
-To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
+To assist with understanding the `pidpos` package, we include a subset of the 'friends' 
 data set from the `friends` package.
 
 ``` {r load, warning = F, message = F, results="hide"}
-library(pid.pos)
+library(pidpos)
 the_one_in_massapequa
 ```
 
@@ -150,11 +150,11 @@ the_one_in_massapequa |>
 ```
 
  Further utilities are 
-available, notably tools to automatically encode the `To` column (see [Auto Replacements](https://stat-cook.github.io/pid.pos/articles/AutoReplacement.html)).
+available, notably tools to automatically encode the `To` column (see [Auto Replacements](https://stat-cook.github.io/pidpos/articles/AutoReplacement.html)).
 
 # Current applications
 
-The `PID.POS` package was developed for applications in the NuRS and AmReS research projects
+The `pidpos` package was developed for applications in the NuRS and AmReS research projects
 which aim to extract and analyse retrospective operational data from NHS Trusts to understand
 staff retention and patient safety.
 
@@ -165,7 +165,7 @@ done by MA. Documentation was written by RC. Funding for the work was won by RC 
 
 # Acknowledgements
 
-The development of `PID.POS` was part of the NuRS and AmReS projects funded by the
+The development of `pidpos` was part of the NuRS and AmReS projects funded by the
 Health Foundation.
 
 # References
