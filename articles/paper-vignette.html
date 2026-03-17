@@ -98,8 +98,7 @@ personally identifiable data (PID) with reasonable effort. In large
 datasets, however, PID embedded within free-text fields or appearing
 rarely in a variable can easily be missed. Existing R packages such as
 PII <span class="citation">(Patterson-Stein 2025)</span> address this
-through pattern matching against curated name lists, which risks missing
-edge cases.</p>
+through pattern matching, which risks missing edge cases.</p>
 <p><code>pidpos</code> takes a different approach. Building on
 <em>part-of-speech</em> tagging (by default the udpipe framework <span class="citation">(Straka, Hajic, and Straková 2016; Wijffels
 2023)</span>, with the ability to use a custom tagging engine) it

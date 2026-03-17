@@ -45,7 +45,7 @@
 <div class="section level1">
 <h1 id="statement-of-need">Statement of need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a></h1>
 <p>Data collection and analysis has grown enormously in scale and scope, prompting international legislation to protect individuals’ rights over their own data (European Parliament and Council of the European Union 2016). This has heightened awareness of the responsibilities of data controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke 2016). A central concern is personal identifiability — the ability to directly or indirectly identify an individual from a dataset (Finck and Pallas 2020) — with breaches carrying significant reputational and financial consequences (ICO, n.d.a).</p>
-<p>For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII (Patterson-Stein 2025) address this through pattern matching against curated name lists, which risks missing edge cases.</p>
+<p>For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII (Patterson-Stein 2025) address this through pattern matching, which risks missing edge cases.</p>
 <p><code>pidpos</code> takes a different approach. Building on <em>part-of-speech</em> tagging (by default the udpipe framework (Straka, Hajic, and Straková 2016; Wijffels 2023), with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate, and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.</p>
 </div>
 <div class="section level1">
@@ -142,19 +142,19 @@
 <th align="left">To</th>
 </tr></thead><tbody><tr class="odd"><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Central</td>
-<td align="left">YHRAWGBYUW</td>
+<td align="left">ALJYYDNFVM</td>
 </tr><tr class="even"><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Perk</td>
-<td align="left">NKISXJJDOE</td>
+<td align="left">RFIMXFGBNM</td>
 </tr><tr class="odd"><td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe</td>
-<td align="left">PRLZXJTIVV</td>
+<td align="left">GIXWOGLAEY</td>
 </tr><tr class="even"><td align="left">Phoebe Buffay</td>
 <td align="left">Buffay</td>
-<td align="left">PKVOFWUXYO</td>
+<td align="left">SJTSCCITDF</td>
 </tr><tr class="odd"><td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="left">Ross</td>
-<td align="left">WBNLJZIVAL</td>
+<td align="left">EZVHZIYTRU</td>
 </tr></tbody></table><p>Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in <a href="https://stat-cook.github.io/pidpos/articles/auto-replacement.html">Automatic Replacement Tools</a>. Finally, apply the rules to produce a redacted dataset:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redacted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/redact.html">redact</a></span><span class="op">(</span><span class="va">example_data</span>, <span class="va">prepared_replacements</span><span class="op">)</span></span>
@@ -166,22 +166,22 @@
 </tr></thead><tbody><tr class="odd"><td align="right">1</td>
 <td align="right">1</td>
 <td align="left">Scene Directions</td>
-<td align="left">[Scene: YHRAWGBYUW NKISXJJDOE, everyone is there.]</td>
+<td align="left">[Scene: ALJYYDNFVM RFIMXFGBNM, everyone is there.]</td>
 </tr><tr class="even"><td align="right">1</td>
 <td align="right">2</td>
-<td align="left">PRLZXJTIVV PKVOFWUXYO</td>
-<td align="left">Oh, WBNLJZIVAL, XPARRTPDCU, is it okay if I bring someone to your parent’s anniversary party?</td>
+<td align="left">GIXWOGLAEY SJTSCCITDF</td>
+<td align="left">Oh, EZVHZIYTRU, CSIWNWCLBT, is it okay if I bring someone to your parent’s anniversary party?</td>
 </tr><tr class="odd"><td align="right">1</td>
 <td align="right">3</td>
-<td align="left">XQHPEYOIOG OEJCVTWDFT</td>
+<td align="left">FWSTGUYRQG RLZBNGSIJF</td>
 <td align="left">Yeah.</td>
 </tr><tr class="even"><td align="right">1</td>
 <td align="right">4</td>
-<td align="left">WBNLJZIVAL OEJCVTWDFT</td>
+<td align="left">EZVHZIYTRU RLZBNGSIJF</td>
 <td align="left">Sure. Yeah.</td>
 </tr><tr class="odd"><td align="right">1</td>
 <td align="right">5</td>
-<td align="left">DXHMAWLEYG MVDEBTARTF</td>
+<td align="left">CMWWTTMFXM SEIXNDFIBP</td>
 <td align="left">So, who’s the guy?</td>
 </tr></tbody></table></div>
 <div class="section level1">

@@ -24,8 +24,8 @@ For small, structured datasets, manual inspection can identify
 personally identifiable data (PID) with reasonable effort. In large
 datasets, however, PID embedded within free-text fields or appearing
 rarely in a variable can easily be missed. Existing R packages such as
-PII (Patterson-Stein 2025) address this through pattern matching against
-curated name lists, which risks missing edge cases.
+PII (Patterson-Stein 2025) address this through pattern matching, which
+risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
 tagging (by default the udpipe framework (Straka, Hajic, and Straková

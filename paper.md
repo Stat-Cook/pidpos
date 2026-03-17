@@ -22,8 +22,8 @@ For small, structured datasets, manual inspection can identify
 personally identifiable data (PID) with reasonable effort. In large
 datasets, however, PID embedded within free-text fields or appearing
 rarely in a variable can easily be missed. Existing R packages such as
-PII (Patterson-Stein 2025) address this through pattern matching against
-curated name lists, which risks missing edge cases.
+PII (Patterson-Stein 2025) address this through pattern matching, which
+risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
 tagging (by default the udpipe framework (Straka, Hajic, and Straková
@@ -108,11 +108,11 @@ head(prepared_replacements)
 
 | If                                                                               | From    | To         |
 |:---------------------------------------------------------------------------------|:--------|:-----------|
-| \[Scene: Central Perk, everyone is there.\]                                      | Central | YHRAWGBYUW |
-| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | NKISXJJDOE |
-| Phoebe Buffay                                                                    | Phoebe  | PRLZXJTIVV |
-| Phoebe Buffay                                                                    | Buffay  | PKVOFWUXYO |
-| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | WBNLJZIVAL |
+| \[Scene: Central Perk, everyone is there.\]                                      | Central | ALJYYDNFVM |
+| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | RFIMXFGBNM |
+| Phoebe Buffay                                                                    | Phoebe  | GIXWOGLAEY |
+| Phoebe Buffay                                                                    | Buffay  | SJTSCCITDF |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | EZVHZIYTRU |
 
 Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -128,11 +128,11 @@ head(redacted_data)
 
 | scene | utterance | speaker               | text                                                                                          |
 |------:|----------:|:----------------------|:----------------------------------------------------------------------------------------------|
-|     1 |         1 | Scene Directions      | \[Scene: YHRAWGBYUW NKISXJJDOE, everyone is there.\]                                          |
-|     1 |         2 | PRLZXJTIVV PKVOFWUXYO | Oh, WBNLJZIVAL, XPARRTPDCU, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | XQHPEYOIOG OEJCVTWDFT | Yeah.                                                                                         |
-|     1 |         4 | WBNLJZIVAL OEJCVTWDFT | Sure. Yeah.                                                                                   |
-|     1 |         5 | DXHMAWLEYG MVDEBTARTF | So, who’s the guy?                                                                            |
+|     1 |         1 | Scene Directions      | \[Scene: ALJYYDNFVM RFIMXFGBNM, everyone is there.\]                                          |
+|     1 |         2 | GIXWOGLAEY SJTSCCITDF | Oh, EZVHZIYTRU, CSIWNWCLBT, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | FWSTGUYRQG RLZBNGSIJF | Yeah.                                                                                         |
+|     1 |         4 | EZVHZIYTRU RLZBNGSIJF | Sure. Yeah.                                                                                   |
+|     1 |         5 | CMWWTTMFXM SEIXNDFIBP | So, who’s the guy?                                                                            |
 
 # Multiple file API
 
