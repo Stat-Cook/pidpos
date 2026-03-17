@@ -40,16 +40,13 @@
 
 <div id="summary" class="section level1">
 
-<p>The <code>pidpos</code> package is designed to aid with the identification of personal identifiability risks in data sets. By applying existing natural language processing techniques, the package is able to identify proper nouns within a data set. The extraction of proper nouns reduced the complexity of the data, allowing for a quicker review and oversight of the data. The package also includes a basic tool for the design, and implementation of a redaction process.</p>
+<p>The <code>pidpos</code> package aids in identifying personal identifiability risks in datasets. Using part-of-speech (POS) tagging, it extracts proper nouns from text fields, reducing the complexity of the review process and enabling faster human oversight. The package also provides tools for designing and implementing a redaction workflow.</p>
 </div>
 <div class="section level1">
 <h1 id="statement-of-need">Statement of need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a></h1>
-<p>The world is embedded in a data revolution. Never before have we had the depth or breadth of data being captured and analysed than we do at present, and this is only set to increase. In response, international bodies are taking steps to ensure legal protection of an individual’s rights to their own data [@GDPR]. One effect of increase legislation in the European Union has been a growing awareness of the role and responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. Among these concerns, a risk of ‘personal identifiability’ i.e. the ability to directly or indirectly identify an individual from a dataset [@finck2020they], is paramount and, if breeched, can lead to reputation damage and fines [@ICOWhatIf].</p>
-<p>Where data is structured and comprises only a few hundred observations, a manual inspection can identify variables which contain directly personally identifiable data (PID) with a reasonable time investment. However, in the case of modern large data sets which may comprise millions of observations, a manual inspection may miss PID if it is embedded within a passage of text, or is a rarity for the given variable. The <code>pidpos</code> (Personal Identifiability Detection by Part Of Speech tagging) package is designed to aid with the identification of PID risks in data sets. In comparison to existing packages which rely on a curated list of common names and string-matching, <code>pidpos</code> builds on the existing <code>udpipe</code> framework[@straka2016udpipe; @udpipecran], extracting all examples of proper nouns and providing a mechanism for the review and redaction of PID risks.</p>
-</div>
-<div class="section level1">
-<h1 id="comparison-to-existing-r-packages">Comparison to existing R packages<a class="anchor" aria-label="anchor" href="#comparison-to-existing-r-packages"></a></h1>
-<p>The need to review data sets to identify risks is not new, and there are a number of packages which have been developed to aid in this process. The most notable of these are the <code>PII</code> package [@pii], which is designed to identify personally identifiable features via pattern matching. These approaches can be effective in identifying PID, but have a risk of missing edge cases e.g. relying on sentence case to identify names. The approach taken in <code>pidpos</code> conversely takes the approach of purposefully extracting all proper-nouns, and hence increase the false positive rate, with the intention of supplying a simplified extract to aid human interpretation rather than fully automate it.</p>
+<p>Data collection and analysis has grown enormously in scale and scope, prompting international legislation to protect individuals’ rights over their own data (European Parliament and Council of the European Union 2016). This has heightened awareness of the responsibilities of data controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke 2016). A central concern is personal identifiability — the ability to directly or indirectly identify an individual from a dataset (Finck and Pallas 2020) — with breaches carrying significant reputational and financial consequences (ICO, n.d.a).</p>
+<p>For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII (Patterson-Stein 2025) address this through pattern matching against curated name lists, which risks missing edge cases.</p>
+<p><code>pidpos</code> takes a different approach. Building on <em>part-of-speech</em> tagging (by default the udpipe framework (Straka, Hajic, and Straková 2016; Wijffels 2023), with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate, and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.</p>
 </div>
 <div class="section level1">
 <h1 id="in-practice">In practice<a class="anchor" aria-label="anchor" href="#in-practice"></a></h1>
@@ -57,10 +54,18 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"Stat-Cook/pidpos"</span><span class="op">)</span></span></code></pre></div>
-<p>To assist with understanding the <code>pidpos</code> package, we include a subset of the ‘friends’ data set from the <code>friends</code> package.</p>
+<p>The intended workflow breaks down into three stages:</p>
+<ol style="list-style-type: decimal"><li>Detection of PID risks via <code><a href="reference/pid_pos.html">pidpos()</a></code>
+</li>
+<li>Preparation of redaction rules via <code><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> and <code><a href="reference/auto_replace.html">auto_replace()</a></code>
+</li>
+<li>Redaction of the original data via <code><a href="reference/redact.html">redact()</a></code>
+</li>
+</ol><p>To illustrate this, we include a subset of the <code>friends</code> package data set:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
-<span><span class="va">the_one_in_massapequa</span></span></code></pre></div>
+<span><span class="va">example_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="va">example_data</span></span></code></pre></div>
 <table class="table"><colgroup><col width="6%"><col width="9%"><col width="15%"><col width="68%"></colgroup><thead><tr class="header"><th align="right">scene</th>
 <th align="right">utterance</th>
 <th align="left">speaker</th>
@@ -85,125 +90,110 @@
 <td align="right">5</td>
 <td align="left">Joey Tribbiani</td>
 <td align="left">So, who’s the guy?</td>
-</tr></tbody></table><p>The package has two main functions for identifying PID risks, depending on the users needs.<br>
-First, the <code>data_frame_report</code> function converts a typical R data frame into a new data frame of:</p>
-<ul><li>
-<code>ID</code> - the column and row where the sentence first appears</li>
-<li>
-<code>Token</code> - the specific proper noun token</li>
-<li>
-<code>Sentence</code> - the sentence containing proper nouns</li>
-<li>
-<code>Repeats</code> - the number of times the sentence occurs in the data set</li>
-<li>
-<code>Affected Columns</code> - the columns in the original data frame which contain the sentence</li>
-</ul><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu">data_frame_report</span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
-<span><span class="va">report</span></span></code></pre></div>
-<table class="table"><colgroup><col width="22%"><col width="9%"><col width="17%"><col width="17%"><col width="10%"><col width="21%"></colgroup><thead><tr class="header"><th align="left">ID</th>
+</tr></tbody></table><p>First, generate a PID report:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></code></pre></div>
+<table class="table"><colgroup><col width="9%"><col width="5%"><col width="35%"><col width="35%"><col width="5%"><col width="9%"></colgroup><thead><tr class="header"><th align="left">ID</th>
 <th align="left">Token</th>
 <th align="left">Sentence</th>
 <th align="left">Document</th>
 <th align="right">Repeats</th>
 <th align="left">Affected Columns</th>
-</tr></thead><tbody><tr class="odd"><td align="left">Col:speaker Row:2</td>
+</tr></thead><tbody><tr class="odd"><td align="left">Col:text Row:1</td>
+<td align="left">Central</td>
+<td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="right">1</td>
+<td align="left"><code>text</code></td>
+</tr><tr class="even"><td align="left">Col:text Row:1</td>
+<td align="left">Perk</td>
+<td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="right">1</td>
+<td align="left"><code>text</code></td>
+</tr><tr class="odd"><td align="left">Col:speaker Row:2</td>
 <td align="left">Phoebe</td>
 <td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe Buffay</td>
-<td align="right">40</td>
+<td align="right">3</td>
 <td align="left"><code>speaker</code></td>
 </tr><tr class="even"><td align="left">Col:speaker Row:2</td>
 <td align="left">Buffay</td>
 <td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe Buffay</td>
-<td align="right">40</td>
+<td align="right">3</td>
 <td align="left"><code>speaker</code></td>
-</tr><tr class="odd"><td align="left">Col:speaker Row:3</td>
-<td align="left">Monica</td>
-<td align="left">Monica Geller</td>
-<td align="left">Monica Geller</td>
-<td align="right">25</td>
-<td align="left"><code>speaker</code></td>
-</tr><tr class="even"><td align="left">Col:speaker Row:3</td>
-<td align="left">Geller</td>
-<td align="left">Monica Geller</td>
-<td align="left">Monica Geller</td>
-<td align="right">25</td>
-<td align="left"><code>speaker</code></td>
-</tr><tr class="odd"><td align="left">Col:speaker Row:4</td>
+</tr><tr class="odd"><td align="left">Col:text Row:2</td>
 <td align="left">Ross</td>
-<td align="left">Ross Geller</td>
-<td align="left">Ross Geller</td>
-<td align="right">43</td>
-<td align="left"><code>speaker</code></td>
-</tr></tbody></table><p>For a top level summary of the report, the <code>summary</code> method for class <code>pid_report</code> can be used:</p>
+<td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
+<td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
+<td align="right">1</td>
+<td align="left"><code>text</code></td>
+</tr></tbody></table><p>The report lists all detected proper nouns alongside their source variable and position. By default, <code><a href="reference/pid_pos.html">pidpos()</a></code> uses the <code>udpipe</code> framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in <a href="https://stat-cook.github.io/pidpos/articles/custom-functions.html">Custom Functions</a>.</p>
+<p>Should the user wish to not only identify, but redact the data, the report can be converted into redaction rules and apply replacements:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></code></pre></div>
-<table class="table"><colgroup><col width="10%"><col width="21%"><col width="27%"><col width="39%"></colgroup><thead><tr class="header"><th align="left">Column</th>
-<th align="right">Cases of Proper Nouns</th>
-<th align="right">Unique Cases of Proper Nouns</th>
-<th align="left">Most Common Proper Noun Sentence</th>
-</tr></thead><tbody><tr class="odd"><td align="left"><code>speaker</code></td>
-<td align="right">243</td>
-<td align="right">14</td>
-<td align="left">Ross Geller</td>
-</tr><tr class="even"><td align="left"><code>text</code></td>
-<td align="right">99</td>
-<td align="right">99</td>
-<td align="left">[Scene: Central Perk, everyone is there.]</td>
-</tr></tbody></table><p>The second function is <code>report_on_folder</code> which iterates over a folder of data files, producing a proper noun report for each. It is foreseen that this function will be the more useful, used just before data release to evidence no PID risks.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/report_on_folder.html">report_on_folder</a></span><span class="op">(</span><span class="st">'path/to/data/'</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/browse_model_location.html">browse_model_location</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>NB: the <code>data_frame_report</code> and <code>report_on_folder</code> functions automate the download of the pre-trained <code>udpipe</code> model. These models are required to be cached to the users hard-drive and hence firewall issues may present. The vignette … is included to help with common issues.</p>
-<p>While being able to identify PID risks is the core premise of this package, it would be remiss to not supply some tools to aid in the removal of PID. Hence, we supply<br>
-basic functionality designed for minimal technical knowledge to assist in the redaction of PID.</p>
-<p>Where a PID report has been ran, the resulting data frame can be passed to the function <code>report_to_redaction_rules</code> which will convert the report to a csv file with three headings:</p>
-<ul><li>
-<code>If</code> - the sentence pattern which, if it matches, the replacement is applied</li>
-<li>
-<code>From</code> - the pattern to be replaced</li>
-<li>
-<code>To</code> - the intended replacement</li>
-</ul><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span></span>
-<span>  <span class="va">report</span>, </span>
-<span>  path<span class="op">=</span><span class="st">'path/to/report.csv'</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<table class="table"><thead><tr class="header"><th align="left">If</th>
+<code class="sourceCode R"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
+<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span></code></pre></div>
+<table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr class="header"><th align="left">If</th>
 <th align="left">From</th>
 <th align="left">To</th>
-</tr></thead><tbody><tr class="odd"><td align="left">Phoebe Buffay</td>
+</tr></thead><tbody><tr class="odd"><td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="left">Central</td>
+<td align="left">YHRAWGBYUW</td>
+</tr><tr class="even"><td align="left">[Scene: Central Perk, everyone is there.]</td>
+<td align="left">Perk</td>
+<td align="left">NKISXJJDOE</td>
+</tr><tr class="odd"><td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe</td>
-<td align="left">Phoebe</td>
+<td align="left">PRLZXJTIVV</td>
 </tr><tr class="even"><td align="left">Phoebe Buffay</td>
 <td align="left">Buffay</td>
-<td align="left">Buffay</td>
-</tr><tr class="odd"><td align="left">Monica Geller</td>
-<td align="left">Monica</td>
-<td align="left">Monica</td>
-</tr><tr class="even"><td align="left">Monica Geller</td>
-<td align="left">Geller</td>
-<td align="left">Geller</td>
-</tr><tr class="odd"><td align="left">Ross Geller</td>
+<td align="left">PKVOFWUXYO</td>
+</tr><tr class="odd"><td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="left">Ross</td>
-<td align="left">Ross</td>
-</tr></tbody></table><p>The csv file is intended to be edited by the data controller, who hence does not need to understand R, and can be reimported using the <code>prepare_redactions</code> function:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span></code></pre></div>
-<p>The <code>prepare_redactions</code> function creates a string replacement rule to capture the desired redactions, with the option for R to ‘parse’ the function for use as part of a data pipeline:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">redaction.func</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="st">'path/to/report.csv'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">the_one_in_massapequa</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
-<span>    <span class="fu">across</span><span class="op">(</span></span>
-<span>      <span class="fu">where</span><span class="op">(</span><span class="va">is.character</span><span class="op">)</span>,</span>
-<span>      <span class="va">redaction.func</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<p>Further utilities are available, notably tools to automatically encode the <code>To</code> column (see <a href="https://stat-cook.github.io/pidpos/articles/AutoReplacement.html">Auto Replacements</a>).</p>
-</div>
+<td align="left">WBNLJZIVAL</td>
+</tr></tbody></table><p>Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in <a href="https://stat-cook.github.io/pidpos/articles/auto-replacement.html">Automatic Replacement Tools</a>. Finally, apply the rules to produce a redacted dataset:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">redacted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/redact.html">redact</a></span><span class="op">(</span><span class="va">example_data</span>, <span class="va">prepared_replacements</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">redacted_data</span><span class="op">)</span></span></code></pre></div>
+<table class="table"><colgroup><col width="6%"><col width="9%"><col width="17%"><col width="66%"></colgroup><thead><tr class="header"><th align="right">scene</th>
+<th align="right">utterance</th>
+<th align="left">speaker</th>
+<th align="left">text</th>
+</tr></thead><tbody><tr class="odd"><td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Scene Directions</td>
+<td align="left">[Scene: YHRAWGBYUW NKISXJJDOE, everyone is there.]</td>
+</tr><tr class="even"><td align="right">1</td>
+<td align="right">2</td>
+<td align="left">PRLZXJTIVV PKVOFWUXYO</td>
+<td align="left">Oh, WBNLJZIVAL, XPARRTPDCU, is it okay if I bring someone to your parent’s anniversary party?</td>
+</tr><tr class="odd"><td align="right">1</td>
+<td align="right">3</td>
+<td align="left">XQHPEYOIOG OEJCVTWDFT</td>
+<td align="left">Yeah.</td>
+</tr><tr class="even"><td align="right">1</td>
+<td align="right">4</td>
+<td align="left">WBNLJZIVAL OEJCVTWDFT</td>
+<td align="left">Sure. Yeah.</td>
+</tr><tr class="odd"><td align="right">1</td>
+<td align="right">5</td>
+<td align="left">DXHMAWLEYG MVDEBTARTF</td>
+<td align="left">So, who’s the guy?</td>
+</tr></tbody></table></div>
+<div class="section level1">
+<h1 id="multiple-file-api">Multiple file API<a class="anchor" aria-label="anchor" href="#multiple-file-api"></a></h1>
+<p>When a project involves multiple files, three additional functions support batch processing:</p>
+<ul><li>
+<code><a href="reference/report_on_folder.html">report_on_folder()</a></code> to generate PID reports</li>
+<li>
+<code><a href="reference/get_distinct_redaction_rules.html">get_distinct_redaction_rules()</a></code> to combine the distinct reports into a single set of raw redactions.</li>
+<li>
+<code>process_supported_files()</code> to produce redacted copies of the data.</li>
+</ul></div>
 <div class="section level1">
 <h1 id="current-applications">Current applications<a class="anchor" aria-label="anchor" href="#current-applications"></a></h1>
 <p>The <code>pidpos</code> package was developed for applications in the NuRS and AmReS research projects which aim to extract and analyse retrospective operational data from NHS Trusts to understand staff retention and patient safety.</p>
@@ -218,6 +208,14 @@ basic functionality designed for minimal technical knowledge to assist in the re
 </div>
 <div class="section level1">
 <h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h1>
+<p>Clarke, Roger. 2016. “Big Data, Big Risks.” <em>Information Systems Journal</em> 26 (1): 77–90.</p>
+<p>European Parliament, and Council of the European Union. 2016. “Regulation (EU) 2016/679 of the European Parliament and of the Council.” April 27, 2016. <a href="https://data.europa.eu/eli/reg/2016/679/oj" class="external-link uri">https://data.europa.eu/eli/reg/2016/679/oj</a>.</p>
+<p>Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be Identified—Distinguishing Personal from Non-Personal Data Under the GDPR.” <em>International Data Privacy Law</em> 10 (1): 11–36.</p>
+<p>ICO. n.d.a. “Personal Data Breaches: What Happens If We Fail to Notify the ICO of All Notifiable Breaches?” <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi" class="external-link uri">https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi</a>.</p>
+<p>———. n.d.b. “What Does It Mean If You Are a Controller?” <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/" class="external-link uri">https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/</a>.</p>
+<p>Patterson-Stein, Jacob. 2025. <em>Pii: Search Data Frames for Personally Identifiable Information</em>. <a href="https://CRAN.R-project.org/package=pii" class="external-link uri">https://CRAN.R-project.org/package=pii</a>.</p>
+<p>Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable Pipeline for Processing CoNLL-u Files Performing Tokenization, Morphological Analysis, Pos Tagging and Parsing.” In <em>Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC’16)</em>, 4290–97.</p>
+<p>Wijffels, Jan. 2023. <em>Udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit</em>. <a href="https://CRAN.R-project.org/package=udpipe" class="external-link uri">https://CRAN.R-project.org/package=udpipe</a>.</p>
 </div>
 
 

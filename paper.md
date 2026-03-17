@@ -1,54 +1,37 @@
 # Summary
 
-The `pidpos` package is designed to aid with the identification of
-personal identifiability risks in data sets. By applying existing
-natural language processing techniques, the package is able to identify
-proper nouns within a data set. The extraction of proper nouns reduced
-the complexity of the data, allowing for a quicker review and oversight
-of the data. The package also includes a basic tool for the design, and
-implementation of a redaction process.
+The `pidpos` package aids in identifying personal identifiability risks
+in datasets. Using part-of-speech (POS) tagging, it extracts proper
+nouns from text fields, reducing the complexity of the review process
+and enabling faster human oversight. The package also provides tools for
+designing and implementing a redaction workflow.
 
 # Statement of need
 
-The world is embedded in a data revolution. Never before have we had the
-depth or breadth of data being captured and analysed than we do at
-present, and this is only set to increase. In response, international
-bodies are taking steps to ensure legal protection of an individual’s
-rights to their own data \[@GDPR\]. One effect of increase legislation
-in the European Union has been a growing awareness of the role and
-responsibility of data controllers \[@ICODataController\] and the risks
-of big data \[@clarke2016big\]. Among these concerns, a risk of
-‘personal identifiability’ i.e. the ability to directly or indirectly
-identify an individual from a dataset \[@finck2020they\], is paramount
-and, if breeched, can lead to reputation damage and fines
-\[@ICOWhatIf\].
+Data collection and analysis has grown enormously in scale and scope,
+prompting international legislation to protect individuals’ rights over
+their own data (European Parliament and Council of the European Union
+2016). This has heightened awareness of the responsibilities of data
+controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke
+2016). A central concern is personal identifiability — the ability to
+directly or indirectly identify an individual from a dataset (Finck and
+Pallas 2020) — with breaches carrying significant reputational and
+financial consequences (ICO, n.d.a).
 
-Where data is structured and comprises only a few hundred observations,
-a manual inspection can identify variables which contain directly
-personally identifiable data (PID) with a reasonable time investment.
-However, in the case of modern large data sets which may comprise
-millions of observations, a manual inspection may miss PID if it is
-embedded within a passage of text, or is a rarity for the given
-variable. The `pidpos` (Personal Identifiability Detection by Part Of
-Speech tagging) package is designed to aid with the identification of
-PID risks in data sets. In comparison to existing packages which rely on
-a curated list of common names and string-matching, `pidpos` builds on
-the existing `udpipe` framework\[@straka2016udpipe; @udpipecran\],
-extracting all examples of proper nouns and providing a mechanism for
-the review and redaction of PID risks.
+For small, structured datasets, manual inspection can identify
+personally identifiable data (PID) with reasonable effort. In large
+datasets, however, PID embedded within free-text fields or appearing
+rarely in a variable can easily be missed. Existing R packages such as
+PII (Patterson-Stein 2025) address this through pattern matching against
+curated name lists, which risks missing edge cases.
 
-# Comparison to existing R packages
-
-The need to review data sets to identify risks is not new, and there are
-a number of packages which have been developed to aid in this process.
-The most notable of these are the `PII` package \[@pii\], which is
-designed to identify personally identifiable features via pattern
-matching. These approaches can be effective in identifying PID, but have
-a risk of missing edge cases e.g. relying on sentence case to identify
-names. The approach taken in `pidpos` conversely takes the approach of
-purposefully extracting all proper-nouns, and hence increase the false
-positive rate, with the intention of supplying a simplified extract to
-aid human interpretation rather than fully automate it.
+`pidpos` takes a different approach. Building on *part-of-speech*
+tagging (by default the udpipe framework (Straka, Hajic, and Straková
+2016; Wijffels 2023), with the ability to use a custom tagging engine)
+it extracts all proper nouns from a dataset, deliberately accepting a
+higher false positive rate, and implementing tools to aid human review
+rather than attempting full automation. This makes it robust to the edge
+cases that pattern-matching approaches can miss.
 
 # In practice
 
@@ -60,12 +43,24 @@ code:
 pak::pkg_install("Stat-Cook/pidpos")
 ```
 
-To assist with understanding the `pidpos` package, we include a subset
-of the ‘friends’ data set from the `friends` package.
+The intended workflow breaks down into three stages:
+
+1.  Detection of PID risks via
+    [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+2.  Preparation of redaction rules via
+    [`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
+    and
+    [`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
+3.  Redaction of the original data via
+    [`redact()`](https://stat-cook.github.io/pidpos/reference/redact.md)
+
+To illustrate this, we include a subset of the `friends` package data
+set:
 
 ``` r
 library(pidpos)
-the_one_in_massapequa
+example_data <- head(the_one_in_massapequa, 20)
+example_data
 ```
 
 | scene | utterance | speaker          | text                                                                             |
@@ -76,115 +71,79 @@ the_one_in_massapequa
 |     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
 |     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               |
 
-The package has two main functions for identifying PID risks, depending
-on the users needs.  
-First, the `data_frame_report` function converts a typical R data frame
-into a new data frame of:
-
-- `ID` - the column and row where the sentence first appears
-- `Token` - the specific proper noun token
-- `Sentence` - the sentence containing proper nouns
-- `Repeats` - the number of times the sentence occurs in the data set
-- `Affected Columns` - the columns in the original data frame which
-  contain the sentence
+First, generate a PID report:
 
 ``` r
-report <- data_frame_report(the_one_in_massapequa)
-report
+report <- pidpos(example_data)
+head(report)
 ```
 
-| ID                | Token  | Sentence      | Document      | Repeats | Affected Columns |
-|:------------------|:-------|:--------------|:--------------|--------:|:-----------------|
-| Col:speaker Row:2 | Phoebe | Phoebe Buffay | Phoebe Buffay |      40 | `speaker`        |
-| Col:speaker Row:2 | Buffay | Phoebe Buffay | Phoebe Buffay |      40 | `speaker`        |
-| Col:speaker Row:3 | Monica | Monica Geller | Monica Geller |      25 | `speaker`        |
-| Col:speaker Row:3 | Geller | Monica Geller | Monica Geller |      25 | `speaker`        |
-| Col:speaker Row:4 | Ross   | Ross Geller   | Ross Geller   |      43 | `speaker`        |
+| ID                | Token   | Sentence                                                                         | Document                                                                         | Repeats | Affected Columns |
+|:------------------|:--------|:---------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|--------:|:-----------------|
+| Col:text Row:1    | Central | \[Scene: Central Perk, everyone is there.\]                                      | \[Scene: Central Perk, everyone is there.\]                                      |       1 | `text`           |
+| Col:text Row:1    | Perk    | \[Scene: Central Perk, everyone is there.\]                                      | \[Scene: Central Perk, everyone is there.\]                                      |       1 | `text`           |
+| Col:speaker Row:2 | Phoebe  | Phoebe Buffay                                                                    | Phoebe Buffay                                                                    |       3 | `speaker`        |
+| Col:speaker Row:2 | Buffay  | Phoebe Buffay                                                                    | Phoebe Buffay                                                                    |       3 | `speaker`        |
+| Col:text Row:2    | Ross    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |       1 | `text`           |
 
-For a top level summary of the report, the `summary` method for class
-`pid_report` can be used:
+The report lists all detected proper nouns alongside their source
+variable and position. By default,
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+uses the `udpipe` framework for POS tagging, but the package is designed
+to support alternative taggers. A ready-made script for using spaCy is
+included, and users may supply a custom tagging function, allowing the
+package to be integrated into existing NLP pipelines. Further details
+are provided in [Custom
+Functions](https://stat-cook.github.io/pidpos/articles/custom-functions.html).
+
+Should the user wish to not only identify, but redact the data, the
+report can be converted into redaction rules and apply replacements:
 
 ``` r
-summary(report)
+raw_rules <- report_to_redaction_rules(report)
+replacement.f <- random_replacement.f()
+prepared_replacements <- auto_replace(raw_rules, replacement.f)
+head(prepared_replacements)
 ```
 
-| Column    | Cases of Proper Nouns | Unique Cases of Proper Nouns | Most Common Proper Noun Sentence            |
-|:----------|----------------------:|-----------------------------:|:--------------------------------------------|
-| `speaker` |                   243 |                           14 | Ross Geller                                 |
-| `text`    |                    99 |                           99 | \[Scene: Central Perk, everyone is there.\] |
+| If                                                                               | From    | To         |
+|:---------------------------------------------------------------------------------|:--------|:-----------|
+| \[Scene: Central Perk, everyone is there.\]                                      | Central | YHRAWGBYUW |
+| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | NKISXJJDOE |
+| Phoebe Buffay                                                                    | Phoebe  | PRLZXJTIVV |
+| Phoebe Buffay                                                                    | Buffay  | PKVOFWUXYO |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | WBNLJZIVAL |
 
-The second function is `report_on_folder` which iterates over a folder
-of data files, producing a proper noun report for each. It is foreseen
-that this function will be the more useful, used just before data
-release to evidence no PID risks.
+Users may define replacement values manually or use the built-in
+automatic replacement tools, which include options such as random
+replacement and encryption. Full documentation of the available
+replacement strategies is provided in [Automatic Replacement
+Tools](https://stat-cook.github.io/pidpos/articles/auto-replacement.html).
+Finally, apply the rules to produce a redacted dataset:
 
 ``` r
-report_on_folder('path/to/data/')
-browse_model_location()
+redacted_data <- redact(example_data, prepared_replacements)
+head(redacted_data)
 ```
 
-NB: the `data_frame_report` and `report_on_folder` functions automate
-the download of the pre-trained `udpipe` model. These models are
-required to be cached to the users hard-drive and hence firewall issues
-may present. The vignette … is included to help with common issues.
+| scene | utterance | speaker               | text                                                                                          |
+|------:|----------:|:----------------------|:----------------------------------------------------------------------------------------------|
+|     1 |         1 | Scene Directions      | \[Scene: YHRAWGBYUW NKISXJJDOE, everyone is there.\]                                          |
+|     1 |         2 | PRLZXJTIVV PKVOFWUXYO | Oh, WBNLJZIVAL, XPARRTPDCU, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | XQHPEYOIOG OEJCVTWDFT | Yeah.                                                                                         |
+|     1 |         4 | WBNLJZIVAL OEJCVTWDFT | Sure. Yeah.                                                                                   |
+|     1 |         5 | DXHMAWLEYG MVDEBTARTF | So, who’s the guy?                                                                            |
 
-While being able to identify PID risks is the core premise of this
-package, it would be remiss to not supply some tools to aid in the
-removal of PID. Hence, we supply  
-basic functionality designed for minimal technical knowledge to assist
-in the redaction of PID.
+# Multiple file API
 
-Where a PID report has been ran, the resulting data frame can be passed
-to the function `report_to_redaction_rules` which will convert the
-report to a csv file with three headings:
+When a project involves multiple files, three additional functions
+support batch processing:
 
-- `If` - the sentence pattern which, if it matches, the replacement is
-  applied
-- `From` - the pattern to be replaced
-- `To` - the intended replacement
-
-``` r
-replacement_rules <- report_to_redaction_rules(
-  report, 
-  path='path/to/report.csv'
-)
-```
-
-| If            | From   | To     |
-|:--------------|:-------|:-------|
-| Phoebe Buffay | Phoebe | Phoebe |
-| Phoebe Buffay | Buffay | Buffay |
-| Monica Geller | Monica | Monica |
-| Monica Geller | Geller | Geller |
-| Ross Geller   | Ross   | Ross   |
-
-The csv file is intended to be edited by the data controller, who hence
-does not need to understand R, and can be reimported using the
-`prepare_redactions` function:
-
-``` r
-prepare_redactions('path/to/report.csv')
-```
-
-The `prepare_redactions` function creates a string replacement rule to
-capture the desired redactions, with the option for R to ‘parse’ the
-function for use as part of a data pipeline:
-
-``` r
-redaction.func <- prepare_redactions('path/to/report.csv')
-
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.func
-    )
-  )
-```
-
-Further utilities are available, notably tools to automatically encode
-the `To` column (see [Auto
-Replacements](https://stat-cook.github.io/pidpos/articles/AutoReplacement.html)).
+- [`report_on_folder()`](https://stat-cook.github.io/pidpos/reference/report_on_folder.md)
+  to generate PID reports
+- [`get_distinct_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/get_distinct_redaction_rules.md)
+  to combine the distinct reports into a single set of raw redactions.
+- `process_supported_files()` to produce redacted copies of the data.
 
 # Current applications
 
@@ -205,3 +164,34 @@ The development of `pidpos` was part of the NuRS and AmReS projects
 funded by the Health Foundation.
 
 # References
+
+Clarke, Roger. 2016. “Big Data, Big Risks.” *Information Systems
+Journal* 26 (1): 77–90.
+
+European Parliament, and Council of the European Union. 2016.
+“Regulation (EU) 2016/679 of the European Parliament and of the
+Council.” April 27, 2016. <https://data.europa.eu/eli/reg/2016/679/oj>.
+
+Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be
+Identified—Distinguishing Personal from Non-Personal Data Under the
+GDPR.” *International Data Privacy Law* 10 (1): 11–36.
+
+ICO. n.d.a. “Personal Data Breaches: What Happens If We Fail to Notify
+the ICO of All Notifiable Breaches?”
+<https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi>.
+
+———. n.d.b. “What Does It Mean If You Are a Controller?”
+<https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/>.
+
+Patterson-Stein, Jacob. 2025. *Pii: Search Data Frames for Personally
+Identifiable Information*. <https://CRAN.R-project.org/package=pii>.
+
+Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable
+Pipeline for Processing CoNLL-u Files Performing Tokenization,
+Morphological Analysis, Pos Tagging and Parsing.” In *Proceedings of the
+Tenth International Conference on Language Resources and Evaluation
+(LREC’16)*, 4290–97.
+
+Wijffels, Jan. 2023. *Udpipe: Tokenization, Parts of Speech Tagging,
+Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit*.
+<https://CRAN.R-project.org/package=udpipe>.
