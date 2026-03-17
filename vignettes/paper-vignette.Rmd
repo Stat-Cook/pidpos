@@ -1,5 +1,5 @@
 ---
-title: 'PID.POS: An R package for the detection of personally identifiable data'
+title: 'pid_pos: An R package for the detection of personally identifiable data'
 bibliography: ../JOSS_utilities/paper.bib
 output: 
   rmarkdown::html_vignette
@@ -16,155 +16,81 @@ options(tibble.print_min = 4, tibble.print_max = 4)
 
 # Summary
 
-The `PID.POS` package is designed to aid with the identification of personal identifiability risks in data sets.
-By applying existing natural language processing techniques, the package is able to identify proper nouns within a
-data set.  The extraction of proper nouns reduced the complexity of the data, allowing for a quicker review and 
-oversight of the data.  The package also includes a basic tool for the design, and 
-implementation of a redaction process.  
+The `pid_pos` package aids in identifying personal identifiability risks in datasets. Using part-of-speech (POS) tagging, it extracts proper nouns from text fields, reducing the complexity of the review process and enabling faster human oversight. The package also provides tools for designing and implementing a redaction workflow.
 
 # Statement of need  
 
-The world is embedded in a data revolution.  Never before have we had the depth or breadth of data 
-being captured  and analysed than we do at present, and this is only set to increase. 
-In response, international bodies are taking steps to ensure legal protection of an individual's rights 
-to their own data [@GDPR].  One effect of increase legislation in the European Union 
- has been a growing awareness of the role and  responsibility of data controllers [@ICODataController] and the risks of big data [@clarke2016big]. 
-Among these concerns, a risk of 'personal identifiability' i.e. the ability to directly or 
-indirectly identify an individual from a dataset [@finck2020they], is paramount  and, if breeched,
-can lead to reputation damage and fines [@ICOWhatIf]. 
+Data collection and analysis has grown enormously in scale and scope, prompting international legislation to protect individuals' rights over their own data [@GDPR]. This has heightened awareness of the responsibilities of data controllers [@ICODataController] and the risks posed by large datasets [@clarke2016big]. A central concern is personal identifiability — the ability to directly or indirectly identify an individual from a dataset [@finck2020they] — with breaches carrying significant reputational and financial consequences [@ICOWhatIf].
 
+For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII [@pii] address this through pattern matching against curated name lists, which risks missing edge cases.
 
-Where data  is structured  and comprises only a few hundred observations, a manual inspection can 
-identify variables which contain directly personally identifiable data (PID) with a reasonable time
-investment.  However, in the case of  modern large data sets which may comprise millions of
-observations,  a manual inspection may miss PID if it is  embedded within a passage of text, or is
-a rarity for the given variable.  The `PID.POS` (Personal Identifiability Detection by Part Of 
-Speech tagging) package is designed to aid with the identification of PID risks in data sets.   In
-comparison to existing packages which rely on a curated list of common names and string-matching,
-`PID.POS` builds on the existing `udpipe` framework[@straka2016udpipe; @udpipecran], extracting all examples of 
-proper nouns and providing a mechanism for the review and redaction of PID risks.
-
-
-
-# Comparison to existing R packages
-
-The need to review data sets to identify risks is not new, and there are a number of packages which have been developed
-to aid in this process.  The most notable of these are the `PII` package  [@pii], which is designed to 
-identify personally identifiable features via pattern matching. These approaches can be effective in 
-identifying PID, but have a risk of missing edge cases e.g. relying on sentence case  to identify names. The 
-approach taken in `PID.POS` conversely takes the approach of purposefully extracting all proper-nouns, and hence
-increase the false positive rate, with the intention of supplying a simplified extract to aid  human interpretation 
-rather than fully automate it.
+`pid.pos` takes a different approach. Building on *part-of-speech* tagging (by default the udpipe framework [@straka2016udpipe; @udpipecran], with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate,  and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.
 
 # In practice
 
-To install the current version of `PID.POS` package, use the following code:
+To install the current version of `pid_pos` package, use the following code:
 
 ``` {r install.1, eval=F}
 # install.packages("pak")
 pak::pkg_install("Stat-Cook/PID.POS")
 ```
 
-To assist with understanding the `PID.POS` package, we include a subset of the 'friends' 
-data set from the `friends` package.
+
+The intended workflow breaks down into three stages: 
+
+1. Detection of PID risks via `pid_pos()`
+2. Preparation of redaction rules via `report_to_redaction_rules()` and `auto_replace()`
+3. Redaction of the original data via `redact()`
+
+To illustrate this, we include a subset of the `friends` package data set:
 
 ``` {r load, warning = F, message = F, results="hide"}
 library(pid.pos)
-the_one_in_massapequa
+example_data <- head(the_one_in_massapequa, 20)
+example_data
 ```
 
 ``` {r dataset, warning = F, message = F, echo=F}
-the_one_in_massapequa
+example_data
 ```
 
+First, generate a PID report:
 
-The package has two main functions for identifying PID  risks, depending on the users needs.  
-First, the `data_frame_report` function converts a typical R data frame into a new data frame of:
-
-* `ID` - the column and row where the sentence first appears
-* `Token` - the specific proper noun token 
-* `Sentence` - the sentence containing proper nouns
-* `Repeats` - the number of times the sentence occurs in the data set
-* `Affected Columns` - the columns in the original data frame which contain the sentence
-
-``` {r, message=F, warning = F}
-report <- pid_pos(the_one_in_massapequa)
-report
+``` {r}
+report <- pid_pos(example_data)
+head(report)
 ```
 
+The report lists all detected proper nouns alongside their source variable and position. By default, `pid_pos()` uses the `udpipe` framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in  [Custom Functions](https://stat-cook.github.io/pid.pos/articles/custom-functions.html).  
 
-For a top level summary of the report, the `summary` method for class `pid_report` can be used:
+Should the user wish to not only identify, but redact the data, the  report can be 
+converted into redaction rules and apply replacements:
 
-``` {r, warning=F}
-summary(report)
+``` {r}
+raw_rules <- report_to_redaction_rules(report)
+replacement.f <- random_replacement.f()
+prepared_replacements <- auto_replace(raw_rules, replacement.f)
+head(prepared_replacements)
 ```
 
-The second function is `report_on_folder` which iterates over a folder of data files,
-producing a proper noun report for each.  It is foreseen that this function will 
-be the more useful, used just before data release to evidence no PID risks.
+Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in [Automatic Replacement Tools](https://stat-cook.github.io/pid.pos/articles/auto-replacement.html). Finally, apply the rules to produce a redacted dataset:
 
-``` {r, eval=F}
-report_on_folder("path/to/data/")
-browse_model_location()
-```    
-
-NB: the `data_frame_report` and `report_on_folder` functions automate the download 
-of the pre-trained `udpipe` model.  These models are required to be cached to the users 
-hard-drive and hence firewall issues may present.  The vignette ... is included to 
-help with common issues.
-
-While being able to identify PID risks is the core premise of this package, it would be 
-remiss to not supply some tools to aid in the removal of PID.  Hence, we supply  
-basic functionality designed for minimal technical knowledge to assist in the 
-redaction of PID.
-
-Where a PID report has been ran, the resulting data frame can be passed to the function 
-`report_to_redaction_rules` which will convert the report to a csv file with three headings:
-
-* `If` - the sentence pattern which, if it matches, the replacement is applied
-* `From` - the pattern to be replaced
-* `To` - the intended replacement
-
-``` {r, eval = F, results="hide"}
-replacement_rules <- report_to_redaction_rules(
-  report,
-  path = "path/to/report.csv"
-)
+``` {r}
+redacted_data <- redact(example_data, prepared_replacements)
+head(redacted_data)
 ```
 
-``` {r, echo=F}
-replacement_rules <- report_to_redaction_rules(report)
-replacement_rules
-```
-The csv file is intended to be edited by the data controller, who hence does not need 
-to understand R, and can be reimported using the `prepare_redactions` function:
+# Multiple file API
 
-``` {r, eval=F}
-prepare_redactions("path/to/report.csv")
-```
+When a project involves multiple files, three additional functions support batch processing:
 
-The  `prepare_redactions` function creates a string replacement rule to capture the 
-desired redactions, with the option for R to 'parse' the function for use as part of a data
-pipeline:
-
-``` {r, eval=F}
-redaction.func <- prepare_redactions("path/to/report.csv")
-
-the_one_in_massapequa |>
-  mutate(
-    across(
-      where(is.character),
-      redaction.func
-    )
-  )
-```
-
- Further utilities are 
-available, notably tools to automatically encode the `To` column (see [Auto Replacements](https://stat-cook.github.io/pid.pos/articles/AutoReplacement.html)).
+* `report_on_folder()` to generate PID reports 
+* `get_distinct_redaction_rules()` to combine the distinct reports into a single set of raw redactions.
+* `process_supported_files()` to produce redacted copies of the data.
 
 # Current applications
 
-The `PID.POS` package was developed for applications in the NuRS and AmReS research projects
+The `pid_pos` package was developed for applications in the NuRS and AmReS research projects
 which aim to extract and analyse retrospective operational data from NHS Trusts to understand
 staff retention and patient safety.
 
@@ -175,7 +101,7 @@ done by MA. Documentation was written by RC. Funding for the work was won by RC 
 
 # Acknowledgements
 
-The development of `PID.POS` was part of the NuRS and AmReS projects funded by the
+The development of `pid_pos` was part of the NuRS and AmReS projects funded by the
 Health Foundation.
 
 # References
