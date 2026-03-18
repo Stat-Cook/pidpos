@@ -5,7 +5,7 @@ test_that("make and merge replacements workflow", {
     report
   )
 
-  .replacer <- random_replacement.f()
+  .replacer <- make_random_replacement()
 
   .rules.replaced <- auto_replace(.rules, .replacer)
 
