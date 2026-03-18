@@ -24,8 +24,9 @@ reference:
   contents:
   - auto_replace
   - hashing_replacement.f
-  - random_replacement.f
-  - all_random_replacement.f
+  - make_random_replacement
+  - make_replacement_function
+  - get-replacements
 - title: "Folder level API"
   desc: >
   contents:

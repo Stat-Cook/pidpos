@@ -17,6 +17,8 @@ Main.R
 ^CODE_OF_CONDUCT
 ^CONTRIBUTING
 
+vignettes\Redacted Data\.*
+
 paper.md
 ^doc$
 ^Meta$
