@@ -14,9 +14,24 @@ base_error <- function(subclass,
                        message,
                        ...,
                        call) {
-  cls <- c(subclass, "pidpos_error", "error")
+  cls <- c(subclass, "pidpos_error")
 
   abort(
+    message = message,
+    class = cls,
+    call = call,
+    !!!list(...)
+  )
+}
+
+#' @importFrom rlang warn
+base_warn <- function(subclass,
+                       message,
+                       ...,
+                       call) {
+  cls <- c(subclass, "pidpos_warning")
+  
+  warn(
     message = message,
     class = cls,
     call = call,
@@ -28,12 +43,29 @@ base_error <- function(subclass,
 new_error_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(
-      paste0("mypkg_", name),
+      paste0("pidpos_", name),
       name,
       parent
     )
 
     base_error(
+      subclass = subclass,
+      message = message,
+      ...,
+      call = call
+    )
+  }
+}
+
+new_warn_type <- function(name, parent = NULL) {
+  function(message, ..., call = caller_env()) {
+    subclass <- c(
+      paste0("pispos_", name),
+      name,
+      parent
+    )
+    
+    base_warn(
       subclass = subclass,
       message = message,
       ...,
