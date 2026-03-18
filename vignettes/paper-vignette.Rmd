@@ -68,7 +68,7 @@ converted into redaction rules and apply replacements:
 
 ``` {r}
 raw_rules <- report_to_redaction_rules(report)
-replacement.f <- random_replacement.f()
+replacement.f <- make_random_replacement()
 prepared_replacements <- auto_replace(raw_rules, replacement.f)
 head(prepared_replacements)
 ```
