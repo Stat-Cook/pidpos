@@ -51,6 +51,12 @@ For a given data set, the function reports each detected instance of a proper
 noun and reports the location in the data set, the \code{Document} containing the
 proper noun, and how often the \code{Document} occurs.
 }
+\note{
+By default \code{\link[=pidpos]{pidpos()}} caches the \code{udpipe} models in a package cache directory.
+This behaviour can be altered via \code{\link[=enable_local_models]{enable_local_models()}} to redirect \code{udpipe} models
+to the working directory.  Resetting to the project cache can be done with
+\code{\link[=enable_package_models]{enable_package_models()}}.
+}
 \examples{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa, 50)

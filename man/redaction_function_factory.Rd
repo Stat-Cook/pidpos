@@ -20,7 +20,7 @@ raw_rules <- pidpos(example.data) |>
   report_to_redaction_rules()
 
 redaction_rules <- auto_replace(raw_rules,
-  replacement.f = random_replacement.f()
+  replacement.f = make_random_replacement()
 )
 
 redaction_func <- redaction_function_factory(redaction_rules)

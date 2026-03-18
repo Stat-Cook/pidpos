@@ -18,11 +18,11 @@ A \code{data.frame} like \code{frm} but with the \code{To} column transformed by
 }
 \description{
 Several function factories have been implemented to create replacement functions
-(\code{\link[=hashing_replacement.f]{hashing_replacement.f()}}, \code{\link[=random_replacement.f]{random_replacement.f()}}, \code{\link[=all_random_replacement.f]{all_random_replacement.f()}}).
+(\code{\link[=make_hashing_replacement]{make_hashing_replacement()}}, \code{\link[=make_random_replacement]{make_random_replacement()}}).
 }
 \examples{
 
-replace_by <- random_replacement.f()
+replace_by <- make_random_replacement()
 auto_replace(raw_redaction_rules, replacement.f = replace_by)
 
 }
