@@ -78,6 +78,7 @@ print.ConsistentMapper <- function(x, ...){
 #' "bob" stored as "bob.1"  
 #' @param elevate_warnings If true, cause warnings to raise as errors.
 #' 
+#' @export
 make_replacement_function <- function(encoder, max_values, 
                                       all=F, 
                                       elevate_warnings=FALSE){

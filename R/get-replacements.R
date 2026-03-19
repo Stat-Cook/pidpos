@@ -12,17 +12,20 @@
 NULL 
 
 #' @rdname get-replacements
+#' @export
 get_replacement_cache <- function(object){
   attr(object, "mapper")$cache
 }
 
 #' @rdname get-replacements
+#' @export
 key_lookup <- function(object, key){
   cache <- get_replacement_cache(object)
   cache[[key]]
 }
 
 #' @rdname get-replacements
+#' @export
 value_lookup <- function(object, value){
   cache <- get_replacement_cache(object)
   names(which(cache == value))
