@@ -39,7 +39,7 @@ A tibble with columns:
 ## See also
 
 - To produce the report:
-  [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+  [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
 
 - To automatically replace the `To` column:
   [`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)

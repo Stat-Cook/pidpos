@@ -878,13 +878,13 @@ distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
 
 The replacements will be based on this data frame. The most conservative
 approach to redaction is to use the `auto_replacement` and
-`all_random_replacement.f` functions included in the package. The
+`make_random_replacement` functions included in the package. The
 `auto_replacement` function takes a data frame with `If`, `From` and
 `To` and replaces the `To` column with a unique randomly generated
 string, for example:
 
 ``` r
-replacer <- all_random_replacement.f()
+replacer <- make_random_replacement(all=T)
 replaced_rules <- auto_replace(distinct_rules, replacer)
 head(replaced_rules)
 #> # A tibble: 6 × 3

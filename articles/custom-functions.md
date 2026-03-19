@@ -1,7 +1,7 @@
 # Using custom functions in \`pidpos\`
 
 Out of the box,
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
 relies on the `udpipe` package to perform part-of-speech (POS)
 tagging.  
 However, the `pidpos` API is intentionally flexible and allows users to:
@@ -95,8 +95,8 @@ sentence_tagger("Joey sat in Central Perk")
 ```
 
 To use this with
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md),
-we wrap it with
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md), we
+wrap it with
 [`custom_tagger()`](https://stat-cook.github.io/pidpos/reference/custom_tagger.md):
 
 ``` r
@@ -120,7 +120,7 @@ friends_tagger(example.data$text)
 ```
 
 We can now supply it to
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md):
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md):
 
 ``` r
 result <- pidpos(example.data, tagger = friends_tagger)
@@ -274,8 +274,7 @@ pidpos(
 
 ## Summary
 
-The
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+The [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
 API separates:
 
 - **Tagging logic**
@@ -293,5 +292,5 @@ By adhering to the simple contract:
 - Taggers return a token-level data frame
 - Filters return a subset of that data frame
 
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
-can operate with virtually any POS tagging system.
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md) can
+operate with virtually any POS tagging system.

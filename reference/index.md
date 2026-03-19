@@ -2,10 +2,10 @@
 
 ## pidpos
 
-- [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
-  : Proper Noun Detection
+- [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md) :
+  Proper Noun Detection
 
-- [`summary(`*`<pidpos>`*`)`](https://stat-cook.github.io/pidpos/reference/summary.pid_pos.md)
+- [`summary(`*`<pidpos>`*`)`](https://stat-cook.github.io/pidpos/reference/summary.pidpos.md)
   :
 
   Summarize a `pidpos` report.
@@ -42,14 +42,24 @@
 
   Apply a replacement function to a `rules.frm`.
 
-- [`hashing_replacement.f()`](https://stat-cook.github.io/pidpos/reference/hashing_replacement.f.md)
+- [`make_hashing_replacement()`](https://stat-cook.github.io/pidpos/reference/make_hashing_replacement.md)
   : Function factory for hashing replacement.
 
-- [`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md)
+- [`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md)
   : Function factory for random replacement.
 
-- [`all_random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/all_random_replacement.f.md)
-  : Function factory for random replacement.
+- [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
+  : Wrapper for custom replacement functions
+
+- [`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+  [`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+  [`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+  :
+
+  Access the cache of replacements Tools for accessing the replacements
+  inside a
+  [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
+  function.
 
 ## Folder level API
 

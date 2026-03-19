@@ -42,7 +42,7 @@ result
 #> attr(,"class")
 #> [1] "try-error"
 #> attr(,"condition")
-#> <error/mypkg_file_not_found_error>
+#> <error/pidpos_file_not_found_error>
 #> Error:
 #> ! This is a type error
 #> ---

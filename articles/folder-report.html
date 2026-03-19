@@ -959,13 +959,13 @@ nouns reports:</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
 <p>The replacements will be based on this data frame. The most
 conservative approach to redaction is to use the
-<code>auto_replacement</code> and <code>all_random_replacement.f</code>
+<code>auto_replacement</code> and <code>make_random_replacement</code>
 functions included in the package. The <code>auto_replacement</code>
 function takes a data frame with <code>If</code>, <code>From</code> and
 <code>To</code> and replaces the <code>To</code> column with a unique
 randomly generated string, for example:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">replacer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/all_random_replacement.f.html">all_random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">replacer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span>all<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
 <span><span class="va">replaced_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">distinct_rules</span>, <span class="va">replacer</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">replaced_rules</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>

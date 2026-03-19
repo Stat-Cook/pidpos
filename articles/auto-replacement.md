@@ -6,11 +6,11 @@ personally identifiable data (PID) within textual datasets.
 The
 [`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
 function generates a `replacement_rules` table from the output of
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md).
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md).
 This table specifies candidate values for redaction and provides a `To`
 column in which users can define replacement values.
 
-In many cases, users may wish to manually populate the `To` column (for
+In many cases, users may wish to manually populate the To column (for
 example, replacing names with consistent pseudonyms). However, when a
 dataset contains a large volume of PID, manual specification may be
 impractical. In such cases, the
@@ -22,13 +22,13 @@ operates on a `replacement_rules` table and encodes the `To` column
 according to a user-defined replacement function. The package provides
 three built-in replacement strategies:
 
-- [`hashing_replacement.f()`](https://stat-cook.github.io/pidpos/reference/hashing_replacement.f.md)
-  — hashes values using a key and salt, producing deterministic and
-  reproducible replacements.
-- [`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md)
+- `hashing_replacement.f()` — hashes values using a key and salt,
+  producing deterministic and reproducible replacements.
+- [`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md)
   — generates random replacements from a defined character space.
-- [`all_random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/all_random_replacement.f.md)
-  — generates random replacements while ensuring all outputs are unique.
+- [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md) -
+  $$Experimental$$ convert a function for generating a random string
+  into a compatible function.
 
 ------------------------------------------------------------------------
 
@@ -57,11 +57,11 @@ replacement_rules
 To automatically populate the `To` column, we first initialise a
 replacement function.  
 In this example, we use
-[`random_replacement.f()`](https://stat-cook.github.io/pidpos/reference/random_replacement.f.md)
-to generate five-character replacements drawn from uppercase letters:
+[`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md)
+to generate five-character replacements drawn from upper-case letters:
 
 ``` r
-replacement.f <- random_replacement.f(
+replacement.f <- make_random_replacement(
   replacement_size = 5,
   replacement_space = LETTERS
 )
@@ -90,7 +90,9 @@ updated_replacement_rules
     #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  FXZPU
 
 The resulting `updated_replacement_rules` can then be used alongside the
-original data in the `redact` function to adjust the data:
+original data in the
+[`redact()`](https://stat-cook.github.io/pidpos/reference/redact.md)
+function to adjust the data:
 
 ``` r
 redact(
@@ -121,7 +123,9 @@ This new function has a `memoization` layer built in, so that if the
 same document is presented - replacements are called from memory. This
 may speed up data processing if the same passage of text is presented
 multiple times, but comes at the cost of memory. The
-`cached_redact_function` can be used in `redact` in the same way:
+`cached_redact_function` can be used in
+[`redact()`](https://stat-cook.github.io/pidpos/reference/redact.md) in
+the same way:
 
 ``` r
 redacted_docs <- redact(
@@ -133,6 +137,112 @@ cached_redacter
 ```
 
 And its representation tracks the number of unique documents stored.
+
+## User defined functions
+
+Depending on the situation, users may wish to implement their own
+replacement functions.  
+Where these are purely deterministic a single-argument function can be
+passed into
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
+to generate new values:
+
+``` r
+simple_replacement <- function(vec){
+  gsub(".*", "XXX", vec)
+}
+
+auto_replace(
+  head(replacement_rules),
+  simple_replacement
+)
+#> # A tibble: 6 × 3
+#>   If                                                                 From  To   
+#>   <chr>                                                              <chr> <chr>
+#> 1 [Scene: Central Perk, everyone is there.]                          Cent… XXX  
+#> 2 [Scene: Central Perk, everyone is there.]                          Perk  XXX  
+#> 3 Phoebe Buffay                                                      Phoe… XXX  
+#> 4 Phoebe Buffay                                                      Buff… XXX  
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  XXX  
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   XXX
+```
+
+In addition, the user may wish to generate their own pesudo-random
+replacements.  
+This can be done by wrapping the desired behaviour in
+[`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
+with the added requirement of defining the maximum number of random
+states that can be generated (e.g. if we used a toy example of the
+number “00” to “99” there would be 100 max random values). We implement
+this as:
+
+``` r
+numeric_replacement <- function(){
+  paste(sample(0:9, 2, T), collapse="")
+}
+
+numeric_replacement <- make_replacement_function(numeric_replacement, 100)
+
+numeric_replacement
+#> replacement_function wrapping<All: FALSE>:
+#>   ConsistentMapper<0 of 100 values used>
+```
+
+This fucntion can then be used in
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
+in the same way as the deterministic function:
+
+``` r
+auto_replace(
+  head(replacement_rules),
+  numeric_replacement
+)
+#> # A tibble: 6 × 3
+#>   If                                                                 From  To   
+#>   <chr>                                                              <chr> <chr>
+#> 1 [Scene: Central Perk, everyone is there.]                          Cent… 41   
+#> 2 [Scene: Central Perk, everyone is there.]                          Perk  84   
+#> 3 Phoebe Buffay                                                      Phoe… 24   
+#> 4 Phoebe Buffay                                                      Buff… 05   
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  99   
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   33
+```
+
+With the added benefit the functional representation tracks how many of
+the allowed values have been taken:
+
+``` r
+numeric_replacement
+#> replacement_function wrapping<All: FALSE>:
+#>   ConsistentMapper<6 of 100 values used>
+```
+
+With utilities supplied to retrieve the underlying key-value pairs (see
+[`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md),
+[`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+and
+[`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)):
+
+``` r
+get_replacement_cache(numeric_replacement)
+#> $Central
+#> [1] "41"
+#> 
+#> $Perk
+#> [1] "84"
+#> 
+#> $Phoebe
+#> [1] "24"
+#> 
+#> $Buffay
+#> [1] "05"
+#> 
+#> $Ross
+#> [1] "99"
+#> 
+#> $Mon
+#> [1] "33"
+```
 
 ------------------------------------------------------------------------
 

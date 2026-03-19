@@ -117,7 +117,7 @@ the following code:</p>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"Stat-Cook/pidpos"</span><span class="op">)</span></span></code></pre></div>
 <p>The intended workflow breaks down into three stages:</p>
 <ol style="list-style-type: decimal">
-<li>Detection of PID risks via <code><a href="../reference/pid_pos.html">pidpos()</a></code>
+<li>Detection of PID risks via <code><a href="../reference/pidpos.html">pidpos()</a></code>
 </li>
 <li>Preparation of redaction rules via
 <code><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> and
@@ -142,7 +142,7 @@ package data set:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 16 more rows</span></span></span></code></pre>
 <p>First, generate a PID report:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   ID                Token   Sentence         Document Repeats `Affected Columns`</span></span>
@@ -153,7 +153,7 @@ package data set:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Col:speaker Row:2 Buffay  Phoebe Buffay    Phoebe …       3 `speaker`         </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span></code></pre></div>
 <p>The report lists all detected proper nouns alongside their source
-variable and position. By default, <code><a href="../reference/pid_pos.html">pidpos()</a></code> uses the
+variable and position. By default, <code><a href="../reference/pidpos.html">pidpos()</a></code> uses the
 <code>udpipe</code> framework for POS tagging, but the package is
 designed to support alternative taggers. A ready-made script for using
 spaCy is included, and users may supply a custom tagging function,
@@ -164,7 +164,7 @@ Functions</a>.</p>
 report can be converted into redaction rules and apply replacements:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
-<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>

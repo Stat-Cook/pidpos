@@ -61,11 +61,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">redaction_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>,</span></span>
-<span class="r-in"><span>  replacement.f <span class="op">=</span> <span class="fu"><a href="random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  replacement.f <span class="op">=</span> <span class="fu"><a href="make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">redaction_func</span> <span class="op">&lt;-</span> <span class="fu">redaction_function_factory</span><span class="op">(</span><span class="va">redaction_rules</span><span class="op">)</span></span></span>

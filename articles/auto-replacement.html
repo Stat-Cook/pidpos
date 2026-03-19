@@ -75,29 +75,30 @@
 of personally identifiable data (PID) within textual datasets.</p>
 <p>The <code><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> function generates a
 <code>replacement_rules</code> table from the output of
-<code><a href="../reference/pid_pos.html">pidpos()</a></code>. This table specifies candidate values for
+<code><a href="../reference/pidpos.html">pidpos()</a></code>. This table specifies candidate values for
 redaction and provides a <code>To</code> column in which users can
 define replacement values.</p>
-<p>In many cases, users may wish to manually populate the
-<code>To</code> column (for example, replacing names with consistent
-pseudonyms). However, when a dataset contains a large volume of PID,
-manual specification may be impractical. In such cases, the
-<code><a href="../reference/auto_replace.html">auto_replace()</a></code> utility can be used to automatically
-generate replacement values.</p>
+<p>In many cases, users may wish to manually populate the To column (for
+example, replacing names with consistent pseudonyms). However, when a
+dataset contains a large volume of PID, manual specification may be
+impractical. In such cases, the <code><a href="../reference/auto_replace.html">auto_replace()</a></code> utility can
+be used to automatically generate replacement values.</p>
 <p><code><a href="../reference/auto_replace.html">auto_replace()</a></code> operates on a
 <code>replacement_rules</code> table and encodes the <code>To</code>
 column according to a user-defined replacement function. The package
 provides three built-in replacement strategies:</p>
 <ul>
 <li>
-<code><a href="../reference/hashing_replacement.f.html">hashing_replacement.f()</a></code> — hashes values using a key and
+<code>hashing_replacement.f()</code> — hashes values using a key and
 salt, producing deterministic and reproducible replacements.</li>
 <li>
-<code><a href="../reference/random_replacement.f.html">random_replacement.f()</a></code> — generates random replacements
-from a defined character space.</li>
+<code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code> — generates random
+replacements from a defined character space.</li>
 <li>
-<code><a href="../reference/all_random_replacement.f.html">all_random_replacement.f()</a></code> — generates random
-replacements while ensuring all outputs are unique.</li>
+<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code> -
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Experimental</annotation></semantics></math>
+convert a function for generating a random string into a compatible
+function.</li>
 </ul>
 <hr>
 <div class="section level2">
@@ -108,7 +109,7 @@ rules:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
+<span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span>
 <span><span class="va">replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span><span class="va">replacement_rules</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
@@ -121,10 +122,10 @@ rules:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  Ross</span></span></code></pre>
 <p>To automatically populate the <code>To</code> column, we first
 initialise a replacement function.<br>
-In this example, we use <code><a href="../reference/random_replacement.f.html">random_replacement.f()</a></code> to generate
-five-character replacements drawn from uppercase letters:</p>
+In this example, we use <code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code> to
+generate five-character replacements drawn from upper-case letters:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span></span>
 <span>  replacement_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  replacement_space <span class="op">=</span> <span class="va">LETTERS</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -146,7 +147,7 @@ five-character replacements drawn from uppercase letters:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                      Buff… QNLAM</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  FXZPU</span></span></code></pre>
 <p>The resulting <code>updated_replacement_rules</code> can then be used
-alongside the original data in the <code>redact</code> function to
+alongside the original data in the <code><a href="../reference/redact.html">redact()</a></code> function to
 adjust the data:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/redact.html">redact</a></span><span class="op">(</span></span>
@@ -172,7 +173,7 @@ into a caching redaction function:</p>
 that if the same document is presented - replacements are called from
 memory. This may speed up data processing if the same passage of text is
 presented multiple times, but comes at the cost of memory. The
-<code>cached_redact_function</code> can be used in <code>redact</code>
+<code>cached_redact_function</code> can be used in <code><a href="../reference/redact.html">redact()</a></code>
 in the same way:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redacted_docs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redact.html">redact</a></span><span class="op">(</span></span>
@@ -183,6 +184,93 @@ in the same way:</p>
 <span><span class="co">#&gt; [1] "`cached_redact_function` [size=264]"</span></span></code></pre></div>
 <p>And its representation tracks the number of unique documents
 stored.</p>
+</div>
+<div class="section level2">
+<h2 id="user-defined-functions">User defined functions<a class="anchor" aria-label="anchor" href="#user-defined-functions"></a>
+</h2>
+<p>Depending on the situation, users may wish to implement their own
+replacement functions.<br>
+Where these are purely deterministic a single-argument function can be
+passed into <code><a href="../reference/auto_replace.html">auto_replace()</a></code> to generate new values:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">simple_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">".*"</span>, <span class="st">"XXX"</span>, <span class="va">vec</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">replacement_rules</span><span class="op">)</span>,</span>
+<span>  <span class="va">simple_replacement</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">#&gt;   If                                                                 From  To   </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                          Cent… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                          Perk  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                      Phoe… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                      Buff… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   XXX</span></span></code></pre></div>
+<p>In addition, the user may wish to generate their own pesudo-random
+replacements.<br>
+This can be done by wrapping the desired behaviour in
+<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code> with the added requirement of
+defining the maximum number of random states that can be generated
+(e.g. if we used a toy example of the number “00” to “99” there would be
+100 max random values). We implement this as:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">numeric_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">2</span>, <span class="cn">T</span><span class="op">)</span>, collapse<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">numeric_replacement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_replacement_function.html">make_replacement_function</a></span><span class="op">(</span><span class="va">numeric_replacement</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">numeric_replacement</span></span>
+<span><span class="co">#&gt; replacement_function wrapping&lt;All: FALSE&gt;:</span></span>
+<span><span class="co">#&gt;   ConsistentMapper&lt;0 of 100 values used&gt;</span></span></code></pre></div>
+<p>This fucntion can then be used in <code><a href="../reference/auto_replace.html">auto_replace()</a></code> in the
+same way as the deterministic function:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">replacement_rules</span><span class="op">)</span>,</span>
+<span>  <span class="va">numeric_replacement</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">#&gt;   If                                                                 From  To   </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                          Cent… 41   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                          Perk  84   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                      Phoe… 24   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                      Buff… 05   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  99   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   33</span></span></code></pre></div>
+<p>With the added benefit the functional representation tracks how many
+of the allowed values have been taken:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">numeric_replacement</span></span>
+<span><span class="co">#&gt; replacement_function wrapping&lt;All: FALSE&gt;:</span></span>
+<span><span class="co">#&gt;   ConsistentMapper&lt;6 of 100 values used&gt;</span></span></code></pre></div>
+<p>With utilities supplied to retrieve the underlying key-value pairs
+(see <code><a href="../reference/get-replacements.html">get_replacement_cache()</a></code>, <code><a href="../reference/get-replacements.html">key_lookup()</a></code> and
+<code><a href="../reference/get-replacements.html">value_lookup()</a></code>):</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get-replacements.html">get_replacement_cache</a></span><span class="op">(</span><span class="va">numeric_replacement</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $Central</span></span>
+<span><span class="co">#&gt; [1] "41"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Perk</span></span>
+<span><span class="co">#&gt; [1] "84"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Phoebe</span></span>
+<span><span class="co">#&gt; [1] "24"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Buffay</span></span>
+<span><span class="co">#&gt; [1] "05"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Ross</span></span>
+<span><span class="co">#&gt; [1] "99"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $Mon</span></span>
+<span><span class="co">#&gt; [1] "33"</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

@@ -55,7 +55,7 @@
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"Stat-Cook/pidpos"</span><span class="op">)</span></span></code></pre></div>
 <p>The intended workflow breaks down into three stages:</p>
-<ol style="list-style-type: decimal"><li>Detection of PID risks via <code><a href="reference/pid_pos.html">pidpos()</a></code>
+<ol style="list-style-type: decimal"><li>Detection of PID risks via <code><a href="reference/pidpos.html">pidpos()</a></code>
 </li>
 <li>Preparation of redaction rules via <code><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> and <code><a href="reference/auto_replace.html">auto_replace()</a></code>
 </li>
@@ -92,7 +92,7 @@
 <td align="left">So, who’s the guy?</td>
 </tr></tbody></table><p>First, generate a PID report:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pid_pos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></code></pre></div>
 <table class="table"><colgroup><col width="9%"><col width="5%"><col width="35%"><col width="35%"><col width="5%"><col width="9%"></colgroup><thead><tr class="header"><th align="left">ID</th>
 <th align="left">Token</th>
@@ -130,11 +130,11 @@
 <td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="right">1</td>
 <td align="left"><code>text</code></td>
-</tr></tbody></table><p>The report lists all detected proper nouns alongside their source variable and position. By default, <code><a href="reference/pid_pos.html">pidpos()</a></code> uses the <code>udpipe</code> framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in <a href="https://stat-cook.github.io/pidpos/articles/custom-functions.html">Custom Functions</a>.</p>
+</tr></tbody></table><p>The report lists all detected proper nouns alongside their source variable and position. By default, <code><a href="reference/pidpos.html">pidpos()</a></code> uses the <code>udpipe</code> framework for POS tagging, but the package is designed to support alternative taggers. A ready-made script for using spaCy is included, and users may supply a custom tagging function, allowing the package to be integrated into existing NLP pipelines. Further details are provided in <a href="https://stat-cook.github.io/pidpos/articles/custom-functions.html">Custom Functions</a>.</p>
 <p>Should the user wish to not only identify, but redact the data, the report can be converted into redaction rules and apply replacements:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
-<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/random_replacement.f.html">random_replacement.f</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span></code></pre></div>
 <table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr class="header"><th align="left">If</th>

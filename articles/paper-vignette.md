@@ -48,7 +48,7 @@ pak::pkg_install("Stat-Cook/pidpos")
 The intended workflow breaks down into three stages:
 
 1.  Detection of PID risks via
-    [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+    [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
 2.  Preparation of redaction rules via
     [`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md)
     and
@@ -91,7 +91,7 @@ head(report)
 
 The report lists all detected proper nouns alongside their source
 variable and position. By default,
-[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pid_pos.md)
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
 uses the `udpipe` framework for POS tagging, but the package is designed
 to support alternative taggers. A ready-made script for using spaCy is
 included, and users may supply a custom tagging function, allowing the
@@ -104,7 +104,7 @@ report can be converted into redaction rules and apply replacements:
 
 ``` r
 raw_rules <- report_to_redaction_rules(report)
-replacement.f <- random_replacement.f()
+replacement.f <- make_random_replacement()
 prepared_replacements <- auto_replace(raw_rules, replacement.f)
 head(prepared_replacements)
 #> # A tibble: 6 × 3
