@@ -108,11 +108,11 @@ head(prepared_replacements)
 
 | If                                                                               | From    | To         |
 |:---------------------------------------------------------------------------------|:--------|:-----------|
-| \[Scene: Central Perk, everyone is there.\]                                      | Central | ALJYYDNFVM |
-| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | RFIMXFGBNM |
-| Phoebe Buffay                                                                    | Phoebe  | GIXWOGLAEY |
-| Phoebe Buffay                                                                    | Buffay  | SJTSCCITDF |
-| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | EZVHZIYTRU |
+| \[Scene: Central Perk, everyone is there.\]                                      | Central | VZAPEVADVV |
+| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | HCCRWERKMU |
+| Phoebe Buffay                                                                    | Phoebe  | MTGGJTRNUI |
+| Phoebe Buffay                                                                    | Buffay  | YADHUVRZWH |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | TEISHXXKQA |
 
 Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -128,11 +128,11 @@ head(redacted_data)
 
 | scene | utterance | speaker               | text                                                                                          |
 |------:|----------:|:----------------------|:----------------------------------------------------------------------------------------------|
-|     1 |         1 | Scene Directions      | \[Scene: ALJYYDNFVM RFIMXFGBNM, everyone is there.\]                                          |
-|     1 |         2 | GIXWOGLAEY SJTSCCITDF | Oh, EZVHZIYTRU, CSIWNWCLBT, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | FWSTGUYRQG RLZBNGSIJF | Yeah.                                                                                         |
-|     1 |         4 | EZVHZIYTRU RLZBNGSIJF | Sure. Yeah.                                                                                   |
-|     1 |         5 | CMWWTTMFXM SEIXNDFIBP | So, who’s the guy?                                                                            |
+|     1 |         1 | Scene Directions      | \[Scene: VZAPEVADVV HCCRWERKMU, everyone is there.\]                                          |
+|     1 |         2 | MTGGJTRNUI YADHUVRZWH | Oh, TEISHXXKQA, QFPOMXYEYG, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | XSTDBORHLB REFJLIAUFK | Yeah.                                                                                         |
+|     1 |         4 | TEISHXXKQA REFJLIAUFK | Sure. Yeah.                                                                                   |
+|     1 |         5 | TYHFYFWVBR EKPSSKXTSJ | So, who’s the guy?                                                                            |
 
 # Multiple file API
 
@@ -143,7 +143,8 @@ support batch processing:
   to generate PID reports
 - [`get_distinct_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/get_distinct_redaction_rules.md)
   to combine the distinct reports into a single set of raw redactions.
-- `process_supported_files()` to produce redacted copies of the data.
+- [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
+  to produce redacted copies of the data.
 
 # Current applications
 

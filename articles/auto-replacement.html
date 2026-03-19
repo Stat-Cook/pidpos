@@ -89,16 +89,14 @@ column according to a user-defined replacement function. The package
 provides three built-in replacement strategies:</p>
 <ul>
 <li>
-<code>hashing_replacement.f()</code> — hashes values using a key and
-salt, producing deterministic and reproducible replacements.</li>
+<code><a href="../reference/make_hashing_replacement.html">make_hashing_replacement()</a></code> — hashes values using a key
+and salt, producing deterministic and reproducible replacements.</li>
 <li>
 <code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code> — generates random
 replacements from a defined character space.</li>
 <li>
-<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code> -
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Experimental</annotation></semantics></math>
-convert a function for generating a random string into a compatible
-function.</li>
+<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code> - [Experimental] convert a
+function for generating a random string into a compatible function.</li>
 </ul>
 <hr>
 <div class="section level2">
@@ -193,7 +191,7 @@ replacement functions.<br>
 Where these are purely deterministic a single-argument function can be
 passed into <code><a href="../reference/auto_replace.html">auto_replace()</a></code> to generate new values:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">simple_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">simple_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">".*"</span>, <span class="st">"XXX"</span>, <span class="va">vec</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -218,8 +216,8 @@ defining the maximum number of random states that can be generated
 (e.g. if we used a toy example of the number “00” to “99” there would be
 100 max random values). We implement this as:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">numeric_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">2</span>, <span class="cn">T</span><span class="op">)</span>, collapse<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">numeric_replacement</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">2</span>, <span class="cn">T</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">numeric_replacement</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_replacement_function.html">make_replacement_function</a></span><span class="op">(</span><span class="va">numeric_replacement</span>, <span class="fl">100</span><span class="op">)</span></span>

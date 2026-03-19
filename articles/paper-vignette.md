@@ -146,7 +146,8 @@ support batch processing:
   to generate PID reports
 - [`get_distinct_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/get_distinct_redaction_rules.md)
   to combine the distinct reports into a single set of raw redactions.
-- `process_supported_files()` to produce redacted copies of the data.
+- [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
+  to produce redacted copies of the data.
 
 ## Current applications
 

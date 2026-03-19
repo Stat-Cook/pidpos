@@ -884,7 +884,7 @@ approach to redaction is to use the `auto_replacement` and
 string, for example:
 
 ``` r
-replacer <- make_random_replacement(all=T)
+replacer <- make_random_replacement(all = T)
 replaced_rules <- auto_replace(distinct_rules, replacer)
 head(replaced_rules)
 #> # A tibble: 6 × 3

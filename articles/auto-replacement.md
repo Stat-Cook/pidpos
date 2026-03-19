@@ -22,12 +22,13 @@ operates on a `replacement_rules` table and encodes the `To` column
 according to a user-defined replacement function. The package provides
 three built-in replacement strategies:
 
-- `hashing_replacement.f()` — hashes values using a key and salt,
-  producing deterministic and reproducible replacements.
+- [`make_hashing_replacement()`](https://stat-cook.github.io/pidpos/reference/make_hashing_replacement.md)
+  — hashes values using a key and salt, producing deterministic and
+  reproducible replacements.
 - [`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md)
   — generates random replacements from a defined character space.
 - [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md) -
-  $$Experimental$$ convert a function for generating a random string
+  \[Experimental\] convert a function for generating a random string
   into a compatible function.
 
 ------------------------------------------------------------------------
@@ -148,7 +149,7 @@ passed into
 to generate new values:
 
 ``` r
-simple_replacement <- function(vec){
+simple_replacement <- function(vec) {
   gsub(".*", "XXX", vec)
 }
 
@@ -177,8 +178,8 @@ number “00” to “99” there would be 100 max random values). We implement
 this as:
 
 ``` r
-numeric_replacement <- function(){
-  paste(sample(0:9, 2, T), collapse="")
+numeric_replacement <- function() {
+  paste(sample(0:9, 2, T), collapse = "")
 }
 
 numeric_replacement <- make_replacement_function(numeric_replacement, 100)
