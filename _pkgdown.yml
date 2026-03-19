@@ -23,7 +23,7 @@ reference:
   desc: >
   contents:
   - auto_replace
-  - hashing_replacement.f
+  - make_hashing_replacement
   - make_random_replacement
   - make_replacement_function
   - get-replacements
