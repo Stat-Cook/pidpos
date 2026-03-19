@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{object}{An object of class \code{pidpos}.}
+
+\item{...}{further arguments passed to or from other methods.}
 }
 \value{
 A data frame describing any column determined to contain PID.
