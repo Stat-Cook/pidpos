@@ -26,11 +26,11 @@ base_error <- function(subclass,
 
 #' @importFrom rlang warn
 base_warn <- function(subclass,
-                       message,
-                       ...,
-                       call) {
+                      message,
+                      ...,
+                      call) {
   cls <- c(subclass, "pidpos_warning")
-  
+
   warn(
     message = message,
     class = cls,
@@ -64,7 +64,7 @@ new_warn_type <- function(name, parent = NULL) {
       name,
       parent
     )
-    
+
     base_warn(
       subclass = subclass,
       message = message,

@@ -1,10 +1,10 @@
 #' Package errors and warnings
 #'
-#' To assist with ... the package has implemented several custom errors and warnings 
-#' which are embedded as safeguards in the function factories.  The intention is to allow 
-#' users to catch specific error types raised in the package structure separately to 
+#' To assist with ... the package has implemented several custom errors and warnings
+#' which are embedded as safeguards in the function factories.  The intention is to allow
+#' users to catch specific error types raised in the package structure separately to
 #' any raised from custom code.
-#' 
+#'
 #'
 #' @param message The error message to display
 #' @param ... Additional arguments to pass to `abort()`
@@ -38,8 +38,6 @@ escalate <- function(w, elevate_warnings) {
     rlang::abort(w$message, class = .class)
   } else {
     rlang::warn(w$message, class = .class)
-    #invokeRestart("muffleWarning") 
+    # invokeRestart("muffleWarning")
   }
 }
-
-

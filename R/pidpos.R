@@ -29,12 +29,12 @@
 #'   \item `Affected Columns`: The columns in the data frame where the `Document` occurs.
 #' }
 #' If no proper nouns are detected, an empty data frame is returned.
-#' 
-#' @note 
+#'
+#' @note
 #'
 #' By default [pidpos()] caches the `udpipe` models in a package cache directory.
 #' This behaviour can be altered via [enable_local_models()] to redirect `udpipe` models
-#' to the working directory.  Resetting to the project cache can be done with 
+#' to the working directory.  Resetting to the project cache can be done with
 #' [enable_package_models()].
 #'
 #' @examples

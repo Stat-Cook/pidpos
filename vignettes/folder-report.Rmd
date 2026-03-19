@@ -115,7 +115,7 @@ The replacements will be based on this data frame.  The most conservative approa
 to redaction is to use the `auto_replacement` and `make_random_replacement` functions included in the package.  The `auto_replacement` function takes a data frame with `If`, `From` and `To` and replaces the `To` column with a unique randomly generated string, for example:
 
 ``` {r}
-replacer <- make_random_replacement(all=T)
+replacer <- make_random_replacement(all = T)
 replaced_rules <- auto_replace(distinct_rules, replacer)
 head(replaced_rules)
 ```

@@ -25,4 +25,3 @@ auto_replace <- function(frm, replacement.f, filter = F) {
   frm |>
     dplyr::mutate(To = replacement.f(.data$To))
 }
-

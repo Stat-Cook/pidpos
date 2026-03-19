@@ -122,7 +122,7 @@ Depending on the situation, users may wish to implement their own replacement fu
 Where these are purely deterministic a single-argument function can be passed into `auto_replace()` to generate new values:
 
 ``` {r}
-simple_replacement <- function(vec){
+simple_replacement <- function(vec) {
   gsub(".*", "XXX", vec)
 }
 
@@ -137,8 +137,8 @@ This can be done by wrapping the desired behaviour in `make_replacement_function
 the added requirement of defining the maximum number of random states that can be generated (e.g. if we used a toy example of the number "00" to "99" there would be 100 max random values).  We implement this as:
 
 ``` {r}
-numeric_replacement <- function(){
-  paste(sample(0:9, 2, T), collapse="")
+numeric_replacement <- function() {
+  paste(sample(0:9, 2, T), collapse = "")
 }
 
 numeric_replacement <- make_replacement_function(numeric_replacement, 100)

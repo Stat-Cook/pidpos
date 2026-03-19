@@ -63,7 +63,7 @@ test_that("make_random_replacement with repeats", {
 })
 
 test_that("make_random_replacement default", {
-  basic.replacement.f <- make_random_replacement(all=T)
+  basic.replacement.f <- make_random_replacement(all = T)
   hashed <- basic.replacement.f(letters)
 
   expect_equal(
@@ -75,7 +75,7 @@ test_that("make_random_replacement default", {
 
 
 test_that("make_random_replacement - all with args", {
-  other.hash.f <- make_random_replacement(50, c(letters, LETTERS, 0:9), all=T)
+  other.hash.f <- make_random_replacement(50, c(letters, LETTERS, 0:9), all = T)
   hashed.2 <- other.hash.f(letters)
 
   expect_equal(
@@ -86,7 +86,7 @@ test_that("make_random_replacement - all with args", {
 })
 
 test_that("make_random_replacement - all on numerics", {
-  other.hash.f <- make_random_replacement(5, c(letters, LETTERS, 0:9), all=T)
+  other.hash.f <- make_random_replacement(5, c(letters, LETTERS, 0:9), all = T)
   .x <- 0:10
   hashed.3 <- other.hash.f(.x)
 
@@ -99,7 +99,7 @@ test_that("make_random_replacement - all on numerics", {
 
 test_that("make_random_replacement - all with repeats", {
   .x <- sample(letters[1:3], 50, T)
-  replacement.f <- make_random_replacement(all=T)
+  replacement.f <- make_random_replacement(all = T)
 
   hashed <- replacement.f(.x)
 
@@ -122,11 +122,14 @@ test_that("auto_replace", {
 # Helper encoders
 sequential_encoder <- function() {
   i <- 0
-  function() { i <<- i + 1; paste0("ID", i) }
+  function() {
+    i <<- i + 1
+    paste0("ID", i)
+  }
 }
 
 random_encoder <- function() paste0("X", sample(1000, 1))
-collision_encoder <- function() "SAME"  # always returns same value
+collision_encoder <- function() "SAME" # always returns same value
 
 test_that("initialize sets fields correctly", {
   m <- ConsistentMapper$new(encoder = random_encoder, max_values = 100)
@@ -161,7 +164,7 @@ test_that("learn accumulates across multiple calls", {
 test_that("transform returns consistent values", {
   m <- ConsistentMapper$new(encoder = sequential_encoder(), max_values = 100)
   m$learn(c("cat", "dog"))
-  first  <- m$transform(c("cat", "dog"))
+  first <- m$transform(c("cat", "dog"))
   second <- m$transform(c("cat", "dog"))
   expect_equal(first, second)
 })
@@ -193,7 +196,7 @@ test_that("learn warns when cache exceeds 50% of max_values", {
 
 test_that("learn warns after many iterations with collision-prone encoder", {
   m <- ConsistentMapper$new(encoder = collision_encoder, max_values = 100)
-  
+
   expect_warning(
     tryCatch(
       m$learn(c("a", "b")),

@@ -9,7 +9,7 @@ summary.pidpos <- function(object, ...) {
   #'
   #' @param object An object of class `pidpos`.
   #' @param ... further arguments passed to or from other methods.
-  #' 
+  #'
   #' @return A data frame describing any column determined to contain PID.
   #' \itemize{
   #'   \item Column
