@@ -16,11 +16,11 @@
 #' @seealso [auto_replace()]
 make_hashing_replacement <- function(key, salt = "", hash = sha256) {
   key <- as.character(key)
-  
+
   hash_function <- function(x) {
     paste(x, salt, sep = "_") |>
       hash(key = key)
   }
-  
+
   hash_function
 }
