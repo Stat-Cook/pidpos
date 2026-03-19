@@ -36,9 +36,9 @@ In many cases, users may wish to manually populate the To column (for example, r
 
 `auto_replace()` operates on a `replacement_rules` table and encodes the `To` column according to a user-defined replacement function. The package provides three built-in replacement strategies:
 
-- `hashing_replacement.f()` — hashes values using a key and salt, producing deterministic and reproducible replacements.
+- `make_hashing_replacement()` — hashes values using a key and salt, producing deterministic and reproducible replacements.
 - `make_random_replacement()` — generates random replacements from a defined character space.
-- `make_replacement_function()` - \[Experimental\] convert a function for generating a random string into a compatible function.
+- `make_replacement_function()` - [Experimental] convert a function for generating a random string into a compatible function.
 
 ---
 

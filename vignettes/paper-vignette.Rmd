@@ -86,7 +86,7 @@ When a project involves multiple files, three additional functions support batch
 
 * `report_on_folder()` to generate PID reports 
 * `get_distinct_redaction_rules()` to combine the distinct reports into a single set of raw redactions.
-* `process_supported_files()` to produce redacted copies of the data.
+* `redact_at_folder()` to produce redacted copies of the data.
 
 # Current applications
 
