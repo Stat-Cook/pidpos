@@ -60,7 +60,7 @@ new_error_type <- function(name, parent = NULL) {
 new_warn_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(
-      paste0("pispos_", name),
+      paste0("pidpos_", name),
       name,
       parent
     )
