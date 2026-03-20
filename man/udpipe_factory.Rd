@@ -20,8 +20,6 @@ udpipe_factory(
 \value{
 A function that takes a character vector of documents and returns a \link[tibble:tibble]{tibble::tibble}
 
-A function that takes a character vector of documents and returns a \code{tibble}
-
 with columns:
 \describe{
 \item{ID}{Document identifier}

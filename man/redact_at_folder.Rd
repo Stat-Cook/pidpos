@@ -2,7 +2,7 @@
 % Please edit documentation in R/redact_at_folder.R
 \name{redact_at_folder}
 \alias{redact_at_folder}
-\title{API for redaction across a file structure}
+\title{Redact PID across folder structure}
 \usage{
 redact_at_folder(
   data_path,
@@ -27,5 +27,6 @@ redact_at_folder(
 \item{verbose}{Boolean flag - if TRUE will...}
 }
 \description{
-API for redaction across a file structure
+For use as part of the folder level API - this function is the equivalent of
+\code{\link[=redact]{redact()}}.  The redacted files are saved in the specified \code{output_path}.
 }

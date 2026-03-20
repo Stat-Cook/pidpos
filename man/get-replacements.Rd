@@ -5,10 +5,7 @@
 \alias{get_replacement_cache}
 \alias{key_lookup}
 \alias{value_lookup}
-\title{Access the cache of replacements
-
-Tools for accessing the replacements inside a \code{\link[=make_replacement_function]{make_replacement_function()}}
-function.}
+\title{Access the cache of replacements}
 \usage{
 get_replacement_cache(object)
 
@@ -25,8 +22,6 @@ in \code{\link[=auto_replace]{auto_replace()}}.}
 \item{value}{The string to lookup what it replaced.}
 }
 \description{
-Access the cache of replacements
-
 Tools for accessing the replacements inside a \code{\link[=make_replacement_function]{make_replacement_function()}}
 function.
 }

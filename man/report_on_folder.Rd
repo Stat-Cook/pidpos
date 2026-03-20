@@ -2,7 +2,7 @@
 % Please edit documentation in R/report_on_folder.R
 \name{report_on_folder}
 \alias{report_on_folder}
-\title{Folder Report}
+\title{Generate PID reports across folder structure}
 \usage{
 report_on_folder(
   data_path,
@@ -41,8 +41,8 @@ options  are \code{export_as_tree} and \code{export_flat}}
 \item{verbose}{Boolean flag - if TRUE will...}
 }
 \description{
-Iterates over a folder of data files and produces a proper noun report for each.
-The reports are saved in the specified \verb{report directory}.
+For use as part of the folder level API - this function is the equivalent of
+\code{\link[=pidpos]{pidpos()}}.  The reports are saved in the specified \code{report_dir}.
 }
 \examples{
 {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_distinct_redaction_rules.R
 \name{get_distinct_redaction_rules}
 \alias{get_distinct_redaction_rules}
-\title{Title}
+\title{Combine multiple PID reports into a single rule set}
 \usage{
 get_distinct_redaction_rules(object, include_context = FALSE)
 }
@@ -13,5 +13,6 @@ Can be a path to a folder of \code{pid} reports, a list of \code{pid} reports, o
 \item{include_context}{A boolean flag indicating whether to include context information in the output. Default is FALSE.}
 }
 \description{
-Title
+For use as part of the folder level API - this function is the equivalent of
+\code{\link[=get_distinct_redaction_rules]{get_distinct_redaction_rules()}}.
 }
