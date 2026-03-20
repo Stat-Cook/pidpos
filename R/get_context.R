@@ -11,7 +11,6 @@
 #' @importFrom tibble as_tibble
 #'
 #' @keywords internal
-
 get_context <- function(sentence, token,
                         context_window = getOption("pidpos_context_window")) {
   loc <- stringr::str_locate(sentence, token)
@@ -34,26 +33,7 @@ get_context <- function(sentence, token,
   ctx
 }
 
-# get_context <- function(sentences, tokens) {
-#
-#   context_window <- getOption("pidpos.context_window")
-#
-#   context.frm <- str_locate(sentences, tokens) |>
-#     as_tibble() |>
-#     mutate(
-#       Sentence = sentences,
-#       Token = tokens,
-#       SentenceLength = str_length(Sentence),
-#       ContextFrom = pmax(start - context_window, 1),
-#       ContextTo = pmin(end + context_window, SentenceLength),
-#       Context = str_sub(Sentence, start = ContextFrom, end = ContextTo),
-#       Prepend = ifelse(ContextFrom == 1, "", "..."),
-#       Append = ifelse(ContextTo == SentenceLength, "", "..."),
-#       Context = sprintf("%s%s%s", Prepend, Context, Append)
-#     )
-#
-#   context.frm$Context
-# }
+
 
 
 set_context_window <- function(x) {
