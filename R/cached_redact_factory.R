@@ -30,17 +30,17 @@ print.CachedRedact <- function(x, ...) {
     print()
 }
 
-
+#' Stateful recoding template function
+#'
+#' Dynamic programming wrapper to a mono-variable function - performs
+#' given recoding function on unique values and recycles previous states.
+#'
+#' @param redact.function A single input function to perform variable recoding.
+#'
+#' @returns A function
+#' @keywords internal
 cached_redact_factory <- function(redact.function) {
-  #' Stateful recoding template function
-  #'
-  #' Dynamic programming wrapper to a mono-variable function - performs
-  #' given recoding function on unique values and recycles previous states.
-  #'
-  #' @param redact.function A single input function to perform variable recoding.
-  #'
-  #' @returns A function
-  #' @keywords internal
+
   cr <- CachedRedact$new(redact.function)
 
   .f <- function(vec) {

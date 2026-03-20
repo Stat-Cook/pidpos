@@ -6,10 +6,10 @@ empty.report <- data.frame(
   "Affected Columns" = character(0)
 )
 
-#' Folder Report
+#' Generate PID reports across folder structure
 #'
-#' Iterates over a folder of data files and produces a proper noun report for each.
-#' The reports are saved in the specified `report directory`.
+#' For use as part of the folder level API - this function is the equivalent of 
+#' [pidpos()].  The reports are saved in the specified `report_dir`.
 #'
 #' @inheritParams find_supported_files
 #' @inheritParams pidpos

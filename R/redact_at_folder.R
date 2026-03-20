@@ -1,10 +1,12 @@
-#' API for redaction across a file structure
+#' Redact PID across folder structure
+#'
+#' For use as part of the folder level API - this function is the equivalent of 
+#' [redact()].  The redacted files are saved in the specified `output_path`.
 #'
 #' @inheritParams find_supported_files
 #' @inheritParams redact_supported_files
 #'
 #' @export
-#'
 redact_at_folder <- function(data_path,
                              redacter,
                              output_path = "Redacted Data",
