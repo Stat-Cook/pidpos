@@ -18,7 +18,7 @@
 #' @examples
 #' \dontrun{
 #' example.data <- head(the_one_in_massapequa)
-#' report <- pidpos(example.data, to_remove="speaker")
+#' report <- pidpos(example.data, to_remove = "speaker")
 #' redactions.raw <- report_to_redaction_rules(report)
 #'
 #' replace_by <- make_random_replacement()
@@ -27,10 +27,8 @@
 #' efficient_redaction(example.data, redaction.f)
 #' }
 #'
-#'
 #' @export
 batched_redact <- function(frm, redact, n = NULL, .progress = T) {
-
   UseMethod("batched_redact", redact)
 }
 
@@ -38,8 +36,6 @@ batched_redact <- function(frm, redact, n = NULL, .progress = T) {
 #'
 #' @importFrom dplyr across where mutate
 batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progress = T) {
-
-
   .mutate <- function(frm) {
     dplyr::mutate(
       frm,
@@ -54,7 +50,6 @@ batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progre
 #' @exportS3Method
 #'
 batched_redact.default <- function(frm, redact, n = NULL, .progress = T) {
-
   cached.f <- cached_redact_factory(redact)
   batched_redact(frm, cached.f, n = n, .progress = .progress)
 }

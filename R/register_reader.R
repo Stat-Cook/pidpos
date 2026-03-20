@@ -10,7 +10,6 @@
 #' # example code
 #'
 register_reader <- function(fun, ext) {
-
   if (!is.character(ext) || length(ext) != 1) {
     stop("Extension must be a single character string.", call. = FALSE)
   }
@@ -29,7 +28,6 @@ register_reader <- function(fun, ext) {
 #' @examples
 #' reinstate_default_reader()
 reinstate_default_reader <- function() {
-
   default_readers <- list(
     csv = function(path, ..., show_col_types = FALSE) {
       readr::read_csv(path, ..., show_col_types = show_col_types)

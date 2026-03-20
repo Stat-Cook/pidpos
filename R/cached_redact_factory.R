@@ -40,7 +40,6 @@ print.CachedRedact <- function(x, ...) {
 #' @returns A function
 #' @keywords internal
 cached_redact_factory <- function(redact.function) {
-
   cr <- CachedRedact$new(redact.function)
 
   .f <- function(vec) {
