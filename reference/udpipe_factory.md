@@ -34,9 +34,6 @@ udpipe_factory(
 A function that takes a character vector of documents and returns a
 [tibble::tibble](https://tibble.tidyverse.org/reference/tibble.html)
 
-A function that takes a character vector of documents and returns a
-`tibble`
-
 with columns:
 
 - ID:

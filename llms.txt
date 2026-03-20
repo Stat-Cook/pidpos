@@ -96,21 +96,16 @@ or feel free to fork the repository.
 - [`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
   [`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
   [`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
-  :
-
-  Access the cache of replacements Tools for accessing the replacements
-  inside a
-  [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
-  function.
+  : Access the cache of replacements
 
 ## Folder level API
 
 - [`report_on_folder()`](https://stat-cook.github.io/pidpos/reference/report_on_folder.md)
-  : Folder Report
+  : Generate PID reports across folder structure
 - [`get_distinct_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/get_distinct_redaction_rules.md)
-  : Title
+  : Combine multiple PID reports into a single rule set
 - [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
-  : API for redaction across a file structure
+  : Redact PID across folder structure
 
 ## Package Utilities
 

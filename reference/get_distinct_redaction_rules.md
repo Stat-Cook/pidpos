@@ -1,6 +1,7 @@
-# Title
+# Combine multiple PID reports into a single rule set
 
-Title
+For use as part of the folder level API - this function is the
+equivalent of `get_distinct_redaction_rules()`.
 
 ## Usage
 

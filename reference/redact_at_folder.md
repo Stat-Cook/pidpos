@@ -1,6 +1,9 @@
-# API for redaction across a file structure
+# Redact PID across folder structure
 
-API for redaction across a file structure
+For use as part of the folder level API - this function is the
+equivalent of
+[`redact()`](https://stat-cook.github.io/pidpos/reference/redact.md).
+The redacted files are saved in the specified `output_path`.
 
 ## Usage
 

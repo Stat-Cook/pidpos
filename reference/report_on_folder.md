@@ -1,7 +1,9 @@
-# Folder Report
+# Generate PID reports across folder structure
 
-Iterates over a folder of data files and produces a proper noun report
-for each. The reports are saved in the specified `report directory`.
+For use as part of the folder level API - this function is the
+equivalent of
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md).
+The reports are saved in the specified `report_dir`.
 
 ## Usage
 
@@ -88,6 +90,6 @@ report_on_folder(
   paths
 }
 #> $example
-#> [1] "/tmp/RtmpRdhxA2/file1c43360f0c50/example.csv"
+#> [1] "/tmp/RtmpHpB8KV/file1ca914810e2c/example.csv"
 #> 
 ```

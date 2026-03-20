@@ -1,6 +1,4 @@
-# Access the cache of replacements Tools for accessing the replacements inside a [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md) function.
-
-Access the cache of replacements
+# Access the cache of replacements
 
 Tools for accessing the replacements inside a
 [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
