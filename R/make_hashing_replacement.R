@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' replace_by <- make_hashing_replacement(key = "PIDPOS", salt = "SALT")
-#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#' auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #'
 #' @importFrom openssl sha256
 #' @export

@@ -67,7 +67,7 @@ rule_logic <- function(df) {
 #'   report_to_redaction_rules()
 #'
 #' redaction_rules <- auto_replace(raw_rules,
-#'   replacement.f = make_random_replacement()
+#'   replacement_func = make_random_replacement()
 #' )
 #'
 #' redaction_func <- redaction_function_factory(redaction_rules)

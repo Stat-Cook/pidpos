@@ -13,10 +13,10 @@
 #' @examples
 #'
 #' replace_by <- make_random_replacement()
-#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#' auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #'
 #' replace_by <- make_random_replacement(replacement_space = LETTERS[1:10], replacement_size = 20)
-#' auto_replace(raw_redaction_rules, replacement.f = replace_by)
+#' auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #'
 #' @seealso [auto_replace()]
 #' @export
