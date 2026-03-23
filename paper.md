@@ -119,8 +119,8 @@ report can be converted into redaction rules and apply replacements:
 
 ``` r
 raw_rules <- report_to_redaction_rules(report)
-replacement.f <- make_random_replacement()
-prepared_replacements <- auto_replace(raw_rules, replacement.f)
+replacement_func <- make_random_replacement()
+prepared_replacements <- auto_replace(raw_rules, replacement_func)
 head(prepared_replacements)
 ```
 
