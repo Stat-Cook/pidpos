@@ -1,6 +1,6 @@
 Package: pidpos
 Type: Package
-Title: PID detection via NLP
+Title: Detection of Personal Data via Natural Language Processing
 Version: 0.1.0
 Authors@R: 
   c(
@@ -13,7 +13,7 @@ Maintainer: Robert Cook <rzc1@staff.staffs.ac.uk>
 Description: A package for the detection and contextualization of personally 
     identifiable data (PID) in free text via natural language processing (NLP).  
     This package is a wraper to the 'english-ewt-2.5' UDPipe model intended to 
-    extract 'proper nouns' and provide a report of their usage/ context in a 
+    extract 'proper nouns' and provide a report of their usage/context in a 
     set of free text documents.  The main point of entry to the package is via 
     the `pidpos` function (see `Troubleshooting` vignette for 
     possible issues with the automated downloading of the pretrained UDPipe 
