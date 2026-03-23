@@ -35,13 +35,13 @@ test_that("report_as_rules_template", {
     To = c("XXX", "YYY")
   )
 
-  replacement.func <- redaction_function_factory(.rules)
+  replacement_funcunc <- redaction_function_factory(.rules)
 
   replaced.data <- .data |>
     mutate(
       across(
         where(is.character),
-        replacement.func
+        replacement_funcunc
       )
     )
 

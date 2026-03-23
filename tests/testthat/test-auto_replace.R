@@ -20,8 +20,8 @@ test_that("make_hashing_replacement", {
 
 
 test_that("make_random_replacement default", {
-  basic.replacement.f <- make_random_replacement()
-  hashed <- basic.replacement.f(letters)
+  basic.replacement_func <- make_random_replacement()
+  hashed <- basic.replacement_func(letters)
 
   expect_equal(
     length(letters),
@@ -55,16 +55,16 @@ test_that("make_random_replacement on numerics", {
 
 test_that("make_random_replacement with repeats", {
   .x <- sample(letters[1:3], 50, TRUE)
-  replacement.f <- make_random_replacement()
+  replacement_func <- make_random_replacement()
 
-  hashed <- replacement.f(.x)
+  hashed <- replacement_func(.x)
 
   expect_equal(length(unique(hashed)), 3)
 })
 
 test_that("make_random_replacement default", {
-  basic.replacement.f <- make_random_replacement(all = TRUE)
-  hashed <- basic.replacement.f(letters)
+  basic.replacement_func <- make_random_replacement(all = TRUE)
+  hashed <- basic.replacement_func(letters)
 
   expect_equal(
     length(letters),
@@ -99,9 +99,9 @@ test_that("make_random_replacement - all on numerics", {
 
 test_that("make_random_replacement - all with repeats", {
   .x <- sample(letters[1:3], 50, TRUE)
-  replacement.f <- make_random_replacement(all = TRUE)
+  replacement_func <- make_random_replacement(all = TRUE)
 
-  hashed <- replacement.f(.x)
+  hashed <- replacement_func(.x)
 
   expect_equal(length(unique(hashed)), 50)
 })
@@ -112,9 +112,9 @@ test_that("auto_replace", {
     To = sample(LETTERS, 100, TRUE)
   )
 
-  basic.replacement.f <- make_random_replacement()
+  basic.replacement_func <- make_random_replacement()
 
-  frm.replaced <- auto_replace(frm, basic.replacement.f)
+  frm.replaced <- auto_replace(frm, basic.replacement_func)
 
   expect_true(all(frm$To != frm.replaced$To))
 })
