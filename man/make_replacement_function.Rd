@@ -7,7 +7,7 @@
 make_replacement_function(
   encoder,
   max_values,
-  all = F,
+  all = FALSE,
   elevate_warnings = FALSE
 )
 }

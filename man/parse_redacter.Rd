@@ -4,7 +4,7 @@
 \alias{parse_redacter}
 \title{Parse a data frame into a redaction function with optional caching.}
 \usage{
-parse_redacter(redacter, with_cache = T)
+parse_redacter(redacter, with_cache = TRUE)
 }
 \arguments{
 \item{redacter}{A data.frame containing \code{From}, \code{To} and \code{If} or a file path to}

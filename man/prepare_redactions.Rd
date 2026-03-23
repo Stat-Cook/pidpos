@@ -24,11 +24,11 @@ NA
 \examples{
 \dontrun{
 example.data <- head(the_one_in_massapequa)
-report <- pidpos(example.data, to_remove="speaker")
+report <- pidpos(example.data, to_remove = "speaker")
 redactions.raw <- report_to_redaction_rules(report)
 
 replace_by <- make_random_replacement()
-redactions <- auto_replace(redactions.raw, replacement.f = replace_by)
+redactions <- auto_replace(redactions.raw, replacement_func = replace_by)
 
 f <- pidpos:::prepare_redactions(redactions)
 f(example.data$text)

@@ -4,17 +4,17 @@
 \alias{auto_replace}
 \title{Apply a replacement function to a \code{rules.frm}.}
 \usage{
-auto_replace(frm, replacement.f, filter = F)
+auto_replace(frm, replacement_func, filter = FALSE)
 }
 \arguments{
 \item{frm}{A \code{data.frame} with columns \code{If}, \code{From}, and \code{To}.}
 
-\item{replacement.f}{A function for transforming the \code{To} column.}
+\item{replacement_func}{A function for transforming the \code{To} column.}
 
 \item{filter}{Logical.  If \code{TRUE} will only apply to rows where \code{From} and \code{To} are different.}
 }
 \value{
-A \code{data.frame} like \code{frm} but with the \code{To} column transformed by \code{replacement.f}.
+A \code{data.frame} like \code{frm} but with the \code{To} column transformed by \code{replacement_func}.
 }
 \description{
 Several function factories have been implemented to create replacement functions
@@ -23,7 +23,7 @@ Several function factories have been implemented to create replacement functions
 \examples{
 
 replace_by <- make_random_replacement()
-auto_replace(raw_redaction_rules, replacement.f = replace_by)
+auto_replace(raw_redaction_rules, replacement_func = replace_by)
 
 }
 \seealso{

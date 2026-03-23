@@ -4,7 +4,7 @@
 \alias{redact}
 \title{Redact PID}
 \usage{
-redact(object, redacter, in_batches = T, ...)
+redact(object, redacter, in_batches = TRUE, ...)
 }
 \arguments{
 \item{object}{The object to be redacted - either a vector or data frame}
