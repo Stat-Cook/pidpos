@@ -26,7 +26,7 @@ reference:
   - make_hashing_replacement
   - make_random_replacement
   - make_replacement_function
-  - get-replacements
+  - get_replacements
 - title: "Folder level API"
   desc: >
   contents:

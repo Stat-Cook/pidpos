@@ -8,23 +8,23 @@
 #' @param key The string to lookup a replacement for.
 #' @param value The string to lookup what it replaced.
 #'
-#' @name get-replacements
+#' @name get_replacements
 NULL
 
-#' @rdname get-replacements
+#' @rdname get_replacements
 #' @export
 get_replacement_cache <- function(object) {
   attr(object, "mapper")$cache
 }
 
-#' @rdname get-replacements
+#' @rdname get_replacements
 #' @export
 key_lookup <- function(object, key) {
   cache <- get_replacement_cache(object)
   cache[[key]]
 }
 
-#' @rdname get-replacements
+#' @rdname get_replacements
 #' @export
 value_lookup <- function(object, value) {
   cache <- get_replacement_cache(object)
