@@ -26,7 +26,6 @@ vector_merge_redactions <- function(vec,
 merge_redactions <- function(frm,
                              cached_redactions,
                              preprocess = utf8::utf8_encode) {
-
   frm |>
     mutate(dplyr::across(
       where(is.character),

@@ -8,7 +8,7 @@ empty.report <- data.frame(
 
 #' Generate PID reports across folder structure
 #'
-#' For use as part of the folder level API - this function is the equivalent of 
+#' For use as part of the folder level API - this function is the equivalent of
 #' [pidpos()].  The reports are saved in the specified `report_dir`.
 #'
 #' @inheritParams find_supported_files

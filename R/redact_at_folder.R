@@ -1,6 +1,6 @@
 #' Redact PID across folder structure
 #'
-#' For use as part of the folder level API - this function is the equivalent of 
+#' For use as part of the folder level API - this function is the equivalent of
 #' [redact()].  The redacted files are saved in the specified `output_path`.
 #'
 #' @inheritParams find_supported_files

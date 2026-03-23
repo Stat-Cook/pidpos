@@ -5,7 +5,6 @@
 #' @keywords  internal
 #' @importFrom stringr str_length
 longer_than <- function(limit = 5) {
-
   function(vec) {
     vec <- vec[!is.na(vec)]
     lengths <- str_length(vec)

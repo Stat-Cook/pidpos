@@ -11,7 +11,7 @@
 #' @examples
 #' \dontrun{
 #' example.data <- head(the_one_in_massapequa)
-#' report <- pidpos(example.data, to_remove="speaker")
+#' report <- pidpos(example.data, to_remove = "speaker")
 #' redactions.raw <- report_to_redaction_rules(report)
 #'
 #' replace_by <- make_random_replacement()
@@ -25,7 +25,6 @@
 #' @section Deprecated
 #'
 prepare_redactions <- function(object) {
-
   lifecycle::deprecate_warn("0.1", "prepare_redactions()", "parse_redacter()")
   UseMethod("prepare_redactions")
 }
