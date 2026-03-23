@@ -5,7 +5,7 @@ Redact PID
 ## Usage
 
 ``` r
-redact(object, redacter, in_batches = T, ...)
+redact(object, redacter, in_batches = TRUE, ...)
 ```
 
 ## Arguments

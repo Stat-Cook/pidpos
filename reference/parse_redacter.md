@@ -5,7 +5,7 @@ Parse a data frame into a redaction function with optional caching.
 ## Usage
 
 ``` r
-parse_redacter(redacter, with_cache = T)
+parse_redacter(redacter, with_cache = TRUE)
 ```
 
 ## Arguments

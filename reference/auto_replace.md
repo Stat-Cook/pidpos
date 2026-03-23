@@ -8,7 +8,7 @@ functions
 ## Usage
 
 ``` r
-auto_replace(frm, replacement.f, filter = F)
+auto_replace(frm, replacement_func, filter = FALSE)
 ```
 
 ## Arguments
@@ -17,7 +17,7 @@ auto_replace(frm, replacement.f, filter = F)
 
   A `data.frame` with columns `If`, `From`, and `To`.
 
-- replacement.f:
+- replacement_func:
 
   A function for transforming the `To` column.
 
@@ -29,7 +29,7 @@ auto_replace(frm, replacement.f, filter = F)
 ## Value
 
 A `data.frame` like `frm` but with the `To` column transformed by
-`replacement.f`.
+`replacement_func`.
 
 ## See also
 
@@ -40,7 +40,7 @@ A `data.frame` like `frm` but with the `To` column transformed by
 
 ``` r
 replace_by <- make_random_replacement()
-auto_replace(raw_redaction_rules, replacement.f = replace_by)
+auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #> # A tibble: 10 × 3
 #>    If                                                                From  To   
 #>    <chr>                                                             <chr> <chr>

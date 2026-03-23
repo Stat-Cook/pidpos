@@ -76,7 +76,7 @@ NB: other functions can be used, if they take <code>key</code> as a key word arg
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">replace_by</span> <span class="op">&lt;-</span> <span class="fu">make_hashing_replacement</span><span class="op">(</span>key <span class="op">=</span> <span class="st">"PIDPOS"</span>, salt <span class="op">=</span> <span class="st">"SALT"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement.f <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement_func <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    If                                                                From  To   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;has&gt;</span></span>

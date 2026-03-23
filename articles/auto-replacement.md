@@ -62,7 +62,7 @@ In this example, we use
 to generate five-character replacements drawn from upper-case letters:
 
 ``` r
-replacement.f <- make_random_replacement(
+replacement_func <- make_random_replacement(
   replacement_size = 5,
   replacement_space = LETTERS
 )
@@ -75,7 +75,7 @@ We then apply this function using
 set.seed(101)
 updated_replacement_rules <- auto_replace(
   replacement_rules,
-  replacement.f
+  replacement_func
 )
 
 updated_replacement_rules
@@ -219,10 +219,10 @@ numeric_replacement
 ```
 
 With utilities supplied to retrieve the underlying key-value pairs (see
-[`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md),
-[`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+[`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md),
+[`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)
 and
-[`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)):
+[`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)):
 
 ``` r
 get_replacement_cache(numeric_replacement)

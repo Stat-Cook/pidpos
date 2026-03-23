@@ -37,7 +37,7 @@ make_hashing_replacement(key, salt = "", hash = sha256)
 
 ``` r
 replace_by <- make_hashing_replacement(key = "PIDPOS", salt = "SALT")
-auto_replace(raw_redaction_rules, replacement.f = replace_by)
+auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #> # A tibble: 10 × 3
 #>    If                                                                From  To   
 #>    <chr>                                                             <chr> <has>

@@ -47,7 +47,7 @@ make_random_replacement(
 
 ``` r
 replace_by <- make_random_replacement()
-auto_replace(raw_redaction_rules, replacement.f = replace_by)
+auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #> # A tibble: 10 × 3
 #>    If                                                                From  To   
 #>    <chr>                                                             <chr> <chr>
@@ -63,7 +63,7 @@ auto_replace(raw_redaction_rules, replacement.f = replace_by)
 #> 10 "[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… RSLS…
 
 replace_by <- make_random_replacement(replacement_space = LETTERS[1:10], replacement_size = 20)
-auto_replace(raw_redaction_rules, replacement.f = replace_by)
+auto_replace(raw_redaction_rules, replacement_func = replace_by)
 #> # A tibble: 10 × 3
 #>    If                                                                From  To   
 #>    <chr>                                                             <chr> <chr>

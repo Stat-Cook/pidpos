@@ -51,9 +51,9 @@
 - [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
   : Wrapper for custom replacement functions
 
-- [`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
-  [`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
-  [`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get-replacements.md)
+- [`get_replacement_cache()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)
+  [`key_lookup()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)
+  [`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)
   : Access the cache of replacements
 
 ## Folder level API

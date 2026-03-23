@@ -134,8 +134,8 @@
 <p>Should the user wish to not only identify, but redact the data, the report can be converted into redaction rules and apply replacements:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
-<span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement.f</span><span class="op">)</span></span>
+<span><span class="va">replacement_func</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement_func</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span></code></pre></div>
 <table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr class="header"><th align="left">If</th>
 <th align="left">From</th>

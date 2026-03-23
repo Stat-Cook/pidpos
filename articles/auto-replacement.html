@@ -123,7 +123,7 @@ initialise a replacement function.<br>
 In this example, we use <code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code> to
 generate five-character replacements drawn from upper-case letters:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">replacement.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">replacement_func</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span></span>
 <span>  replacement_size <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  replacement_space <span class="op">=</span> <span class="va">LETTERS</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -132,7 +132,7 @@ generate five-character replacements drawn from upper-case letters:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">101</span><span class="op">)</span></span>
 <span><span class="va">updated_replacement_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span></span>
 <span>  <span class="va">replacement_rules</span>,</span>
-<span>  <span class="va">replacement.f</span></span>
+<span>  <span class="va">replacement_func</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">updated_replacement_rules</span></span></code></pre></div>
@@ -248,10 +248,10 @@ of the allowed values have been taken:</p>
 <span><span class="co">#&gt; replacement_function wrapping&lt;All: FALSE&gt;:</span></span>
 <span><span class="co">#&gt;   ConsistentMapper&lt;6 of 100 values used&gt;</span></span></code></pre></div>
 <p>With utilities supplied to retrieve the underlying key-value pairs
-(see <code><a href="../reference/get-replacements.html">get_replacement_cache()</a></code>, <code><a href="../reference/get-replacements.html">key_lookup()</a></code> and
-<code><a href="../reference/get-replacements.html">value_lookup()</a></code>):</p>
+(see <code><a href="../reference/get_replacements.html">get_replacement_cache()</a></code>, <code><a href="../reference/get_replacements.html">key_lookup()</a></code> and
+<code><a href="../reference/get_replacements.html">value_lookup()</a></code>):</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get-replacements.html">get_replacement_cache</a></span><span class="op">(</span><span class="va">numeric_replacement</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_replacements.html">get_replacement_cache</a></span><span class="op">(</span><span class="va">numeric_replacement</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $Central</span></span>
 <span><span class="co">#&gt; [1] "41"</span></span>
 <span><span class="co">#&gt; </span></span>
