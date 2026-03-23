@@ -28,14 +28,14 @@
 #' }
 #'
 #' @export
-batched_redact <- function(frm, redact, n = NULL, .progress = T) {
+batched_redact <- function(frm, redact, n = NULL, .progress = TRUE) {
   UseMethod("batched_redact", redact)
 }
 
 #' @exportS3Method
 #'
 #' @importFrom dplyr across where mutate
-batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progress = T) {
+batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progress = TRUE) {
   .mutate <- function(frm) {
     dplyr::mutate(
       frm,
@@ -49,7 +49,7 @@ batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progre
 
 #' @exportS3Method
 #'
-batched_redact.default <- function(frm, redact, n = NULL, .progress = T) {
+batched_redact.default <- function(frm, redact, n = NULL, .progress = TRUE) {
   cached.f <- cached_redact_factory(redact)
   batched_redact(frm, cached.f, n = n, .progress = .progress)
 }

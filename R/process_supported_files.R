@@ -38,5 +38,5 @@ process_supported_files <- function(file_list,
         warning("Failed processing a data frame: ", e$message)
       }
     )
-  }, .progress = T)
+  }, .progress = TRUE)
 }

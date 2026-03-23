@@ -78,7 +78,7 @@ tag_documents <- function(docs,
   ids <- split(doc_ids, splits)
   
   tagged <- map2(jobs, ids, function(docs, ids)
-    tagger(docs, id), .progress = T)
+    tagger(docs, id), .progress = TRUE)
   bind_rows(tagged)
 }
 
@@ -197,7 +197,7 @@ pidpos <- function(frm,
                     filter = filter_to_proper_nouns,
                     chunk_size = 1e2,
                     to_ignore = c(),
-                    warn_if_missing = F,
+                    warn_if_missing = FALSE,
                     catch=F) {
   #' Proper Noun Detection
   #'

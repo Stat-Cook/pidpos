@@ -105,7 +105,7 @@ remove_if_exists <- function(frm, to_remove) {
 }
 
 
-divide_map <- function(frm, func, n = NULL, .progress = T) {
+divide_map <- function(frm, func, n = NULL, .progress = TRUE) {
   if (nrow(frm) == 0) {
     return(frm)
   }

@@ -17,7 +17,7 @@
 #'
 #' @export
 #' @seealso [report_to_redaction_rules()] [redact()]
-auto_replace <- function(frm, replacement.f, filter = F) {
+auto_replace <- function(frm, replacement.f, filter = FALSE) {
   if (filter) {
     frm <- dplyr::filter(frm, .data$From != .data$To)
   }

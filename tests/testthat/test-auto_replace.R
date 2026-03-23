@@ -54,7 +54,7 @@ test_that("make_random_replacement on numerics", {
 })
 
 test_that("make_random_replacement with repeats", {
-  .x <- sample(letters[1:3], 50, T)
+  .x <- sample(letters[1:3], 50, TRUE)
   replacement.f <- make_random_replacement()
 
   hashed <- replacement.f(.x)
@@ -63,7 +63,7 @@ test_that("make_random_replacement with repeats", {
 })
 
 test_that("make_random_replacement default", {
-  basic.replacement.f <- make_random_replacement(all = T)
+  basic.replacement.f <- make_random_replacement(all = TRUE)
   hashed <- basic.replacement.f(letters)
 
   expect_equal(
@@ -75,7 +75,7 @@ test_that("make_random_replacement default", {
 
 
 test_that("make_random_replacement - all with args", {
-  other.hash.f <- make_random_replacement(50, c(letters, LETTERS, 0:9), all = T)
+  other.hash.f <- make_random_replacement(50, c(letters, LETTERS, 0:9), all = TRUE)
   hashed.2 <- other.hash.f(letters)
 
   expect_equal(
@@ -86,7 +86,7 @@ test_that("make_random_replacement - all with args", {
 })
 
 test_that("make_random_replacement - all on numerics", {
-  other.hash.f <- make_random_replacement(5, c(letters, LETTERS, 0:9), all = T)
+  other.hash.f <- make_random_replacement(5, c(letters, LETTERS, 0:9), all = TRUE)
   .x <- 0:10
   hashed.3 <- other.hash.f(.x)
 
@@ -98,8 +98,8 @@ test_that("make_random_replacement - all on numerics", {
 })
 
 test_that("make_random_replacement - all with repeats", {
-  .x <- sample(letters[1:3], 50, T)
-  replacement.f <- make_random_replacement(all = T)
+  .x <- sample(letters[1:3], 50, TRUE)
+  replacement.f <- make_random_replacement(all = TRUE)
 
   hashed <- replacement.f(.x)
 
@@ -109,7 +109,7 @@ test_that("make_random_replacement - all with repeats", {
 
 test_that("auto_replace", {
   frm <- data.frame(
-    To = sample(LETTERS, 100, T)
+    To = sample(LETTERS, 100, TRUE)
   )
 
   basic.replacement.f <- make_random_replacement()

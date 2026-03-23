@@ -6,7 +6,7 @@
 #' @param ... Other arguments to control batching. See ... for details.
 #'
 #' @export
-redact <- function(object, redacter, in_batches = T, ...) {
+redact <- function(object, redacter, in_batches = TRUE, ...) {
   redacter <- parse_redacter(redacter)
 
   if (in_batches) {

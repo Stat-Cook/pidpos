@@ -78,7 +78,7 @@ print.ConsistentMapper <- function(x, ...) {
 #'
 #' @export
 make_replacement_function <- function(encoder, max_values,
-                                      all = F,
+                                      all = FALSE,
                                       elevate_warnings = FALSE) {
   mapper <- ConsistentMapper$new(encoder, max_values)
 

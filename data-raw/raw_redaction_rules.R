@@ -4,4 +4,4 @@
   raw_redaction_rules <- report_to_redaction_rules(report)
 }
 
-usethis::use_data(raw_redaction_rules, overwrite = T)
+usethis::use_data(raw_redaction_rules, overwrite = TRUE)

@@ -58,7 +58,7 @@ tag_documents <- function(docs,
   id_chunks <- split(doc_ids, splits)
 
   tagged <- map2(chunks, id_chunks, tagger,
-    .progress = T
+    .progress = TRUE
   )
 
   dplyr::bind_rows(tagged)
