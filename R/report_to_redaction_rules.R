@@ -45,6 +45,7 @@ report_to_redaction_rules <- function(report, path = NULL,
     type_error("`path` must be a string or NULL")
   }
 
+  If <- NA
 
   .frm <- report |>
     mutate(
