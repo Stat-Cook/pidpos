@@ -1,6 +1,6 @@
 ---
 title: 'pidpos: An R package for the detection of personally identifiable data'
-bibliography: ../JOSS_utilities/paper.bib
+bibliography: paper.bib
 output: 
   rmarkdown::html_vignette
 vignette: >

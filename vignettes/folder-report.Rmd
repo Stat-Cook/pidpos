@@ -137,7 +137,7 @@ redacted_rachell <- redact(rachell, replaced_rules)
 redacted_rachell
 ```
 
-And these redactions rules can be applied over the intial file structure in much the way it was constructed:
+And these redactions rules can be applied over the initial file structure in much the way it was constructed:
 
 ``` {r}
 redact_at_folder(data_path, replaced_rules)
