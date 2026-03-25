@@ -13,7 +13,7 @@ redact(object, redacter, in_batches = TRUE, ...)
 
 \item{in_batches}{Boolean flag - if True the supplied data will be processed in chunks.}
 
-\item{...}{Other arguments to control batching. See ... for details.}
+\item{...}{Other arguments to control batching.}
 }
 \description{
 Redact PID
