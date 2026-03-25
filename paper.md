@@ -108,11 +108,11 @@ head(prepared_replacements)
 
 | If                                                                               | From    | To         |
 |:---------------------------------------------------------------------------------|:--------|:-----------|
-| \[Scene: Central Perk, everyone is there.\]                                      | Central | VZAPEVADVV |
-| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | HCCRWERKMU |
-| Phoebe Buffay                                                                    | Phoebe  | MTGGJTRNUI |
-| Phoebe Buffay                                                                    | Buffay  | YADHUVRZWH |
-| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | TEISHXXKQA |
+| \[Scene: Central Perk, everyone is there.\]                                      | Central | EQDBKGTPNC |
+| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | YARKFBYZOZ |
+| Phoebe Buffay                                                                    | Phoebe  | XPMJIAOHSW |
+| Phoebe Buffay                                                                    | Buffay  | JQAFEQYLVB |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | XAKVUFWDAK |
 
 Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -128,11 +128,11 @@ head(redacted_data)
 
 | scene | utterance | speaker               | text                                                                                          |
 |------:|----------:|:----------------------|:----------------------------------------------------------------------------------------------|
-|     1 |         1 | Scene Directions      | \[Scene: VZAPEVADVV HCCRWERKMU, everyone is there.\]                                          |
-|     1 |         2 | MTGGJTRNUI YADHUVRZWH | Oh, TEISHXXKQA, QFPOMXYEYG, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | XSTDBORHLB REFJLIAUFK | Yeah.                                                                                         |
-|     1 |         4 | TEISHXXKQA REFJLIAUFK | Sure. Yeah.                                                                                   |
-|     1 |         5 | TYHFYFWVBR EKPSSKXTSJ | So, who’s the guy?                                                                            |
+|     1 |         1 | Scene Directions      | \[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.\]                                          |
+|     1 |         2 | XPMJIAOHSW JQAFEQYLVB | Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party? |
+|     1 |         3 | WKWRASBHEB PQVJAKTCDP | Yeah.                                                                                         |
+|     1 |         4 | XAKVUFWDAK PQVJAKTCDP | Sure. Yeah.                                                                                   |
+|     1 |         5 | IRGPSNTIXK MMXCBEYDQK | So, who’s the guy?                                                                            |
 
 # Multiple file API
 

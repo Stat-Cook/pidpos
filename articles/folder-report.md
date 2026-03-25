@@ -942,8 +942,8 @@ redacted_rachell
 #> 5 EGSLQEQMFA AMREWKADGW      8       3     1         5
 ```
 
-And these redactions rules can be applied over the intial file structure
-in much the way it was constructed:
+And these redactions rules can be applied over the initial file
+structure in much the way it was constructed:
 
 ``` r
 redact_at_folder(data_path, replaced_rules)

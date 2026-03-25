@@ -25,4 +25,4 @@ redact(object, redacter, in_batches = TRUE, ...)
 
 - ...:
 
-  Other arguments to control batching. See ... for details.
+  Other arguments to control batching.

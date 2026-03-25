@@ -45,11 +45,13 @@
     <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/Stat-Cook/pidpos/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -65,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Reporting on every file in a folder</h1>
             
       
-
+      <small class="dont-index">Source: <a href="https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/vignettes/folder-report.Rmd" class="external-link"><code>vignettes/folder-report.Rmd</code></a></small>
       <div class="d-none name"><code>folder-report.Rmd</code></div>
     </div>
 
@@ -1016,7 +1018,7 @@ used in <code>redact</code>:</p>
 <span><span class="co">#&gt; 3 EGSLQEQMFA AMREWKADGW      8       3     1         3</span></span>
 <span><span class="co">#&gt; 4 RZBZJRESTN BUEFSQXHVH      8       3     1         4</span></span>
 <span><span class="co">#&gt; 5 EGSLQEQMFA AMREWKADGW      8       3     1         5</span></span></code></pre></div>
-<p>And these redactions rules can be applied over the intial file
+<p>And these redactions rules can be applied over the initial file
 structure in much the way it was constructed:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/redact_at_folder.html">redact_at_folder</a></span><span class="op">(</span><span class="va">data_path</span>, <span class="va">replaced_rules</span><span class="op">)</span></span>

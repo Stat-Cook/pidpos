@@ -11,6 +11,9 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/DESCRIPTION)
+
 Cook R, Assaduzaman M, Jones S (2026). *pidpos: Detection of Personal
 Data via Natural Language Processing*. R package version 0.1.0,
 <https://stat-cook.github.io/pidpos/>.
