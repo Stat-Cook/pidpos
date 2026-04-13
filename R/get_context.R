@@ -34,8 +34,6 @@ get_context <- function(sentence, token,
 }
 
 
-
-
 set_context_window <- function(x) {
   #' Set the context window size for the `get_context` function.
   #'

@@ -22,29 +22,28 @@
 #' @seealso \code{\link[udpipe]{udpipe}}
 #'
 #' @export
-pidpos_setup <- function(model_storage = c("package", "project", "temporary", "env")){
+pidpos_setup <- function(model_storage = c("package", "project", "temporary", "env")) {
   model_storage <- match.arg(model_storage)
-  
-  caching <- switch(model_storage, 
-         package = TRUE,
-         project = TRUE,
-         temporary = TRUE,
-         env = FALSE
+
+  caching <- switch(model_storage,
+    package = TRUE,
+    project = TRUE,
+    temporary = TRUE,
+    env = FALSE
   )
-  
-  if (model_storage == "package"){
+
+  if (model_storage == "package") {
     enable_package_models()
   }
-  
-  if (model_storage == "project"){
+
+  if (model_storage == "project") {
     enable_local_models()
   }
-  
-  if (model_storage == "temporary"){
+
+  if (model_storage == "temporary") {
     enable_temp_models()
   }
-  
+
   options(pidpos_caching = caching)
   options(pidpos_model_storage = model_storage)
 }
-

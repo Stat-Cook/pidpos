@@ -67,9 +67,8 @@ enable_package_models <- function() {
 #' @return The path to the model folder.
 #' @keywords internal
 enable_temp_models <- function() {
-
   temp_dir <- tempdir()
-  
+
   if (!dir.exists(temp_dir)) {
     if (!dir.create(temp_dir, recursive = TRUE)) {
       stop("Could not create model folder: ", temp_dir)
