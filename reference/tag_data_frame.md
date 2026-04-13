@@ -48,6 +48,7 @@ A list with two elements:
 ## Examples
 
 ``` r
+# \donttest{
 example.data <- head(the_one_in_massapequa, 20)
 
 tag_data_frame(example.data, tagger = "english-ewt")
@@ -86,4 +87,5 @@ tag_data_frame(example.data, tagger = lines_tagger)
 #> ℹ With name: 1.
 #> Caused by error:
 #> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
+# }
 ```

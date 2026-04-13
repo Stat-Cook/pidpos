@@ -23,6 +23,7 @@ A tibble containing only rows where `upos == "PROPN"`, with columns
 ## Examples
 
 ``` r
+# \donttest{
 example.data <- head(the_one_in_massapequa, 20)
 tagged <- tag_data_frame(example.data, tagger = "english-ewt")
 #> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
@@ -31,4 +32,5 @@ tagged <- tag_data_frame(example.data, tagger = "english-ewt")
 #> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 filter_to_proper_nouns(tagged$`AllTags`)
 #> Error: object 'tagged' not found
+# }
 ```

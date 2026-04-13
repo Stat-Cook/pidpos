@@ -40,6 +40,7 @@ A tibble (`tbl_df`) with columns depending on `tagger`s output.
 
 ``` r
 # Sample text
+# \donttest{
 example_text <- c(
   "This is a test sentence.",
   "Here is another sentence."
@@ -68,4 +69,5 @@ lines_result <- pidpos:::tag_documents(example_text, tagger = lines_tagger)
 #> ℹ With name: 1.
 #> Caused by error:
 #> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
+# }
 ```

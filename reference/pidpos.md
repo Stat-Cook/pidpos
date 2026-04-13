@@ -101,6 +101,7 @@ project cache can be done with
 ## Examples
 
 ``` r
+# \donttest{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa, 50)
 try(
@@ -140,4 +141,5 @@ pidpos(example.data,
 #> ℹ With name: 1.
 #> Caused by error:
 #> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
+# }
 ```

@@ -67,6 +67,7 @@ for control of the configuration environment.
 ## Examples
 
 ``` r
+# \donttest{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 docs <- c("This is a test.", "Another sentence.")
@@ -82,4 +83,5 @@ gum_tagger(docs)
 lines_tagger <- udpipe_factory("english-lines")
 lines_tagger(docs)
 #> Error: Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
+# }
 ```

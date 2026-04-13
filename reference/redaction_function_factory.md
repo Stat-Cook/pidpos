@@ -18,6 +18,7 @@ redaction_function_factory(rules.frm)
 ## Examples
 
 ``` r
+# \donttest{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa)
 
@@ -38,4 +39,5 @@ redaction_func <- redaction_function_factory(redaction_rules)
 
 redaction_func(example.data)
 #> Error in redaction_func(example.data): could not find function "redaction_func"
+# }
 ```

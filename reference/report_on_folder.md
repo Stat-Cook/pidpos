@@ -68,7 +68,7 @@ report_on_folder(
 ## Examples
 
 ``` r
-{
+# \donttest{
   input_dir <- withr::local_tempdir()
   output_dir <- withr::local_tempdir()
 
@@ -86,11 +86,11 @@ report_on_folder(
   )
 
   paths <- report_on_folder(input_dir, report_dir = output_dir)
+#> Warning: Failed processing a data frame: In index: 1.
 
   paths
-}
-#> Warning: Failed processing a data frame: In index: 1.
 #> $example
 #> [1] "Failed processing a data frame: In index: 1."
 #> 
+# }
 ```
