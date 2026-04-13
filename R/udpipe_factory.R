@@ -40,12 +40,13 @@
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pidpos_env$model_folder,
                            udpipe_repo = pidpos_env$udpipe_repo) {
-  
   if (!getOption("pidpos_caching") & is.character(model)){
-    stop("pidpos is configured not to cache models - either select a ",
-         "caching option in `pidpos_setup()` or load a pretrained udpipe model.")
+    stop(
+      "pidpos is configured not to cache models - either select a ",
+      "caching option in `pidpos_setup()` or load a pretrained udpipe model."
+    )
   }
-  
+
   function(docs, doc_ids = NULL) {
     if (!is.character(docs) || length(docs) == 0) {
       type_error("`docs` must be a non-empty character vector.")
@@ -55,7 +56,7 @@ udpipe_factory <- function(model = "english-ewt",
 
     utf8_docs <- utf8::utf8_encode(docs)
     names(utf8_docs) <- doc_ids
-    
+
     if (!inherits(model, "udpipe_model")) check_model_download_consent(model)
 
     tagged <- tryCatch(
@@ -97,29 +98,35 @@ udpipe_factory <- function(model = "english-ewt",
 }
 
 
-check_model_download_consent <- function(model){
-  if (getOption("pidpos_download_approved")) return(invisible(TRUE))
+check_model_download_consent <- function(model) {
+  if (getOption("pidpos_download_approved")) {
+    return(invisible(TRUE))
+  }
 
   sys.approval <- as.logical(Sys.getenv("PIDPOS_DOWNLOAD_APPROVED", "false"))
-  if (isTRUE(sys.approval)) return(invisible(TRUE))
-  
-  if (getOption("pidpos_caching")){
-    
+  if (isTRUE(sys.approval)) {
+    return(invisible(TRUE))
+  }
+
+  if (getOption("pidpos_caching")) {
     if (!interactive()) {
       stop("Model download required but session is non-interactive. ",
-           "Set options(pidpos_download_approved = TRUE) or ",
-           "env var PIDPOS_DOWNLOAD_APPROVED=true.", call. = FALSE)
+        "Set options(pidpos_download_approved = TRUE) or ",
+        "env var PIDPOS_DOWNLOAD_APPROVED=true.",
+        call. = FALSE
+      )
     }
-    
+
     answer <- readline(paste0("pidpos needs to download '", model, "'. Consent? [y/n]: "))
     if (!tolower(trimws(answer)) %in% c("y", "yes")) {
       stop("Download cancelled. Models can be used manually via ",
-           "`udpipe::udpipe_download_model()` ",
-           "and `udpipe::udpipe_load_model()`",
-           call. = FALSE)
+        "`udpipe::udpipe_download_model()` ",
+        "and `udpipe::udpipe_load_model()`",
+        call. = FALSE
+      )
     }
     options(pidpos_download_approved = TRUE)
   }
-  
+
   invisible(TRUE)
 }

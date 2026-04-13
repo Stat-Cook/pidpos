@@ -19,7 +19,7 @@ pidpos_env <- new.env()
   reinstate_default_reader()
 
   pidpos_env$udpipe_repo <- pidpos_env$allowed_repos[["2.5"]]
-  
+
   options(pidpos_download_approved = FALSE)
   pidpos_setup()
 
