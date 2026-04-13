@@ -50,6 +50,6 @@ lines_tagger <- udpipe_factory("english-lines")
 lines_tagger(docs)
 }
 \seealso{
-\code{\link[=enable_local_models]{enable_local_models()}}, \code{\link[=enable_package_models]{enable_package_models()}} and
+\code{\link[=pidpos_setup]{pidpos_setup()}} and
 \code{\link[=set_udpipe_version]{set_udpipe_version()}} for control of the configuration environment.
 }

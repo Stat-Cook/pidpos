@@ -15,6 +15,3 @@ Character. The udpipe model repository.
 \description{
 Set the udpipe model repository version.
 }
-\examples{
-set_udpipe_version("2.4")
-}

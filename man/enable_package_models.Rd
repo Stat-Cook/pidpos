@@ -12,6 +12,4 @@ The path to the model folder.
 \description{
 Intended if you want to share udpipe models between different R projects.
 }
-\examples{
-enable_package_models()
-}
+\keyword{internal}
