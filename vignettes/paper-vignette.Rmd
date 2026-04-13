@@ -11,7 +11,7 @@ vignette: >
 
 ``` {r setup, echo=F}
 knitr::opts_chunk$set(collapse = T, comment = "#>", warning = F)
-options(tibble.print_min = 4, tibble.print_max = 4)
+options(tibble.print_min = 4, tibble.print_max = 4, pidpos_download_approved = TRUE)
 ```
 
 # Summary
@@ -44,13 +44,16 @@ The intended workflow breaks down into three stages:
 
 To illustrate this, we include a subset of the `friends` package data set:
 
-``` {r load, warning = F, message = F, results="hide"}
+``` {r load, warning = F, message = F, results="hide", eval=F}
 library(pidpos)
 example_data <- head(the_one_in_massapequa, 20)
 example_data
 ```
 
 ``` {r dataset, warning = F, message = F, echo=F}
+library(pidpos)
+options(pidpos_download_approved = TRUE)
+example_data <- head(the_one_in_massapequa, 20)
 example_data
 ```
 

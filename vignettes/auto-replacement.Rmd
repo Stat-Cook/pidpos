@@ -19,7 +19,7 @@ library(pidpos)
 
 .tmp <- tempdir()
 pidpos:::set_model_folder(.tmp)
-
+options(pidpos_download_approved = TRUE)
 {
   model <- "english-ewt-ud-2.5-191206.udpipe"
   to <- file.path(.tmp, model)

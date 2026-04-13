@@ -36,10 +36,9 @@ reference:
 - title: "Package Utilities"
   desc: > 
   contents:
+  - pidpos_setup
   - browse_model_location
   - browse_udpipe_repo
-  - enable_local_models
-  - enable_package_models 
   - register_reader
   - set_udpipe_version
   - reinstate_default_reader
