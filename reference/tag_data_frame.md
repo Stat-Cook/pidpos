@@ -48,44 +48,20 @@ A list with two elements:
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 example.data <- head(the_one_in_massapequa, 20)
 
 tag_data_frame(example.data, tagger = "english-ewt")
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 tag_data_frame(example.data, tagger = "english-gum")
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 tag_data_frame(example.data, tagger = "english-lines")
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 ewt_tagger <- udpipe_factory("english-ewt")
 tag_data_frame(example.data, tagger = ewt_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 gum_tagger <- udpipe_factory("english-gum")
 tag_data_frame(example.data, tagger = gum_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 lines_tagger <- udpipe_factory("english-lines")
 tag_data_frame(example.data, tagger = lines_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
-# }
+} # }
 ```

@@ -101,30 +101,17 @@ project cache can be done with
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa, 50)
 try(
   pidpos(example.data, to_ignore = c("scene", "utterance"))
 )
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE) : 
-#>   ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 tag_ewt <- udpipe_factory("english-ewt")
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 
 filter_to_long_proper_nouns <- function(frm) {
@@ -137,9 +124,5 @@ pidpos(example.data,
   to_ignore = c("scene", "utterance"),
   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 )
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
-# }
+} # }
 ```

@@ -40,7 +40,7 @@ A tibble (`tbl_df`) with columns depending on `tagger`s output.
 
 ``` r
 # Sample text
-# \donttest{
+if (FALSE) { # \dontrun{
 example_text <- c(
   "This is a test sentence.",
   "Here is another sentence."
@@ -49,25 +49,13 @@ example_text <- c(
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 ewt_result <- pidpos:::tag_documents(example_text, tagger = ewt_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 # Create a tagger for the English GUM model
 gum_tagger <- udpipe_factory("english-gum")
 gum_result <- pidpos:::tag_documents(example_text, tagger = gum_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
 lines_result <- pidpos:::tag_documents(example_text, tagger = lines_tagger)
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
-# }
+} # }
 ```

@@ -67,21 +67,18 @@ for control of the configuration environment.
 ## Examples
 
 ``` r
-# \donttest{
+if (FALSE) { # \dontrun{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 docs <- c("This is a test.", "Another sentence.")
 ewt_tagger(docs)
-#> Error: Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 # Create a tagger for the English GUM model
 gum_tagger <- udpipe_factory("english-gum")
 gum_tagger(docs)
-#> Error: Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
 lines_tagger(docs)
-#> Error: Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
-# }
+} # }
 ```

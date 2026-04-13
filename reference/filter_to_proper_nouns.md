@@ -20,17 +20,21 @@ filter_to_proper_nouns(tag_frm)
 A tibble containing only rows where `upos == "PROPN"`, with columns
 `ID`, `Token`, and `Sentence`.
 
+## See also
+
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
+
 ## Examples
 
 ``` r
-# \donttest{
-example.data <- head(the_one_in_massapequa, 20)
-tagged <- tag_data_frame(example.data, tagger = "english-ewt")
-#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
-#> ℹ With name: 1.
-#> Caused by error:
-#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
-filter_to_proper_nouns(tagged$`AllTags`)
-#> Error: object 'tagged' not found
-# }
+tagged <- data.frame(
+  upos = c("PROPN", "VERB", "PROPN"),
+  ID = c("doc1", "doc1", "doc2"),
+  Token = c("London", "visited", "Paris"),
+  Sentence = c("London was visited.", "London was visited.", "Paris is nice.")
+)
+filter_to_proper_nouns(tagged)
+#>     ID  Token            Sentence
+#> 1 doc1 London London was visited.
+#> 2 doc2  Paris      Paris is nice.
 ```
