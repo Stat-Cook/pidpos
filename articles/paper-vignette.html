@@ -145,6 +145,12 @@ package data set:</p>
 <p>First, generate a PID report:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-ewt-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-ewt-ud-2.5-191206.udpipe</span></span>
+<span><span class="co">#&gt;  - This model has been trained on version 2.5 of data from https://universaldependencies.org</span></span>
+<span><span class="co">#&gt;  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0</span></span>
+<span><span class="co">#&gt;  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.</span></span>
+<span><span class="co">#&gt;  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')</span></span>
+<span><span class="co">#&gt; Downloading finished, model stored at '/home/runner/.cache/R/pidpos/english-ewt-ud-2.5-191206.udpipe'</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   ID                Token   Sentence         Document Repeats `Affected Columns`</span></span>

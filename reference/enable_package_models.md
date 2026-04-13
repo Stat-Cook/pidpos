@@ -12,10 +12,3 @@ enable_package_models()
 ## Value
 
 The path to the model folder.
-
-## Examples
-
-``` r
-enable_package_models()
-#> [1] "/home/runner/.cache/R/pidpos"
-```

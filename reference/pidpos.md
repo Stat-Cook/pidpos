@@ -106,59 +106,24 @@ example.data <- head(the_one_in_massapequa, 50)
 try(
   pidpos(example.data, to_ignore = c("scene", "utterance"))
 )
-#> # A tibble: 52 × 6
-#>    ID                Token   Sentence        Document Repeats `Affected Columns`
-#>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
-#>  1 Col:text Row:1    Central [Scene: Centra… [Scene:…       1 `text`            
-#>  2 Col:text Row:1    Perk    [Scene: Centra… [Scene:…       1 `text`            
-#>  3 Col:speaker Row:2 Phoebe  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  4 Col:speaker Row:2 Buffay  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  5 Col:text Row:2    Ross    Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  6 Col:text Row:2    Mon     Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  7 Col:speaker Row:3 Monica  Monica Geller   Monica …      12 `speaker`         
-#>  8 Col:speaker Row:3 Geller  Monica Geller   Monica …      12 `speaker`         
-#>  9 Col:speaker Row:4 Ross    Ross Geller     Ross Ge…       8 `speaker`         
-#> 10 Col:speaker Row:4 Geller  Ross Geller     Ross Ge…       8 `speaker`         
-#> # ℹ 42 more rows
+#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE) : 
+#>   ℹ In index: 1.
+#> ℹ With name: 1.
+#> Caused by error:
+#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
-#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-gum-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-gum-ud-2.5-191206.udpipe
-#>  - This model has been trained on version 2.5 of data from https://universaldependencies.org
-#>  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
-#>  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
-#>  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-#> Downloading finished, model stored at '/home/runner/.cache/R/pidpos/english-gum-ud-2.5-191206.udpipe'
-#> # A tibble: 46 × 6
-#>    ID                Token   Sentence        Document Repeats `Affected Columns`
-#>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
-#>  1 Col:text Row:1    Central [Scene: Centra… [Scene:…       1 `text`            
-#>  2 Col:text Row:1    Perk    [Scene: Centra… [Scene:…       1 `text`            
-#>  3 Col:speaker Row:2 Phoebe  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  4 Col:speaker Row:2 Buffay  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  5 Col:text Row:2    Ross    Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  6 Col:text Row:2    Mon     Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  7 Col:speaker Row:3 Monica  Monica Geller   Monica …      12 `speaker`         
-#>  8 Col:speaker Row:3 Geller  Monica Geller   Monica …      12 `speaker`         
-#>  9 Col:speaker Row:4 Ross    Ross Geller     Ross Ge…       8 `speaker`         
-#> 10 Col:speaker Row:4 Geller  Ross Geller     Ross Ge…       8 `speaker`         
-#> # ℹ 36 more rows
+#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
+#> ℹ With name: 1.
+#> Caused by error:
+#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 tag_ewt <- udpipe_factory("english-ewt")
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
-#> # A tibble: 52 × 6
-#>    ID                Token   Sentence        Document Repeats `Affected Columns`
-#>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
-#>  1 Col:text Row:1    Central [Scene: Centra… [Scene:…       1 `text`            
-#>  2 Col:text Row:1    Perk    [Scene: Centra… [Scene:…       1 `text`            
-#>  3 Col:speaker Row:2 Phoebe  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  4 Col:speaker Row:2 Buffay  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  5 Col:text Row:2    Ross    Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  6 Col:text Row:2    Mon     Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  7 Col:speaker Row:3 Monica  Monica Geller   Monica …      12 `speaker`         
-#>  8 Col:speaker Row:3 Geller  Monica Geller   Monica …      12 `speaker`         
-#>  9 Col:speaker Row:4 Ross    Ross Geller     Ross Ge…       8 `speaker`         
-#> 10 Col:speaker Row:4 Geller  Ross Geller     Ross Ge…       8 `speaker`         
-#> # ℹ 42 more rows
+#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
+#> ℹ With name: 1.
+#> Caused by error:
+#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 
 filter_to_long_proper_nouns <- function(frm) {
@@ -171,18 +136,8 @@ pidpos(example.data,
   to_ignore = c("scene", "utterance"),
   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 )
-#> # A tibble: 52 × 6
-#>    ID                Token   Sentence        Document Repeats `Affected Columns`
-#>  * <glue>            <chr>   <chr>           <chr>      <int> <chr>             
-#>  1 Col:text Row:1    Central [Scene: Centra… [Scene:…       1 `text`            
-#>  2 Col:text Row:1    Perk    [Scene: Centra… [Scene:…       1 `text`            
-#>  3 Col:speaker Row:2 Phoebe  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  4 Col:speaker Row:2 Buffay  Phoebe Buffay   Phoebe …       5 `speaker`         
-#>  5 Col:text Row:2    Ross    Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  6 Col:text Row:2    Mon     Oh, Ross, Mon,… Oh, Ros…       1 `text`            
-#>  7 Col:speaker Row:3 Monica  Monica Geller   Monica …      12 `speaker`         
-#>  8 Col:speaker Row:3 Geller  Monica Geller   Monica …      12 `speaker`         
-#>  9 Col:speaker Row:4 Ross    Ross Geller     Ross Ge…       8 `speaker`         
-#> 10 Col:speaker Row:4 Geller  Ross Geller     Ross Ge…       8 `speaker`         
-#> # ℹ 42 more rows
+#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
+#> ℹ With name: 1.
+#> Caused by error:
+#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 ```

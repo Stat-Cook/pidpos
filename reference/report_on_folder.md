@@ -89,7 +89,8 @@ report_on_folder(
 
   paths
 }
+#> Warning: Failed processing a data frame: In index: 1.
 #> $example
-#> [1] "/tmp/RtmpaO95Ns/file1cfc66bf9529/example.csv"
+#> [1] "Failed processing a data frame: In index: 1."
 #> 
 ```

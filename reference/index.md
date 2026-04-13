@@ -67,14 +67,12 @@
 
 ## Package Utilities
 
+- [`pidpos_setup()`](https://stat-cook.github.io/pidpos/reference/pidpos_setup.md)
+  : Configure model storage for pidpos
 - [`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md)
   : Browse user to folder for UDPipe models.
 - [`browse_udpipe_repo()`](https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.md)
   : Open github link to the 'english-ewt-2.5' UD model.
-- [`enable_local_models()`](https://stat-cook.github.io/pidpos/reference/enable_local_models.md)
-  : Set the model folder to a local 'pidpos_models' sub-folder.
-- [`enable_package_models()`](https://stat-cook.github.io/pidpos/reference/enable_package_models.md)
-  : Set the model folder to the package data folder.
 - [`register_reader()`](https://stat-cook.github.io/pidpos/reference/register_reader.md)
   : Add a reader function for a specific file extension.
 - [`set_udpipe_version()`](https://stat-cook.github.io/pidpos/reference/set_udpipe_version.md)

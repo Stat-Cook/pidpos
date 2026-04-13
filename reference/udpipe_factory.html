@@ -96,7 +96,7 @@ function for each token.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="enable_local_models.html">enable_local_models()</a></code>, <code><a href="enable_package_models.html">enable_package_models()</a></code> and
+    <div class="dont-index"><p><code><a href="pidpos_setup.html">pidpos_setup()</a></code> and
 <code><a href="set_udpipe_version.html">set_udpipe_version()</a></code> for control of the configuration environment.</p></div>
     </div>
 
@@ -106,53 +106,17 @@ function for each token.</p>
 <span class="r-in"><span><span class="va">ewt_tagger</span> <span class="op">&lt;-</span> <span class="fu">udpipe_factory</span><span class="op">(</span><span class="st">"english-ewt"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">docs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"This is a test."</span>, <span class="st">"Another sentence."</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">ewt_tagger</span><span class="op">(</span><span class="va">docs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ID    Token    Sentence     upos  paragraph_id sentence_id start   end term_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> doc1  This     This is a t… PRON             1           1     1     4       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> doc1  is       This is a t… AUX              1           1     6     7       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> doc1  a        This is a t… DET              1           1     9     9       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> doc1  test     This is a t… NOUN             1           1    11    14       4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> doc1  .        This is a t… PUNCT            1           1    15    15       5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> doc2  Another  Another sen… DET              1           1     1     7       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> doc2  sentence Another sen… NOUN             1           1     9    16       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> doc2  .        Another sen… PUNCT            1           1    17    17       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: token_id &lt;chr&gt;, lemma &lt;chr&gt;, xpos &lt;chr&gt;, feats &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   head_token_id &lt;chr&gt;, dep_rel &lt;chr&gt;, deps &lt;chr&gt;, misc &lt;chr&gt;, TokenNo &lt;dbl&gt;</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a tagger for the English GUM model</span></span></span>
 <span class="r-in"><span><span class="va">gum_tagger</span> <span class="op">&lt;-</span> <span class="fu">udpipe_factory</span><span class="op">(</span><span class="st">"english-gum"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">gum_tagger</span><span class="op">(</span><span class="va">docs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ID    Token    Sentence     upos  paragraph_id sentence_id start   end term_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> doc1  This     This is a t… PRON             1           1     1     4       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> doc1  is       This is a t… AUX              1           1     6     7       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> doc1  a        This is a t… DET              1           1     9     9       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> doc1  test     This is a t… NOUN             1           1    11    14       4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> doc1  .        This is a t… PUNCT            1           1    15    15       5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> doc2  Another  Another sen… DET              1           1     1     7       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> doc2  sentence Another sen… NOUN             1           1     9    16       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> doc2  .        Another sen… PUNCT            1           1    17    17       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: token_id &lt;chr&gt;, lemma &lt;chr&gt;, xpos &lt;chr&gt;, feats &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   head_token_id &lt;chr&gt;, dep_rel &lt;chr&gt;, deps &lt;chr&gt;, misc &lt;chr&gt;, TokenNo &lt;dbl&gt;</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a tagger for the English LINES model</span></span></span>
 <span class="r-in"><span><span class="va">lines_tagger</span> <span class="op">&lt;-</span> <span class="fu">udpipe_factory</span><span class="op">(</span><span class="st">"english-lines"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">lines_tagger</span><span class="op">(</span><span class="va">docs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 18</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ID    Token    Sentence     upos  paragraph_id sentence_id start   end term_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> doc1  This     This is a t… PRON             1           1     1     4       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> doc1  is       This is a t… AUX              1           1     6     7       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> doc1  a        This is a t… DET              1           1     9     9       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> doc1  test     This is a t… NOUN             1           1    11    14       4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> doc1  .        This is a t… PUNCT            1           1    15    15       5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> doc2  Another  Another sen… ADJ              1           1     1     7       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> doc2  sentence Another sen… NOUN             1           1     9    16       2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> doc2  .        Another sen… PUNCT            1           1    17    17       3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: token_id &lt;chr&gt;, lemma &lt;chr&gt;, xpos &lt;chr&gt;, feats &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   head_token_id &lt;chr&gt;, dep_rel &lt;chr&gt;, deps &lt;chr&gt;, misc &lt;chr&gt;, TokenNo &lt;dbl&gt;</span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

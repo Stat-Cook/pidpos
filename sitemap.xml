@@ -24,6 +24,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/custom_tagger.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/enable_local_models.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/enable_package_models.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/enable_temp_models.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/file_not_found_error.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/filter_to_proper_nouns.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/find_supported_files.html</loc></url>
@@ -39,6 +40,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/merge_redactions.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/parse_redacter.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/pidpos.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/pidpos_setup.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/prepare_redactions.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/raw_redaction_rules.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/redact.html</loc></url>

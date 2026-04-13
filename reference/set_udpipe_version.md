@@ -18,9 +18,3 @@ set_udpipe_version(version = c("2.5", "2.4", "2.3"))
 ## Value
 
 Character. The udpipe model repository.
-
-## Examples
-
-``` r
-set_udpipe_version("2.4")
-```

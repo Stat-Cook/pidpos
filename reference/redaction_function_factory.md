@@ -23,21 +23,19 @@ example.data <- head(the_one_in_massapequa)
 
 raw_rules <- pidpos(example.data) |>
   report_to_redaction_rules()
+#> Error in map2(chunks, id_chunks, tagger, .progress = TRUE): ℹ In index: 1.
+#> ℹ With name: 1.
+#> Caused by error:
+#> ! Model download required but session is non-interactive. Set options(pidpos_download_approved = TRUE) or env var PIDPOS_DOWNLOAD_APPROVED=true.
 
 redaction_rules <- auto_replace(raw_rules,
   replacement_func = make_random_replacement()
 )
+#> Error: object 'raw_rules' not found
 
 redaction_func <- redaction_function_factory(redaction_rules)
+#> Error: object 'redaction_rules' not found
 
 redaction_func(example.data)
-#> # A tibble: 6 × 4
-#>   scene utterance speaker                                                  text 
-#>   <int>     <int> <chr>                                                    <chr>
-#> 1     1         1 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
-#> 2     1         2 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
-#> 3     1         3 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
-#> 4     1         4 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
-#> 5     1         5 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
-#> 6     1         6 "c(\"c(\\\"c(\\\\\\\"Scene Directions\\\\\\\", \\\\\\\"… "c(\…
+#> Error in redaction_func(example.data): could not find function "redaction_func"
 ```
