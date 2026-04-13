@@ -14,7 +14,6 @@ set_model_folder <- function(path) {
 #'
 #' @return The path to the model folder.
 #'
-#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -25,6 +24,7 @@ set_model_folder <- function(path) {
 #' enable_local_models(sub_folder = FALSE)
 #' }
 #'
+#' @keywords internal
 enable_local_models <- function(sub_folder = TRUE) {
   local_dir <- getwd()
   if (sub_folder) {
@@ -47,9 +47,7 @@ enable_local_models <- function(sub_folder = TRUE) {
 #' Intended if you want to share udpipe models between different R projects.
 #'
 #' @return The path to the model folder.
-#' @export
-#' @examples
-#' enable_package_models()
+#' @keywords internal
 enable_package_models <- function() {
   cache_dir <- tools::R_user_dir("pidpos", which = "cache")
 
@@ -62,15 +60,30 @@ enable_package_models <- function() {
 }
 
 
+#' Set the model folder to a temporary directory.
+#'
+#' Intended if you want to use one off copies of the models
+#'
+#' @return The path to the model folder.
+#' @keywords internal
+enable_temp_models <- function() {
+
+  temp_dir <- tempdir()
+  
+  if (!dir.exists(temp_dir)) {
+    if (!dir.create(temp_dir, recursive = TRUE)) {
+      stop("Could not create model folder: ", temp_dir)
+    }
+  }
+  set_model_folder(temp_dir)
+}
+
+
 #' Set the udpipe model repository version.
 #'
 #' @param version Character. The udpipe model version to use. One of "2.5", "2.4", or "2.3".
 #'
 #' @return Character. The udpipe model repository.
-#'
-#' @examples
-#' set_udpipe_version("2.4")
-#' @export
 #'
 set_udpipe_version <- function(version = c("2.5", "2.4", "2.3")) {
   pkg_env <- getNamespace("pidpos")

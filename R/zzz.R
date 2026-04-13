@@ -19,8 +19,9 @@ pidpos_env <- new.env()
   reinstate_default_reader()
 
   pidpos_env$udpipe_repo <- pidpos_env$allowed_repos[["2.5"]]
-
-  enable_package_models()
+  
+  options(pidpos_download_approved = FALSE)
+  pidpos_setup()
 
   invisible()
 }

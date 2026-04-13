@@ -8,7 +8,7 @@
 #' @param model_dir Character. Directory where UDPipe models are stored.
 #' @param udpipe_repo Character. URL or path of the UDPipe model repository.
 #'
-#' @seealso [enable_local_models()], [enable_package_models()] and
+#' @seealso [pidpos_setup()] and
 #'   [set_udpipe_version()] for control of the configuration environment.
 #' @return A function that takes a character vector of documents and returns a [tibble]
 #'
@@ -40,6 +40,12 @@
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pidpos_env$model_folder,
                            udpipe_repo = pidpos_env$udpipe_repo) {
+  
+  if (!option("pidpos_caching") & is.character(model)){
+    stop("pidpos is configured not to cache models - either select a ",
+         "caching option in `pidpos_setup()` or load a pretrained udpipe model.")
+  }
+  
   function(docs, doc_ids = NULL) {
     if (!is.character(docs) || length(docs) == 0) {
       type_error("`docs` must be a non-empty character vector.")
@@ -49,6 +55,8 @@ udpipe_factory <- function(model = "english-ewt",
 
     utf8_docs <- utf8::utf8_encode(docs)
     names(utf8_docs) <- doc_ids
+    
+    if (!inherits(model, "udpipe_model")) check_model_download_consent(model)
 
     tagged <- tryCatch(
       udpipe::udpipe(
@@ -86,4 +94,32 @@ udpipe_factory <- function(model = "english-ewt",
       all_of(colnames(result))
     )
   }
+}
+
+
+check_model_download_consent <- function(model){
+  if (getOption("pidpos_download_approved")) return(invisible(TRUE))
+
+  sys.approval <- as.logical(Sys.getenv("PIDPOS_DOWNLOAD_APPROVED", "false"))
+  if (isTRUE(sys.approval)) return(invisible(TRUE))
+  
+  if (getOption("pidpos_caching")){
+    
+    if (!interactive()) {
+      stop("Model download required but session is non-interactive. ",
+           "Set options(pidpos_download_approved = TRUE) or ",
+           "env var PIDPOS_DOWNLOAD_APPROVED=true.", call. = FALSE)
+    }
+    
+    answer <- readline(paste0("pidpos needs to download '", model, "'. Consent? [y/n]: "))
+    if (!tolower(trimws(answer)) %in% c("y", "yes")) {
+      stop("Download cancelled. Models can be used manually via ",
+           "`udpipe::udpipe_download_model()` ",
+           "and `udpipe::udpipe_load_model()`",
+           call. = FALSE)
+    }
+    options(pidpos_download_approved = TRUE)
+  }
+  
+  invisible(TRUE)
 }
