@@ -1,4 +1,4 @@
-local({
+withr::with_options(list(pidpos_download_approved = TRUE), local({
   tagger <- udpipe_factory("english-ewt")
   mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_success)
 
@@ -24,9 +24,9 @@ local({
       "`docs` must be a non-empty character vector."
     )
   })
-})
+}))
 
-test_that("tagger errors cleanly when UDPipe fails", {
+test_that("tagger errors cleanly when UDPipe fails",   withr::with_options(list(pidpos_download_approved = TRUE),{
   # Inject the failing fake
   tagger <- udpipe_factory(model = "english-ewt")
   mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_failure)
@@ -36,12 +36,15 @@ test_that("tagger errors cleanly when UDPipe fails", {
 
   mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_file_not_found_failure)
   expect_error(tagger("This is a test."), "UDPipe model could not be loaded")
-})
+}))
+
 
 test_that("tagger can download model", {
   # Inject the failing fake
-  tagger <- udpipe_factory(model = "english-ewt")
-
-  result <- tagger("This is a test.")
-  expect_equal(nrow(result), 5)
+  withr::with_options(list(pidpos_download_approved = TRUE), {
+    tagger <- udpipe_factory(model = "english-ewt")
+    
+    result <- tagger("This is a test.")
+    expect_equal(nrow(result), 5)
+  })
 })

@@ -1,6 +1,7 @@
 # Test for report_as_rules_template
 
-test_that("report_to_replacement_rules", {
+test_that("report_to_replacement_rules", 
+  withr::with_options(list(pidpos_download_approved = TRUE), 
   local({
     .report <- head(the_one_in_massapequa, 10) |>
       pidpos()
@@ -23,7 +24,7 @@ test_that("report_to_replacement_rules", {
     .rules_from_file.parsed <- parse_redacter(temp_file)
     expect_type(.rules_from_file.parsed, "closure")
   })
-})
+))
 
 
 test_that("report_as_rules_template", {
