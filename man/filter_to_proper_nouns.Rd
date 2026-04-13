@@ -18,10 +18,14 @@ with columns \code{ID}, \code{Token}, and \code{Sentence}.
 Filter a tagged data frame to proper nouns
 }
 \examples{
-\donttest{
-example.data <- head(the_one_in_massapequa, 20)
-tagged <- tag_data_frame(example.data, tagger = "english-ewt")
-filter_to_proper_nouns(tagged$`AllTags`)
+tagged <- data.frame(
+  upos = c("PROPN", "VERB", "PROPN"),
+  ID = c("doc1", "doc1", "doc2"),
+  Token = c("London", "visited", "Paris"),
+  Sentence = c("London was visited.", "London was visited.", "Paris is nice.")
+)
+filter_to_proper_nouns(tagged)
 }
-
+\seealso{
+\code{\link[=pidpos]{pidpos()}}
 }

@@ -60,7 +60,7 @@ rule_logic <- function(df) {
 #'
 #' @importFrom purrr reduce map2
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa)
 #'

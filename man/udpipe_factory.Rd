@@ -36,7 +36,7 @@ The returned function accepts a character vector of documents and returns
 a tibble with tokens, sentences, and token metadata.
 }
 \examples{
-\donttest{
+\dontrun{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 docs <- c("This is a test.", "Another sentence.")

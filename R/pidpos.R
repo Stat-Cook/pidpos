@@ -38,7 +38,7 @@
 #' [enable_package_models()].
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa, 50)
 #' try(

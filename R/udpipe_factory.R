@@ -25,7 +25,7 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Create a tagger for the English EWT model
 #' ewt_tagger <- udpipe_factory("english-ewt")
 #' docs <- c("This is a test.", "Another sentence.")

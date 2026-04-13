@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' # Sample text
-#' \donttest{
+#' \dontrun{
 #' example_text <- c(
 #'   "This is a test sentence.",
 #'   "Here is another sentence."

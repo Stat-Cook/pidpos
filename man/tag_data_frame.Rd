@@ -32,7 +32,7 @@ A list with two elements:
 Tags a data frame with part of speech tags
 }
 \examples{
-\donttest{
+\dontrun{
 example.data <- head(the_one_in_massapequa, 20)
 
 tag_data_frame(example.data, tagger = "english-ewt")

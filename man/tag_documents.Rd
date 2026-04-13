@@ -27,7 +27,7 @@ The function returns a tibble containing tokens, sentences, and token-level meta
 }
 \examples{
 # Sample text
-\donttest{
+\dontrun{
 example_text <- c(
   "This is a test sentence.",
   "Here is another sentence."

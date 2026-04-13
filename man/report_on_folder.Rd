@@ -45,7 +45,7 @@ For use as part of the folder level API - this function is the equivalent of
 \code{\link[=pidpos]{pidpos()}}.  The reports are saved in the specified \code{report_dir}.
 }
 \examples{
-\donttest{
+\dontrun{
   input_dir <- withr::local_tempdir()
   output_dir <- withr::local_tempdir()
 

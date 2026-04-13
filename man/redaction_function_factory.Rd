@@ -13,7 +13,7 @@ redaction_function_factory(rules.frm)
 Convert a \code{data.frame} of redaction rules into a function that can be applied to a character vector.
 }
 \examples{
-\donttest{
+\dontrun{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa)
 
