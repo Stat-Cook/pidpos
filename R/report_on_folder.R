@@ -22,7 +22,7 @@ empty.report <- data.frame(
 #' @export
 #'
 #' @examples
-#' {
+#' \donttest{
 #'   input_dir <- withr::local_tempdir()
 #'   output_dir <- withr::local_tempdir()
 #'

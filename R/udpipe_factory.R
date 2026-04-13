@@ -25,6 +25,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' # Create a tagger for the English EWT model
 #' ewt_tagger <- udpipe_factory("english-ewt")
 #' docs <- c("This is a test.", "Another sentence.")
@@ -37,6 +38,7 @@
 #' # Create a tagger for the English LINES model
 #' lines_tagger <- udpipe_factory("english-lines")
 #' lines_tagger(docs)
+#' }
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pidpos_env$model_folder,
                            udpipe_repo = pidpos_env$udpipe_repo) {

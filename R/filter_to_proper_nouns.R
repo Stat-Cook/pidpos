@@ -9,9 +9,11 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' example.data <- head(the_one_in_massapequa, 20)
 #' tagged <- tag_data_frame(example.data, tagger = "english-ewt")
 #' filter_to_proper_nouns(tagged$`AllTags`)
+#' }
 #'
 filter_to_proper_nouns <- function(tag_frm) {
   required_cols <- c("upos", "ID", "Token", "Sentence")

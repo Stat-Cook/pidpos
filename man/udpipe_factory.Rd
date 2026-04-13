@@ -36,6 +36,7 @@ The returned function accepts a character vector of documents and returns
 a tibble with tokens, sentences, and token metadata.
 }
 \examples{
+\donttest{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 docs <- c("This is a test.", "Another sentence.")
@@ -48,6 +49,7 @@ gum_tagger(docs)
 # Create a tagger for the English LINES model
 lines_tagger <- udpipe_factory("english-lines")
 lines_tagger(docs)
+}
 }
 \seealso{
 \code{\link[=pidpos_setup]{pidpos_setup()}} and

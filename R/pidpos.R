@@ -38,6 +38,7 @@
 #' [enable_package_models()].
 #'
 #' @examples
+#' \donttest{
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa, 50)
 #' try(
@@ -60,7 +61,7 @@
 #'   to_ignore = c("scene", "utterance"),
 #'   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 #' )
-#'
+#' }
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom dplyr group_by group_modify left_join where all_of

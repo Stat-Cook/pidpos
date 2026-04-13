@@ -58,6 +58,7 @@ to the working directory.  Resetting to the project cache can be done with
 \code{\link[=enable_package_models]{enable_package_models()}}.
 }
 \examples{
+\donttest{
 data(the_one_in_massapequa)
 example.data <- head(the_one_in_massapequa, 50)
 try(
@@ -80,7 +81,7 @@ pidpos(example.data,
   to_ignore = c("scene", "utterance"),
   tagger = tag_ewt, filter = filter_to_long_proper_nouns
 )
-
+}
 }
 \seealso{
 \itemize{

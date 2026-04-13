@@ -23,6 +23,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' example.data <- head(the_one_in_massapequa, 20)
 #'
 #' tag_data_frame(example.data, tagger = "english-ewt")
@@ -37,6 +38,7 @@
 #'
 #' lines_tagger <- udpipe_factory("english-lines")
 #' tag_data_frame(example.data, tagger = lines_tagger)
+#' }
 tag_data_frame <- function(frm,
                            tagger = "english-ewt",
                            chunk_size = 1e2,

@@ -60,6 +60,7 @@ rule_logic <- function(df) {
 #'
 #' @importFrom purrr reduce map2
 #' @examples
+#' \donttest{
 #' data(the_one_in_massapequa)
 #' example.data <- head(the_one_in_massapequa)
 #'
@@ -73,7 +74,7 @@ rule_logic <- function(df) {
 #' redaction_func <- redaction_function_factory(redaction_rules)
 #'
 #' redaction_func(example.data)
-#'
+#' }
 #' @export
 redaction_function_factory <- function(rules.frm) {
   grouped <- dplyr::group_split(rules.frm, .data$If)

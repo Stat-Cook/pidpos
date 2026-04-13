@@ -18,8 +18,10 @@ with columns \code{ID}, \code{Token}, and \code{Sentence}.
 Filter a tagged data frame to proper nouns
 }
 \examples{
+\donttest{
 example.data <- head(the_one_in_massapequa, 20)
 tagged <- tag_data_frame(example.data, tagger = "english-ewt")
 filter_to_proper_nouns(tagged$`AllTags`)
+}
 
 }

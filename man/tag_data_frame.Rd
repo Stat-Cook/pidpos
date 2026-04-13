@@ -32,6 +32,7 @@ A list with two elements:
 Tags a data frame with part of speech tags
 }
 \examples{
+\donttest{
 example.data <- head(the_one_in_massapequa, 20)
 
 tag_data_frame(example.data, tagger = "english-ewt")
@@ -46,4 +47,5 @@ tag_data_frame(example.data, tagger = gum_tagger)
 
 lines_tagger <- udpipe_factory("english-lines")
 tag_data_frame(example.data, tagger = lines_tagger)
+}
 }
