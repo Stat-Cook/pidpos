@@ -26,7 +26,7 @@ withr::with_options(list(pidpos_download_approved = TRUE), local({
   })
 }))
 
-test_that("tagger errors cleanly when UDPipe fails",   withr::with_options(list(pidpos_download_approved = TRUE),{
+test_that("tagger errors cleanly when UDPipe fails", withr::with_options(list(pidpos_download_approved = TRUE), {
   # Inject the failing fake
   tagger <- udpipe_factory(model = "english-ewt")
   mockery::stub(tagger, "udpipe::udpipe", fake_udpipe_failure)
@@ -43,7 +43,7 @@ test_that("tagger can download model", {
   # Inject the failing fake
   withr::with_options(list(pidpos_download_approved = TRUE), {
     tagger <- udpipe_factory(model = "english-ewt")
-    
+
     result <- tagger("This is a test.")
     expect_equal(nrow(result), 5)
   })

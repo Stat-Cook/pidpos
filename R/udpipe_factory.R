@@ -42,7 +42,7 @@
 udpipe_factory <- function(model = "english-ewt",
                            model_dir = pidpos_env$model_folder,
                            udpipe_repo = pidpos_env$udpipe_repo) {
-  if (!getOption("pidpos_caching") & is.character(model)){
+  if (!getOption("pidpos_caching") & is.character(model)) {
     stop(
       "pidpos is configured not to cache models - either select a ",
       "caching option in `pidpos_setup()` or load a pretrained udpipe model."
