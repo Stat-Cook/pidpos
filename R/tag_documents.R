@@ -34,7 +34,7 @@
 #' # Create a tagger for the English LINES model
 #' lines_tagger <- udpipe_factory("english-lines")
 #' lines_result <- pidpos:::tag_documents(example_text, tagger = lines_tagger)
-#'}
+#' }
 tag_documents <- function(docs,
                           doc_ids = NULL,
                           tagger = NULL,
