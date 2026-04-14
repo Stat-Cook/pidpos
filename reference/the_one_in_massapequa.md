@@ -11,7 +11,7 @@ the_one_in_massapequa
 
 ## Format
 
-A data frame with 3,100 rows and 6 columns:
+A data frame with 257 rows and 4 columns:
 
 - scene:
 

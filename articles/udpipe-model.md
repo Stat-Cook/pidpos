@@ -12,15 +12,17 @@ Here we provide brief advice on how to diagnose and fix common problems.
 ## Step 1
 
 When first installed and loaded `pidpos` will not have the udpipe model.
-The first time `data_frame_report` is run, an attempt is made to
-download the model. Hence, it is recommended to start by evaluating the
-`data_frame_report` function with the example data
-(`the_one_in_massapequa`):
+The first time
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md) is
+run, an attempt is made to download the model. Hence, it is recommended
+to start by evaluating the
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
+function with the example data (`the_one_in_massapequa`):
 
 ``` r
 library(pidpos)
 
-report <- data_frame_report(the_one_in_massapequa)
+report <- pidpos(the_one_in_massapequa)
 browse_udpipe_repo()
 browse_model_location()
 ```
@@ -30,8 +32,10 @@ functions `browse_model_location` and `browse_udpipe_repo`.
 
 ## Step 2
 
-Assuming the `data_frame_report` throws an error, the next step is to
-check if the model is present. This can be done by running
+Assuming
+[`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md)
+throws an error, the next step is to check if the model is present. This
+can be done by running
 [`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md)
 and checking for a file named ‘english-ewt-ud-2.5-191206.udpipe’ or
 similar. If the user does not have permission to write to this location,

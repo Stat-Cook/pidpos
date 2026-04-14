@@ -79,10 +79,8 @@ If no proper nouns are detected, an empty data frame is returned.
 
 By default `pidpos()` caches the `udpipe` models in a package cache
 directory. This behaviour can be altered via
-[`enable_local_models()`](https://stat-cook.github.io/pidpos/reference/enable_local_models.md)
-to redirect `udpipe` models to the working directory. Resetting to the
-project cache can be done with
-[`enable_package_models()`](https://stat-cook.github.io/pidpos/reference/enable_package_models.md).
+[`pidpos_setup()`](https://stat-cook.github.io/pidpos/reference/pidpos_setup.md)
+to redirect `udpipe` models or force environemnt only models.
 
 ## See also
 

@@ -1,4 +1,4 @@
-# NB: to set the context window size, use `set_context_window()`.
+# Get the context of a token in a sentence.
 
 NB: to set the context window size, use
 [`set_context_window()`](https://stat-cook.github.io/pidpos/reference/set_context_window.md).

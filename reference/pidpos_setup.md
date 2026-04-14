@@ -40,8 +40,20 @@ pidpos_setup(model_storage = c("package", "project", "temporary", "env"))
 ## Value
 
 Called for its side effects. Sets `getOption("pidpos_caching")` and
-`getOption("pidpos_model_storage")` invisibly.
+`getOption("pidpos_model_storage")`.
 
 ## See also
 
 [`udpipe`](https://rdrr.io/pkg/udpipe/man/udpipe.html)
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# Persist models in a shared package-level cache
+pidpos_setup("package")
+
+# Use a per-project cache (good for reproducible workflows)
+pidpos_setup("project")
+} # }
+```
