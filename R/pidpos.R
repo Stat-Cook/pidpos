@@ -104,7 +104,7 @@ pidpos <- function(frm,
   if (is.null(tagged$AllTags) || is.null(tagged$Documents)) {
     return(structure(
       tibble::tibble(),
-      class = c("pid_report", "tbl_df", "tbl", "data.frame")
+      class = c("pidpos", "tbl_df", "tbl", "data.frame")
     ))
   }
 
