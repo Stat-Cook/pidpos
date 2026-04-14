@@ -4,8 +4,6 @@ pidpos_env <- new.env()
   op <- options()
   if (is.null(op[["pidpos_context_window"]])) options(pidpos_context_window = 25)
 
-  # pidpos_env$model_folder <- pidpos_env$default_model_folder
-
   pidpos_env$allowed_repos <- c(
     `2.5` = "jwijffels/udpipe.models.ud.2.5",
     `2.4` = "jwijffels/udpipe.models.ud.2.4",
