@@ -8,7 +8,6 @@
 #'
 #' @importFrom dplyr group_by group_modify row_number ungroup
 #' @importFrom glue glue
-#' @importFrom progress progress_bar
 #' @importFrom dplyr where all_of filter
 #' @importFrom purrr simplify
 #' @importFrom tidyr pivot_longer
