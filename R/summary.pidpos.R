@@ -4,28 +4,28 @@ most_common <- function(cnt, names) {
 }
 
 
+#' Summarize a  `pidpos` report.
+#'
+#' @param object An object of class `pidpos`.
+#' @param ... further arguments passed to or from other methods.
+#'
+#' @return A data frame describing any column determined to contain PID.
+#' \itemize{
+#'   \item Column
+#'   \item Cases of Proper Nouns - the number of sentences with proper nouns in the column
+#'   \item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
+#'   \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
+#' }
+#'
+#'
+#' @importFrom dplyr distinct bind_rows summarise
+#' @importFrom dplyr n
+#' @importFrom purrr map
+#' @importFrom stringr str_detect str_extract_all
+#' @exportS3Method
+#'
+#' @seealso [pidpos]
 summary.pidpos <- function(object, ...) {
-  #' Summarize a  `pidpos` report.
-  #'
-  #' @param object An object of class `pidpos`.
-  #' @param ... further arguments passed to or from other methods.
-  #'
-  #' @return A data frame describing any column determined to contain PID.
-  #' \itemize{
-  #'   \item Column
-  #'   \item Cases of Proper Nouns - the number of sentences with proper nouns in the column
-  #'   \item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
-  #'   \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
-  #' }
-  #'
-  #'
-  #' @importFrom dplyr distinct bind_rows summarise
-  #' @importFrom dplyr n
-  #' @importFrom purrr map
-  #' @importFrom stringr str_detect str_extract_all
-  #' @exportS3Method
-  #'
-  #' @seealso [pidpos]
 
   object <- as_tibble(object)
 

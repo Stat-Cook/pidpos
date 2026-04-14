@@ -1,13 +1,14 @@
+#' Open github link to the 'english-ewt-2.5' UD model.
+#'
+#' Intended for user download where `udpipe` fails to download automatically.
+#'
+#' @param model A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.
+#'
+#' @export
+#' @importFrom utils browseURL
+#'
 browse_udpipe_repo <- function(model = "english-ewt") {
-  #' Open github link to the 'english-ewt-2.5' UD model.
-  #'
-  #' Intended for user download where `udpipe` fails to download automatically.
-  #'
-  #' @param model A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.
-  #'
-  #' @export
-  #' @importFrom utils browseURL
-  #'
+
 
   .date <- pidpos_env$repo_dates[[pidpos_env$udpipe_repo]]
   .version <- pidpos_env$udpipe_repo
@@ -27,12 +28,12 @@ browse_udpipe_repo <- function(model = "english-ewt") {
 }
 
 
+#' Browse user to folder for UDPipe models.
+#'
+#' Intended for usage in `udpipe` fails to download automatically.
+#'
+#' @export
 browse_model_location <- function() {
-  #' Browse user to folder for UDPipe models.
-  #'
-  #' Intended for usage in `udpipe` fails to download automatically.
-  #'
-  #' @export
 
   browseURL(pidpos_env$model_folder)
 }

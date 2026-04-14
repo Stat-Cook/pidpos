@@ -1,4 +1,4 @@
-#  #' Get the context of a token in a sentence.
+#' Get the context of a token in a sentence.
 #'
 #' NB: to set the context window size, use `set_context_window()`.
 #'
@@ -34,13 +34,14 @@ get_context <- function(sentence, token,
 }
 
 
+#' Set the context window size for the `get_context` function.
+#'
+#' @param x  An integer specifying the number of characters to include
+#'   before and after the token in the context.
+#'
+#' @keywords internal
 set_context_window <- function(x) {
-  #' Set the context window size for the `get_context` function.
-  #'
-  #' @param x  An integer specifying the number of characters to include
-  #'   before and after the token in the context.
-  #'
-  #' @keywords internal
+
   .opt <- list("pidpos_context_window" = x)
 
   options(.opt)
