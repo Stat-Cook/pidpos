@@ -6,9 +6,7 @@
 #' @param token A character vector of tokens.
 #' @param context_window The width of window around the token to be taken.
 #'
-#' @importFrom dplyr mutate
 #' @importFrom stringr str_locate str_sub
-#' @importFrom tibble as_tibble
 #'
 #' @keywords internal
 get_context <- function(sentence, token,
