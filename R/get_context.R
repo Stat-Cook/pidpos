@@ -41,7 +41,6 @@ get_context <- function(sentence, token,
 #'
 #' @keywords internal
 set_context_window <- function(x) {
-
   .opt <- list("pidpos_context_window" = x)
 
   options(.opt)

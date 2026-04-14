@@ -8,8 +8,6 @@
 #' @importFrom utils browseURL
 #'
 browse_udpipe_repo <- function(model = "english-ewt") {
-
-
   .date <- pidpos_env$repo_dates[[pidpos_env$udpipe_repo]]
   .version <- pidpos_env$udpipe_repo
   .version.number <- stringr::str_extract(.version, "\\d.\\d$")
@@ -34,6 +32,5 @@ browse_udpipe_repo <- function(model = "english-ewt") {
 #'
 #' @export
 browse_model_location <- function() {
-
   browseURL(pidpos_env$model_folder)
 }
