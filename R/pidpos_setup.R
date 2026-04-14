@@ -40,9 +40,9 @@ pidpos_setup <- function(model_storage = c("package", "project", "temporary", "e
     env = FALSE
   )
   switch(model_storage,
-         package   = enable_package_models(),
-         project   = enable_local_models(),
-         temporary = enable_temp_models()
+    package   = enable_package_models(),
+    project   = enable_local_models(),
+    temporary = enable_temp_models()
   )
 
   options(pidpos_caching = caching)
