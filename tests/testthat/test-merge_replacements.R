@@ -6,7 +6,7 @@ test_that("merge_redactions works", {
   redacted.vec <- vector_merge_redactions(vec, cached_redactions)
 
   expect_true(all(
-    str_detect("[a-z]", redacted.vec, T)
+    str_detect("[a-z]", redacted.vec, TRUE)
   ))
 
   raw.frm <- data.frame(Lower = letters, Upper = LETTERS)
@@ -14,6 +14,6 @@ test_that("merge_redactions works", {
     merge_redactions(cached_redactions)
 
   expect_true(all(
-    str_detect("[a-z]", redacted.frm$Lower, T)
+    str_detect("[a-z]", redacted.frm$Lower, TRUE)
   ))
 })
