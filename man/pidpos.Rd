@@ -53,9 +53,8 @@ proper noun, and how often the \code{Document} occurs.
 }
 \note{
 By default \code{\link[=pidpos]{pidpos()}} caches the \code{udpipe} models in a package cache directory.
-This behaviour can be altered via \code{\link[=enable_local_models]{enable_local_models()}} to redirect \code{udpipe} models
-to the working directory.  Resetting to the project cache can be done with
-\code{\link[=enable_package_models]{enable_package_models()}}.
+This behaviour can be altered via \code{\link[=pidpos_setup]{pidpos_setup()}} to redirect \code{udpipe} models
+or force environemnt only models.
 }
 \examples{
 \dontrun{

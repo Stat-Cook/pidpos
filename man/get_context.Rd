@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_context.R
 \name{get_context}
 \alias{get_context}
-\title{NB: to set the context window size, use \code{set_context_window()}.}
+\title{Get the context of a token in a sentence.}
 \usage{
 get_context(
   sentence,

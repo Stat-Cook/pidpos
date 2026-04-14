@@ -5,7 +5,7 @@
 \alias{the_one_in_massapequa}
 \title{The One in Massapequa}
 \format{
-A data frame with 3,100 rows and 6 columns:
+A data frame with 257 rows and 4 columns:
 \describe{
 \item{scene}{The scene number (integer)}
 \item{utterance}{The utterance-by-scene number (integer)}
