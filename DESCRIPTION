@@ -53,5 +53,5 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
-    R (>= 4.10)
+    R (>= 4.1)
 URL: https://stat-cook.github.io/pidpos/
