@@ -21,12 +21,21 @@ written; caching is disabled (\code{pidpos_caching = FALSE}).}
 }
 \value{
 Called for its side effects. Sets \code{getOption("pidpos_caching")}
-and \code{getOption("pidpos_model_storage")} invisibly.
+and \code{getOption("pidpos_model_storage")}.
 }
 \description{
 Sets how \pkg{pidpos} stores and retrieves language models used by
 \code{\link[udpipe]{udpipe}} for part-of-speech tagging. Call this once at
 the start of a session or in your project's \file{.Rprofile}.
+}
+\examples{
+\dontrun{
+# Persist models in a shared package-level cache
+pidpos_setup("package")
+
+# Use a per-project cache (good for reproducible workflows)
+pidpos_setup("project")
+}
 }
 \seealso{
 \code{\link[udpipe]{udpipe}}

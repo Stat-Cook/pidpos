@@ -46,25 +46,25 @@ For use as part of the folder level API - this function is the equivalent of
 }
 \examples{
 \dontrun{
-  input_dir <- withr::local_tempdir()
-  output_dir <- withr::local_tempdir()
+input_dir <- withr::local_tempdir()
+output_dir <- withr::local_tempdir()
 
-  dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
-  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(input_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
-  example_data <- data.frame(
-    text = "Joey went to London",
-    stringsAsFactors = FALSE
-  )
+example_data <- data.frame(
+  text = "Joey went to London",
+  stringsAsFactors = FALSE
+)
 
-  utils::write.csv(example_data,
-    file.path(input_dir, "example.csv"),
-    row.names = FALSE
-  )
+utils::write.csv(example_data,
+  file.path(input_dir, "example.csv"),
+  row.names = FALSE
+)
 
-  paths <- report_on_folder(input_dir, report_dir = output_dir)
+paths <- report_on_folder(input_dir, report_dir = output_dir)
 
-  paths
+paths
 }
 
 }
