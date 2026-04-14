@@ -19,7 +19,7 @@
 #' @examples
 #' \dontrun{
 #' example.data <- head(the_one_in_massapequa)
-#' report <- pidpos(example.data, to_remove = "speaker")
+#' report <- pidpos(example.data, to_ignore = "speaker")
 #' report_to_redaction_rules(report)
 #' }
 #'
