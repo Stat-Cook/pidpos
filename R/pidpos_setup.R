@@ -17,10 +17,18 @@
 #'   }
 #'
 #' @return Called for its side effects. Sets \code{getOption("pidpos_caching")}
-#'   and \code{getOption("pidpos_model_storage")} invisibly.
+#'   and \code{getOption("pidpos_model_storage")}.
 #'
 #' @seealso \code{\link[udpipe]{udpipe}}
 #'
+#' @examples
+#' \dontrun{
+#' # Persist models in a shared package-level cache
+#' pidpos_setup("package")
+#'
+#' # Use a per-project cache (good for reproducible workflows)
+#' pidpos_setup("project")
+#' }
 #' @export
 pidpos_setup <- function(model_storage = c("package", "project", "temporary", "env")) {
   model_storage <- match.arg(model_storage)
@@ -31,18 +39,11 @@ pidpos_setup <- function(model_storage = c("package", "project", "temporary", "e
     temporary = TRUE,
     env = FALSE
   )
-
-  if (model_storage == "package") {
-    enable_package_models()
-  }
-
-  if (model_storage == "project") {
-    enable_local_models()
-  }
-
-  if (model_storage == "temporary") {
-    enable_temp_models()
-  }
+  switch(model_storage,
+         package   = enable_package_models(),
+         project   = enable_local_models(),
+         temporary = enable_temp_models()
+  )
 
   options(pidpos_caching = caching)
   options(pidpos_model_storage = model_storage)

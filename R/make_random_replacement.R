@@ -25,7 +25,7 @@ make_random_replacement <- function(replacement_size = 10,
                                     all = FALSE,
                                     elevate_warnings = FALSE) {
   random_encoder <- function() {
-    paste(sample(replacement_space, replacement_size, T), collapse = "")
+    paste(sample(replacement_space, replacement_size, TRUE), collapse = "")
   }
 
   make_replacement_function(random_encoder,

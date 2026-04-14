@@ -33,9 +33,8 @@
 #' @note
 #'
 #' By default [pidpos()] caches the `udpipe` models in a package cache directory.
-#' This behaviour can be altered via [enable_local_models()] to redirect `udpipe` models
-#' to the working directory.  Resetting to the project cache can be done with
-#' [enable_package_models()].
+#' This behaviour can be altered via [pidpos_setup()] to redirect `udpipe` models
+#' or force environemnt only models.
 #'
 #' @examples
 #' \dontrun{
@@ -67,7 +66,6 @@
 #' @importFrom dplyr group_by group_modify left_join where all_of
 #' @importFrom dplyr rename select mutate
 #' @importFrom glue glue
-#' @importFrom progress progress_bar
 #' @importFrom tibble as_tibble
 #'
 #' @seealso
@@ -95,9 +93,9 @@ pidpos <- function(frm,
   if (warn_if_missing && (length(cant_remove) > 0)) {
     warning(
       glue(
-        "The following columns to remove were not found in the data frame: {paste(cant_remove, collapse=', ')}",
-        call. = FALSE
-      )
+        "The following columns to remove were not found in the data frame: {paste(cant_remove, collapse=', ')}"
+      ),
+      call. = FALSE
     )
   }
 

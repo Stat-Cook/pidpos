@@ -1,6 +1,6 @@
 #' @importFrom dplyr left_join join_by
 #'
-#' @keywords internals
+#' @keywords internal
 vector_merge_redactions <- function(vec,
                                     cached_redactions,
                                     preprocess = utf8::utf8_encode) {
