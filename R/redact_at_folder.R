@@ -13,7 +13,7 @@ redact_at_folder <- function(data_path,
                              extensions = get_implemented_extensions(),
                              export_function = NULL,
                              verbose = FALSE) {
-  if (!is.character(output_path) | length(output_path) != 1) {
+  if (!is.character(output_path) || length(output_path) != 1) {
     stop("`output_path` must be a single character string")
   }
 
