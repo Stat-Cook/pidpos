@@ -24,7 +24,7 @@ make_random_replacement <- function(replacement_size = 10,
                                     replacement_space = LETTERS,
                                     all = FALSE,
                                     elevate_warnings = FALSE) {
-  if (!is.numeric(replacements_size) || replacements_size < 0 || x != floor(x)){
+  if (!is.numeric(replacement_size) || replacement_size < 0 || replacement_size != floor(replacement_size)){
     stop("`replacement_size` should be a non-zero positive integer")
   }
   
