@@ -55,7 +55,7 @@ pidpos(
 
 ## Value
 
-A `pid_report` (inheriting from tibble) containing:
+A `pidpos` (inheriting from tibble) containing:
 
 - `ID`: The location of the sentence in the data frame in the form
   `Col:<colname> Row:<rownumber>`.

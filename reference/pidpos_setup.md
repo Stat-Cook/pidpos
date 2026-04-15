@@ -34,8 +34,8 @@ pidpos_setup(model_storage = c("package", "project", "temporary", "env"))
 
   `"env"`
 
-  :   Model object held in memory only. No files are written; caching is
-      disabled (`pidpos_caching = FALSE`).
+  :   No downloads are attempted. The user must supply a pre-loaded
+      udpipe_model object directly to udpipe_factory().
 
 ## Value
 
@@ -52,8 +52,14 @@ Called for its side effects. Sets `getOption("pidpos_caching")` and
 if (FALSE) { # \dontrun{
 # Persist models in a shared package-level cache
 pidpos_setup("package")
+pidpos(the_one_in_masa)
 
 # Use a per-project cache (good for reproducible workflows)
 pidpos_setup("project")
+
+# Block downloads and manually manage models
+pidpos_setup("env")
+m <- udpipe::udpipe_load_model("path/to/model")
+pidpos(the_one_in_massapequa, m)
 } # }
 ```
