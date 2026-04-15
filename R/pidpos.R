@@ -57,7 +57,7 @@
 #'
 #' pidpos(example.data,
 #'   to_ignore = c("scene", "utterance"),
-#'   tagger = tag_ewt, filter = filter_to_long_proper_nouns
+#'   tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
 #' )
 #' }
 #' @export
