@@ -31,18 +31,19 @@
 #' * For redaction: [redact()]
 report_to_redaction_rules <- function(report, path = NULL,
                                       include_context = FALSE) {
+  
+  if (!inherits(report, "data.frame")) {
+    type_error("`report` must be a data.frame or tibble")
+  }
+  
+  if (!is.null(path) && !is.character(path)) {
+    type_error("`path` must be a string or NULL")
+  }
+  
   required_cols <- c("Sentence", "Token")
   missing <- setdiff(required_cols, names(report))
   if (length(missing) > 0) {
     validation_error("report is missing columns: ", paste(missing, collapse = ", "))
-  }
-
-  if (!inherits(report, "data.frame")) {
-    type_error("`report` must be a data.frame or tibble")
-  }
-
-  if (!is.null(path) && !is.character(path)) {
-    type_error("`path` must be a string or NULL")
   }
 
   If <- NA
