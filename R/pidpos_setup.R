@@ -12,7 +12,7 @@
 #'       Persists across sessions; isolated per project.}
 #'     \item{\code{"temporary"}}{Written to a \code{tempdir()} each session.
 #'       Not persisted; re-downloaded on every new session.}
-#'     \item{\code{"env"}}{No downloads are attempted. 
+#'     \item{\code{"env"}}{No downloads are attempted.
 #'       The user must supply a pre-loaded udpipe_model object directly to udpipe_factory().}
 #'   }
 #'
@@ -29,7 +29,7 @@
 #'
 #' # Use a per-project cache (good for reproducible workflows)
 #' pidpos_setup("project")
-#' 
+#'
 #' # Block downloads and manually manage models
 #' pidpos_setup("env")
 #' m <- udpipe::udpipe_load_model("path/to/model")
