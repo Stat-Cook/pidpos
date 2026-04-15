@@ -54,7 +54,7 @@ proper noun, and how often the \code{Document} occurs.
 \note{
 By default \code{\link[=pidpos]{pidpos()}} caches the \code{udpipe} models in a package cache directory.
 This behaviour can be altered via \code{\link[=pidpos_setup]{pidpos_setup()}} to redirect \code{udpipe} models
-or force environemnt only models.
+or force environment only models.
 }
 \examples{
 \dontrun{
@@ -69,7 +69,6 @@ pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum"
 tag_ewt <- udpipe_factory("english-ewt")
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
 
-
 filter_to_long_proper_nouns <- function(frm) {
   frm |>
     dplyr::filter(nchar(Token) > 1)
@@ -78,7 +77,7 @@ filter_to_long_proper_nouns <- function(frm) {
 
 pidpos(example.data,
   to_ignore = c("scene", "utterance"),
-  tagger = tag_ewt, filter = filter_to_long_proper_nouns
+  tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
 )
 }
 }
