@@ -15,8 +15,8 @@ Persists across sessions; shared across all projects.}
 Persists across sessions; isolated per project.}
 \item{\code{"temporary"}}{Written to a \code{tempdir()} each session.
 Not persisted; re-downloaded on every new session.}
-\item{\code{"env"}}{Model object held in memory only. No files are
-written; caching is disabled (\code{pidpos_caching = FALSE}).}
+\item{\code{"env"}}{No downloads are attempted.
+The user must supply a pre-loaded udpipe_model object directly to udpipe_factory().}
 }}
 }
 \value{
@@ -32,9 +32,15 @@ the start of a session or in your project's \file{.Rprofile}.
 \dontrun{
 # Persist models in a shared package-level cache
 pidpos_setup("package")
+pidpos(the_one_in_masa)
 
 # Use a per-project cache (good for reproducible workflows)
 pidpos_setup("project")
+
+# Block downloads and manually manage models
+pidpos_setup("env")
+m <- udpipe::udpipe_load_model("path/to/model")
+pidpos(the_one_in_massapequa, m)
 }
 }
 \seealso{

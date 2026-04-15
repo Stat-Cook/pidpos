@@ -35,7 +35,7 @@ IDs or ICD-10 codes.}
 not in the data frame.}
 }
 \value{
-A \code{pid_report} (inheriting from tibble) containing:
+A \code{pidpos} (inheriting from tibble) containing:
 \itemize{
 \item \code{ID}: The location of the sentence in the data frame in the form \verb{Col:<colname> Row:<rownumber>}.
 \item \code{Token}: The detected proper noun.
