@@ -27,7 +27,7 @@ make_random_replacement <- function(replacement_size = 10,
   if (!is.numeric(replacement_size) || replacement_size < 0 || replacement_size != floor(replacement_size)){
     stop("`replacement_size` should be a non-zero positive integer")
   }
-  
+
   random_encoder <- function() {
     paste(sample(replacement_space, replacement_size, TRUE), collapse = "")
   }
