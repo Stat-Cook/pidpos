@@ -80,7 +80,7 @@ If no proper nouns are detected, an empty data frame is returned.
 By default `pidpos()` caches the `udpipe` models in a package cache
 directory. This behaviour can be altered via
 [`pidpos_setup()`](https://stat-cook.github.io/pidpos/reference/pidpos_setup.md)
-to redirect `udpipe` models or force environemnt only models.
+to redirect `udpipe` models or force environment only models.
 
 ## See also
 
@@ -111,7 +111,6 @@ pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum"
 tag_ewt <- udpipe_factory("english-ewt")
 pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
 
-
 filter_to_long_proper_nouns <- function(frm) {
   frm |>
     dplyr::filter(nchar(Token) > 1)
@@ -120,7 +119,7 @@ filter_to_long_proper_nouns <- function(frm) {
 
 pidpos(example.data,
   to_ignore = c("scene", "utterance"),
-  tagger = tag_ewt, filter = filter_to_long_proper_nouns
+  tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
 )
 } # }
 ```

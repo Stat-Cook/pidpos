@@ -266,8 +266,76 @@ nltk_filter <- function(frm) {
 pidpos(
   example.data,
   tagger = nltk_tagger,
-  filter = nltk_filter
+  filter_function = nltk_filter
 )
+```
+
+------------------------------------------------------------------------
+
+## Custom replacement functions
+
+The preceding examples demonstrate custom taggers and filters. Once PID
+detection is complete, users may also wish to supply a custom
+replacement function for the redaction step.
+
+Replacements are applied via
+[`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md),
+which accepts a user-defined function through the `replacement_func`
+argument:
+
+``` r
+simple_replace <- function(x){
+  "XXX"
+}
+
+auto_replace(raw_redaction_rules, replacement_func = simple_replace)
+#> # A tibble: 10 × 3
+#>    If                                                                From  To   
+#>    <chr>                                                             <chr> <chr>
+#>  1 "[Scene: Central Perk, everyone is there.]"                       Cent… XXX  
+#>  2 "[Scene: Central Perk, everyone is there.]"                       Perk  XXX  
+#>  3 "Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  XXX  
+#>  4 "Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   XXX  
+#>  5 "Well, his name is Parker and I met him at the drycleaners."      Park… XXX  
+#>  6 "Every year Ross makes the toast, and it's always really moving,… Ross  XXX  
+#>  7 "And you wonder why Ross is their favorite?"                      Ross  XXX  
+#>  8 "Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  XXX  
+#>  9 "[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… XXX  
+#> 10 "[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… XXX
+```
+
+Users requiring more control can leverage the memoization framework
+built into `pidpos`. This requires first defining a zero-argument
+function that generates a candidate replacement string:
+
+``` r
+custom_replace_candidate <- function(){
+  sample(letters, 1)
+}
+```
+
+*Note*: letters contains 26 elements, so this encoder can produce at
+most 26 distinct replacements.
+
+This function can then be passed to
+[`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md),
+which returns a stateful replacement function — the same pattern used
+internally by
+[`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md):
+
+``` r
+custom_replacer <- make_replacement_function(custom_replace_candidate, 26)
+
+auto_replace(head(raw_redaction_rules), replacement_func = custom_replacer)
+#> # A tibble: 6 × 3
+#>   If                                                                 From  To   
+#>   <chr>                                                              <chr> <chr>
+#> 1 [Scene: Central Perk, everyone is there.]                          Cent… m    
+#> 2 [Scene: Central Perk, everyone is there.]                          Perk  w    
+#> 3 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  l    
+#> 4 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   e    
+#> 5 Well, his name is Parker and I met him at the drycleaners.         Park… f    
+#> 6 Every year Ross makes the toast, and it's always really moving, a… Ross  l
 ```
 
 ------------------------------------------------------------------------

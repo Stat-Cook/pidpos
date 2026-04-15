@@ -306,8 +306,65 @@ If these are not available, the code below will be skipped.</p>
 <span><span class="fu"><a href="../reference/pidpos.html">pidpos</a></span><span class="op">(</span></span>
 <span>  <span class="va">example.data</span>,</span>
 <span>  tagger <span class="op">=</span> <span class="va">nltk_tagger</span>,</span>
-<span>  filter <span class="op">=</span> <span class="va">nltk_filter</span></span>
+<span>  filter_function <span class="op">=</span> <span class="va">nltk_filter</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="custom-replacement-functions">Custom replacement functions<a class="anchor" aria-label="anchor" href="#custom-replacement-functions"></a>
+</h2>
+<p>The preceding examples demonstrate custom taggers and filters. Once
+PID detection is complete, users may also wish to supply a custom
+replacement function for the redaction step.</p>
+<p>Replacements are applied via <code><a href="../reference/auto_replace.html">auto_replace()</a></code>, which
+accepts a user-defined function through the
+<code>replacement_func</code> argument:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">simple_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="st">"XXX"</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span>, replacement_func <span class="op">=</span> <span class="va">simple_replace</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 3</span></span></span>
+<span><span class="co">#&gt;    If                                                                From  To   </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Cent… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>[Scene: Central Perk, everyone is there.]<span style="color: #949494;">"</span>                       Perk  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Ross  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Oh, Ross, Mon, is it okay if I bring someone to your parent's a… Mon   XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Well, his name is Parker and I met him at the drycleaners.<span style="color: #949494;">"</span>      Park… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Every year Ross makes the toast, and it's always really moving,… Ross  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>And you wonder why Ross is their favorite?<span style="color: #949494;">"</span>                      Ross  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>Any time Ross makes a toast everyone cries, and hugs him, and p… Ross  XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Chan… XXX  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>[Scene: Chandler and Monica's, they're getting ready to leave f… Moni… XXX</span></span></code></pre></div>
+<p>Users requiring more control can leverage the memoization framework
+built into <code>pidpos</code>. This requires first defining a
+zero-argument function that generates a candidate replacement
+string:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">custom_replace_candidate</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p><em>Note</em>: letters contains 26 elements, so this encoder can
+produce at most 26 distinct replacements.</p>
+<p>This function can then be passed to
+<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code>, which returns a stateful
+replacement function — the same pattern used internally by
+<code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code>:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">custom_replacer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_replacement_function.html">make_replacement_function</a></span><span class="op">(</span><span class="va">custom_replace_candidate</span>, <span class="fl">26</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">raw_redaction_rules</span><span class="op">)</span>, replacement_func <span class="op">=</span> <span class="va">custom_replacer</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
+<span><span class="co">#&gt;   If                                                                 From  To   </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                          Cent… m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                          Perk  w    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  l    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   e    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Well, his name is Parker and I met him at the drycleaners.         Park… f    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Every year Ross makes the toast, and it's always really moving, a… Ross  l</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

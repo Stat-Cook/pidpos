@@ -52,14 +52,15 @@ Called for its side effects. Sets `getOption("pidpos_caching")` and
 if (FALSE) { # \dontrun{
 # Persist models in a shared package-level cache
 pidpos_setup("package")
-pidpos(the_one_in_masa)
+pidpos(the_one_in_massapequa, tagger = "english-ewt")
 
 # Use a per-project cache (good for reproducible workflows)
 pidpos_setup("project")
+pidpos(the_one_in_massapequa, tagger = "english-ewt")
 
 # Block downloads and manually manage models
 pidpos_setup("env")
 m <- udpipe::udpipe_load_model("path/to/model")
-pidpos(the_one_in_massapequa, m)
+pidpos(the_one_in_massapequa, tagger = m)
 } # }
 ```
