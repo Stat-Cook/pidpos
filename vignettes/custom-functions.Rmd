@@ -199,6 +199,39 @@ pidpos(
 )
 ```
 
+
+--- 
+
+# Custom replacement functions
+The preceding examples demonstrate custom taggers and filters. Once PID detection is complete, users may also wish to supply a custom replacement function for the redaction step.
+
+Replacements are applied via `auto_replace()`, which accepts a user-defined function through the `replacement_func` argument:
+
+``` {r}
+simple_replace <- function(x){
+  "XXX"
+}
+
+auto_replace(raw_redaction_rules, replacement_func = simple_replace)
+```
+
+Users requiring more control can leverage the memoization framework built into `pidpos`. This requires first defining a zero-argument function that generates a candidate replacement string:
+
+``` {r}
+custom_replace_candidate <- function(){
+  sample(letters, 1)
+}
+```
+*Note*: letters contains 26 elements, so this encoder can produce at most 26 distinct replacements.
+
+This function can then be passed to `make_replacement_function()`, which returns a stateful replacement function — the same pattern used internally by `make_random_replacement()`:
+
+``` {r}
+custom_replacer <- make_replacement_function(custom_replace_candidate, 26)
+
+auto_replace(head(raw_redaction_rules), replacement_func = custom_replacer)
+```
+
 ---
 
 # Summary
