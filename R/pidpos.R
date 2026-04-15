@@ -34,7 +34,7 @@
 #'
 #' By default [pidpos()] caches the `udpipe` models in a package cache directory.
 #' This behaviour can be altered via [pidpos_setup()] to redirect `udpipe` models
-#' or force environemnt only models.
+#' or force environment only models.
 #'
 #' @examples
 #' \dontrun{
@@ -43,13 +43,12 @@
 #' try(
 #'   pidpos(example.data, to_ignore = c("scene", "utterance"))
 #' )
-#'
+#' 
 #' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
-#'
+#' 
 #' tag_ewt <- udpipe_factory("english-ewt")
 #' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
-#'
-#'
+#' 
 #' filter_to_long_proper_nouns <- function(frm) {
 #'   frm |>
 #'     dplyr::filter(nchar(Token) > 1)
