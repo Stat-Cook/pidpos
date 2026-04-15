@@ -190,7 +190,7 @@ Now use both:
 pidpos(
   example.data,
   tagger = friends_tagger2,
-  filter = custom_filter
+  filter_func = custom_filter
 )
 #> # A tibble: 10 × 7
 #>    Token    POS   ID                Sentence Document Repeats `Affected Columns`
