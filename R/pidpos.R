@@ -19,7 +19,7 @@
 #' @param warn_if_missing   Raise a warning if the `to_ignore` columns are
 #'   not in the data frame.
 #'
-#' @return A `pid_report` (inheriting from tibble) containing:
+#' @return A `pidpos` (inheriting from tibble) containing:
 #' \itemize{
 #'   \item `ID`: The location of the sentence in the data frame in the form `Col:<colname> Row:<rownumber>`.
 #'   \item `Token`: The detected proper noun.

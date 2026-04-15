@@ -1,4 +1,4 @@
-test_that("pidpos returns pid_report", {
+test_that("pidpos returns pidpos", {
   mockery::stub(pidpos, "tag_data_frame", fake_tag_data_frame)
 
   df <- data.frame(text = c("John went home.", "London is big."))
@@ -38,13 +38,13 @@ fake_empty_tag_data_frame <- function(...) {
   list(AllTags = NULL, Documents = NULL)
 }
 
-test_that("returns empty pid_report if no tags", {
+test_that("returns empty pidpos if no tags", {
   mockery::stub(pidpos, "tag_data_frame", fake_empty_tag_data_frame)
 
   df <- data.frame(text = "Nothing")
 
   result <- pidpos(df)
 
-  expect_s3_class(result, "pid_report")
+  expect_s3_class(result, "pidpos")
   expect_equal(nrow(result), 0)
 })
