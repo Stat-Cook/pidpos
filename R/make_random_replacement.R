@@ -24,10 +24,10 @@ make_random_replacement <- function(replacement_size = 10,
                                     replacement_space = LETTERS,
                                     all = FALSE,
                                     elevate_warnings = FALSE) {
-  if (!is.numeric(replacements_size) || replacements_size < 0 || x != floor(x)){
+  if (!is.numeric(replacements_size) || replacements_size < 0 || x != floor(x)) {
     stop("`replacement_size` should be a non-zero positive integer")
   }
-  
+
   random_encoder <- function() {
     paste(sample(replacement_space, replacement_size, TRUE), collapse = "")
   }
