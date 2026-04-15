@@ -30,7 +30,6 @@ prepare_redactions <- function(object) {
 
 #' @exportS3Method
 prepare_redactions.character <- function(object) {
-
   rules.frm <- read.csv(object)
 
   prepare_redactions(rules.frm)
@@ -38,6 +37,5 @@ prepare_redactions.character <- function(object) {
 
 #' @exportS3Method
 prepare_redactions.data.frame <- function(object) {
-
   redaction_function_factory(object)
 }
