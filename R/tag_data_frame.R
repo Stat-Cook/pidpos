@@ -49,10 +49,10 @@ tag_data_frame <- function(frm,
   if (!is.numeric(chunk_size) || chunk_size < 1) {
     type_error("`chunk_size` must be a positive integer.")
   }
-
-  if (is.character(tagger)) {
+  
+  if (is.character(tagger) | inherits(tagger, "udpipe_model")) {
     .tagger <- udpipe_factory(tagger)
-  } else {
+  } else  {
     .tagger <- tagger
   }
 
