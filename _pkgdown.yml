@@ -43,6 +43,13 @@ reference:
   - set_udpipe_version
   - reinstate_default_reader
   - merge_redactions
+- title: "Experimental: spacy bindings"
+  desc: > 
+  contents:
+  - spacy_factory
+  - create_spacy_env
+  - spacy-conda-env
+  - spacy_models
 - title: "Datasets"
   desc: >
   contents:
