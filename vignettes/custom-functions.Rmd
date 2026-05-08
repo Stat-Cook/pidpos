@@ -208,7 +208,7 @@ The preceding examples demonstrate custom taggers and filters. Once PID detectio
 Replacements are applied via `auto_replace()`, which accepts a user-defined function through the `replacement_func` argument:
 
 ``` {r}
-simple_replace <- function(x){
+simple_replace <- function(x) {
   "XXX"
 }
 
@@ -218,7 +218,7 @@ auto_replace(raw_redaction_rules, replacement_func = simple_replace)
 Users requiring more control can leverage the memoization framework built into `pidpos`. This requires first defining a zero-argument function that generates a candidate replacement string:
 
 ``` {r}
-custom_replace_candidate <- function(){
+custom_replace_candidate <- function() {
   sample(letters, 1)
 }
 ```
