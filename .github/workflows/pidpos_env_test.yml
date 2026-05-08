@@ -1,0 +1,55 @@
+name: Test spaCy Install
+
+on:
+  workflow_dispatch:
+    inputs:
+      env_name:
+        description: 'Conda env name to test'
+        default: 'pidpos'
+        required: false
+
+jobs:
+  test-spacy-install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - name: Install miniconda
+        run: |
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+          bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+          echo "$HOME/miniconda/bin" >> $GITHUB_PATH
+
+      - name: Cache conda env
+        uses: actions/cache@v3
+        with:
+          path: ~/miniconda/envs/${{ inputs.env_name }}
+          key: conda-${{ inputs.env_name }}-${{ hashFiles('inst/python/spacy-env.yml') }}
+
+      - name: Install R dependencies
+        run: |
+          install.packages(c("reticulate", "callr"))
+          devtools::install_deps()
+        shell: Rscript {0}
+
+      - name: Install pidpos
+        run: devtools::install_local()
+        shell: Rscript {0}
+
+      - name: Test spaCy env creation
+        run: |
+          Sys.setenv(SPACY_CONDA_ENV = "${{ inputs.env_name }}")
+          pidpos::create_spacy_env()
+        shell: Rscript {0}
+
+      - name: Test spaCy loads
+        run: |
+          Sys.setenv(SPACY_CONDA_ENV = "${{ inputs.env_name }}")
+          reticulate::use_condaenv("${{ inputs.env_name }}", required = TRUE)
+          spacy <- reticulate::import("spacy")
+          nlp <- spacy$load("en_core_web_lg")
+          print(nlp)
+        shell: Rscript {0}
