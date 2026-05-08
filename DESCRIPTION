@@ -49,7 +49,9 @@ Suggests:
     covr,
     curl,
     writexl,
-    withr
+    withr,
+    reticulate,
+    callr
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
