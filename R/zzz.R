@@ -15,6 +15,8 @@ pidpos_env <- new.env()
     "jwijffels/udpipe.models.ud.2.3" = "181115"
   )
   reinstate_default_reader()
+  
+  pidpos_env$conda_env <- Sys.getenv("SPACY_CONDA_ENV", unset = "pidpos")
 
   pidpos_env$udpipe_repo <- pidpos_env$allowed_repos[["2.5"]]
 

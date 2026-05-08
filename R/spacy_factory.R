@@ -1,0 +1,52 @@
+#' pidpos bindings to spacy models
+#' 
+#' @param model The spacy language model - currently supports "en_core_web_lg" and "en_core_web_trf"
+#' 
+#' @returns A tagging function with the signature tagger(doc, doc_id) -> data.frame
+#' 
+#' @export
+spacy_factory <- function(model = "en_core_web_lg"){
+  reticulate::use_condaenv(get_pidpos_conda())
+  
+  spacy <- reticulate::import("spacy")
+  tagger <- spacy$load(model)
+  
+  function(doc, doc_id=NULL){
+    
+    if (is.null(doc_id)){
+      doc_id <- seq_along(doc)
+    }
+    
+    map2(
+      doc, doc_id,
+      \(.x, .y) spacy_process(.x, tagger) |>
+        dplyr::mutate(ID = .y)
+    ) |> 
+      dplyr::bind_rows() |> 
+      dplyr::select(ID, Token, Sentence, POS)
+  }
+}
+
+
+spacy_filter <- function(frm) {
+  dplyr::filter(frm, POS %in%  c("PERSON", "DATE"))
+}
+
+
+spacy_process <- function(doc, tagger){
+  tagged <- tagger(doc)
+  
+  if (length(tagged$ents) == 0) {
+    return(tibble::tibble(
+      Sentence = doc,
+      Token = NA_character_,
+      POS = NA_character_
+    ))
+  }
+  
+  tibble::tibble(
+    Sentence = doc, 
+    Token = simplify(map(tagged$ents, "text")),
+    POS = simplify(map(tagged$ents, "label_"))
+  )
+}
