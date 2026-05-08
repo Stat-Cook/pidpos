@@ -88,8 +88,9 @@ udpipe_factory <- function(model = "english-ewt",
 
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
-      dplyr::rename_with(~ c("ID", "Token", "Sentence", "POS"), 
-                         .cols = c("doc_id", "token", "sentence", "upos")) |>
+      dplyr::rename_with(~ c("ID", "Token", "Sentence", "POS"),
+        .cols = c("doc_id", "token", "sentence", "upos")
+      ) |>
       tibble::as_tibble()
 
     dplyr::select(

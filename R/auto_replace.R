@@ -18,7 +18,7 @@
 #'
 #' @export
 #' @seealso [report_to_redaction_rules()] [redact()]
-auto_replace <- function(frm, replacement_func, 
+auto_replace <- function(frm, replacement_func,
                          include_pos = FALSE, filter = FALSE) {
   if (filter) {
     frm <- dplyr::filter(frm, .data$From != .data$To)
@@ -27,6 +27,6 @@ auto_replace <- function(frm, replacement_func,
   frm |>
     dplyr::mutate(
       To = replacement_func(.data$To),
-      To = ifelse(include_pos, paste(POS, To, sep="_"), To)
+      To = ifelse(include_pos, paste(POS, To, sep = "_"), To)
     )
 }
