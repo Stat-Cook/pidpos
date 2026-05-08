@@ -17,7 +17,7 @@
 #'   \item{ID}{Document identifier}
 #'   \item{Token}{Individual token text}
 #'   \item{Sentence}{Sentence containing the token}
-#'   \item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
+#'   \item{POS}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 #' }
 #' and all columns returned by the <[udpipe()`][udpipe::udpipe]>
 #'   function for each token.
@@ -88,12 +88,13 @@ udpipe_factory <- function(model = "english-ewt",
 
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
-      dplyr::rename_with(~ c("ID", "Token", "Sentence"), .cols = c("doc_id", "token", "sentence")) |>
+      dplyr::rename_with(~ c("ID", "Token", "Sentence", "POS"), 
+                         .cols = c("doc_id", "token", "sentence", "upos")) |>
       tibble::as_tibble()
 
     dplyr::select(
       result,
-      all_of(c("ID", "Token", "Sentence", "upos")),
+      all_of(c("ID", "Token", "Sentence", "POS")),
       all_of(colnames(result))
     )
   }
