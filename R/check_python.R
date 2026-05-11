@@ -1,4 +1,4 @@
-#' 
+#'
 check_python <- function(envname = "spacy-env") {
   reticulate::use_condaenv(envname)
 
