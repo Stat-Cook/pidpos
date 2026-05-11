@@ -7,16 +7,16 @@
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {
   check_reticulate()
-  
+
   tryCatch(
     reticulate::use_condaenv(get_pidpos_conda()),
     error = function(e) {
-      stop(e$message, "\nYou may need to run `create_spacy_env()` or 
+      stop(e$message, "\nYou may need to run `create_spacy_env()` or
            restart your R session.")
     }
   )
-  
-  check_spacy()  
+
+  check_spacy()
 
   spacy <- reticulate::import("spacy")
   tagger <- spacy$load(model)
