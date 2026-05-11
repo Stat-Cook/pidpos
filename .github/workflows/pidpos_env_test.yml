@@ -60,4 +60,6 @@ jobs:
           spacy <- reticulate::import("spacy")
           nlp <- spacy$load("en_core_web_lg")
           print(nlp)
+          nlp.trf <- spacy$load("en_core_web_trf")
+          print(nlp)
         shell: Rscript {0}
