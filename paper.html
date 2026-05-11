@@ -68,27 +68,27 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
 <span><span class="va">example_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">example_data</span></span></code></pre></div>
-<table class="table"><colgroup><col width="6%"><col width="9%"><col width="15%"><col width="68%"></colgroup><thead><tr class="header"><th align="right">scene</th>
+<table class="table"><colgroup><col width="6%"><col width="9%"><col width="15%"><col width="68%"></colgroup><thead><tr><th align="right">scene</th>
 <th align="right">utterance</th>
 <th align="left">speaker</th>
 <th align="left">text</th>
-</tr></thead><tbody><tr class="odd"><td align="right">1</td>
+</tr></thead><tbody><tr><td align="right">1</td>
 <td align="right">1</td>
 <td align="left">Scene Directions</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">2</td>
 <td align="left">Phoebe Buffay</td>
 <td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
-</tr><tr class="odd"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">3</td>
 <td align="left">Monica Geller</td>
 <td align="left">Yeah.</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">4</td>
 <td align="left">Ross Geller</td>
 <td align="left">Sure. Yeah.</td>
-</tr><tr class="odd"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">5</td>
 <td align="left">Joey Tribbiani</td>
 <td align="left">So, who’s the guy?</td>
@@ -96,37 +96,37 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></code></pre></div>
-<table class="table"><colgroup><col width="9%"><col width="5%"><col width="35%"><col width="35%"><col width="5%"><col width="9%"></colgroup><thead><tr class="header"><th align="left">ID</th>
+<table class="table"><colgroup><col width="9%"><col width="5%"><col width="35%"><col width="35%"><col width="5%"><col width="9%"></colgroup><thead><tr><th align="left">ID</th>
 <th align="left">Token</th>
 <th align="left">Sentence</th>
 <th align="left">Document</th>
 <th align="right">Repeats</th>
 <th align="left">Affected Columns</th>
-</tr></thead><tbody><tr class="odd"><td align="left">Col:text Row:1</td>
+</tr></thead><tbody><tr><td align="left">Col:text Row:1</td>
 <td align="left">Central</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="right">1</td>
 <td align="left"><code>text</code></td>
-</tr><tr class="even"><td align="left">Col:text Row:1</td>
+</tr><tr><td align="left">Col:text Row:1</td>
 <td align="left">Perk</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="right">1</td>
 <td align="left"><code>text</code></td>
-</tr><tr class="odd"><td align="left">Col:speaker Row:2</td>
+</tr><tr><td align="left">Col:speaker Row:2</td>
 <td align="left">Phoebe</td>
 <td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe Buffay</td>
 <td align="right">3</td>
 <td align="left"><code>speaker</code></td>
-</tr><tr class="even"><td align="left">Col:speaker Row:2</td>
+</tr><tr><td align="left">Col:speaker Row:2</td>
 <td align="left">Buffay</td>
 <td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe Buffay</td>
 <td align="right">3</td>
 <td align="left"><code>speaker</code></td>
-</tr><tr class="odd"><td align="left">Col:text Row:2</td>
+</tr><tr><td align="left">Col:text Row:2</td>
 <td align="left">Ross</td>
 <td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
@@ -139,49 +139,49 @@
 <span><span class="va">replacement_func</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement_func</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span></code></pre></div>
-<table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr class="header"><th align="left">If</th>
+<table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr><th align="left">If</th>
 <th align="left">From</th>
 <th align="left">To</th>
-</tr></thead><tbody><tr class="odd"><td align="left">[Scene: Central Perk, everyone is there.]</td>
+</tr></thead><tbody><tr><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Central</td>
 <td align="left">EQDBKGTPNC</td>
-</tr><tr class="even"><td align="left">[Scene: Central Perk, everyone is there.]</td>
+</tr><tr><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Perk</td>
 <td align="left">YARKFBYZOZ</td>
-</tr><tr class="odd"><td align="left">Phoebe Buffay</td>
+</tr><tr><td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe</td>
 <td align="left">XPMJIAOHSW</td>
-</tr><tr class="even"><td align="left">Phoebe Buffay</td>
+</tr><tr><td align="left">Phoebe Buffay</td>
 <td align="left">Buffay</td>
 <td align="left">JQAFEQYLVB</td>
-</tr><tr class="odd"><td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
+</tr><tr><td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="left">Ross</td>
 <td align="left">XAKVUFWDAK</td>
 </tr></tbody></table><p>Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in <a href="https://stat-cook.github.io/pidpos/articles/auto-replacement.html">Automatic Replacement Tools</a>. Finally, apply the rules to produce a redacted dataset:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redacted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/redact.html">redact</a></span><span class="op">(</span><span class="va">example_data</span>, <span class="va">prepared_replacements</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">redacted_data</span><span class="op">)</span></span></code></pre></div>
-<table class="table"><colgroup><col width="6%"><col width="9%"><col width="17%"><col width="66%"></colgroup><thead><tr class="header"><th align="right">scene</th>
+<table class="table"><colgroup><col width="6%"><col width="9%"><col width="17%"><col width="66%"></colgroup><thead><tr><th align="right">scene</th>
 <th align="right">utterance</th>
 <th align="left">speaker</th>
 <th align="left">text</th>
-</tr></thead><tbody><tr class="odd"><td align="right">1</td>
+</tr></thead><tbody><tr><td align="right">1</td>
 <td align="right">1</td>
 <td align="left">Scene Directions</td>
 <td align="left">[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.]</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">2</td>
 <td align="left">XPMJIAOHSW JQAFEQYLVB</td>
 <td align="left">Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party?</td>
-</tr><tr class="odd"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">3</td>
 <td align="left">WKWRASBHEB PQVJAKTCDP</td>
 <td align="left">Yeah.</td>
-</tr><tr class="even"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">4</td>
 <td align="left">XAKVUFWDAK PQVJAKTCDP</td>
 <td align="left">Sure. Yeah.</td>
-</tr><tr class="odd"><td align="right">1</td>
+</tr><tr><td align="right">1</td>
 <td align="right">5</td>
 <td align="left">IRGPSNTIXK MMXCBEYDQK</td>
 <td align="left">So, who’s the guy?</td>

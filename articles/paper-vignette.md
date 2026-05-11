@@ -14,11 +14,11 @@ Data collection and analysis has grown enormously in scale and scope,
 prompting international legislation to protect individuals’ rights over
 their own data (European Parliament and Council of the European Union
 2016). This has heightened awareness of the responsibilities of data
-controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke
+controllers (ICO, n.d.-b) and the risks posed by large datasets (Clarke
 2016). A central concern is personal identifiability — the ability to
 directly or indirectly identify an individual from a dataset (Finck and
 Pallas 2020) — with breaches carrying significant reputational and
-financial consequences (ICO, n.d.a).
+financial consequences (ICO, n.d.-a).
 
 For small, structured datasets, manual inspection can identify
 personally identifiable data (PID) with reasonable effort. In large
@@ -28,12 +28,12 @@ PII (Patterson-Stein 2025) address this through pattern matching, which
 risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
-tagging (by default the udpipe framework (Straka, Hajic, and Straková
-2016; Wijffels 2023), with the ability to use a custom tagging engine)
-it extracts all proper nouns from a dataset, deliberately accepting a
-higher false positive rate, and implementing tools to aid human review
-rather than attempting full automation. This makes it robust to the edge
-cases that pattern-matching approaches can miss.
+tagging (by default the udpipe framework (Straka et al. 2016; Wijffels
+2023), with the ability to use a custom tagging engine) it extracts all
+proper nouns from a dataset, deliberately accepting a higher false
+positive rate, and implementing tools to aid human review rather than
+attempting full automation. This makes it robust to the edge cases that
+pattern-matching approaches can miss.
 
 ## In practice
 
@@ -41,6 +41,7 @@ To install the current version of `pidpos` package, use the following
 code:
 
 ``` r
+
 # install.packages("pak")
 pak::pkg_install("Stat-Cook/pidpos")
 ```
@@ -60,6 +61,7 @@ To illustrate this, we include a subset of the `friends` package data
 set:
 
 ``` r
+
 library(pidpos)
 example_data <- head(the_one_in_massapequa, 20)
 example_data
@@ -77,6 +79,7 @@ example_data
 First, generate a PID report:
 
 ``` r
+
 report <- pidpos(example_data)
 #> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-ewt-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-ewt-ud-2.5-191206.udpipe
 #>  - This model has been trained on version 2.5 of data from https://universaldependencies.org
@@ -109,17 +112,18 @@ Should the user wish to not only identify, but redact the data, the
 report can be converted into redaction rules and apply replacements:
 
 ``` r
+
 raw_rules <- report_to_redaction_rules(report)
 replacement_func <- make_random_replacement()
 prepared_replacements <- auto_replace(raw_rules, replacement_func)
 head(prepared_replacements)
-#> # A tibble: 6 × 3
-#>   If                                        From    To        
-#>   <chr>                                     <chr>   <chr>     
-#> 1 [Scene: Central Perk, everyone is there.] Central MWLEFOODFI
-#> 2 [Scene: Central Perk, everyone is there.] Perk    EEXOMBWKKE
-#> 3 Phoebe Buffay                             Phoebe  ULBFDPBCYV
-#> 4 Phoebe Buffay                             Buffay  KGUFIVJUBQ
+#> # A tibble: 6 × 4
+#>   If                                        From    To         POS  
+#>   <chr>                                     <chr>   <chr>      <chr>
+#> 1 [Scene: Central Perk, everyone is there.] Central MWLEFOODFI ""   
+#> 2 [Scene: Central Perk, everyone is there.] Perk    MWLEFOODFI ""   
+#> 3 Phoebe Buffay                             Phoebe  MWLEFOODFI ""   
+#> 4 Phoebe Buffay                             Buffay  MWLEFOODFI ""   
 #> # ℹ 2 more rows
 ```
 
@@ -131,15 +135,16 @@ Tools](https://stat-cook.github.io/pidpos/articles/auto-replacement.html).
 Finally, apply the rules to produce a redacted dataset:
 
 ``` r
+
 redacted_data <- redact(example_data, prepared_replacements)
 head(redacted_data)
 #> # A tibble: 6 × 4
 #>   scene utterance speaker               text                                    
 #>   <int>     <int> <chr>                 <chr>                                   
-#> 1     1         1 Scene Directions      [Scene: MWLEFOODFI EEXOMBWKKE, everyone…
-#> 2     1         2 ULBFDPBCYV KGUFIVJUBQ Oh, TXVAFBSNAY, OREHALSPKZ, is it okay …
-#> 3     1         3 CBWJCFDJAG FVSYBHAAGL Yeah.                                   
-#> 4     1         4 TXVAFBSNAY FVSYBHAAGL Sure. Yeah.                             
+#> 1     1         1 Scene Directions      [Scene: MWLEFOODFI MWLEFOODFI, everyone…
+#> 2     1         2 MWLEFOODFI MWLEFOODFI Oh, MWLEFOODFI, MWLEFOODFI, is it okay …
+#> 3     1         3 MWLEFOODFI MWLEFOODFI Yeah.                                   
+#> 4     1         4 MWLEFOODFI MWLEFOODFI Sure. Yeah.                             
 #> # ℹ 2 more rows
 ```
 
@@ -180,17 +185,17 @@ Journal* 26 (1): 77–90.
 
 European Parliament, and Council of the European Union. 2016.
 “Regulation (EU) 2016/679 of the European Parliament and of the
-Council.” April 27, 2016. <https://data.europa.eu/eli/reg/2016/679/oj>.
+Council.” April 27. <https://data.europa.eu/eli/reg/2016/679/oj>.
 
 Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be
 Identified—Distinguishing Personal from Non-Personal Data Under the
 GDPR.” *International Data Privacy Law* 10 (1): 11–36.
 
-ICO. n.d.a. “Personal Data Breaches: What Happens If We Fail to Notify
+ICO. n.d.-a. “Personal Data Breaches: What Happens If We Fail to Notify
 the ICO of All Notifiable Breaches?”
 <https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi>.
 
-———. n.d.b. “What Does It Mean If You Are a Controller?”
+ICO. n.d.-b. “What Does It Mean If You Are a Controller?”
 <https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/>.
 
 Patterson-Stein, Jacob. 2025. *Pii: Search Data Frames for Personally
@@ -198,7 +203,7 @@ Identifiable Information*. <https://CRAN.R-project.org/package=pii>.
 
 Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable
 Pipeline for Processing CoNLL-u Files Performing Tokenization,
-Morphological Analysis, Pos Tagging and Parsing.” In *Proceedings of the
+Morphological Analysis, Pos Tagging and Parsing.” *Proceedings of the
 Tenth International Conference on Language Resources and Evaluation
 (LREC’16)*, 4290–97.
 

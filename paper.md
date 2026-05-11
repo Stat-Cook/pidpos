@@ -39,6 +39,7 @@ To install the current version of `pidpos` package, use the following
 code:
 
 ``` r
+
 # install.packages("pak")
 pak::pkg_install("Stat-Cook/pidpos")
 ```
@@ -58,33 +59,35 @@ To illustrate this, we include a subset of the `friends` package data
 set:
 
 ``` r
+
 library(pidpos)
 example_data <- head(the_one_in_massapequa, 20)
 example_data
 ```
 
-| scene | utterance | speaker          | text                                                                             |
-|------:|----------:|:-----------------|:---------------------------------------------------------------------------------|
-|     1 |         1 | Scene Directions | \[Scene: Central Perk, everyone is there.\]                                      |
-|     1 |         2 | Phoebe Buffay    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | Monica Geller    | Yeah.                                                                            |
-|     1 |         4 | Ross Geller      | Sure. Yeah.                                                                      |
-|     1 |         5 | Joey Tribbiani   | So, who’s the guy?                                                               |
+| scene | utterance | speaker | text |
+|---:|---:|:---|:---|
+| 1 | 1 | Scene Directions | \[Scene: Central Perk, everyone is there.\] |
+| 1 | 2 | Phoebe Buffay | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |
+| 1 | 3 | Monica Geller | Yeah. |
+| 1 | 4 | Ross Geller | Sure. Yeah. |
+| 1 | 5 | Joey Tribbiani | So, who’s the guy? |
 
 First, generate a PID report:
 
 ``` r
+
 report <- pidpos(example_data)
 head(report)
 ```
 
-| ID                | Token   | Sentence                                                                         | Document                                                                         | Repeats | Affected Columns |
-|:------------------|:--------|:---------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|--------:|:-----------------|
-| Col:text Row:1    | Central | \[Scene: Central Perk, everyone is there.\]                                      | \[Scene: Central Perk, everyone is there.\]                                      |       1 | `text`           |
-| Col:text Row:1    | Perk    | \[Scene: Central Perk, everyone is there.\]                                      | \[Scene: Central Perk, everyone is there.\]                                      |       1 | `text`           |
-| Col:speaker Row:2 | Phoebe  | Phoebe Buffay                                                                    | Phoebe Buffay                                                                    |       3 | `speaker`        |
-| Col:speaker Row:2 | Buffay  | Phoebe Buffay                                                                    | Phoebe Buffay                                                                    |       3 | `speaker`        |
-| Col:text Row:2    | Ross    | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? |       1 | `text`           |
+| ID | Token | Sentence | Document | Repeats | Affected Columns |
+|:---|:---|:---|:---|---:|:---|
+| Col:text Row:1 | Central | \[Scene: Central Perk, everyone is there.\] | \[Scene: Central Perk, everyone is there.\] | 1 | `text` |
+| Col:text Row:1 | Perk | \[Scene: Central Perk, everyone is there.\] | \[Scene: Central Perk, everyone is there.\] | 1 | `text` |
+| Col:speaker Row:2 | Phoebe | Phoebe Buffay | Phoebe Buffay | 3 | `speaker` |
+| Col:speaker Row:2 | Buffay | Phoebe Buffay | Phoebe Buffay | 3 | `speaker` |
+| Col:text Row:2 | Ross | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | 1 | `text` |
 
 The report lists all detected proper nouns alongside their source
 variable and position. By default,
@@ -100,19 +103,20 @@ Should the user wish to not only identify, but redact the data, the
 report can be converted into redaction rules and apply replacements:
 
 ``` r
+
 raw_rules <- report_to_redaction_rules(report)
 replacement_func <- make_random_replacement()
 prepared_replacements <- auto_replace(raw_rules, replacement_func)
 head(prepared_replacements)
 ```
 
-| If                                                                               | From    | To         |
-|:---------------------------------------------------------------------------------|:--------|:-----------|
-| \[Scene: Central Perk, everyone is there.\]                                      | Central | EQDBKGTPNC |
-| \[Scene: Central Perk, everyone is there.\]                                      | Perk    | YARKFBYZOZ |
-| Phoebe Buffay                                                                    | Phoebe  | XPMJIAOHSW |
-| Phoebe Buffay                                                                    | Buffay  | JQAFEQYLVB |
-| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross    | XAKVUFWDAK |
+| If | From | To |
+|:---|:---|:---|
+| \[Scene: Central Perk, everyone is there.\] | Central | EQDBKGTPNC |
+| \[Scene: Central Perk, everyone is there.\] | Perk | YARKFBYZOZ |
+| Phoebe Buffay | Phoebe | XPMJIAOHSW |
+| Phoebe Buffay | Buffay | JQAFEQYLVB |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross | XAKVUFWDAK |
 
 Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -122,17 +126,18 @@ Tools](https://stat-cook.github.io/pidpos/articles/auto-replacement.html).
 Finally, apply the rules to produce a redacted dataset:
 
 ``` r
+
 redacted_data <- redact(example_data, prepared_replacements)
 head(redacted_data)
 ```
 
-| scene | utterance | speaker               | text                                                                                          |
-|------:|----------:|:----------------------|:----------------------------------------------------------------------------------------------|
-|     1 |         1 | Scene Directions      | \[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.\]                                          |
-|     1 |         2 | XPMJIAOHSW JQAFEQYLVB | Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party? |
-|     1 |         3 | WKWRASBHEB PQVJAKTCDP | Yeah.                                                                                         |
-|     1 |         4 | XAKVUFWDAK PQVJAKTCDP | Sure. Yeah.                                                                                   |
-|     1 |         5 | IRGPSNTIXK MMXCBEYDQK | So, who’s the guy?                                                                            |
+| scene | utterance | speaker | text |
+|---:|---:|:---|:---|
+| 1 | 1 | Scene Directions | \[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.\] |
+| 1 | 2 | XPMJIAOHSW JQAFEQYLVB | Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party? |
+| 1 | 3 | WKWRASBHEB PQVJAKTCDP | Yeah. |
+| 1 | 4 | XAKVUFWDAK PQVJAKTCDP | Sure. Yeah. |
+| 1 | 5 | IRGPSNTIXK MMXCBEYDQK | So, who’s the guy? |
 
 # Multiple file API
 

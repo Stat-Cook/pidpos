@@ -40,6 +40,7 @@ With each file consisting of 6 columns:
 - `utterance`
 
 ``` r
+
 library(pidpos)
 
 data_path <- system.file("vignette_data", package = "pidpos")
@@ -51,6 +52,7 @@ list.files(data_path)
 and we check the files are the intended data:
 
 ``` r
+
 rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
 rachell <- read.csv(rachell_tells, nrows = 5)
 ```
@@ -63,6 +65,7 @@ arguments:
   reports should be saved
 
 ``` r
+
 report_on_folder(data_path, report_dir = "Proper Noun Report")
 ```
 
@@ -70,6 +73,7 @@ Once evaluated the `report_dir` folder gets populated by a set of csv
 files, one per data set found at `data_path`:
 
 ``` r
+
 browseURL("Proper Noun Report")
 ```
 
@@ -83,6 +87,7 @@ Each of these files consists of 6 columns:
 - `Affected Columns` - all the columns that `Document` occurred in.
 
 ``` r
+
 read.csv("Proper Noun Report/The_One_Where_Rachel_Tells.csv")
 ```
 
@@ -848,6 +853,7 @@ replaced with the same tokens). Hence, we combine all distinct proper
 nouns reports:
 
 ``` r
+
 distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
 ```
 
@@ -884,18 +890,19 @@ approach to redaction is to use the `auto_replacement` and
 string, for example:
 
 ``` r
+
 replacer <- make_random_replacement(all = T)
 replaced_rules <- auto_replace(distinct_rules, replacer)
 head(replaced_rules)
-#> # A tibble: 6 × 3
-#>   If                                                                 From  To   
-#>   <chr>                                                              <chr> <chr>
-#> 1 "[Scene: The Wedding Hall, Monica and Chandler have just said \"I… Wedd… MWLE…
-#> 2 "[Scene: The Wedding Hall, Monica and Chandler have just said \"I… Hall  EEXO…
-#> 3 "[Scene: The Wedding Hall, Monica and Chandler have just said \"I… Moni… ULBF…
-#> 4 "[Scene: The Wedding Hall, Monica and Chandler have just said \"I… Chan… KGUF…
-#> 5 "First of Monica, Chandler, Ross and Joey.]"                       Moni… TXVA…
-#> 6 "First of Monica, Chandler, Ross and Joey.]"                       Chan… OREH…
+#> # A tibble: 6 × 4
+#>   If                                                           From  To    POS  
+#>   <chr>                                                        <chr> <chr> <chr>
+#> 1 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Wedd… MWLE… ""   
+#> 2 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Hall  MWLE… ""   
+#> 3 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Moni… MWLE… ""   
+#> 4 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Chan… MWLE… ""   
+#> 5 "First of Monica, Chandler, Ross and Joey.]"                 Moni… MWLE… ""   
+#> 6 "First of Monica, Chandler, Ross and Joey.]"                 Chan… MWLE… ""
 ```
 
 The user may prefer to set the replacements manually by saving the
@@ -906,46 +913,49 @@ to `TRUE` so it only creates replacements where `From` and `To` don’t
 match.
 
 ``` r
+
 distinct_rules |>
   dplyr::mutate(
     To = ifelse(To == "Geller", "XXX", To)
   ) |>
   auto_replace(replacer, filter = TRUE)
-#> # A tibble: 6 × 3
-#>   If                                  From   To        
-#>   <chr>                               <chr>  <chr>     
-#> 1 Monica Geller                       Geller YHHADKJITR
-#> 2 Ross Geller                         Geller XADGILYLUR
-#> 3 Dr. Geller?                         Geller AYMHUSONGV
-#> 4 Dr. Geller, will you dance with me? Geller BHAKFVSFAZ
-#> 5 (Mr. Geller dances over.)           Geller XGITAQDVEE
-#> 6 Jack Geller                         Geller MSVAKVCXOQ
+#> # A tibble: 6 × 4
+#>   If                                  From   To         POS  
+#>   <chr>                               <chr>  <chr>      <chr>
+#> 1 Monica Geller                       Geller YHHADKJITR ""   
+#> 2 Ross Geller                         Geller YHHADKJITR ""   
+#> 3 Dr. Geller?                         Geller YHHADKJITR ""   
+#> 4 Dr. Geller, will you dance with me? Geller YHHADKJITR ""   
+#> 5 (Mr. Geller dances over.)           Geller YHHADKJITR ""   
+#> 6 Jack Geller                         Geller YHHADKJITR ""
 ```
 
 With the `To` column set as desired, this frame can now be used in
 `redact`:
 
 ``` r
+
 redacted_rachell <- redact(rachell, replaced_rules)
 redacted_rachell
 #>                                                                                                                                                   text
-#> 1 [Scene: YDCIDNLRPA and RZBZJRESTN's, YDCIDNLRPA and RZBZJRESTN are getting ready to go on their honeymoon. YDCIDNLRPA is entering from the bedroom.]
-#> 2                                                                                    Hey! TPXHYZHUSK! Aren't you excited we're going on our honeymoon?
+#> 1 [Scene: MWLEFOODFI and MWLEFOODFI's, MWLEFOODFI and MWLEFOODFI are getting ready to go on their honeymoon. MWLEFOODFI is entering from the bedroom.]
+#> 2                                                                                    Hey! MWLEFOODFI! Aren't you excited we're going on our honeymoon?
 #> 3                                                                                                                                           Yeah I am!
-#> 4                                                                                                       UIDDEWYHNC, GKHOXQJVJI, come on pretty mama...
+#> 4                                                                                                       MWLEFOODFI, MWLEFOODFI, come on pretty mama...
 #> 5                                                                                           That's right. Get it out of your system while we're alone.
 #>                 speaker season episode scene utterance
 #> 1      Scene Directions      8       3     1         1
-#> 2 RZBZJRESTN BUEFSQXHVH      8       3     1         2
-#> 3 EGSLQEQMFA AMREWKADGW      8       3     1         3
-#> 4 RZBZJRESTN BUEFSQXHVH      8       3     1         4
-#> 5 EGSLQEQMFA AMREWKADGW      8       3     1         5
+#> 2 MWLEFOODFI MWLEFOODFI      8       3     1         2
+#> 3 MWLEFOODFI MWLEFOODFI      8       3     1         3
+#> 4 MWLEFOODFI MWLEFOODFI      8       3     1         4
+#> 5 MWLEFOODFI MWLEFOODFI      8       3     1         5
 ```
 
 And these redactions rules can be applied over the initial file
 structure in much the way it was constructed:
 
 ``` r
+
 redact_at_folder(data_path, replaced_rules)
 #> $The_One_After_I_Do
 #> [1] "Redacted Data/The_One_After_I_Do.csv"

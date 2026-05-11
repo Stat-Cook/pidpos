@@ -50,6 +50,6 @@ redactions.raw <- report_to_redaction_rules(report)
 replace_by <- make_random_replacement()
 redactions <- auto_replace(redactions.raw, replacement_func = replace_by)
 redaction.f <- prepare_redactions(redactions)
-efficient_redaction(example.data, redaction.f)
+batched_redact(example.data, redaction.f)
 } # }
 ```

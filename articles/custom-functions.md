@@ -25,12 +25,14 @@ A custom filter must:
 We begin by loading the package:
 
 ``` r
+
 library(pidpos)
 ```
 
 We will use the example dataset:
 
 ``` r
+
 example.data <- head(the_one_in_massapequa, 20)
 example.data
 #> # A tibble: 20 × 4
@@ -66,12 +68,14 @@ As a minimal example, suppose we want to tag only the main characters
 from *Friends* as proper nouns.
 
 ``` r
+
 friends <- c("Joey", "Phoebe", "Ross", "Chandler", "Monica", "Rachel")
 ```
 
 We define a sentence-level tagging function:
 
 ``` r
+
 sentence_tagger <- function(sentence) {
   clean_text <- gsub("[[:punct:]]", "", sentence)
   tokens <- strsplit(clean_text, "\\s+")[[1]]
@@ -79,13 +83,13 @@ sentence_tagger <- function(sentence) {
 
   tibble::tibble(
     Token = tokens,
-    upos = ifelse(tokens %in% friends, "PROPN", "XXX")
+    POS = ifelse(tokens %in% friends, "PROPN", "XXX")
   )
 }
 
 sentence_tagger("Joey sat in Central Perk")
 #> # A tibble: 5 × 2
-#>   Token   upos 
+#>   Token   POS  
 #>   <chr>   <chr>
 #> 1 Joey    PROPN
 #> 2 sat     XXX  
@@ -100,11 +104,12 @@ wrap it with
 [`custom_tagger()`](https://stat-cook.github.io/pidpos/reference/custom_tagger.md):
 
 ``` r
+
 friends_tagger <- custom_tagger(sentence_tagger)
 
 friends_tagger(example.data$text)
 #> # A tibble: 263 × 4
-#>    Token    upos     ID Sentence                                                
+#>    Token    POS      ID Sentence                                                
 #>    <chr>    <chr> <int> <chr>                                                   
 #>  1 Scene    XXX       1 [Scene: Central Perk, everyone is there.]               
 #>  2 Central  XXX       1 [Scene: Central Perk, everyone is there.]               
@@ -123,6 +128,7 @@ We can now supply it to
 [`pidpos()`](https://stat-cook.github.io/pidpos/reference/pidpos.md):
 
 ``` r
+
 result <- pidpos(example.data, tagger = friends_tagger)
 result
 #> # A tibble: 10 × 6
@@ -160,6 +166,7 @@ For example, suppose:
 We define:
 
 ``` r
+
 custom_filter <- function(tag_frm) {
   dplyr::filter(tag_frm, POS == "NNP")
 }
@@ -168,6 +175,7 @@ custom_filter <- function(tag_frm) {
 And a compatible tagger:
 
 ``` r
+
 friends_tagger2 <- custom_tagger(function(sentence) {
   if (is.na(sentence)) {
     return(tibble::tibble(Token = character(), POS = character()))
@@ -187,6 +195,7 @@ friends_tagger2 <- custom_tagger(function(sentence) {
 Now use both:
 
 ``` r
+
 pidpos(
   example.data,
   tagger = friends_tagger2,
@@ -235,6 +244,7 @@ for an intro to using `reticulate`).
 > If these are not available, the code below will be skipped.
 
 ``` r
+
 reticulate::use_virtualenv("YOUR ENVIRONMENT", required = TRUE)
 
 if (!reticulate::py_module_available("nltk")) {
@@ -243,6 +253,7 @@ if (!reticulate::py_module_available("nltk")) {
 ```
 
 ``` r
+
 nltk_tagger <- custom_tagger(function(sentence) {
   tagged <- nltk_pos_tagger(sentence)
 
@@ -284,7 +295,8 @@ which accepts a user-defined function through the `replacement_func`
 argument:
 
 ``` r
-simple_replace <- function(x){
+
+simple_replace <- function(x) {
   "XXX"
 }
 
@@ -309,7 +321,8 @@ built into `pidpos`. This requires first defining a zero-argument
 function that generates a candidate replacement string:
 
 ``` r
-custom_replace_candidate <- function(){
+
+custom_replace_candidate <- function() {
   sample(letters, 1)
 }
 ```
@@ -324,6 +337,7 @@ internally by
 [`make_random_replacement()`](https://stat-cook.github.io/pidpos/reference/make_random_replacement.md):
 
 ``` r
+
 custom_replacer <- make_replacement_function(custom_replace_candidate, 26)
 
 auto_replace(head(raw_redaction_rules), replacement_func = custom_replacer)
@@ -331,11 +345,11 @@ auto_replace(head(raw_redaction_rules), replacement_func = custom_replacer)
 #>   If                                                                 From  To   
 #>   <chr>                                                              <chr> <chr>
 #> 1 [Scene: Central Perk, everyone is there.]                          Cent… m    
-#> 2 [Scene: Central Perk, everyone is there.]                          Perk  w    
-#> 3 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  l    
-#> 4 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   e    
-#> 5 Well, his name is Parker and I met him at the drycleaners.         Park… f    
-#> 6 Every year Ross makes the toast, and it's always really moving, a… Ross  l
+#> 2 [Scene: Central Perk, everyone is there.]                          Perk  m    
+#> 3 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  m    
+#> 4 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   m    
+#> 5 Well, his name is Parker and I met him at the drycleaners.         Park… m    
+#> 6 Every year Ross makes the toast, and it's always really moving, a… Ross  m
 ```
 
 ------------------------------------------------------------------------

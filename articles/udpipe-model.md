@@ -20,6 +20,7 @@ to start by evaluating the
 function with the example data (`the_one_in_massapequa`):
 
 ``` r
+
 library(pidpos)
 
 report <- pidpos(the_one_in_massapequa)

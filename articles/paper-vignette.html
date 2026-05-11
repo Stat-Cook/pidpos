@@ -90,11 +90,11 @@ prompting international legislation to protect individuals’ rights over
 their own data <span class="citation">(European Parliament and Council
 of the European Union 2016)</span>. This has heightened awareness of the
 responsibilities of data controllers <span class="citation">(ICO,
-n.d.b)</span> and the risks posed by large datasets <span class="citation">(Clarke 2016)</span>. A central concern is personal
+n.d.-b)</span> and the risks posed by large datasets <span class="citation">(Clarke 2016)</span>. A central concern is personal
 identifiability — the ability to directly or indirectly identify an
 individual from a dataset <span class="citation">(Finck and Pallas
 2020)</span> — with breaches carrying significant reputational and
-financial consequences <span class="citation">(ICO, n.d.a)</span>.</p>
+financial consequences <span class="citation">(ICO, n.d.-a)</span>.</p>
 <p>For small, structured datasets, manual inspection can identify
 personally identifiable data (PID) with reasonable effort. In large
 datasets, however, PID embedded within free-text fields or appearing
@@ -102,12 +102,12 @@ rarely in a variable can easily be missed. Existing R packages such as
 PII <span class="citation">(Patterson-Stein 2025)</span> address this
 through pattern matching, which risks missing edge cases.</p>
 <p><code>pidpos</code> takes a different approach. Building on
-<em>part-of-speech</em> tagging (by default the udpipe framework <span class="citation">(Straka, Hajic, and Straková 2016; Wijffels
-2023)</span>, with the ability to use a custom tagging engine) it
-extracts all proper nouns from a dataset, deliberately accepting a
-higher false positive rate, and implementing tools to aid human review
-rather than attempting full automation. This makes it robust to the edge
-cases that pattern-matching approaches can miss.</p>
+<em>part-of-speech</em> tagging (by default the udpipe framework <span class="citation">(Straka et al. 2016; Wijffels 2023)</span>, with the
+ability to use a custom tagging engine) it extracts all proper nouns
+from a dataset, deliberately accepting a higher false positive rate, and
+implementing tools to aid human review rather than attempting full
+automation. This makes it robust to the edge cases that pattern-matching
+approaches can miss.</p>
 </div>
 <div class="section level2">
 <h2 id="in-practice">In practice<a class="anchor" aria-label="anchor" href="#in-practice"></a>
@@ -175,13 +175,13 @@ report can be converted into redaction rules and apply replacements:</p>
 <span><span class="va">replacement_func</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement_func</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 3</span></span></span>
-<span><span class="co">#&gt;   If                                        From    To        </span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.] Central MWLEFOODFI</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.] Perk    EEXOMBWKKE</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                             Phoebe  ULBFDPBCYV</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                             Buffay  KGUFIVJUBQ</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">#&gt;   If                                        From    To         POS  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.] Central MWLEFOODFI <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.] Perk    MWLEFOODFI <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                             Phoebe  MWLEFOODFI <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                             Buffay  MWLEFOODFI <span style="color: #949494;">""</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span></code></pre></div>
 <p>Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -195,10 +195,10 @@ dataset:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
 <span><span class="co">#&gt;   scene utterance speaker               text                                    </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions      [Scene: MWLEFOODFI EEXOMBWKKE, everyone…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 ULBFDPBCYV KGUFIVJUBQ Oh, TXVAFBSNAY, OREHALSPKZ, is it okay …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 CBWJCFDJAG FVSYBHAAGL Yeah.                                   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 TXVAFBSNAY FVSYBHAAGL Sure. Yeah.                             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions      [Scene: MWLEFOODFI MWLEFOODFI, everyone…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 MWLEFOODFI MWLEFOODFI Oh, MWLEFOODFI, MWLEFOODFI, is it okay …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 MWLEFOODFI MWLEFOODFI Yeah.                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 MWLEFOODFI MWLEFOODFI Sure. Yeah.                             </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -241,7 +241,7 @@ projects funded by the Health Foundation.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-clarke2016big" class="csl-entry">
 Clarke, Roger. 2016. <span>“Big Data, Big Risks.”</span> <em>Information
 Systems Journal</em> 26 (1): 77–90.
@@ -249,7 +249,7 @@ Systems Journal</em> 26 (1): 77–90.
 <div id="ref-GDPR" class="csl-entry">
 European Parliament, and Council of the European Union. 2016.
 <span>“Regulation (EU) 2016/679 of the European Parliament and of the
-Council.”</span> April 27, 2016. <a href="https://data.europa.eu/eli/reg/2016/679/oj" class="external-link">https://data.europa.eu/eli/reg/2016/679/oj</a>.
+Council.”</span> April 27. <a href="https://data.europa.eu/eli/reg/2016/679/oj" class="external-link">https://data.europa.eu/eli/reg/2016/679/oj</a>.
 </div>
 <div id="ref-finck2020they" class="csl-entry">
 Finck, Michèle, and Frank Pallas. 2020. <span>“They Who Must Not Be
@@ -257,11 +257,12 @@ Identified—Distinguishing Personal from Non-Personal Data Under the
 GDPR.”</span> <em>International Data Privacy Law</em> 10 (1): 11–36.
 </div>
 <div id="ref-ICOWhatIf" class="csl-entry">
-ICO. n.d.a. <span>“Personal Data Breaches: What Happens If We Fail to
+ICO. n.d.-a. <span>“Personal Data Breaches: What Happens If We Fail to
 Notify the ICO of All Notifiable Breaches?”</span> <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi" class="external-link">https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi</a>.
 </div>
 <div id="ref-ICODataController" class="csl-entry">
-———. n.d.b. <span>“What Does It Mean If You Are a Controller?”</span> <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/" class="external-link">https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/</a>.
+ICO. n.d.-b. <span>“What Does It Mean If You Are a Controller?”</span>
+<a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/" class="external-link">https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/</a>.
 </div>
 <div id="ref-pii" class="csl-entry">
 Patterson-Stein, Jacob. 2025. <em>Pii: Search Data Frames for Personally
@@ -270,9 +271,9 @@ Identifiable Information</em>. <a href="https://CRAN.R-project.org/package=pii" 
 <div id="ref-straka2016udpipe" class="csl-entry">
 Straka, Milan, Jan Hajic, and Jana Straková. 2016. <span>“UDPipe:
 Trainable Pipeline for Processing CoNLL-u Files Performing Tokenization,
-Morphological Analysis, Pos Tagging and Parsing.”</span> In
-<em>Proceedings of the Tenth International Conference on Language
-Resources and Evaluation (LREC’16)</em>, 4290–97.
+Morphological Analysis, Pos Tagging and Parsing.”</span> <em>Proceedings
+of the Tenth International Conference on Language Resources and
+Evaluation (LREC’16)</em>, 4290–97.
 </div>
 <div id="ref-udpipecran" class="csl-entry">
 Wijffels, Jan. 2023. <em>Udpipe: Tokenization, Parts of Speech Tagging,

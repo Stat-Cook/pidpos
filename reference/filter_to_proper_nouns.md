@@ -12,13 +12,13 @@ filter_to_proper_nouns(tag_frm)
 
 - tag_frm:
 
-  A data frame containing at least the columns `upos`, `ID`, `Token`,
-  and `Sentence`.
+  A data frame containing at least the columns `POS`, `ID`, `Token`, and
+  `Sentence`.
 
 ## Value
 
-A tibble containing only rows where `upos == "PROPN"`, with columns
-`ID`, `Token`, and `Sentence`.
+A tibble containing only rows where `POS == "PROPN"`, with columns `ID`,
+`Token`, and `Sentence`.
 
 ## See also
 
@@ -28,7 +28,7 @@ A tibble containing only rows where `upos == "PROPN"`, with columns
 
 ``` r
 tagged <- data.frame(
-  upos = c("PROPN", "VERB", "PROPN"),
+  POS = c("PROPN", "VERB", "PROPN"),
   ID = c("doc1", "doc1", "doc2"),
   Token = c("London", "visited", "Paris"),
   Sentence = c("London was visited.", "London was visited.", "Paris is nice.")

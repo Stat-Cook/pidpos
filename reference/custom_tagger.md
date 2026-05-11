@@ -26,6 +26,7 @@ the signature `function(docs, doc_ids=seq_along(docs))`
 ## Examples
 
 ``` r
+
 # Example of a POS tagging function for a single sentence
 proper_nouns <- c("Alice", "Bob", "Charlie")
 
@@ -34,7 +35,7 @@ pos_function <- function(sentence) {
 
   data.frame(
     Token = tokens,
-    upos = ifelse(tokens %in% proper_nouns, "PROPN", "OTHER")
+    POS = ifelse(tokens %in% proper_nouns, "PROPN", "OTHER")
   ) |>
     dplyr::mutate(Sentence = sentence)
 }
@@ -43,7 +44,7 @@ pos_function <- function(sentence) {
 
 docs <- c("Alice is here", "Bob is there", "Charlie is everywhere")
 .tagger(docs)
-#>        Token  upos              Sentence ID
+#>        Token   POS              Sentence ID
 #> 1      Alice PROPN         Alice is here  1
 #> 2         is OTHER         Alice is here  1
 #> 3       here OTHER         Alice is here  1

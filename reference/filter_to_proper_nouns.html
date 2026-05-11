@@ -55,12 +55,12 @@
 
 <dl><dt id="arg-tag-frm">tag_frm<a class="anchor" aria-label="anchor" href="#arg-tag-frm"></a></dt>
 <dd><p>A data frame containing at least the columns
-<code>upos</code>, <code>ID</code>, <code>Token</code>, and <code>Sentence</code>.</p></dd>
+<code>POS</code>, <code>ID</code>, <code>Token</code>, and <code>Sentence</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A tibble containing only rows where <code>upos == "PROPN"</code>,
+    <p>A tibble containing only rows where <code>POS == "PROPN"</code>,
 with columns <code>ID</code>, <code>Token</code>, and <code>Sentence</code>.</p>
     </div>
     <div class="section level2">
@@ -71,7 +71,7 @@ with columns <code>ID</code>, <code>Token</code>, and <code>Sentence</code>.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tagged</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  upos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PROPN"</span>, <span class="st">"VERB"</span>, <span class="st">"PROPN"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  POS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PROPN"</span>, <span class="st">"VERB"</span>, <span class="st">"PROPN"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"doc1"</span>, <span class="st">"doc1"</span>, <span class="st">"doc2"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Token <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"London"</span>, <span class="st">"visited"</span>, <span class="st">"Paris"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  Sentence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"London was visited."</span>, <span class="st">"London was visited."</span>, <span class="st">"Paris is nice."</span><span class="op">)</span></span></span>

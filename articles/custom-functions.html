@@ -141,13 +141,13 @@ from <em>Friends</em> as proper nouns.</p>
 <span></span>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>    Token <span class="op">=</span> <span class="va">tokens</span>,</span>
-<span>    upos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">tokens</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">friends</span>, <span class="st">"PROPN"</span>, <span class="st">"XXX"</span><span class="op">)</span></span>
+<span>    POS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">tokens</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">friends</span>, <span class="st">"PROPN"</span>, <span class="st">"XXX"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu">sentence_tagger</span><span class="op">(</span><span class="st">"Joey sat in Central Perk"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 2</span></span></span>
-<span><span class="co">#&gt;   Token   upos </span></span>
+<span><span class="co">#&gt;   Token   POS  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Joey    PROPN</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> sat     XXX  </span></span>
@@ -161,7 +161,7 @@ from <em>Friends</em> as proper nouns.</p>
 <span></span>
 <span><span class="fu">friends_tagger</span><span class="op">(</span><span class="va">example.data</span><span class="op">$</span><span class="va">text</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 263 × 4</span></span></span>
-<span><span class="co">#&gt;    Token    upos     ID Sentence                                                </span></span>
+<span><span class="co">#&gt;    Token    POS      ID Sentence                                                </span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Scene    XXX       1 [Scene: Central Perk, everyone is there.]               </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Central  XXX       1 [Scene: Central Perk, everyone is there.]               </span></span>
@@ -320,7 +320,7 @@ replacement function for the redaction step.</p>
 accepts a user-defined function through the
 <code>replacement_func</code> argument:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">simple_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">simple_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="st">"XXX"</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -343,7 +343,7 @@ built into <code>pidpos</code>. This requires first defining a
 zero-argument function that generates a candidate replacement
 string:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">custom_replace_candidate</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">custom_replace_candidate</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p><em>Note</em>: letters contains 26 elements, so this encoder can
@@ -360,11 +360,11 @@ replacement function — the same pattern used internally by
 <span><span class="co">#&gt;   If                                                                 From  To   </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                          Cent… m    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                          Perk  w    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  l    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   e    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Well, his name is Parker and I met him at the drycleaners.         Park… f    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Every year Ross makes the toast, and it's always really moving, a… Ross  l</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                          Perk  m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Well, his name is Parker and I met him at the drycleaners.         Park… m    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Every year Ross makes the toast, and it's always really moving, a… Ross  m</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

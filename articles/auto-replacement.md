@@ -39,6 +39,7 @@ We begin by generating a PID report and converting it into redaction
 rules:
 
 ``` r
+
 library(pidpos)
 
 report <- pidpos(the_one_in_massapequa)
@@ -46,14 +47,14 @@ replacement_rules <- report_to_redaction_rules(report)
 replacement_rules
 ```
 
-    #> # A tibble: 5 × 3
-    #>   If                                                                 From  To   
-    #>   <chr>                                                              <chr> <chr>
-    #> 1 [Scene: Central Perk, everyone is there.]                          Cent… Cent…
-    #> 2 [Scene: Central Perk, everyone is there.]                          Perk  Perk 
-    #> 3 Phoebe Buffay                                                      Phoe… Phoe…
-    #> 4 Phoebe Buffay                                                      Buff… Buff…
-    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  Ross
+    #> # A tibble: 5 × 4
+    #>   If                                                           From  To    POS  
+    #>   <chr>                                                        <chr> <chr> <chr>
+    #> 1 [Scene: Central Perk, everyone is there.]                    Cent… Cent… ""   
+    #> 2 [Scene: Central Perk, everyone is there.]                    Perk  Perk  ""   
+    #> 3 Phoebe Buffay                                                Phoe… Phoe… ""   
+    #> 4 Phoebe Buffay                                                Buff… Buff… ""   
+    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  Ross  ""
 
 To automatically populate the `To` column, we first initialise a
 replacement function.  
@@ -62,6 +63,7 @@ In this example, we use
 to generate five-character replacements drawn from upper-case letters:
 
 ``` r
+
 replacement_func <- make_random_replacement(
   replacement_size = 5,
   replacement_space = LETTERS
@@ -72,6 +74,7 @@ We then apply this function using
 [`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md):
 
 ``` r
+
 set.seed(101)
 updated_replacement_rules <- auto_replace(
   replacement_rules,
@@ -81,14 +84,14 @@ updated_replacement_rules <- auto_replace(
 updated_replacement_rules
 ```
 
-    #> # A tibble: 5 × 3
-    #>   If                                                                 From  To   
-    #>   <chr>                                                              <chr> <chr>
-    #> 1 [Scene: Central Perk, everyone is there.]                          Cent… IYNWQ
-    #> 2 [Scene: Central Perk, everyone is there.]                          Perk  ZVCCI
-    #> 3 Phoebe Buffay                                                      Phoe… CCBTU
-    #> 4 Phoebe Buffay                                                      Buff… QNLAM
-    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  FXZPU
+    #> # A tibble: 5 × 4
+    #>   If                                                           From  To    POS  
+    #>   <chr>                                                        <chr> <chr> <chr>
+    #> 1 [Scene: Central Perk, everyone is there.]                    Cent… IYNWQ ""   
+    #> 2 [Scene: Central Perk, everyone is there.]                    Perk  IYNWQ ""   
+    #> 3 Phoebe Buffay                                                Phoe… IYNWQ ""   
+    #> 4 Phoebe Buffay                                                Buff… IYNWQ ""   
+    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  IYNWQ ""
 
 The resulting `updated_replacement_rules` can then be used alongside the
 original data in the
@@ -96,6 +99,7 @@ original data in the
 function to adjust the data:
 
 ``` r
+
 redact(
   head(the_one_in_massapequa, 5),
   updated_replacement_rules
@@ -103,11 +107,11 @@ redact(
 #> # A tibble: 5 × 4
 #>   scene utterance speaker          text                                         
 #>   <int>     <int> <chr>            <chr>                                        
-#> 1     1         1 Scene Directions [Scene: IYNWQ ZVCCI, everyone is there.]     
-#> 2     1         2 CCBTU QNLAM      Oh, FXZPU, JZKUZ, is it okay if I bring some…
-#> 3     1         3 UTNHH TFXGJ      Yeah.                                        
-#> 4     1         4 FXZPU TFXGJ      Sure. Yeah.                                  
-#> 5     1         5 JYZIE QLCZI      So, who's the guy?
+#> 1     1         1 Scene Directions [Scene: IYNWQ IYNWQ, everyone is there.]     
+#> 2     1         2 IYNWQ IYNWQ      Oh, IYNWQ, IYNWQ, is it okay if I bring some…
+#> 3     1         3 IYNWQ IYNWQ      Yeah.                                        
+#> 4     1         4 IYNWQ IYNWQ      Sure. Yeah.                                  
+#> 5     1         5 IYNWQ IYNWQ      So, who's the guy?
 ```
 
 If the quantity of text being redacted is large, and documents are
@@ -115,6 +119,7 @@ regularly repeated, the user may wish to parse the replacement rules
 into a caching redaction function:
 
 ``` r
+
 cached_redacter <- parse_redacter(updated_replacement_rules, with_cache = T)
 cached_redacter
 #> [1] "`cached_redact_function` [size=0]"
@@ -129,6 +134,7 @@ multiple times, but comes at the cost of memory. The
 the same way:
 
 ``` r
+
 redacted_docs <- redact(
   the_one_in_massapequa,
   cached_redacter
@@ -149,6 +155,7 @@ passed into
 to generate new values:
 
 ``` r
+
 simple_replacement <- function(vec) {
   gsub(".*", "XXX", vec)
 }
@@ -157,15 +164,15 @@ auto_replace(
   head(replacement_rules),
   simple_replacement
 )
-#> # A tibble: 6 × 3
-#>   If                                                                 From  To   
-#>   <chr>                                                              <chr> <chr>
-#> 1 [Scene: Central Perk, everyone is there.]                          Cent… XXX  
-#> 2 [Scene: Central Perk, everyone is there.]                          Perk  XXX  
-#> 3 Phoebe Buffay                                                      Phoe… XXX  
-#> 4 Phoebe Buffay                                                      Buff… XXX  
-#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  XXX  
-#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   XXX
+#> # A tibble: 6 × 4
+#>   If                                                           From  To    POS  
+#>   <chr>                                                        <chr> <chr> <chr>
+#> 1 [Scene: Central Perk, everyone is there.]                    Cent… XXX   ""   
+#> 2 [Scene: Central Perk, everyone is there.]                    Perk  XXX   ""   
+#> 3 Phoebe Buffay                                                Phoe… XXX   ""   
+#> 4 Phoebe Buffay                                                Buff… XXX   ""   
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  XXX   ""   
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   XXX   ""
 ```
 
 In addition, the user may wish to generate their own pesudo-random
@@ -178,6 +185,7 @@ number “00” to “99” there would be 100 max random values). We implement
 this as:
 
 ``` r
+
 numeric_replacement <- function() {
   paste(sample(0:9, 2, T), collapse = "")
 }
@@ -194,25 +202,27 @@ This fucntion can then be used in
 in the same way as the deterministic function:
 
 ``` r
+
 auto_replace(
   head(replacement_rules),
   numeric_replacement
 )
-#> # A tibble: 6 × 3
-#>   If                                                                 From  To   
-#>   <chr>                                                              <chr> <chr>
-#> 1 [Scene: Central Perk, everyone is there.]                          Cent… 41   
-#> 2 [Scene: Central Perk, everyone is there.]                          Perk  84   
-#> 3 Phoebe Buffay                                                      Phoe… 24   
-#> 4 Phoebe Buffay                                                      Buff… 05   
-#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  99   
-#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   33
+#> # A tibble: 6 × 4
+#>   If                                                           From  To    POS  
+#>   <chr>                                                        <chr> <chr> <chr>
+#> 1 [Scene: Central Perk, everyone is there.]                    Cent… 41    ""   
+#> 2 [Scene: Central Perk, everyone is there.]                    Perk  41    ""   
+#> 3 Phoebe Buffay                                                Phoe… 41    ""   
+#> 4 Phoebe Buffay                                                Buff… 41    ""   
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  41    ""   
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   41    ""
 ```
 
 With the added benefit the functional representation tracks how many of
 the allowed values have been taken:
 
 ``` r
+
 numeric_replacement
 #> replacement_function wrapping<All: FALSE>:
 #>   ConsistentMapper<6 of 100 values used>
@@ -225,6 +235,7 @@ and
 [`value_lookup()`](https://stat-cook.github.io/pidpos/reference/get_replacements.md)):
 
 ``` r
+
 get_replacement_cache(numeric_replacement)
 #> $Central
 #> [1] "41"

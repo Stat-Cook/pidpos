@@ -8,6 +8,7 @@ considered to be a ‘proper noun’.
 To install from github straight into R, use:
 
 ``` r
+
 devtools::install_github("Stat-Cook/pidpos")
 ```
 

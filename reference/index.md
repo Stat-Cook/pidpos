@@ -83,6 +83,19 @@
 - [`merge_redactions()`](https://stat-cook.github.io/pidpos/reference/merge_redactions.md)
   : Remove PID from a data frame via a merge
 
+## Experimental: spacy bindings
+
+- [`spacy_factory()`](https://stat-cook.github.io/pidpos/reference/spacy_factory.md)
+  : pidpos bindings to spacy models
+- [`create_spacy_env()`](https://stat-cook.github.io/pidpos/reference/create_spacy_env.md)
+  : Initialize a minimum spacy environment
+- [`get_pidpos_conda()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
+  [`set_pidpos_conda()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
+  [`set_SPACY_CONDA_ENV()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
+  : Get and set the conda environment for pidpos
+- [`spacy_models()`](https://stat-cook.github.io/pidpos/reference/spacy_models.md)
+  : List available spacy models
+
 ## Datasets
 
 - [`the_one_in_massapequa`](https://stat-cook.github.io/pidpos/reference/the_one_in_massapequa.md)

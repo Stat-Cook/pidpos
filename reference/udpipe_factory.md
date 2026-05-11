@@ -48,7 +48,7 @@ with columns:
 
   Sentence containing the token
 
-- upos:
+- POS:
 
   The universal parts of speech tag of the token. See
   https://universaldependencies.org/format.html

@@ -95,7 +95,7 @@ This is useful for large data frames where the redaction function may be slow.</
 <span class="r-in"><span><span class="va">replace_by</span> <span class="op">&lt;-</span> <span class="fu"><a href="make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">redactions</span> <span class="op">&lt;-</span> <span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">redactions.raw</span>, replacement_func <span class="op">=</span> <span class="va">replace_by</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">redaction.f</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_redactions.html">prepare_redactions</a></span><span class="op">(</span><span class="va">redactions</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">efficient_redaction</span><span class="op">(</span><span class="va">example.data</span>, <span class="va">redaction.f</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">batched_redact</span><span class="op">(</span><span class="va">example.data</span>, <span class="va">redaction.f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
