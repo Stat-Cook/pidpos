@@ -20,5 +20,7 @@ ignore:
   - "**/browse.R"
   - "browse.R"
   - "**/zzz.R"
-  - "R/check_python.R"
   - "zzz.R"
+  - "R/check_python.R"
+  - "R/check_spacy.R"
+  - "R/check_reticulate.R"
