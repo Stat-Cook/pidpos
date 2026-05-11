@@ -30,6 +30,10 @@ jobs:
         with:
           path: ~/miniconda/envs/${{ inputs.env_name }}
           key: conda-${{ inputs.env_name }}-${{ hashFiles('inst/python/spacy-env.yml') }}
+
+      - name: Configure reticulate to use Miniconda
+        run: reticulate::conda_binary("$HOME/miniconda/bin/conda")
+        shell: Rscript {0}
           
       - name: Install pak
         run: install.packages("pak")
