@@ -48,7 +48,6 @@ create_spacy_env <- function() {
 }
 
 
-
 check_conda_binary <- function() {
   tryCatch(
     reticulate::conda_binary(),
