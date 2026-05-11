@@ -100,5 +100,3 @@ udpipe_factory <- function(model = "english-ewt",
     )
   }
 }
-
-
