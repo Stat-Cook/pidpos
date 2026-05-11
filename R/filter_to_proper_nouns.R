@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' tagged <- data.frame(
-#'   upos = c("PROPN", "VERB", "PROPN"),
+#'   POS = c("PROPN", "VERB", "PROPN"),
 #'   ID = c("doc1", "doc1", "doc2"),
 #'   Token = c("London", "visited", "Paris"),
 #'   Sentence = c("London was visited.", "London was visited.", "Paris is nice.")
