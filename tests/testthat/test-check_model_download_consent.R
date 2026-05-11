@@ -3,12 +3,20 @@ original_caching <- getOption("pidpos_caching")
 
 
 test_that("check_model_download_consent returns TRUE if option set", {
-
   options(pidpos_download_approved = TRUE)
   expect_true(check_model_download_consent("en_core_web_lg"))
 })
 
 
+
+test_that("check_model_download_consent option takes priority over env var", {
+  withr::defer({
+    options(pidpos_download_approved = original_download_approved)
+  })
+  
+  options(pidpos_download_approved = TRUE)
+  expect_true(check_model_download_consent("en_core_web_lg"))
+})
 
 test_that("check_model_download_consent errors if user declines", {
   withr::defer({
@@ -30,7 +38,6 @@ test_that("check_model_download_consent errors if user declines", {
 })
 
 test_that("check_model_download_consent sets option after consent", {
-  
   withr::defer({
     options(pidpos_download_approved = original_download_approved)
     options(pidpos_caching = original_caching)
