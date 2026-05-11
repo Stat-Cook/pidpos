@@ -25,7 +25,7 @@ test_that("data.frame method returns correct redaction rules", {
   out <- get_distinct_redaction_rules(df, include_context = TRUE)
 
   expect_s3_class(out, "data.frame")
-  expect_named(out, c("If", "From", "To", "Context"))
+  expect_named(out, c("If", "From", "To", "POS", "Context"))
   expect_equal(nrow(out), 2)
 })
 

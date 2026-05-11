@@ -42,7 +42,7 @@ fake_tag_data_frame <- function(frm, tagger, chunk_size, to_ignore) {
       ID = c("Col:text Row:1", "Col:text Row:2"),
       Token = c("John", "London"),
       Sentence = c("John went home.", "London is big."),
-      upos = c("XXX", "PROPN"),
+      POS = c("XXX", "PROPN"),
       PK = 1:2
     ),
     Documents = tibble::tibble(
