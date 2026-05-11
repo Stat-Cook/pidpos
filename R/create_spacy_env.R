@@ -13,18 +13,7 @@
 create_spacy_env <- function() {
   check_reticulate()
 
-  callr::r(function() {
-    tryCatch(
-      reticulate::conda_binary(),
-      error = function(e) {
-        stop(
-          "No conda installation found.",
-          "Install miniconda with reticulate::install_miniconda() or ",
-          "Anaconda at `https://www.anaconda.com/docs/getting-started/anaconda/install/overview`"
-        )
-      }
-    )
-  })
+  callr::r(check_conda_binary)
 
   envname <- get_pidpos_conda()
 
@@ -56,4 +45,19 @@ create_spacy_env <- function() {
       additional_create_args = c("-n", envname)
     )
   }, args = list(envname = envname, yml_path = yml_path))
+}
+
+
+
+check_conda_binary <- function() {
+  tryCatch(
+    reticulate::conda_binary(),
+    error = function(e) {
+      stop(
+        "No conda installation found.",
+        "Install miniconda with reticulate::install_miniconda() or ",
+        "Anaconda at `https://www.anaconda.com/docs/getting-started/anaconda/install/overview`"
+      )
+    }
+  )
 }
