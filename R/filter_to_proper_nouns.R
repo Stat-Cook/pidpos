@@ -1,9 +1,9 @@
 #' Filter a tagged data frame to proper nouns
 #'
 #' @param tag_frm A data frame containing at least the columns
-#'   `upos`, `ID`, `Token`, and `Sentence`.
+#'   `POS`, `ID`, `Token`, and `Sentence`.
 #'
-#' @return A tibble containing only rows where `upos == "PROPN"`,
+#' @return A tibble containing only rows where `POS == "PROPN"`,
 #'   with columns `ID`, `Token`, and `Sentence`.
 #'
 #' @export
@@ -18,7 +18,7 @@
 #' filter_to_proper_nouns(tagged)
 #' @seealso [pidpos()]
 filter_to_proper_nouns <- function(tag_frm) {
-  required_cols <- c("upos", "ID", "Token", "Sentence")
+  required_cols <- c("POS", "ID", "Token", "Sentence")
 
   if (!is.data.frame(tag_frm)) {
     type_error("`tag_frm` must be a data frame.")
@@ -32,6 +32,6 @@ filter_to_proper_nouns <- function(tag_frm) {
   }
 
   tag_frm %>%
-    dplyr::filter(.data$upos == "PROPN") %>%
+    dplyr::filter(.data$POS == "PROPN") %>%
     dplyr::select(all_of(c("ID", "Token", "Sentence")))
 }
