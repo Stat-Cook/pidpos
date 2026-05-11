@@ -32,7 +32,6 @@ Imports:
     tibble,
     R6,
     glue,
-    progress,
     readxl,
     stringr,
     utf8,
