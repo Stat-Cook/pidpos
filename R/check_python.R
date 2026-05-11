@@ -1,5 +1,5 @@
 #'
-check_python <- function(envname = "spacy-env") {
+check_python <- function(envname = get_pidpos_conda()) {
   reticulate::use_condaenv(envname)
 
   numpy <- reticulate::import("numpy")
