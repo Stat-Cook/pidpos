@@ -1,5 +1,5 @@
 test_that("create_spacy_env skips if env already exists", {
-  withr::defer(pidpos_env$conda_env <- NULL)
+  withr::defer(pidpos_env$conda_env <- "pidpos")
 
   skip_if_not(
     reticulate::condaenv_exists(get_pidpos_conda()),
@@ -10,13 +10,14 @@ test_that("create_spacy_env skips if env already exists", {
 })
 
 test_that("create_spacy_env errors if yml not found", {
-  withr::defer(pidpos_env$conda_env <- NULL)
+  withr::defer(pidpos_env$conda_env <- "pidpos")
 
   # Point to a non-existent env so it doesn't skip
   set_pidpos_conda("pidpos-nonexistent-env-12345")
 
   # Mock system.file to return empty string
-  mockery::stub(create_spacy_env, "system.file", "")
+  mockery::stub(create_spacy_env, "system.file", function(...) "")
+  mockery::stub(create_spacy_env, "callr::r", function(...) invisible(NULL))
 
   expect_error(create_spacy_env(), "conda_environment.yml not found")
 })

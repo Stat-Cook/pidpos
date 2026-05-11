@@ -1,5 +1,11 @@
+original_download_approved <- getOption("pidpos_download_approved")
+original_caching <- getOption("pidpos_caching")
+
+
 test_that("check_model_download_consent returns TRUE if option set", {
-  withr::defer(options(pidpos_download_approved = NULL))
+  withr::defer(
+    options(pidpos_download_approved = original_download_approved)
+  )
   
   options(pidpos_download_approved = TRUE)
   expect_true(check_model_download_consent("en_core_web_lg"))
@@ -7,30 +13,28 @@ test_that("check_model_download_consent returns TRUE if option set", {
 
 test_that("check_model_download_consent returns TRUE if env var set", {
   withr::defer({
-    Sys.unsetenv("PIDPOS_DOWNLOAD_APPROVED")
-    options(pidpos_download_approved = NULL)
+    options(pidpos_download_approved = original_download_approved)
   })
+  withr::local_envvar(PIDPOS_DOWNLOAD_APPROVED = "true")
   
   options(pidpos_download_approved = FALSE)
-  Sys.setenv(PIDPOS_DOWNLOAD_APPROVED = "true")
   expect_true(check_model_download_consent("en_core_web_lg"))
 })
 
 test_that("check_model_download_consent option takes priority over env var", {
   withr::defer({
-    Sys.unsetenv("PIDPOS_DOWNLOAD_APPROVED")
-    options(pidpos_download_approved = NULL)
+    options(pidpos_download_approved = original_download_approved)
   })
+  withr::local_envvar(PIDPOS_DOWNLOAD_APPROVED = "false")
   
   options(pidpos_download_approved = TRUE)
-  Sys.setenv(PIDPOS_DOWNLOAD_APPROVED = "false")
   expect_true(check_model_download_consent("en_core_web_lg"))
 })
 
 test_that("check_model_download_consent errors if user declines", {
   withr::defer({
-    options(pidpos_download_approved = NULL)
-    options(pidpos_caching = NULL)
+    options(pidpos_download_approved = original_download_approved)
+    options(pidpos_caching = original_caching)
   })
   
   options(pidpos_download_approved = FALSE)
@@ -47,9 +51,10 @@ test_that("check_model_download_consent errors if user declines", {
 })
 
 test_that("check_model_download_consent sets option after consent", {
+  
   withr::defer({
-    options(pidpos_download_approved = NULL)
-    options(pidpos_caching = NULL)
+    options(pidpos_download_approved = original_download_approved)
+    options(pidpos_caching = original_caching)
   })
   
   options(pidpos_download_approved = FALSE)
