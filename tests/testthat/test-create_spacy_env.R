@@ -42,3 +42,12 @@ test_that("create_spacy_env errors if no conda found", {
 
   expect_error(create_spacy_env(), "No conda installation found")
 })
+
+test_that("check_conda_binary errors without conda binary", {
+  
+  mockery::stub(check_conda_binary , "reticulate::conda_binary", 
+                function(...) stop()) 
+
+  expect_error(check_conda_binary())
+  
+})
