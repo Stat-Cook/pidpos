@@ -1,11 +1,11 @@
-#' @importFrom reticulate use_condaenv import
+#' 
 check_python <- function(envname = "spacy-env") {
-  use_condaenv(envname)
+  reticulate::use_condaenv(envname)
 
-  numpy <- import("numpy")
-  spacy <- import("spacy")
+  numpy <- reticulate::import("numpy")
+  spacy <- reticulate::import("spacy")
   torch <- tryCatch(
-    import("torch"),
+    reticulate::import("torch"),
     error = function(e) {
       message("Module `torch` not available - `trf` model unavailable.")
       NULL

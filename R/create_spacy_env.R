@@ -10,7 +10,6 @@
 #' * To control the environment name or inherit an existing python env: [spacy-conda-env]
 #'
 #' @export
-#' @importFrom reticulate conda_create conda_list
 create_spacy_env <- function() {
   check_reticulate()
 

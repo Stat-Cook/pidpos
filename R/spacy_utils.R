@@ -27,9 +27,8 @@ set_SPACY_CONDA_ENV <- function(env_name) {
 
 #' List available spacy models
 #'
-#' @importFrom reticulate use_condaenv import
 spacy_models <- function() {
-  use_condaenv(get_pidpos_conda())
+  reticulate::use_condaenv(get_pidpos_conda())
 
   util <- reticulate::import("spacy.util")
 
@@ -37,7 +36,6 @@ spacy_models <- function() {
 }
 
 
-#' #' @importFrom reticulate use_condaenv import
 #' spacy_download_model <- function(model = c("en_core_web_lg", "en_core_web_trf")) {
 #'   use_condaenv(get_pidpos_conda())
 #'
