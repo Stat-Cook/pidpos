@@ -20,4 +20,5 @@ ignore:
   - "**/browse.R"
   - "browse.R"
   - "**/zzz.R"
+  - "R/check_python.R"
   - "zzz.R"
