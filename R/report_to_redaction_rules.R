@@ -52,7 +52,7 @@ report_to_redaction_rules <- function(report, path = NULL,
       If = .data$Sentence,
       From = .data$Token,
       To = .data$Token,
-      POS = if ("POS" %in% colnames(.)) .data$POS else "",
+      POS = if ("POS" %in% colnames(.data)) .data$POS else "",
       .keep = "none"
     ) |>
     filter(!is.na(If))
