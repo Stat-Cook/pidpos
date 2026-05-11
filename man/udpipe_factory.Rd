@@ -25,7 +25,7 @@ with columns:
 \item{ID}{Document identifier}
 \item{Token}{Individual token text}
 \item{Sentence}{Sentence containing the token}
-\item{upos}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
+\item{POS}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
 }
 and all columns returned by the <\link[udpipe:udpipe]{udpipe()`}>
 function for each token.

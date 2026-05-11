@@ -4,12 +4,14 @@
 \alias{auto_replace}
 \title{Apply a replacement function to a \code{rules.frm}.}
 \usage{
-auto_replace(frm, replacement_func, filter = FALSE)
+auto_replace(frm, replacement_func, include_pos = FALSE, filter = FALSE)
 }
 \arguments{
 \item{frm}{A \code{data.frame} with columns \code{If}, \code{From}, and \code{To}.}
 
 \item{replacement_func}{A function for transforming the \code{To} column.}
+
+\item{include_pos}{Logical.  If \code{TRUE} will replacement prefix will be the POS tag.}
 
 \item{filter}{Logical.  If \code{TRUE} will only apply to rows where \code{From} and \code{To} are different.}
 }

@@ -8,10 +8,10 @@ filter_to_proper_nouns(tag_frm)
 }
 \arguments{
 \item{tag_frm}{A data frame containing at least the columns
-\code{upos}, \code{ID}, \code{Token}, and \code{Sentence}.}
+\code{POS}, \code{ID}, \code{Token}, and \code{Sentence}.}
 }
 \value{
-A tibble containing only rows where \code{upos == "PROPN"},
+A tibble containing only rows where \code{POS == "PROPN"},
 with columns \code{ID}, \code{Token}, and \code{Sentence}.
 }
 \description{
@@ -19,7 +19,7 @@ Filter a tagged data frame to proper nouns
 }
 \examples{
 tagged <- data.frame(
-  upos = c("PROPN", "VERB", "PROPN"),
+  POS = c("PROPN", "VERB", "PROPN"),
   ID = c("doc1", "doc1", "doc2"),
   Token = c("London", "visited", "Paris"),
   Sentence = c("London was visited.", "London was visited.", "Paris is nice.")

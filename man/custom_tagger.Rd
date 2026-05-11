@@ -28,7 +28,7 @@ pos_function <- function(sentence) {
 
   data.frame(
     Token = tokens,
-    upos = ifelse(tokens \%in\% proper_nouns, "PROPN", "OTHER")
+    POS = ifelse(tokens \%in\% proper_nouns, "PROPN", "OTHER")
   ) |>
     dplyr::mutate(Sentence = sentence)
 }
