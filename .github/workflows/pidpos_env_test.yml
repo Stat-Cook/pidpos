@@ -31,12 +31,12 @@ jobs:
           path: ~/miniconda/envs/${{ inputs.env_name }}
           key: conda-${{ inputs.env_name }}-${{ hashFiles('inst/python/spacy-env.yml') }}
           
-      - name: Install devtools
-        run: install.packages("devtools")
+      - name: Install pak
+        run: install.packages("pak")
         shell: Rscript {0}
-      
-      - name: Install pidpos
-        run: devtools::install_local()
+
+      - name: Install dependencies
+        run: pak::pak("local::.")
         shell: Rscript {0}
 
       - name: Test spaCy env creation
