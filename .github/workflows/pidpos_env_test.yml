@@ -34,6 +34,10 @@ jobs:
       - name: Configure reticulate to use Miniconda
         run: reticulate::conda_binary(path.expand("~/miniconda/bin/conda"))
         shell: Rscript {0}
+
+      - name: Create base reticulate conda env
+        run: |
+          ~/miniconda/bin/conda create -n r-reticulate python=3.9 -y
           
       - name: Install pak
         run: install.packages("pak")
