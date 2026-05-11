@@ -30,13 +30,21 @@ jobs:
         with:
           path: ~/miniconda/envs/${{ inputs.env_name }}
           key: conda-${{ inputs.env_name }}-${{ hashFiles('inst/python/spacy-env.yml') }}
-          
-      - name: Install devtools
-        run: install.packages("devtools")
+
+      - name: Configure reticulate to use Miniconda
+        run: reticulate::conda_binary(path.expand("~/miniconda/bin/conda"))
         shell: Rscript {0}
-      
-      - name: Install pidpos
-        run: devtools::install_local()
+
+      - name: Create base reticulate conda env
+        run: |
+          ~/miniconda/bin/conda create -n r-reticulate python=3.9 -y
+          
+      - name: Install pak
+        run: install.packages("pak")
+        shell: Rscript {0}
+
+      - name: Install dependencies
+        run: pak::pak("local::.")
         shell: Rscript {0}
 
       - name: Test spaCy env creation
@@ -51,5 +59,7 @@ jobs:
           reticulate::use_condaenv("${{ inputs.env_name }}", required = TRUE)
           spacy <- reticulate::import("spacy")
           nlp <- spacy$load("en_core_web_lg")
+          print(nlp)
+          nlp.trf <- spacy$load("en_core_web_trf")
           print(nlp)
         shell: Rscript {0}
