@@ -22,13 +22,13 @@ spacy_factory <- function(model = "en_core_web_lg") {
         dplyr::mutate(ID = .y)
     ) |>
       dplyr::bind_rows() |>
-      dplyr::select(ID, Token, Sentence, POS)
+      dplyr::select(all_of(c("ID", "Token", "Sentence", "POS")))
   }
 }
 
 
 spacy_filter <- function(frm) {
-  dplyr::filter(frm, POS %in% c("PERSON", "DATE"))
+  dplyr::filter(frm, .data$POS %in% c("PERSON", "DATE"))
 }
 
 
