@@ -57,3 +57,14 @@ test_that("spacy_process tests", {
   expect_true(is.na(null_test$Token))
 
 })
+
+test_that("spacy_filter test", {
+  
+  frm <- data.frame(
+    POS = c("PERSON", "DATE", "PLACE", "TIME")
+  )
+  
+  frm_test <- spacy_filter(frm)
+  expect_equal(dim(frm_test), c(2,1))  
+  
+})
