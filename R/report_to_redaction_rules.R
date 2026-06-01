@@ -39,28 +39,30 @@ report_to_redaction_rules <- function(report, path = NULL,
     type_error("`path` must be a string or NULL")
   }
 
-  required_cols <- c("Sentence", "Token")
+  required_cols <- c("Document", "Token")
   missing <- setdiff(required_cols, names(report))
   if (length(missing) > 0) {
-    validation_error("report is missing columns: ", paste(missing, collapse = ", "))
+    validation_error(paste0("report is missing columns: ", paste(missing, collapse = ", ")))
   }
 
   If <- NA
 
   .frm <- report %>%
     mutate(
-      If = .data$Sentence,
+      If = .data$Document,
+      #If = .data$Sentence,
       From = .data$Token,
       To = .data$Token,
       POS = if ("POS" %in% colnames(.data)) .data$POS else "",
       .keep = "none"
     ) |>
-    filter(!is.na(If))
+    filter(!is.na(If)) |> 
+    distinct()
 
   if (include_context) {
     .frm <- .frm |>
       mutate(
-        Context = map2(.data$If, .data$From, get_context)
+        Context = simplify(map2(.data$If, .data$From, get_context))
       )
   }
 
