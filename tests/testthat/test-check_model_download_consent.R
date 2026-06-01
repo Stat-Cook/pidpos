@@ -13,7 +13,7 @@ test_that("check_model_download_consent option takes priority over env var", {
   withr::defer({
     options(pidpos_download_approved = original_download_approved)
   })
-  
+
   options(pidpos_download_approved = TRUE)
   expect_true(check_model_download_consent("en_core_web_lg"))
 })
