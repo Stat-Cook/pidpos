@@ -4,7 +4,8 @@ format_doc_id <- function(docs, doc_id = NULL) {
   }
 
   if (is.numeric(doc_id)) {
-    doc_id <- paste("doc", doc_id, sep = "")
+    doc_id <- as.character(doc_id)
+    # doc_id <- paste("doc", doc_id, sep = "")
   }
 
   doc_id
