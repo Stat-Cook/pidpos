@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Automatic Replacement Tools">
 </head>
@@ -43,6 +43,7 @@
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
     <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
+    <li><a class="dropdown-item" href="../articles/model_comaprisons.html">Model Comaprisons</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -237,12 +238,12 @@ same way as the deterministic function:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
 <span><span class="co">#&gt;   If                                                           From  To    POS  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                    Cent… 41    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  41    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… 41    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… 41    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  41    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   41    <span style="color: #949494;">""</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                    Cent… 59    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  59    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… 59    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… 59    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  59    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   59    <span style="color: #949494;">""</span></span></span></code></pre></div>
 <p>With the added benefit the functional representation tracks how many
 of the allowed values have been taken:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -255,22 +256,22 @@ of the allowed values have been taken:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_replacements.html">get_replacement_cache</a></span><span class="op">(</span><span class="va">numeric_replacement</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $Central</span></span>
-<span><span class="co">#&gt; [1] "41"</span></span>
+<span><span class="co">#&gt; [1] "59"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Perk</span></span>
-<span><span class="co">#&gt; [1] "84"</span></span>
+<span><span class="co">#&gt; [1] "94"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Phoebe</span></span>
-<span><span class="co">#&gt; [1] "24"</span></span>
+<span><span class="co">#&gt; [1] "18"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Buffay</span></span>
-<span><span class="co">#&gt; [1] "05"</span></span>
+<span><span class="co">#&gt; [1] "42"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Ross</span></span>
-<span><span class="co">#&gt; [1] "99"</span></span>
+<span><span class="co">#&gt; [1] "40"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $Mon</span></span>
-<span><span class="co">#&gt; [1] "33"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "93"</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

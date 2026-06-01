@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Reporting on every file in a folder">
 </head>
@@ -43,6 +43,7 @@
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
     <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
+    <li><a class="dropdown-item" href="../articles/model_comaprisons.html">Model Comaprisons</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -935,30 +936,6 @@ replaced with the same tokens). Hence, we combine all distinct proper
 nouns reports:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">distinct_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_distinct_redaction_rules.html">get_distinct_redaction_rules</a></span><span class="op">(</span><span class="st">"Proper Noun Report"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">200</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (5): ID, Token, Sentence, Document, Affected Columns</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (1): Repeats</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">178</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (5): ID, Token, Sentence, Document, Affected Columns</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (1): Repeats</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">199</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">6</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
-<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (5): ID, Token, Sentence, Document, Affected Columns</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (1): Repeats</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre>
 <p>The replacements will be based on this data frame. The most
 conservative approach to redaction is to use the
 <code>auto_replacement</code> and <code>make_random_replacement</code>
@@ -966,7 +943,7 @@ functions included in the package. The <code>auto_replacement</code>
 function takes a data frame with <code>If</code>, <code>From</code> and
 <code>To</code> and replaces the <code>To</code> column with a unique
 randomly generated string, for example:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">replacer</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span>all <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span><span class="va">replaced_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">distinct_rules</span>, <span class="va">replacer</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">replaced_rules</span><span class="op">)</span></span>
@@ -977,8 +954,8 @@ randomly generated string, for example:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">"</span>[Scene: The Wedding Hall, Monica and Chandler have just sa… Hall  MWLE… <span style="color: #949494;">""</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> <span style="color: #949494;">"</span>[Scene: The Wedding Hall, Monica and Chandler have just sa… Moni… MWLE… <span style="color: #949494;">""</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> <span style="color: #949494;">"</span>[Scene: The Wedding Hall, Monica and Chandler have just sa… Chan… MWLE… <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="color: #949494;">"</span>First of Monica, Chandler, Ross and Joey.]<span style="color: #949494;">"</span>                 Moni… MWLE… <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="color: #949494;">"</span>First of Monica, Chandler, Ross and Joey.]<span style="color: #949494;">"</span>                 Chan… MWLE… <span style="color: #949494;">""</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> <span style="color: #949494;">"</span>[Scene: The Wedding Hall, Monica and Chandler have just sa… Ross  MWLE… <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> <span style="color: #949494;">"</span>[Scene: The Wedding Hall, Monica and Chandler have just sa… Joey  MWLE… <span style="color: #949494;">""</span></span></span></code></pre></div>
 <p>The user may prefer to set the replacements manually by saving the
 <code>distinct_rules</code> to file and manually setting the
 <code>To</code> column. The user may prefer a hybrid approach, changing
@@ -986,7 +963,7 @@ the <code>To</code> column to any value (e.g. ’’ or ‘XXX’) and setting
 the <code>filter</code> argument of <code>auto_replace</code> to
 <code>TRUE</code> so it only creates replacements where
 <code>From</code> and <code>To</code> don’t match.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">distinct_rules</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    To <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">To</span> <span class="op">==</span> <span class="st">"Geller"</span>, <span class="st">"XXX"</span>, <span class="va">To</span><span class="op">)</span></span>
@@ -995,15 +972,15 @@ the <code>filter</code> argument of <code>auto_replace</code> to
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
 <span><span class="co">#&gt;   If                                  From   To         POS  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Monica Geller                       Geller YHHADKJITR <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Ross Geller                         Geller YHHADKJITR <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Dr. Geller?                         Geller YHHADKJITR <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Dr. Geller, will you dance with me? Geller YHHADKJITR <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> (Mr. Geller dances over.)           Geller YHHADKJITR <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Jack Geller                         Geller YHHADKJITR <span style="color: #949494;">""</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Monica Geller                       Geller AQIKIXSHZY <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Ross Geller                         Geller AQIKIXSHZY <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Dr. Geller?                         Geller AQIKIXSHZY <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Dr. Geller, will you dance with me? Geller AQIKIXSHZY <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> (Mr. Geller dances over.)           Geller AQIKIXSHZY <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Jack Geller                         Geller AQIKIXSHZY <span style="color: #949494;">""</span></span></span></code></pre></div>
 <p>With the <code>To</code> column set as desired, this frame can now be
 used in <code>redact</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redacted_rachell</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redact.html">redact</a></span><span class="op">(</span><span class="va">rachell</span>, <span class="va">replaced_rules</span><span class="op">)</span></span>
 <span><span class="va">redacted_rachell</span></span>
 <span><span class="co">#&gt;                                                                                                                                                   text</span></span>
@@ -1020,7 +997,7 @@ used in <code>redact</code>:</p>
 <span><span class="co">#&gt; 5 MWLEFOODFI MWLEFOODFI      8       3     1         5</span></span></code></pre></div>
 <p>And these redactions rules can be applied over the initial file
 structure in much the way it was constructed:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/redact_at_folder.html">redact_at_folder</a></span><span class="op">(</span><span class="va">data_path</span>, <span class="va">replaced_rules</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $The_One_After_I_Do</span></span>
 <span><span class="co">#&gt; [1] "Redacted Data/The_One_After_I_Do.csv"</span></span>

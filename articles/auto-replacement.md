@@ -210,12 +210,12 @@ auto_replace(
 #> # A tibble: 6 × 4
 #>   If                                                           From  To    POS  
 #>   <chr>                                                        <chr> <chr> <chr>
-#> 1 [Scene: Central Perk, everyone is there.]                    Cent… 41    ""   
-#> 2 [Scene: Central Perk, everyone is there.]                    Perk  41    ""   
-#> 3 Phoebe Buffay                                                Phoe… 41    ""   
-#> 4 Phoebe Buffay                                                Buff… 41    ""   
-#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  41    ""   
-#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   41    ""
+#> 1 [Scene: Central Perk, everyone is there.]                    Cent… 59    ""   
+#> 2 [Scene: Central Perk, everyone is there.]                    Perk  59    ""   
+#> 3 Phoebe Buffay                                                Phoe… 59    ""   
+#> 4 Phoebe Buffay                                                Buff… 59    ""   
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  59    ""   
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   59    ""
 ```
 
 With the added benefit the functional representation tracks how many of
@@ -238,22 +238,22 @@ and
 
 get_replacement_cache(numeric_replacement)
 #> $Central
-#> [1] "41"
+#> [1] "59"
 #> 
 #> $Perk
-#> [1] "84"
+#> [1] "94"
 #> 
 #> $Phoebe
-#> [1] "24"
+#> [1] "18"
 #> 
 #> $Buffay
-#> [1] "05"
+#> [1] "42"
 #> 
 #> $Ross
-#> [1] "99"
+#> [1] "40"
 #> 
 #> $Mon
-#> [1] "33"
+#> [1] "93"
 ```
 
 ------------------------------------------------------------------------

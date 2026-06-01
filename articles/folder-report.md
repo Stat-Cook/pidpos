@@ -857,31 +857,6 @@ nouns reports:
 distinct_rules <- get_distinct_redaction_rules("Proper Noun Report")
 ```
 
-    #> Rows: 200 Columns: 6
-    #> ── Column specification ────────────────────────────────────────────────────────
-    #> Delimiter: ","
-    #> chr (5): ID, Token, Sentence, Document, Affected Columns
-    #> dbl (1): Repeats
-    #> 
-    #> ℹ Use `spec()` to retrieve the full column specification for this data.
-    #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-    #> Rows: 178 Columns: 6
-    #> ── Column specification ────────────────────────────────────────────────────────
-    #> Delimiter: ","
-    #> chr (5): ID, Token, Sentence, Document, Affected Columns
-    #> dbl (1): Repeats
-    #> 
-    #> ℹ Use `spec()` to retrieve the full column specification for this data.
-    #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-    #> Rows: 199 Columns: 6
-    #> ── Column specification ────────────────────────────────────────────────────────
-    #> Delimiter: ","
-    #> chr (5): ID, Token, Sentence, Document, Affected Columns
-    #> dbl (1): Repeats
-    #> 
-    #> ℹ Use `spec()` to retrieve the full column specification for this data.
-    #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
 The replacements will be based on this data frame. The most conservative
 approach to redaction is to use the `auto_replacement` and
 `make_random_replacement` functions included in the package. The
@@ -901,8 +876,8 @@ head(replaced_rules)
 #> 2 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Hall  MWLE… ""   
 #> 3 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Moni… MWLE… ""   
 #> 4 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Chan… MWLE… ""   
-#> 5 "First of Monica, Chandler, Ross and Joey.]"                 Moni… MWLE… ""   
-#> 6 "First of Monica, Chandler, Ross and Joey.]"                 Chan… MWLE… ""
+#> 5 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Ross  MWLE… ""   
+#> 6 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Joey  MWLE… ""
 ```
 
 The user may prefer to set the replacements manually by saving the
@@ -922,12 +897,12 @@ distinct_rules |>
 #> # A tibble: 6 × 4
 #>   If                                  From   To         POS  
 #>   <chr>                               <chr>  <chr>      <chr>
-#> 1 Monica Geller                       Geller YHHADKJITR ""   
-#> 2 Ross Geller                         Geller YHHADKJITR ""   
-#> 3 Dr. Geller?                         Geller YHHADKJITR ""   
-#> 4 Dr. Geller, will you dance with me? Geller YHHADKJITR ""   
-#> 5 (Mr. Geller dances over.)           Geller YHHADKJITR ""   
-#> 6 Jack Geller                         Geller YHHADKJITR ""
+#> 1 Monica Geller                       Geller AQIKIXSHZY ""   
+#> 2 Ross Geller                         Geller AQIKIXSHZY ""   
+#> 3 Dr. Geller?                         Geller AQIKIXSHZY ""   
+#> 4 Dr. Geller, will you dance with me? Geller AQIKIXSHZY ""   
+#> 5 (Mr. Geller dances over.)           Geller AQIKIXSHZY ""   
+#> 6 Jack Geller                         Geller AQIKIXSHZY ""
 ```
 
 With the `To` column set as desired, this frame can now be used in
