@@ -20,7 +20,7 @@ get_distinct_redaction_rules.character <- function(object, include_context = FAL
     stop("No supported files found in the report path.")
   }
 
-  map(.files, readr::read_csv) |>
+  map(.files, readr::read_csv, show_col_types = FALSE) |>
     get_distinct_redaction_rules(include_context)
 }
 
