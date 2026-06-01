@@ -1,6 +1,7 @@
 mock_tagger <- function(...) {
   data.frame(
-    Token = "Token", Sentence = "Sentence", POS = "POS"
+    Token = "Token", Sentence = "Sentence", POS = "POS", 
+    StartIndex = 0, EndIndex = 1
   )
 }
 
@@ -21,16 +22,16 @@ test_that("spacy_factory tests", {
 
   short_test <- spacy_tagger("Bob")
   expect_s3_class(short_test, "data.frame")
-  expect_equal(dim(short_test), c(1, 4))
+  expect_equal(dim(short_test), c(1, 6))
 
   long_test <- spacy_tagger(letters)
   expect_s3_class(long_test, "data.frame")
-  expect_equal(dim(long_test), c(26, 4))
+  expect_equal(dim(long_test), c(26, 6))
 
   with_doc_id <- spacy_tagger("Bob", 10)
   expect_s3_class(with_doc_id, "data.frame")
-  expect_equal(dim(with_doc_id), c(1, 4))
-  expect_equal(with_doc_id$ID, 10)
+  expect_equal(dim(with_doc_id), c(1, 6))
+  expect_equal(with_doc_id$ID, "10")
 })
 
 test_that("spacy_process tests", {
@@ -43,10 +44,10 @@ test_that("spacy_process tests", {
   }
 
   short_test <- spacy_process("Bob", mock_tagger)
-  expect_equal(dim(short_test), c(1, 3))
+  expect_equal(dim(short_test), c(1, 5))
 
   long_test <- spacy_process("the first day of the week", mock_tagger)
-  expect_equal(dim(long_test), c(6, 3))
+  expect_equal(dim(long_test), c(6, 5))
 
   mock_null_tagger <- function(doc) list(ents = c())
 

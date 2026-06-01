@@ -8,7 +8,7 @@ withr::with_options(list(pidpos_download_approved = TRUE), local({
     expect_s3_class(result, "tbl_df")
     expect_setequal(
       names(result),
-      c("ID", "token_id", "Token", "Sentence", "TokenNo", "POS")
+      c("ID", "token_id", "Token", "Sentence", "TokenNo", "POS", "StartIndex", "EndIndex")
     )
     expect_equal(result$Token, "Test")
     expect_equal(result$ID, "doc1")

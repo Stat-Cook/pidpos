@@ -8,6 +8,8 @@ fake_udpipe_success <- function(...) {
     token = "Test",
     sentence = "Test sentence",
     upos = "XXX",
+    start = 0,
+    end = 1,
     stringsAsFactors = FALSE
   )
 }
