@@ -18,6 +18,8 @@
 #'   \item{Token}{Individual token text}
 #'   \item{Sentence}{Sentence containing the token}
 #'   \item{POS}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
+#'   \item{StartIndex}{The character index `Token` starts at}
+#'   \item{EndIndex}{The character index `Token` ends at}
 #' }
 #' and all columns returned by the <[udpipe()`][udpipe::udpipe]>
 #'   function for each token.
@@ -54,16 +56,16 @@ udpipe_factory <- function(model = "english-ewt",
       type_error("`docs` must be a non-empty character vector.")
     }
 
-    doc_ids <- format_doc_id(docs, doc_ids)
+    names(docs) <- format_doc_id(docs, doc_ids)
 
-    utf8_docs <- utf8::utf8_encode(docs)
-    names(utf8_docs) <- doc_ids
+    # encoded_docs <- clean_encoding(docs)
+    # names(utf8_docs) <- doc_ids
 
     if (!inherits(model, "udpipe_model")) check_model_download_consent(model)
 
     tagged <- tryCatch(
       udpipe::udpipe(
-        utf8_docs,
+        docs,
         model,
         model_dir = model_dir,
         udpipe_model_repo = udpipe_repo
@@ -88,14 +90,14 @@ udpipe_factory <- function(model = "english-ewt",
 
     result <- tagged |>
       dplyr::mutate(`TokenNo` = as.numeric(.data$token_id)) |>
-      dplyr::rename_with(~ c("ID", "Token", "Sentence", "POS"),
-        .cols = c("doc_id", "token", "sentence", "upos")
+      dplyr::rename_with(~ c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex"),
+        .cols = c("doc_id", "token", "sentence", "upos", "start", "end")
       ) |>
       tibble::as_tibble()
 
     dplyr::select(
       result,
-      all_of(c("ID", "Token", "Sentence", "POS")),
+      all_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")),
       all_of(colnames(result))
     )
   }

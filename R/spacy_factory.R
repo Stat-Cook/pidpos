@@ -21,18 +21,16 @@ spacy_factory <- function(model = "en_core_web_lg") {
   spacy <- reticulate::import("spacy")
   tagger <- spacy$load(model)
 
-  function(doc, doc_id = NULL) {
-    if (is.null(doc_id)) {
-      doc_id <- seq_along(doc)
-    }
+  function(docs, doc_ids = NULL) {
+    doc_ids <- format_doc_id(docs, doc_ids)
 
     map2(
-      doc, doc_id,
+      docs, doc_ids,
       \(.x, .y) spacy_process(.x, tagger) |>
         dplyr::mutate(ID = .y)
     ) |>
       dplyr::bind_rows() |>
-      dplyr::select(all_of(c("ID", "Token", "Sentence", "POS")))
+      dplyr::select(all_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")))
   }
 }
 
@@ -56,6 +54,8 @@ spacy_process <- function(doc, tagger) {
   tibble::tibble(
     Sentence = doc,
     Token = simplify(map(tagged$ents, "text")),
-    POS = simplify(map(tagged$ents, "label_"))
+    POS = simplify(map(tagged$ents, "label_")),
+    StartIndex = simplify(map(tagged$ents, "start_char")),
+    EndIndex = simplify(map(tagged$ents, "end_char"))
   )
 }
