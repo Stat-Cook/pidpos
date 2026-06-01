@@ -50,13 +50,13 @@ report_to_redaction_rules <- function(report, path = NULL,
   .frm <- report %>%
     mutate(
       If = .data$Document,
-      #If = .data$Sentence,
+      # If = .data$Sentence,
       From = .data$Token,
       To = .data$Token,
       POS = if ("POS" %in% colnames(.data)) .data$POS else "",
       .keep = "none"
     ) |>
-    filter(!is.na(If)) |> 
+    filter(!is.na(If)) |>
     distinct()
 
   if (include_context) {

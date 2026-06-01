@@ -8,7 +8,6 @@ test_that("check_model_download_consent returns TRUE if option set", {
 })
 
 
-
 test_that("check_model_download_consent option takes priority over env var", {
   withr::defer({
     options(pidpos_download_approved = original_download_approved)

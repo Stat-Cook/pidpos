@@ -18,7 +18,7 @@ mock_get_context <- function(sentence, token) {
 
 test_that("data.frame method returns correct redaction rules", {
   mockery::stub(report_to_redaction_rules, "get_context", mock_get_context)
-  
+
   df <- tibble::tibble(
     Document = c("a b c", "d e f"),
     Token = c("b", "e")

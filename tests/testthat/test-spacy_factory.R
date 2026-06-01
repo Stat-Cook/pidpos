@@ -1,6 +1,6 @@
 mock_tagger <- function(...) {
   data.frame(
-    Token = "Token", Sentence = "Sentence", POS = "POS", 
+    Token = "Token", Sentence = "Sentence", POS = "POS",
     StartIndex = 0, EndIndex = 1
   )
 }

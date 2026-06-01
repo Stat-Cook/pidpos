@@ -35,7 +35,10 @@ how well does each model provided perform on this data and are there edge cases,
 The total data set (included in the package as ...) consists of 1500 passages of free text and a total of 2,863 named entities.  The entity break down is:
 
 ``` {r}
-presidio_tags |> group_by(entity_type) |> summarise(Frequency = n()) |> arrange(desc(Frequency))
+presidio_tags |>
+  group_by(entity_type) |>
+  summarise(Frequency = n()) |>
+  arrange(desc(Frequency))
 ```
 
 
@@ -81,23 +84,22 @@ For reference - a model that flags all word tokens to check would result in a pr
 The $\beta$ factor was set at 2 to weight the scoring in favour of greater detection at the cost of additional false positives i.e. because missing PID is a greater utility cost than flagging extra candidates.
 
 ``` {r}
-f2 <- function(s, p, b){
-  (1+b^2)*s*p/(s+b^2*p)
+f2 <- function(s, p, b) {
+  (1 + b^2) * s * p / (s + b^2 * p)
 }
 
-model_metrics <- function(comparison, name = ""){
-
+model_metrics <- function(comparison, name = "") {
   sens <- filter(comparison, !is.na(entity_value)) |>
-    distinct(entity_value , .keep_all = T) |>
-    summarize(Sensitivity = 100*mean(!is.na(Token)))
+    distinct(entity_value, .keep_all = T) |>
+    summarize(Sensitivity = 100 * mean(!is.na(Token)))
 
   prec <- filter(comparison, !is.na(Token)) |>
-    summarize(Precision = 100*(1 - mean(is.na(entity_value))))
+    summarize(Precision = 100 * (1 - mean(is.na(entity_value))))
 
   cbind(sens, prec) |>
     mutate(
       Model = name,
-      `F2[B=2]` = (1+4)*(Sensitivity*Precision)/(Sensitivity+4*Precision)
+      `F2[B=2]` = (1 + 4) * (Sensitivity * Precision) / (Sensitivity + 4 * Precision)
     )
 }
 ```
@@ -113,47 +115,45 @@ the interested reader.
 
 
 ``` {r}
-summarize_model_metrics <- function(frm){
+summarize_model_metrics <- function(frm) {
   imap(frm, model_metrics) |>
-    bind_rows()  |> 
-    select(Model, everything()) 
+    bind_rows() |>
+    select(Model, everything())
 }
 
 baseline_comparison |>
-  summarize_model_metrics() |> 
+  summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
 ```
 ``` {r}
-
 summarize_by_entity <- function(frm, model) {
-      frm |> 
-        dplyr::filter(!is.na(entity_type)) |>
-        group_by(entity_type) |>
-        group_modify(~ model_metrics(.x, model)) 
+  frm |>
+    dplyr::filter(!is.na(entity_type)) |>
+    group_by(entity_type) |>
+    group_modify(~ model_metrics(.x, model))
 }
 
-summarize_model_by_entity <- function(comparisons){
+summarize_model_by_entity <- function(comparisons) {
   comparisons |>
     imap(
-     summarize_by_entity
+      summarize_by_entity
     ) |>
     bind_rows() |>
     mutate(
-      Model = factor(Model, levels=names(baseline_comparison)),
-      Sensitivity = round(Sensitivity,1 )
+      Model = factor(Model, levels = names(baseline_comparison)),
+      Sensitivity = round(Sensitivity, 1)
     ) |>
     select(Model, entity_type, Sensitivity) |>
-    arrange(Model, desc(Sensitivity)) |> 
+    arrange(Model, desc(Sensitivity)) |>
     pivot_wider(
       id_cols = Model,
       names_from = entity_type,
       values_from = Sensitivity
-    )  
+    )
 }
 
 
 summarize_model_by_entity(baseline_comparison)
-
 ```
 
 The spacy `LG` model shows the greatest sensitivity, identfying 88% of named entities, closesly followed by the two udpipe models (`EWT` and `GUM`).  Interestingly, the `EWT` model has the superior F2 score due to a superior precision.  
@@ -164,12 +164,12 @@ Inspection of the raw data identifed cases of punctuation...
 
 ``` {r}
 preprocessed_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 ```
 
 ``` {r}
-summarize_model_by_entity(preprocessed_comparison) 
+summarize_model_by_entity(preprocessed_comparison)
 ```
 
 ### Reduced data quality
@@ -183,12 +183,12 @@ and the taggers re-tested:
 
 ``` {r}
 lower_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 ```
 
 ``` {r}
-summarize_model_by_entity(lower_comparison) 
+summarize_model_by_entity(lower_comparison)
 ```
 
 While this process effects all algorithms, the udpipe models deeply suffer as a result.
@@ -199,15 +199,13 @@ The reduction in F2 score associated with removal of casing is concerning for al
 
 
 ``` {r}
-
 titlecase_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
-
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 ```
 
 
 ``` {r}
-summarize_model_by_entity(titlecase_comparison) 
+summarize_model_by_entity(titlecase_comparison)
 ```
 
