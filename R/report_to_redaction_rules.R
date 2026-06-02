@@ -50,7 +50,6 @@ report_to_redaction_rules <- function(report, path = NULL,
   .frm <- report %>%
     mutate(
       If = .data$Document,
-      # If = .data$Sentence,
       From = .data$Token,
       To = .data$Token,
       POS = if ("POS" %in% colnames(.data)) .data$POS else "",
