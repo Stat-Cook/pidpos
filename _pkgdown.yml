@@ -34,6 +34,7 @@ reference:
   - report_on_folder
   - get_distinct_redaction_rules
   - redact_at_folder
+  - export_utilites
 - title: "Package Utilities"
   desc: > 
   contents:
@@ -52,6 +53,8 @@ reference:
   - create_spacy_env
   - spacy-conda-env
   - spacy_models
+  - check_python
+  - check_spacy
 - title: "Datasets"
   desc: >
   contents:
