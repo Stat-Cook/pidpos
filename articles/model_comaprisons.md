@@ -29,7 +29,10 @@ break down is:
 
 ``` r
 
-presidio_tags |> group_by(entity_type) |> summarise(Frequency = n()) |> arrange(desc(Frequency))
+presidio_tags |>
+  group_by(entity_type) |>
+  summarise(Frequency = n()) |>
+  arrange(desc(Frequency))
 #> # A tibble: 17 × 2
 #>    entity_type       Frequency
 #>    <chr>                 <int>
@@ -115,23 +118,22 @@ missing PID is a greater utility cost than flagging extra candidates.
 
 ``` r
 
-f2 <- function(s, p, b){
-  (1+b^2)*s*p/(s+b^2*p)
+f2 <- function(s, p, b) {
+  (1 + b^2) * s * p / (s + b^2 * p)
 }
 
-model_metrics <- function(comparison, name = ""){
-
+model_metrics <- function(comparison, name = "") {
   sens <- filter(comparison, !is.na(entity_value)) |>
-    distinct(entity_value , .keep_all = T) |>
-    summarize(Sensitivity = 100*mean(!is.na(Token)))
+    distinct(entity_value, .keep_all = T) |>
+    summarize(Sensitivity = 100 * mean(!is.na(Token)))
 
   prec <- filter(comparison, !is.na(Token)) |>
-    summarize(Precision = 100*(1 - mean(is.na(entity_value))))
+    summarize(Precision = 100 * (1 - mean(is.na(entity_value))))
 
   cbind(sens, prec) |>
     mutate(
       Model = name,
-      `F2[B=2]` = (1+4)*(Sensitivity*Precision)/(Sensitivity+4*Precision)
+      `F2[B=2]` = (1 + 4) * (Sensitivity * Precision) / (Sensitivity + 4 * Precision)
     )
 }
 ```
@@ -147,14 +149,14 @@ interested reader.
 
 ``` r
 
-summarize_model_metrics <- function(frm){
+summarize_model_metrics <- function(frm) {
   imap(frm, model_metrics) |>
-    bind_rows()  |> 
-    select(Model, everything()) 
+    bind_rows() |>
+    select(Model, everything())
 }
 
 baseline_comparison |>
-  summarize_model_metrics() |> 
+  summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
 #>      Model Sensitivity Precision F2[B=2]
 #> 1       LG        85.7      70.7    82.2
@@ -168,31 +170,30 @@ baseline_comparison |>
 
 ``` r
 
-
 summarize_by_entity <- function(frm, model) {
-      frm |> 
-        dplyr::filter(!is.na(entity_type)) |>
-        group_by(entity_type) |>
-        group_modify(~ model_metrics(.x, model)) 
+  frm |>
+    dplyr::filter(!is.na(entity_type)) |>
+    group_by(entity_type) |>
+    group_modify(~ model_metrics(.x, model))
 }
 
-summarize_model_by_entity <- function(comparisons){
+summarize_model_by_entity <- function(comparisons) {
   comparisons |>
     imap(
-     summarize_by_entity
+      summarize_by_entity
     ) |>
     bind_rows() |>
     mutate(
-      Model = factor(Model, levels=names(baseline_comparison)),
-      Sensitivity = round(Sensitivity,1 )
+      Model = factor(Model, levels = names(baseline_comparison)),
+      Sensitivity = round(Sensitivity, 1)
     ) |>
     select(Model, entity_type, Sensitivity) |>
-    arrange(Model, desc(Sensitivity)) |> 
+    arrange(Model, desc(Sensitivity)) |>
     pivot_wider(
       id_cols = Model,
       names_from = entity_type,
       values_from = Sensitivity
-    )  
+    )
 }
 
 
@@ -221,8 +222,8 @@ Inspection of the raw data identifed cases of punctuation…
 ``` r
 
 preprocessed_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 #>      Model Sensitivity Precision F2[B=2]
 #> 1       LG        89.5      71.8    85.3
 #> 2      TRF        69.6      63.0    68.2
@@ -235,7 +236,7 @@ preprocessed_comparison |>
 
 ``` r
 
-summarize_model_by_entity(preprocessed_comparison) 
+summarize_model_by_entity(preprocessed_comparison)
 #> # A tibble: 7 × 7
 #>   Model    CREDIT_CARD PERSON PHONE_NUMBER STREET_ADDRESS   GPE EMAIL_ADDRESS
 #>   <fct>          <dbl>  <dbl>        <dbl>          <dbl> <dbl>         <dbl>
@@ -261,8 +262,8 @@ To mimic this, the raw text was manipualted to remove all casing
 ``` r
 
 lower_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 #>      Model Sensitivity Precision F2[B=2]
 #> 1       LG        76.2      72.0    75.3
 #> 2      TRF        63.4      60.6    62.8
@@ -275,7 +276,7 @@ lower_comparison |>
 
 ``` r
 
-summarize_model_by_entity(lower_comparison) 
+summarize_model_by_entity(lower_comparison)
 #> # A tibble: 7 × 7
 #>   Model    CREDIT_CARD STREET_ADDRESS PHONE_NUMBER PERSON   GPE EMAIL_ADDRESS
 #>   <fct>          <dbl>          <dbl>        <dbl>  <dbl> <dbl>         <dbl>
@@ -302,10 +303,9 @@ utility.
 
 ``` r
 
-
 titlecase_comparison |>
-  summarize_model_metrics() |> 
-  mutate(across(where(is.numeric), ~ round(.x, 1))) 
+  summarize_model_metrics() |>
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
 #>      Model Sensitivity Precision F2[B=2]
 #> 1       LG        77.6      62.4    74.0
 #> 2      TRF        69.7      64.7    68.6
@@ -318,7 +318,7 @@ titlecase_comparison |>
 
 ``` r
 
-summarize_model_by_entity(titlecase_comparison) 
+summarize_model_by_entity(titlecase_comparison)
 #> # A tibble: 7 × 7
 #>   Model    PERSON STREET_ADDRESS PHONE_NUMBER   GPE CREDIT_CARD EMAIL_ADDRESS
 #>   <fct>     <dbl>          <dbl>        <dbl> <dbl>       <dbl>         <dbl>

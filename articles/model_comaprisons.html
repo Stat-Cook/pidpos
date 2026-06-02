@@ -96,7 +96,10 @@ preprocessing steps that effect performance.</p>
 passages of free text and a total of 2,863 named entities. The entity
 break down is:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">presidio_tags</span> <span class="op">|&gt;</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">summarise</span><span class="op">(</span>Frequency <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">Frequency</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">presidio_tags</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>Frequency <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">Frequency</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 2</span></span></span>
 <span><span class="co">#&gt;    entity_type       Frequency</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
@@ -195,23 +198,22 @@ factor was set at 2 to weight the scoring in favour of greater detection
 at the cost of additional false positives i.e. because missing PID is a
 greater utility cost than flagging extra candidates.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">s</span>, <span class="va">p</span>, <span class="va">b</span><span class="op">)</span><span class="op">{</span></span>
-<span>  <span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="va">b</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">*</span><span class="va">s</span><span class="op">*</span><span class="va">p</span><span class="op">/</span><span class="op">(</span><span class="va">s</span><span class="op">+</span><span class="va">b</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="va">p</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">s</span>, <span class="va">p</span>, <span class="va">b</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">b</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="va">s</span> <span class="op">*</span> <span class="va">p</span> <span class="op">/</span> <span class="op">(</span><span class="va">s</span> <span class="op">+</span> <span class="va">b</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">p</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">model_metrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">comparison</span>, <span class="va">name</span> <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">{</span></span>
-<span></span>
+<span><span class="va">model_metrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">comparison</span>, <span class="va">name</span> <span class="op">=</span> <span class="st">""</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">sens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">comparison</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">entity_value</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">distinct</span><span class="op">(</span><span class="va">entity_value</span> , .keep_all <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span>Sensitivity <span class="op">=</span> <span class="fl">100</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Token</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu">distinct</span><span class="op">(</span><span class="va">entity_value</span>, .keep_all <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>Sensitivity <span class="op">=</span> <span class="fl">100</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Token</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">prec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">comparison</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Token</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span>Precision <span class="op">=</span> <span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">entity_value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>Precision <span class="op">=</span> <span class="fl">100</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">entity_value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">sens</span>, <span class="va">prec</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span></span>
 <span>      Model <span class="op">=</span> <span class="va">name</span>,</span>
-<span>      `F2[B=2]` <span class="op">=</span> <span class="op">(</span><span class="fl">1</span><span class="op">+</span><span class="fl">4</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">Sensitivity</span><span class="op">*</span><span class="va">Precision</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="va">Sensitivity</span><span class="op">+</span><span class="fl">4</span><span class="op">*</span><span class="va">Precision</span><span class="op">)</span></span>
+<span>      `F2[B=2]` <span class="op">=</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="va">Sensitivity</span> <span class="op">*</span> <span class="va">Precision</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">Sensitivity</span> <span class="op">+</span> <span class="fl">4</span> <span class="op">*</span> <span class="va">Precision</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
@@ -227,14 +229,14 @@ is, and with the inclusion of a filter to limit the udpipe model output
 to only proper nouns. A script outlining the trials is included in … for
 the interested reader.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">summarize_model_metrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">frm</span><span class="op">)</span><span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="va">summarize_model_metrics</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">frm</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">imap</span><span class="op">(</span><span class="va">frm</span>, <span class="va">model_metrics</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
-<span>    <span class="fu">select</span><span class="op">(</span><span class="va">Model</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
+<span>    <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="va">Model</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">baseline_comparison</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Model Sensitivity Precision F2[B=2]</span></span>
 <span><span class="co">#&gt; 1       LG        85.7      70.7    82.2</span></span>
@@ -245,31 +247,30 @@ the interested reader.</p>
 <span><span class="co">#&gt; 6    Regex        17.6      84.4    20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        96.8      72.8    90.8</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">summarize_by_entity</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">frm</span>, <span class="va">model</span><span class="op">)</span> <span class="op">{</span></span>
-<span>      <span class="va">frm</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu">group_by</span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>        <span class="fu">group_modify</span><span class="op">(</span><span class="op">~</span> <span class="fu">model_metrics</span><span class="op">(</span><span class="va">.x</span>, <span class="va">model</span><span class="op">)</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">summarize_by_entity</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">frm</span>, <span class="va">model</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">frm</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_modify</span><span class="op">(</span><span class="op">~</span> <span class="fu">model_metrics</span><span class="op">(</span><span class="va">.x</span>, <span class="va">model</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">summarize_model_by_entity</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">comparisons</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="va">summarize_model_by_entity</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">comparisons</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">comparisons</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">imap</span><span class="op">(</span></span>
-<span>     <span class="va">summarize_by_entity</span></span>
+<span>      <span class="va">summarize_by_entity</span></span>
 <span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">bind_rows</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span></span>
-<span>      Model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Model</span>, levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">baseline_comparison</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>      Sensitivity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">Sensitivity</span>,<span class="fl">1</span> <span class="op">)</span></span>
+<span>      Model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Model</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">baseline_comparison</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      Sensitivity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">Sensitivity</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">Model</span>, <span class="va">entity_type</span>, <span class="va">Sensitivity</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">Model</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">Sensitivity</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">Model</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">Sensitivity</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">pivot_wider</span><span class="op">(</span></span>
 <span>      id_cols <span class="op">=</span> <span class="va">Model</span>,</span>
 <span>      names_from <span class="op">=</span> <span class="va">entity_type</span>,</span>
 <span>      values_from <span class="op">=</span> <span class="va">Sensitivity</span></span>
-<span>    <span class="op">)</span>  </span>
+<span>    <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span></span>
@@ -296,8 +297,8 @@ precision.</p>
 <p>Inspection of the raw data identifed cases of punctuation…</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preprocessed_comparison</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
+<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Model Sensitivity Precision F2[B=2]</span></span>
 <span><span class="co">#&gt; 1       LG        89.5      71.8    85.3</span></span>
 <span><span class="co">#&gt; 2      TRF        69.6      63.0    68.2</span></span>
@@ -307,7 +308,7 @@ precision.</p>
 <span><span class="co">#&gt; 6    Regex        17.5      95.8    20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        96.4      71.5    90.1</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">preprocessed_comparison</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">preprocessed_comparison</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
 <span><span class="co">#&gt;   Model    CREDIT_CARD PERSON PHONE_NUMBER STREET_ADDRESS   GPE EMAIL_ADDRESS</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -330,8 +331,8 @@ proper nouns from the space of all nouns.</p>
 (i.e. conversion to lower case) and the taggers re-tested:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lower_comparison</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
+<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Model Sensitivity Precision F2[B=2]</span></span>
 <span><span class="co">#&gt; 1       LG        76.2      72.0    75.3</span></span>
 <span><span class="co">#&gt; 2      TRF        63.4      60.6    62.8</span></span>
@@ -341,7 +342,7 @@ proper nouns from the space of all nouns.</p>
 <span><span class="co">#&gt; 6    Regex        17.6      84.4    20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        80.1      72.8    78.5</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">lower_comparison</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">lower_comparison</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
 <span><span class="co">#&gt;   Model    CREDIT_CARD STREET_ADDRESS PHONE_NUMBER PERSON   GPE EMAIL_ADDRESS</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
@@ -363,10 +364,9 @@ concerning for all models and especially the udpipe. To partially
 explore this behaviour a final test was made where the passages were
 automatically cased via the <code><a href="https://rdrr.io/r/tools/toTitleCase.html" class="external-link">tools::toTitleCase</a></code> utility.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">titlecase_comparison</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">titlecase_comparison</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Model Sensitivity Precision F2[B=2]</span></span>
 <span><span class="co">#&gt; 1       LG        77.6      62.4    74.0</span></span>
 <span><span class="co">#&gt; 2      TRF        69.7      64.7    68.6</span></span>
@@ -376,7 +376,7 @@ automatically cased via the <code><a href="https://rdrr.io/r/tools/toTitleCase.h
 <span><span class="co">#&gt; 6    Regex        17.6      84.4    20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        95.6      51.8    81.8</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">titlecase_comparison</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">titlecase_comparison</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
 <span><span class="co">#&gt;   Model    PERSON STREET_ADDRESS PHONE_NUMBER   GPE CREDIT_CARD EMAIL_ADDRESS</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>

@@ -16,6 +16,9 @@
 - [`udpipe_factory()`](https://stat-cook.github.io/pidpos/reference/udpipe_factory.md)
   : Create a UDPipe tagging function
 
+- [`regex_factory()`](https://stat-cook.github.io/pidpos/reference/regex_factory.md)
+  : Create a PID detection function from a named list of regex patterns
+
 - [`custom_tagger()`](https://stat-cook.github.io/pidpos/reference/custom_tagger.md)
   : Convert a POS tagging function to a tagger for the pidpos package
 
@@ -73,6 +76,8 @@
   : Browse user to folder for UDPipe models.
 - [`browse_udpipe_repo()`](https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.md)
   : Open github link to the 'english-ewt-2.5' UD model.
+- [`clean_encoding()`](https://stat-cook.github.io/pidpos/reference/clean_encoding.md)
+  : Encode non utf8 text
 - [`register_reader()`](https://stat-cook.github.io/pidpos/reference/register_reader.md)
   : Add a reader function for a specific file extension.
 - [`set_udpipe_version()`](https://stat-cook.github.io/pidpos/reference/set_udpipe_version.md)
@@ -111,3 +116,21 @@
   raw_redaction_rules An example of a redaction rules produced by the
   `pidpos` function. It is made using the first 20 rows of
   `the_one_in_massapequa` data set.
+
+- [`presidio_text`](https://stat-cook.github.io/pidpos/reference/presidio_text.md)
+  : presidio_text
+
+- [`presidio_tags`](https://stat-cook.github.io/pidpos/reference/presidio_tags.md)
+  : presidio_tags
+
+- [`baseline_comparison`](https://stat-cook.github.io/pidpos/reference/baseline_comparison.md)
+  : baseline_comparison
+
+- [`preprocessed_comparison`](https://stat-cook.github.io/pidpos/reference/preprocessed_comparison.md)
+  : preprocessed_comparison
+
+- [`lower_comparison`](https://stat-cook.github.io/pidpos/reference/lower_comparison.md)
+  : lower_comparison
+
+- [`titlecase_comparison`](https://stat-cook.github.io/pidpos/reference/titlecase_comparison.md)
+  : titlecase_comparison

@@ -53,6 +53,14 @@ with columns:
   The universal parts of speech tag of the token. See
   https://universaldependencies.org/format.html
 
+- StartIndex:
+
+  The character index `Token` starts at
+
+- EndIndex:
+
+  The character index `Token` ends at
+
 and all columns returned by the
 \<[udpipe()\`](https://rdrr.io/pkg/udpipe/man/udpipe.html)\> function
 for each token.

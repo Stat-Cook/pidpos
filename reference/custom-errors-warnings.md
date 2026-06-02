@@ -10,6 +10,8 @@ package structure separately to any raised from custom code.
 ``` r
 type_error(message, ..., call = caller_env())
 
+value_error(message, ..., call = caller_env())
+
 exceeded_max_error(message, ..., call = caller_env())
 
 exceeded_half_max_warn(message, ..., call = caller_env())
