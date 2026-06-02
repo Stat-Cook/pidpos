@@ -1,5 +1,5 @@
 #' Internal utility for checking reticulate
-#' 
+#'
 #' @keywords internal
 check_reticulate <- function() {
   rlang::check_installed(
