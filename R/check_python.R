@@ -3,7 +3,7 @@
 #' Utility to check python environment is available and has neccesary functionality.
 #'
 #' @param envname The python environment you wish to use.
-#' 
+#'
 #' @return A list of python package version
 #' @seealso check_python
 #' @export

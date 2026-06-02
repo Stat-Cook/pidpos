@@ -40,14 +40,14 @@ base_warn <- function(subclass,
 }
 
 #' Error function factory
-#' 
+#'
 #' Create new error types to allow better handling/ extension on tryCatch.
-#' 
+#'
 #' @param name Error type.  Will take the form 'pidpos_<name>'
 #' @param parent An optional character vector of parent classes to include.
-#' 
+#'
 #' @return A new error closure with signature `f(message)`
-#' @keywords internal 
+#' @keywords internal
 new_error_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(
@@ -66,14 +66,14 @@ new_error_type <- function(name, parent = NULL) {
 }
 
 #' Warning function factory
-#' 
+#'
 #' Create new warning types to allow better handling/ extension on tryCatch.
-#' 
+#'
 #' @param name Warning type.  Will take the form 'pidpos_<name>'
 #' @param parent An optional character vector of parent classes to include.
-#' 
+#'
 #' @return A new warning closure with signature `f(message)`
-#' @keywords internal 
+#' @keywords internal
 new_warn_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(

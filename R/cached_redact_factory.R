@@ -55,9 +55,9 @@ cached_redact_factory <- function(redact.function) {
 }
 
 #' Print method for cached_redact_function
-#' 
+#'
 #' @return (Tnvisibly) The string representation of the function.
-#' 
+#'
 #' @exportS3Method
 #' @keywords internal
 print.cached_redact_function <- function(x, ...) {

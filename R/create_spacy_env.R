@@ -8,7 +8,7 @@
 #'
 #' @seealso
 #' * To control the environment name or inherit an existing python env: [spacy-conda-env]
-#' 
+#'
 #' @return (Invisibly) Your python environment name.
 #'
 #' @export
@@ -47,7 +47,7 @@ create_spacy_env <- function() {
       additional_create_args = c("-n", envname)
     )
   }, args = list(envname = envname, yml_path = yml_path))
-  
+
   invisible(envname)
 }
 

@@ -3,7 +3,7 @@
 #' Intended for user download where `udpipe` fails to download automatically.
 #'
 #' @param model A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.
-#' 
+#'
 #' @return (Invisibly) The url path to the requested model repository.
 #' @export
 #' @importFrom utils browseURL

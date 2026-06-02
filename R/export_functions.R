@@ -7,7 +7,7 @@
 #' @param name The file name NB: slashes will act as folder sublevels for `export_as_tree` and be
 #' replaced with underscores in `export_flat`
 #' @param report_path the root location
-#' 
+#'
 #' @return The path to the output file
 #' @name export_utilites
 NULL
