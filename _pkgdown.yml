@@ -9,6 +9,7 @@ reference:
   - summary.pidpos
   - tag_data_frame
   - udpipe_factory
+  - regex_factory
   - custom_tagger
   - filter_to_proper_nouns
 - title: "Redaction tools"
@@ -39,6 +40,7 @@ reference:
   - pidpos_setup
   - browse_model_location
   - browse_udpipe_repo
+  - clean_encoding
   - register_reader
   - set_udpipe_version
   - reinstate_default_reader
@@ -56,6 +58,12 @@ reference:
   - the_one_in_massapequa
   - sentence_frm
   - raw_redaction_rules
+  - presidio_text
+  - presidio_tags
+  - baseline_comparison
+  - preprocessed_comparison
+  - lower_comparison
+  - titlecase_comparison
 articles:
 - title: Articles
   navbar: ~
