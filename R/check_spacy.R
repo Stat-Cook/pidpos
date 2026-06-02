@@ -1,6 +1,16 @@
+#' Verify spacy install
+#' 
+#' Utility to check spacy is configured with the neccesary models.
+#'
+#' @param envname The python environment you wish to use.
+#' 
+#' @seealso check_python
+#' @export
 #' @importFrom stats setNames
 #'
 check_spacy <- function() {
+  check_reticulate()
+  
   py_packages <- c(
     spacy = "spacy",
     en_core_web_lg = "en_core_web_lg",

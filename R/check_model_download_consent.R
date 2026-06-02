@@ -1,3 +1,9 @@
+#' CMD line UI for checking consent
+#' 
+#' Check and ask user if they consent to model downloads.
+#' 
+#' @param model The model to be downloaded
+#' @keywords internal
 check_model_download_consent <- function(model) {
   if (getOption("pidpos_download_approved")) {
     return(invisible(TRUE))
