@@ -6,9 +6,9 @@ check_spacy <- function() {
     en_core_web_lg = "en_core_web_lg",
     en_core_web_trf = "en_core_web_trf"
   )
-  
+
   missing <- !sapply(py_packages, reticulate::py_module_available)
-  
+
   if (sum(missing) > 0) {
     msg <- paste0("`", names(which(missing)), "`", collapse = ", ")
     stop(
