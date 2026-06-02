@@ -68,11 +68,11 @@ test_that("extra arguments are accessible in the error object", {
 })
 
 
-test_that("new_warn_type behaviours",{
+test_that("new_warn_type behaviours", {
   my_warning <- new_warn_type("bad_thing")
 
   expect_type(my_warning, "closure")
-  
+
   e <- tryCatch(
     my_warning("uh oh", call = NULL),
     warning = function(e) e
