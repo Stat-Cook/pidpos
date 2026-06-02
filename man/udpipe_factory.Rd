@@ -26,6 +26,8 @@ with columns:
 \item{Token}{Individual token text}
 \item{Sentence}{Sentence containing the token}
 \item{POS}{The universal parts of speech tag of the token. See https://universaldependencies.org/format.html}
+\item{StartIndex}{The character index \code{Token} starts at}
+\item{EndIndex}{The character index \code{Token} ends at}
 }
 and all columns returned by the <\link[udpipe:udpipe]{udpipe()`}>
 function for each token.

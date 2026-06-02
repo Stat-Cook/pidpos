@@ -3,12 +3,15 @@
 \name{custom-errors-warnings}
 \alias{custom-errors-warnings}
 \alias{type_error}
+\alias{value_error}
 \alias{exceeded_max_error}
 \alias{exceeded_half_max_warn}
 \alias{iteration_warn}
 \title{Package errors and warnings}
 \usage{
 type_error(message, ..., call = caller_env())
+
+value_error(message, ..., call = caller_env())
 
 exceeded_max_error(message, ..., call = caller_env())
 

@@ -34,6 +34,7 @@ Imports:
     glue,
     readxl,
     stringr,
+    stringi,
     utf8,
     tidyr,
     readr,
