@@ -6,9 +6,6 @@
 \usage{
 check_spacy()
 }
-\arguments{
-\item{envname}{The python environment you wish to use.}
-}
 \description{
 Utility to check spacy is configured with the neccesary models.
 }
