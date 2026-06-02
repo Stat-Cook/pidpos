@@ -23,9 +23,7 @@ presidio_tags <- data$spans %>%
   setNames(., seq_along(.)) |>
   purrr::imap(
     ~ mutate(.x, `Doc ID` = .y)
-  )|>
+  ) |>
   bind_rows()
 
 usethis::use_data(presidio_tags, overwrite = TRUE)
-
-
