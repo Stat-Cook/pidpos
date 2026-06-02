@@ -8,6 +8,10 @@ Utility to check spacy is configured with the neccesary models.
 check_spacy()
 ```
 
+## Value
+
+(Invisibly) TRUE if no error is raised.
+
 ## See also
 
 check_python

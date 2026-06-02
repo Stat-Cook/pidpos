@@ -15,6 +15,10 @@ check_python(envname = get_pidpos_conda())
 
   The python environment you wish to use.
 
+## Value
+
+A list of python package version
+
 ## See also
 
 check_python

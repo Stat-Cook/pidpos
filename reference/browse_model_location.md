@@ -7,3 +7,7 @@ Intended for usage in `udpipe` fails to download automatically.
 ``` r
 browse_model_location()
 ```
+
+## Value
+
+(Invisibly) The file path to your active model repository.

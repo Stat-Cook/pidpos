@@ -26,3 +26,7 @@ export_flat(report, name, report_path)
 - report_path:
 
   the root location
+
+## Value
+
+The path to the output file

@@ -1,7 +1,8 @@
 # Combine multiple PID reports into a single rule set
 
 For use as part of the folder level API - this function is the
-equivalent of `get_distinct_redaction_rules()`.
+equivalent of
+[`report_to_redaction_rules()`](https://stat-cook.github.io/pidpos/reference/report_to_redaction_rules.md).
 
 ## Usage
 
@@ -21,3 +22,7 @@ get_distinct_redaction_rules(object, include_context = FALSE)
 
   A boolean flag indicating whether to include context information in
   the output. Default is FALSE.
+
+## Value
+
+A data frame

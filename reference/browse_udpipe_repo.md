@@ -16,3 +16,7 @@ browse_udpipe_repo(model = "english-ewt")
   A string naming a UDPipe model. See
   [`udpipe::udpipe_download_model()`](https://rdrr.io/pkg/udpipe/man/udpipe_download_model.html)
   for the list of available models.
+
+## Value
+
+(Invisibly) The url path to the requested model repository.

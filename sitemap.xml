@@ -49,6 +49,8 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/make_replacement_function.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/make_unique_col.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/merge_redactions.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/new_error_type.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/new_warn_type.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/parse_redacter.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/pidpos.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/pidpos_setup.html</loc></url>
@@ -56,6 +58,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/preprocessed_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_tags.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_text.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/print.cached_redact_function.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/process_supported_files.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/raw_redaction_rules.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/read_data.html</loc></url>

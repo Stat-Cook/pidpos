@@ -10,6 +10,10 @@ before continuing.
 create_spacy_env()
 ```
 
+## Value
+
+(Invisibly) Your python environment name.
+
 ## Details
 
 This function ensures a python environment is available for using the
