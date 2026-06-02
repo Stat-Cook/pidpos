@@ -1,3 +1,8 @@
+#' Folder API utility function
+#' 
+#' Reads data files within a given folder and produces pidpos reports.
+#' 
+#' @keywords internal
 process_supported_files <- function(file_list,
                                     report_path,
                                     tagger = "english-ewt",

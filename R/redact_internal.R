@@ -1,3 +1,11 @@
+#' Map redaction function onto object
+#' 
+#' Allows for the redaction of a data frame or vector
+#' 
+#' @param object The data structure to be redacted
+#' @param redaction_func A closure/ function to be applied.
+#'
+#' 
 #' @keywords internal
 redact_internal <- function(object, redaction_func) {
   UseMethod("redact_internal")
