@@ -22,6 +22,9 @@ NULL
 type_error <- new_error_type("type_error")
 
 #' @rdname custom-errors-warnings
+value_error <- new_error_type("value_error")
+
+#' @rdname custom-errors-warnings
 exceeded_max_error <- new_error_type("exceeded_max_error")
 
 #' @rdname custom-errors-warnings
