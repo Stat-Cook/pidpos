@@ -1,5 +1,5 @@
 set_model_folder <- function(path) {
-  # unlockBinding("model_folder", pidpos_env)
+  
   pidpos_env$model_folder <- path
   path
 }

@@ -58,9 +58,6 @@ udpipe_factory <- function(model = "english-ewt",
 
     names(docs) <- format_doc_id(docs, doc_ids)
 
-    # encoded_docs <- clean_encoding(docs)
-    # names(utf8_docs) <- doc_ids
-
     if (!inherits(model, "udpipe_model")) check_model_download_consent(model)
 
     tagged <- tryCatch(

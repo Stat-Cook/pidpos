@@ -41,6 +41,5 @@ escalate <- function(w, elevate_warnings) {
     rlang::abort(w$message, class = .class)
   } else {
     rlang::warn(w$message, class = .class)
-    # invokeRestart("muffleWarning")
   }
 }
