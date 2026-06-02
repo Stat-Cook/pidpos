@@ -1,6 +1,7 @@
 #' Verify spacy install
-#' 
-#' Utility to check spacy is configured with the necessary models.
+#'
+#' Utility to check spacy is configured with the neccesary models.
+#'
 #' 
 #' @seealso check_python
 #' @export
@@ -8,7 +9,7 @@
 #'
 check_spacy <- function() {
   check_reticulate()
-  
+
   py_packages <- c(
     spacy = "spacy",
     en_core_web_lg = "en_core_web_lg",

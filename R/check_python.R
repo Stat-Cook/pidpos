@@ -1,14 +1,14 @@
 #' Verify python
-#' 
+#'
 #' Utility to check python environment is available and has neccesary functionality.
 #'
 #' @param envname The python environment you wish to use.
-#' 
+#'
 #' @seealso check_python
 #' @export
 check_python <- function(envname = get_pidpos_conda()) {
   check_reticulate()
-  
+
   reticulate::use_condaenv(envname)
 
   numpy <- reticulate::import("numpy")
