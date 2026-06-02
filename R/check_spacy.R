@@ -1,8 +1,6 @@
 #' Verify spacy install
 #' 
-#' Utility to check spacy is configured with the neccesary models.
-#'
-#' @param envname The python environment you wish to use.
+#' Utility to check spacy is configured with the necessary models.
 #' 
 #' @seealso check_python
 #' @export
