@@ -1,9 +1,9 @@
 test_that(
   "make and merge replacements workflow",
   withr::with_options(list(pidpos_download_approved = TRUE), {
-    test_data <- select(the_one_in_massapequa, speaker) |> 
+    test_data <- select(the_one_in_massapequa, speaker) |>
       head()
-    
+
     .rules <- data.frame(
       If = test_data$speaker,
       From = test_data$speaker,
