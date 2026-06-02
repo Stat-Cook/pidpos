@@ -2,7 +2,7 @@
 #'
 #' Utility to check spacy is configured with the neccesary models.
 #'
-#' 
+#'
 #' @seealso check_python
 #' @export
 #' @importFrom stats setNames
