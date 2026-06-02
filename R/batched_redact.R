@@ -13,7 +13,7 @@
 #' @param n The number of chunks to split the data frame into for processing.
 #' @param .progress Whether to show a progress bar.
 #'
-#' @returns A data frame with the same structure as `frm` but with redacted text.
+#' @return A data frame with the same structure as `frm` but with redacted text.
 #'
 #' @examples
 #' \dontrun{
@@ -33,7 +33,6 @@ batched_redact <- function(frm, redact, n = NULL, .progress = TRUE) {
 }
 
 #' @exportS3Method
-#'
 #' @importFrom dplyr across where mutate
 batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progress = TRUE) {
   .mutate <- function(frm) {
@@ -48,7 +47,6 @@ batched_redact.cached_redact_function <- function(frm, redact, n = NULL, .progre
 
 
 #' @exportS3Method
-#'
 batched_redact.default <- function(frm, redact, n = NULL, .progress = TRUE) {
   cached.f <- cached_redact_factory(redact)
   batched_redact(frm, cached.f, n = n, .progress = .progress)

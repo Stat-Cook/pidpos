@@ -1,3 +1,4 @@
+#' @keywords  internal
 CachedRedact <- R6::R6Class("CachedRedact", list(
   redacted = character(),
   redact_function = NA,
@@ -37,7 +38,7 @@ print.CachedRedact <- function(x, ...) {
 #'
 #' @param redact.function A single input function to perform variable recoding.
 #'
-#' @returns A function
+#' @return A function
 #' @keywords internal
 cached_redact_factory <- function(redact.function) {
   cr <- CachedRedact$new(redact.function)
@@ -53,7 +54,12 @@ cached_redact_factory <- function(redact.function) {
   )
 }
 
+#' Print method for cached_redact_function
+#' 
+#' @return (Tnvisibly) The string representation of the function.
+#' 
 #' @exportS3Method
+#' @keywords internal
 print.cached_redact_function <- function(x, ...) {
   sprintf(
     "`cached_redact_function` [size=%s]",

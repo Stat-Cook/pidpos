@@ -2,7 +2,7 @@
 #'
 #' @param model The spacy language model - currently supports "en_core_web_lg" and "en_core_web_trf"
 #'
-#' @returns A tagging function with the signature tagger(doc, doc_id) -> data.frame
+#' @return A tagging function with the signature tagger(doc, doc_id) -> data.frame
 #'
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {

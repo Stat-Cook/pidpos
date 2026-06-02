@@ -2,7 +2,8 @@
 #'
 #' Utility to check spacy is configured with the neccesary models.
 #'
-#'
+#' @return (Invisibly) TRUE if no error is raised.
+#' 
 #' @seealso check_python
 #' @export
 #' @importFrom stats setNames
@@ -27,4 +28,6 @@ check_spacy <- function() {
       "To check your active python env run `reticulate::py_config()`."
     )
   }
+  
+  invisible(TRUE)
 }

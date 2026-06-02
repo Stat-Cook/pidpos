@@ -1,12 +1,14 @@
 #' Combine multiple PID reports into a single rule set
 #'
 #' For use as part of the folder level API - this function is the equivalent of
-#' [get_distinct_redaction_rules()].
+#' [report_to_redaction_rules()].
 #'
 #' @param object The object to extract distinct redaction rules from.
 #'   Can be a path to a folder of `pid` reports, a list of `pid` reports, or a single data frame.
 #' @param include_context A boolean flag indicating whether to include context information in the output. Default is FALSE.
-#'
+#' 
+#' @return A data frame
+#' 
 #' @export
 get_distinct_redaction_rules <- function(object, include_context = FALSE) {
   UseMethod("get_distinct_redaction_rules")

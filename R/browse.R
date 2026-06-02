@@ -3,7 +3,8 @@
 #' Intended for user download where `udpipe` fails to download automatically.
 #'
 #' @param model A string naming a UDPipe model.  See `udpipe::udpipe_download_model()` for the list of available models.
-#'
+#' 
+#' @return (Invisibly) The url path to the requested model repository.
 #' @export
 #' @importFrom utils browseURL
 #'
@@ -21,16 +22,17 @@ browse_udpipe_repo <- function(model = "english-ewt") {
   url_path <- sprintf("%s-ud-%s-%s.udpipe", model, .version.number, .date)
   udpipe_repo <- paste(url_root, url_path, sep = "/")
 
-
   browseURL(udpipe_repo)
+  invisible(udpipe_repo)
 }
 
 
 #' Browse user to folder for UDPipe models.
 #'
 #' Intended for usage in `udpipe` fails to download automatically.
-#'
+#' @return (Invisibly) The file path to your active model repository.
 #' @export
 browse_model_location <- function() {
   browseURL(pidpos_env$model_folder)
+  invisible(pidpos_env$model_folder)
 }

@@ -3,7 +3,8 @@
 #' @param text A character vector to be encoded
 #'
 #' @return A character vector
-#'
+#' 
+#' @export
 #' @importFrom stringi stri_enc_isutf8
 clean_encoding <- function(text) {
   if (!all(stringi::stri_enc_isutf8(text), na.rm = TRUE)) {
