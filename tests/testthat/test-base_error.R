@@ -66,3 +66,18 @@ test_that("extra arguments are accessible in the error object", {
   expect_equal(e$x, 5)
   expect_equal(e$y, "hello")
 })
+
+
+test_that("new_warn_type behaviours",{
+  my_warning <- new_warn_type("bad_thing")
+
+  expect_type(my_warning, "closure")
+  
+  e <- tryCatch(
+    my_warning("uh oh", call = NULL),
+    warning = function(e) e
+  )
+
+  expect_s3_class(e, c("mypkg_bad_thing", "bad_thing", "pidpos_warning", "warning"))
+  expect_match(conditionMessage(e), "uh oh")
+})
