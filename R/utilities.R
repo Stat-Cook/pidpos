@@ -1,5 +1,4 @@
 set_model_folder <- function(path) {
-  
   pidpos_env$model_folder <- path
   path
 }
