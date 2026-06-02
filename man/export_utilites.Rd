@@ -18,6 +18,9 @@ replaced with underscores in \code{export_flat}}
 
 \item{report_path}{the root location}
 }
+\value{
+The path to the output file
+}
 \description{
 Utilities for writing \code{pidpos} reports in a folder structure when using \code{report_on_folder}.
 To mimic the file tree on read use \code{export_as_tree}, or for a  flat structure use  \code{export_flat}.

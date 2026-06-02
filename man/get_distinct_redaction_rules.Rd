@@ -12,7 +12,10 @@ Can be a path to a folder of \code{pid} reports, a list of \code{pid} reports, o
 
 \item{include_context}{A boolean flag indicating whether to include context information in the output. Default is FALSE.}
 }
+\value{
+A data frame
+}
 \description{
 For use as part of the folder level API - this function is the equivalent of
-\code{\link[=get_distinct_redaction_rules]{get_distinct_redaction_rules()}}.
+\code{\link[=report_to_redaction_rules]{report_to_redaction_rules()}}.
 }

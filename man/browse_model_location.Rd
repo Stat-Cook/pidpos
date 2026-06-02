@@ -6,6 +6,9 @@
 \usage{
 browse_model_location()
 }
+\value{
+(Invisibly) The file path to your active model repository.
+}
 \description{
 Intended for usage in \code{udpipe} fails to download automatically.
 }

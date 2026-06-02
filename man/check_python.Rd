@@ -9,6 +9,9 @@ check_python(envname = get_pidpos_conda())
 \arguments{
 \item{envname}{The python environment you wish to use.}
 }
+\value{
+A list of python package version
+}
 \description{
 Utility to check python environment is available and has neccesary functionality.
 }

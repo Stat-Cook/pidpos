@@ -6,6 +6,9 @@
 \usage{
 create_spacy_env()
 }
+\value{
+(Invisibly) Your python environment name.
+}
 \description{
 NB: the following assumes you have installed the optional \code{reticulate} dependency.  If you have
 not please run \code{install.packages("reticualte")} before continuing.

@@ -9,6 +9,9 @@ browse_udpipe_repo(model = "english-ewt")
 \arguments{
 \item{model}{A string naming a UDPipe model.  See \code{udpipe::udpipe_download_model()} for the list of available models.}
 }
+\value{
+(Invisibly) The url path to the requested model repository.
+}
 \description{
 Intended for user download where \code{udpipe} fails to download automatically.
 }

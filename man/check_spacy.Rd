@@ -6,6 +6,9 @@
 \usage{
 check_spacy()
 }
+\value{
+(Invisibly) TRUE if no error is raised.
+}
 \description{
 Utility to check spacy is configured with the neccesary models.
 }
