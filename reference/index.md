@@ -67,6 +67,9 @@
   : Combine multiple PID reports into a single rule set
 - [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
   : Redact PID across folder structure
+- [`export_as_tree()`](https://stat-cook.github.io/pidpos/reference/export_utilites.md)
+  [`export_flat()`](https://stat-cook.github.io/pidpos/reference/export_utilites.md)
+  : Export utilities
 
 ## Package Utilities
 
@@ -100,6 +103,10 @@
   : Get and set the conda environment for pidpos
 - [`spacy_models()`](https://stat-cook.github.io/pidpos/reference/spacy_models.md)
   : List available spacy models
+- [`check_python()`](https://stat-cook.github.io/pidpos/reference/check_python.md)
+  : Verify python
+- [`check_spacy()`](https://stat-cook.github.io/pidpos/reference/check_spacy.md)
+  : Verify spacy install
 
 ## Datasets
 

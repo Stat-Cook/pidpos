@@ -22,6 +22,9 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/browse_model_location.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/cached_redact_factory.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/check_model_download_consent.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/check_python.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/check_spacy.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/clean_encoding.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/create_spacy_env.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/custom-errors-warnings.html</loc></url>
@@ -29,6 +32,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/enable_local_models.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/enable_package_models.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/enable_temp_models.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/export_utilites.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/file_not_found_error.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/filter_to_proper_nouns.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/find_supported_files.html</loc></url>
