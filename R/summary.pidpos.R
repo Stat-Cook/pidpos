@@ -28,7 +28,6 @@ most_common <- function(cnt, names) {
 summary.pidpos <- function(object, ...) {
   object <- as_tibble(object)
 
-  # .distinct <- distinct(object, .data$Sentence, .data$Repeats, .data$`Affected Columns`)
   .uni <- unique(object$`Affected Columns`)
   affected.cols <- unique(simplify(str_extract_all(.uni, "`.*?`")))
 
