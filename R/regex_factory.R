@@ -55,7 +55,7 @@ pid_patterns <- tibble::tribble(
 #'
 #' @return A function with signature \code{function(doc, doc_id)} that returns
 #'   a data frame with columns: doc_id, type, match, start, end, doc.
-#'   
+#'
 #' @export
 regex_factory <- function(patterns = pid_patterns) {
   #  Validate patterns at construction time
