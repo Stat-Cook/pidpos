@@ -1,6 +1,6 @@
-# Reads a data file
+# IO utility
 
-Reads a data file
+Maps file extension to the predefined reader.
 
 ## Usage
 
@@ -12,8 +12,12 @@ read_data(file_path, ...)
 
 - file_path:
 
-  The path to the file to read
+  Path to file
 
 - ...:
 
-  Additional arguments to pass to the read function
+  Optional parameters to pass to the file reader
+
+## Value
+
+The file content

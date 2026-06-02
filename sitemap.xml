@@ -24,6 +24,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/cached_redact_factory.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/check_model_download_consent.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/check_python.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/check_reticulate.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/check_spacy.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/clean_encoding.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/create_spacy_env.html</loc></url>
@@ -36,6 +37,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/file_not_found_error.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/filter_to_proper_nouns.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/find_supported_files.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/format_doc_id.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/get_context.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/get_distinct_redaction_rules.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/get_replacements.html</loc></url>
@@ -54,9 +56,12 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/preprocessed_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_tags.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_text.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/process_supported_files.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/raw_redaction_rules.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/read_data.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/redact.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/redact_at_folder.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/redact_internal.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/redact_supported_files.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/redaction_function_factory.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/regex_factory.html</loc></url>
