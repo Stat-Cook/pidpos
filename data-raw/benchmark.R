@@ -19,6 +19,7 @@ pid_presido_tags <- filter(
 ) |>
   mutate(`Doc ID` = as.character(`Doc ID`))
 
+nrow(pid_presido_tags) / nrow(presidio_tags) 
 
 lg_tagger <- spacy_factory("en_core_web_lg")
 trf_tagger <- spacy_factory("en_core_web_trf")
@@ -103,8 +104,9 @@ baseline_comparison <- map(baseline_filtered, ~ combine_and_compare(pid_presido_
 usethis::use_data(baseline_comparison, overwrite = T)
 
 
-preproccessed_docs <- gsub("[^a-zA-Z0-9 .,!?']", " ", presidio_text$Document)
-
+# preproccessed_docs <- gsub("[^a-zA-Z0-9 .,!?']", " ", presidio_text$Document)
+preproccessed_docs <- gsub("[^\\p{L}\\p{N} .,!?']", " ", presidio_text$Document, perl = TRUE)
+preproccessed_docs
 preproc_tagged <- map(taggers,
   \(tagger) tagger(preproccessed_docs, presidio_text$`Doc ID`),
   .progress = T
