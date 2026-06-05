@@ -23,12 +23,12 @@ if (requireNamespace("kableExtra", quietly = TRUE)) {
     kable.force.latex = FALSE
   )
   options(knitr.table.format = "html")
-  
+
   local({
     hook_output <- knitr::knit_hooks$get("output")
     knitr::knit_hooks$set(output = hook_output)
   })
-  
+
   knit_print.data.frame <<- function(x, ...) {
     knitr::asis_output(
       kableExtra::kable_styling(
@@ -44,7 +44,6 @@ if (requireNamespace("kableExtra", quietly = TRUE)) {
   registerS3method("knit_print", "tbl", knit_print.data.frame, envir = asNamespace("knitr"))
   registerS3method("knit_print", "grouped_df", knit_print.data.frame, envir = asNamespace("knitr"))
 }
-
 ```
 
 ```{r setup}
@@ -124,7 +123,7 @@ The $\beta$ factor was set at 2 to weight the scoring in favour of greater detec
 The following utilities are defined for reproducibility:
 
 ``` {r}
-#` F-beta calculation
+# ` F-beta calculation
 fbeta <- function(s, p, b) {
   (1 + b^2) * s * p / (s + b^2 * p)
 }
@@ -162,7 +161,6 @@ summarize_by_entity <- function(frm, model) {
 
 #' Iterate entity level metrics over list of tagger candidates
 summarize_model_by_entity <- function(comparisons) {
-
   imap(
     comparisons,
     summarize_by_entity

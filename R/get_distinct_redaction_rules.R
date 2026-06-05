@@ -14,13 +14,12 @@
 #' data(the_one_in_massapequa)
 #' example_data_head <- head(the_one_in_massapequa, 50)
 #' example_data_tail <- tail(the_one_in_massapequa, 50)
-#' 
+#'
 #' report1 <- pidpos(example_data_head, to_ignore = c("scene", "utterance"))
 #' report2 <- pidpos(example_data_tail, to_ignore = c("scene", "utterance"))
-#' 
+#'
 #' combined <- list(report1, report2)
 #' get_distinct_redaction_rules(combined)
-#' 
 #' }
 #' @export
 get_distinct_redaction_rules <- function(object, include_context = FALSE) {
