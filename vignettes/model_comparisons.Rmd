@@ -214,10 +214,10 @@ At the entity level we can see that the `LG` model has good performance at detec
 
 ### Addition of preprocessing stage
 
-following the initial tests there were concerns that entities were being missed by the taggers if they were in close proximity to punctuation/ symbols.  Hence, a second pass of the data was performed having first replaced any control characters, symbols, and non-Latin script with an equivalent size of white space (to keep entity character spans accurate) `gsub("[^\\p{L}\\p{N} .,!?']", " ", ..., perl = TRUE)` e.g.:
+following the initial tests there were concerns that entities were being missed by the taggers if they were in close proximity to punctuation/ symbols.  Hence, a second pass of the data was performed having first replaced any control characters, symbols, and non-Latin script with an equivalent size of white space (to keep entity character spans accurate) `gsub("[^\\p{L}\\p{N} .,!?@']", " ", ..., perl = TRUE)` e.g.:
 
-* `Doc 3`: `r gsub("[^\\p{L}\\p{N} .,!?']", " ", presidio_text$Document[3], perl = TRUE)`
-* `Doc 40`: `r gsub("[^\\p{L}\\p{N} .,!?']", " ", presidio_text$Document[40], perl = TRUE)`
+* `Doc 3`: `r gsub("[^\\p{L}\\p{N} .,!?@']", " ", presidio_text$Document[3], perl = TRUE)`
+* `Doc 40`: `r gsub("[^\\p{L}\\p{N} .,!?@']", " ", presidio_text$Document[40], perl = TRUE)`
 
 
 ``` {r}
@@ -226,11 +226,13 @@ preprocessed_comparison |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
 ```
 
-This process resulted in an improvement in Sensitivity for the `LG` model 
+This process resulted in an improvement in F2 score for the **spaCy** models, and a reduction for the **udpipe** families.
 
 ``` {r}
 summarize_model_by_entity(preprocessed_comparison)
 ```
+
+
 
 ### Reduced data quality
 

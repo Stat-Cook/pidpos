@@ -105,8 +105,8 @@ usethis::use_data(baseline_comparison, overwrite = T)
 
 
 # preproccessed_docs <- gsub("[^a-zA-Z0-9 .,!?']", " ", presidio_text$Document)
-preproccessed_docs <- gsub("[^\\p{L}\\p{N} .,!?']", " ", presidio_text$Document, perl = TRUE)
-preproccessed_docs
+preproccessed_docs <- gsub("[^\\p{L}\\p{N} .,!?'@]", " ", presidio_text$Document, perl = TRUE)
+
 preproc_tagged <- map(taggers,
   \(tagger) tagger(preproccessed_docs, presidio_text$`Doc ID`),
   .progress = T
