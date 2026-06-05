@@ -19,3 +19,12 @@ A data frame
 For use as part of the folder level API - this function is the equivalent of
 \code{\link[=report_to_redaction_rules]{report_to_redaction_rules()}}.
 }
+\examples{
+# From a list of pidpos reports (the typical folder API use case):
+report1 <- raw_redaction_rules
+report2 <- raw_redaction_rules
+get_distinct_redaction_rules(list(report1, report2))
+
+# From a single data frame:
+get_distinct_redaction_rules(raw_redaction_rules)
+}

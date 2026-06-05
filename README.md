@@ -18,7 +18,7 @@ The point of entry for most users will be the `report_on_folder` function.  This
 
 ## Troubleshooting 
 
-The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate udpipe model is intended to be automatic, however if there are issues it is worth looking at the functions `browse_udpipe_repo` and `browse_model_location`.
+The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate udpipe model is intended to be automatic, however if there are issues it is worth reading the `Trouble shooting the UDpipe Model` vignette, and looking at the functions `browse_udpipe_repo`/ `browse_model_location`.
 
 ## Getting help
 

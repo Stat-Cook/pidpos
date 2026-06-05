@@ -15,6 +15,26 @@ redact(object, redacter, in_batches = TRUE, ...)
 
 \item{...}{Other arguments to control batching.}
 }
+\value{
+A copy of \code{object} with redactions applied.
+}
 \description{
 Redact PID
+}
+\examples{
+# Using the bundled redaction rules and source data:
+replace_by <- make_random_replacement()
+prepared <- auto_replace(raw_redaction_rules, replacement_func = replace_by)
+
+example_data <- head(the_one_in_massapequa, 20)
+redact(example_data, prepared)
+
+# Passing a plain data.frame of rules directly (no auto_replace step):
+rules <- data.frame(
+  If  = "Ross and Rachel got married.",
+  From = "Ross",
+  To   = "PERSON_A"
+)
+redact(data.frame(text = "Ross and Rachel got married."), rules)
+
 }

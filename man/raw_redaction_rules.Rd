@@ -7,16 +7,19 @@
 An example of a redaction rules produced by the \code{pidpos} function.
 It is made using the first 20 rows of \code{the_one_in_massapequa} data set.}
 \format{
-An object of class \code{pid_report} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 10 rows and 3 columns.
-}
-\usage{
-raw_redaction_rules
-}
-\description{
+A data frame with 10 rows and 3 columns:
 \describe{
 \item{If}{The text to be redacted (character)}
 \item{From}{The text to be replaced (character)}
 \item{To}{The text to replace it with (character)}
 }
+}
+\usage{
+raw_redaction_rules
+}
+\description{
+raw_redaction_rules
+An example of a redaction rules produced by the \code{pidpos} function.
+It is made using the first 20 rows of \code{the_one_in_massapequa} data set.
 }
 \keyword{datasets}

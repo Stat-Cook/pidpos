@@ -5,7 +5,14 @@
 \alias{presidio_text}
 \title{presidio_text}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1500 rows and 3 columns.
+A dataframe with  three columns::
+\describe{
+\item{Document}{The free text}
+\item{Doc ID}{Primary key to allign with presidio_tags}
+\item{Template}{The document template used by presidio in generating synthetic text}
+}
+
+See \code{presidio_tags} for the accompanying entity locations.
 }
 \usage{
 presidio_text
@@ -13,15 +20,5 @@ presidio_text
 \description{
 A benchmarking data set to check the reliability of pidpos,  built from the
 data at https://raw.githubusercontent.com/microsoft/presidio-research/master/data/synth_dataset_v2.json
-}
-\details{
-Consists of a dataframe with  three columns:
-\itemize{
-\item \code{Document} - the free text
-\item \verb{Doc ID}
-\item \code{Template} - the document template used by presidio in generating synthetic text
-}
-
-See \code{presidio_tags} for the accompanying entity locations.
 }
 \keyword{datasets}

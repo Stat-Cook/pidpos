@@ -11,10 +11,10 @@ Authors@R:
   )
 Description: A package for the detection and contextualization of personally 
     identifiable data (PID) in free text via natural language processing (NLP).  
-    This package is a wraper to the 'english-ewt-2.5' UDPipe model intended to 
+    This package is a wrapper to the 'english-ewt-2.5' UDPipe model intended to 
     extract 'proper nouns' and provide a report of their usage/context in a 
     set of free text documents.  The main point of entry to the package is via 
-    the `pidpos` function (see `Troubleshooting` vignette for 
+    the `pidpos` function (see `Trouble shooting the UDpipe Model` vignette for 
     possible issues with the automated downloading of the pretrained UDPipe 
     model).
 License: MIT + file LICENSE
@@ -50,7 +50,6 @@ Suggests:
     curl,
     writexl,
     withr,
-    reticulate,
     callr
 Config/testthat/edition: 3
 VignetteBuilder: knitr

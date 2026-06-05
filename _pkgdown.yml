@@ -63,10 +63,7 @@ reference:
   - raw_redaction_rules
   - presidio_text
   - presidio_tags
-  - baseline_comparison
-  - preprocessed_comparison
-  - lower_comparison
-  - titlecase_comparison
+  - comparison_data
 articles:
 - title: Articles
   navbar: ~
@@ -76,4 +73,4 @@ articles:
   - folder-report
   - auto-replacement
   - custom-functions
-  - model_comaprisons
+  - model_comparisons

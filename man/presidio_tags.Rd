@@ -5,21 +5,18 @@
 \alias{presidio_tags}
 \title{presidio_tags}
 \format{
-An object of class \code{data.frame} with 2863 rows and 5 columns.
+A dataframe with  five columns:
+\describe{
+\item{entity_type}{The type of named entity}
+\item{entity_value}{}
+\item{start_position/ end_position}{the string span the entity occurs at}
+\item{Doc ID}{Foreign key to allign with \code{presidio_text}}
+}
 }
 \usage{
 presidio_tags
 }
 \description{
 The location and type of named entities in \code{presidio_text}.
-}
-\details{
-Consists of a dataframe with  five columns:
-\itemize{
-\item \code{entity_type} - the type of named entity
-\item \code{entity_value}
-\item \code{start_position}/ \code{end_position} - the string span the entity occurs at
-\item \verb{Doc ID} - the relative document in \code{presidio_text}
-}
 }
 \keyword{datasets}
