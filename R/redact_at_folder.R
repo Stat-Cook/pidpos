@@ -6,6 +6,23 @@
 #' @inheritParams find_supported_files
 #' @inheritParams redact_supported_files
 #'
+#' @examples
+#' \dontrun{
+#' input_dir <- withr::local_tempdir()
+#' output_dir <- withr::local_tempdir()
+#'
+#' utils::write.csv(
+#'   data.frame(text = "Joey went to London", stringsAsFactors = FALSE),
+#'   file.path(input_dir, "example.csv"),
+#'   row.names = FALSE
+#' )
+#'
+#' replace_by <- make_random_replacement()
+#' prepared <- auto_replace(raw_redaction_rules, replacement_func = replace_by)
+#'
+#' redact_at_folder(input_dir, redacter = prepared, output_path = output_dir)
+#' }
+#'
 #' @export
 redact_at_folder <- function(data_path,
                              redacter,
