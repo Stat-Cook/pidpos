@@ -8,7 +8,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/articles/custom-functions.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/articles/folder-report.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/articles/index.html</loc></url>
-<url><loc>https://stat-cook.github.io/pidpos/articles/model_comaprisons.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/articles/model_comparisons.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/articles/paper-vignette.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/articles/udpipe-model.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/authors.html</loc></url>
@@ -17,7 +17,6 @@
 <url><loc>https://stat-cook.github.io/pidpos/paper.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/auto_replace.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/base_error.html</loc></url>
-<url><loc>https://stat-cook.github.io/pidpos/reference/baseline_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/batched_redact.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/browse_model_location.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.html</loc></url>
@@ -27,6 +26,7 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/check_reticulate.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/check_spacy.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/clean_encoding.html</loc></url>
+<url><loc>https://stat-cook.github.io/pidpos/reference/comparison_data.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/create_spacy_env.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/custom-errors-warnings.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/custom_tagger.html</loc></url>
@@ -43,7 +43,6 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/get_replacements.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/index.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/longer_than.html</loc></url>
-<url><loc>https://stat-cook.github.io/pidpos/reference/lower_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/make_hashing_replacement.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/make_random_replacement.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/make_replacement_function.html</loc></url>
@@ -55,7 +54,6 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/pidpos.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/pidpos_setup.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/prepare_redactions.html</loc></url>
-<url><loc>https://stat-cook.github.io/pidpos/reference/preprocessed_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_tags.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/presidio_text.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/print.cached_redact_function.html</loc></url>
@@ -83,7 +81,6 @@
 <url><loc>https://stat-cook.github.io/pidpos/reference/tag_data_frame.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/tag_documents.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/the_one_in_massapequa.html</loc></url>
-<url><loc>https://stat-cook.github.io/pidpos/reference/titlecase_comparison.html</loc></url>
 <url><loc>https://stat-cook.github.io/pidpos/reference/udpipe_factory.html</loc></url>
 </urlset>
 

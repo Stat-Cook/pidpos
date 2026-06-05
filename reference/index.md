@@ -130,14 +130,8 @@
 - [`presidio_tags`](https://stat-cook.github.io/pidpos/reference/presidio_tags.md)
   : presidio_tags
 
-- [`baseline_comparison`](https://stat-cook.github.io/pidpos/reference/baseline_comparison.md)
-  : baseline_comparison
-
-- [`preprocessed_comparison`](https://stat-cook.github.io/pidpos/reference/preprocessed_comparison.md)
-  : preprocessed_comparison
-
-- [`lower_comparison`](https://stat-cook.github.io/pidpos/reference/lower_comparison.md)
-  : lower_comparison
-
-- [`titlecase_comparison`](https://stat-cook.github.io/pidpos/reference/titlecase_comparison.md)
-  : titlecase_comparison
+- [`baseline_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
+  [`lower_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
+  [`preprocessed_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
+  [`titlecase_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
+  : Comparison datasets

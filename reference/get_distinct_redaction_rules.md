@@ -26,3 +26,19 @@ get_distinct_redaction_rules(object, include_context = FALSE)
 ## Value
 
 A data frame
+
+## Examples
+
+``` r
+# From a list of pidpos reports (the typical folder API use case):
+report1 <- raw_redaction_rules
+report2 <- raw_redaction_rules
+get_distinct_redaction_rules(list(report1, report2))
+#> Error in map(object, report_to_redaction_rules, include_context = include_context): ℹ In index: 1.
+#> Caused by error in `.f()`:
+#> ! report is missing columns: Document, Token
+
+# From a single data frame:
+get_distinct_redaction_rules(raw_redaction_rules)
+#> Error in report_to_redaction_rules(object, include_context = include_context): report is missing columns: Document, Token
+```

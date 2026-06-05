@@ -10,17 +10,18 @@ presidio_tags
 
 ## Format
 
-An object of class `data.frame` with 2863 rows and 5 columns.
+A dataframe with five columns:
 
-## Details
+- entity_type:
 
-Consists of a dataframe with five columns:
+  The type of named entity
 
-- `entity_type` - the type of named entity
+- entity_value:
 
-- `entity_value`
+- start_position/ end_position:
 
-- `start_position`/ `end_position` - the string span the entity occurs
-  at
+  the string span the entity occurs at
 
-- `Doc ID` - the relative document in `presidio_text`
+- Doc ID:
+
+  Foreign key to allign with `presidio_text`

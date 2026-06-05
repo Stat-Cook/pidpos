@@ -5,10 +5,10 @@ articles:
   auto-replacement: auto-replacement.html
   custom-functions: custom-functions.html
   folder-report: folder-report.html
-  model_comaprisons: model_comaprisons.html
+  model_comparisons: model_comparisons.html
   paper-vignette: paper-vignette.html
   udpipe-model: udpipe-model.html
-last_built: 2026-06-04T15:05Z
+last_built: 2026-06-05T13:23Z
 urls:
   reference: https://stat-cook.github.io/pidpos/reference
   article: https://stat-cook.github.io/pidpos/articles

@@ -13,4 +13,4 @@
 - [Using custom functions in
   \`pidpos\`](https://stat-cook.github.io/pidpos/articles/custom-functions.md):
 - [Model
-  Comaprisons](https://stat-cook.github.io/pidpos/articles/model_comaprisons.md):
+  Comparisons](https://stat-cook.github.io/pidpos/articles/model_comparisons.md):

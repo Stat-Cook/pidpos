@@ -12,18 +12,18 @@ presidio_text
 
 ## Format
 
-An object of class `tbl_df` (inherits from `tbl`, `data.frame`) with
-1500 rows and 3 columns.
+A dataframe with three columns::
 
-## Details
+- Document:
 
-Consists of a dataframe with three columns:
+  The free text
 
-- `Document` - the free text
+- Doc ID:
 
-- `Doc ID`
+  Primary key to allign with presidio_tags
 
-- `Template` - the document template used by presidio in generating
-  synthetic text
+- Template:
+
+  The document template used by presidio in generating synthetic text
 
 See `presidio_tags` for the accompanying entity locations.
