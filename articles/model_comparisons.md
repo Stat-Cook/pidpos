@@ -146,7 +146,7 @@ The following utilities are defined for reproducibility:
 
 ``` r
 
-#` F-beta calculation
+# ` F-beta calculation
 fbeta <- function(s, p, b) {
   (1 + b^2) * s * p / (s + b^2 * p)
 }
@@ -184,7 +184,6 @@ summarize_by_entity <- function(frm, model) {
 
 #' Iterate entity level metrics over list of tagger candidates
 summarize_model_by_entity <- function(comparisons) {
-
   imap(
     comparisons,
     summarize_by_entity
@@ -275,7 +274,7 @@ missed by the taggers if they were in close proximity to punctuation/
 symbols. Hence, a second pass of the data was performed having first
 replaced any control characters, symbols, and non-Latin script with an
 equivalent size of white space (to keep entity character spans accurate)
-`gsub("[^\\p{L}\\p{N} .,!?']", " ", ..., perl = TRUE)` e.g.:
+`gsub("[^\\p{L}\\p{N} .,!?@']", " ", ..., perl = TRUE)` e.g.:
 
 - `Doc 3`: Krisztián Szöllösy listed his top 20 songs for Entertainment
   Weekly and had the balls to list this song at 15. What did he put at 1
@@ -288,17 +287,17 @@ preprocessed_comparison |>
   summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
 #>      Model Sensitivity Precision   F2
-#> 1       LG        90.5      71.9 86.1
-#> 2      TRF        70.6      63.3 69.0
-#> 3      EWT        67.2      70.3 67.8
-#> 4      GUM        67.2      67.8 67.3
-#> 5    LINES        59.3      77.5 62.2
-#> 6    Regex        17.5      95.8 20.9
-#> 7 Ensemble        97.3      71.4 90.7
+#> 1       LG        89.2      71.7 85.1
+#> 2      TRF        70.1      63.1 68.6
+#> 3      EWT        67.3      70.3 67.9
+#> 4      GUM        68.1      67.8 68.0
+#> 5    LINES        59.2      77.4 62.1
+#> 6    Regex        20.0      96.2 23.8
+#> 7 Ensemble        97.9      71.5 91.1
 ```
 
-This process resulted in an improvement in Sensitivity for the `LG`
-model
+This process resulted in an improvement in F2 score for the **spaCy**
+models, and a reduction for the **udpipe** families.
 
 ``` r
 
@@ -306,13 +305,13 @@ summarize_model_by_entity(preprocessed_comparison)
 #> # A tibble: 7 × 7
 #>   Model    CREDIT_CARD PERSON PHONE_NUMBER STREET_ADDRESS   GPE EMAIL_ADDRESS
 #>   <fct>          <dbl>  <dbl>        <dbl>          <dbl> <dbl>         <dbl>
-#> 1 LG              98.5   95.1         90.2           87.9  83.9          61.7
-#> 2 TRF             25     94.3         12             61.9  73.3          19.1
-#> 3 EWT              0     89.6          0             59.4  84.7          27.7
-#> 4 GUM              0     86.2          3.3           60.7  86.7          48.9
-#> 5 LINES            0     76.1          0             54.5  72.5          57.4
-#> 6 Regex           61.8    0            5.4           41.1   0             0  
-#> 7 Ensemble       100     98.3         92.4           98.5  95.7          74.5
+#> 1 LG              98.5   95.1         90.2           87.9  83.9           8.5
+#> 2 TRF             25     94.2         12             61.9  73.3           0  
+#> 3 EWT              0     89.6          0             59.4  84.7          31.9
+#> 4 GUM              0     86.2          3.3           60.7  86.7          83  
+#> 5 LINES            0     76.1          0             54.5  72.5          53.2
+#> 6 Regex           61.8    0            5.4           41.1   0           100  
+#> 7 Ensemble       100     98.3         92.4           98.5  95.7         100
 ```
 
 ### Reduced data quality
