@@ -32,7 +32,8 @@
 #' raw_redaction_rules
 #' An example of a redaction rules produced by the `pidpos` function.
 #' It is made using the first 20 rows of `the_one_in_massapequa` data set.
-#'
+#' 
+#' @format  A data frame with 10 rows and 3 columns:
 #' \describe{
 #'  \item{If}{The text to be redacted (character)}
 #'  \item{From}{The text to be replaced (character)}
@@ -41,37 +42,54 @@
 #'
 "raw_redaction_rules"
 
+#' Comparison datasets
+#'
+#' Entity identification tests on the `presidio_text` data set, consisting of
+#' 6 taggers and a basic ensemble method, run under different preprocessing
+#' conditions.
+#'
+#' @format  A list of 7 data frames for the `LG`, `TRF`, `EWT`, `GUM`, `LINES`, `Regex`, and `Ensemble` models.  
+#' Each consists of:
+#' \describe{
+#'   \item{entity_type}{The Presidio entity tag.}
+#'   \item{entity_value}{The expected entity as it appears in the text}
+#'   \item{start_position}{The character index `entity_value` begins at}
+#'   \item{end_position}{The character index `entity_value` end at}
+#'   \item{Doc ID}{The specific document ID (see `presidio_text` and `presidio_tags`)}
+#'   \item{Token}{The proposed entity candidate}
+#'   \item{POS}{The candidate type}
+#'   \item{StartIndex}{The character index `Token` starts at}
+#'   \item{EndIndex}{The character index `Token` ends at}
+#' }
+#'
+#' @details
+#' The four variants differ only in how the source text was preprocessed before
+#' tagging:
+#' \describe{
+#'   \item{`baseline_comparison`}{Data as-is, no preprocessing}
+#'   \item{`lower_comparison`}{Text converted to lower case — demonstrates udpipe's sensitivity to case}
+#'   \item{`preprocessed_comparison`}{Non-ASCII characters removed}
+#'   \item{`titlecase_comparison`}{Text mapped to title case to improve udpipe catch rate}
+#' }
+#'
+#' @seealso [presidio_text], [presidio_tags]
+#' @name comparison_data
+NULL
 
-#' baseline_comparison
-#'
-#' Entity identification tests on the `presidio_text` data set, consisting of a
-#' list of 6 taggers  and a basic ensemble method. The 'baseline'
-#' version is the data as-is with no preprocessing.
-#'
+
+#' @rdname comparison_data
 "baseline_comparison"
 
-#' lower_comparison
-#'
-#' Entity identification tests on the `presidio_text` data set, consisting of a
-#' list of 6 taggers  and a basic ensemble method. The 'lower'
-#' version is the data converted to lower case to demonstrate the limitations of udpipe.
-#'
+
+#' @rdname comparison_data
 "lower_comparison"
 
-#' preprocessed_comparison
-#'
-#' Entity identification tests on the `presidio_text` data set, consisting of a
-#' list of 6 taggers  and a basic ensemble method. The 'preprocessed'
-#' version is the data with non XXX character removed.
-#'
+
+#' @rdname comparison_data
 "preprocessed_comparison"
 
-#' titlecase_comparison
-#'
-#' Entity identification tests on the `presidio_text` data set, consisting of a
-#' list of 6 taggers  and a basic ensemble method. The 'titlecase'
-#' version is the data mapped to titlecase to improve udpipe catch rate.
-#'
+
+#' @rdname comparison_data
 "titlecase_comparison"
 
 #' presidio_text
@@ -79,10 +97,12 @@
 #' A benchmarking data set to check the reliability of pidpos,  built from the
 #' data at https://raw.githubusercontent.com/microsoft/presidio-research/master/data/synth_dataset_v2.json
 #'
-#' Consists of a dataframe with  three columns:
-#' * `Document` - the free text
-#' * `Doc ID`
-#' * `Template` - the document template used by presidio in generating synthetic text
+#' @format  A dataframe with  three columns::
+#' \describe{
+#'   \item{Document}{The free text}
+#'   \item{Doc ID}{Primary key to allign with presidio_tags}
+#'   \item{Template}{The document template used by presidio in generating synthetic text}
+#' }
 #'
 #' See `presidio_tags` for the accompanying entity locations.
 #'
@@ -92,10 +112,12 @@
 #'
 #' The location and type of named entities in `presidio_text`.
 #'
-#' Consists of a dataframe with  five columns:
-#' * `entity_type` - the type of named entity
-#' * `entity_value`
-#' * `start_position`/ `end_position` - the string span the entity occurs at
-#' * `Doc ID` - the relative document in `presidio_text`
+#' @format  A dataframe with  five columns:
+#' \describe{
+#'   \item{entity_type}{The type of named entity}
+#'   \item{entity_value}{}
+#'   \item{start_position/ end_position}{the string span the entity occurs at}
+#'   \item{Doc ID}{Foreign key to allign with `presidio_text`}
+#' }
 #'
 "presidio_tags"
