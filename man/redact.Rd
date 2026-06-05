@@ -31,9 +31,9 @@ redact(example_data, prepared)
 
 # Passing a plain data.frame of rules directly (no auto_replace step):
 rules <- data.frame(
-  If  = "Ross and Rachel got married.",
+  If = "Ross and Rachel got married.",
   From = "Ross",
-  To   = "PERSON_A"
+  To = "PERSON_A"
 )
 redact(data.frame(text = "Ross and Rachel got married."), rules)
 

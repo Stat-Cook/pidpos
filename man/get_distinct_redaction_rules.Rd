@@ -20,11 +20,15 @@ For use as part of the folder level API - this function is the equivalent of
 \code{\link[=report_to_redaction_rules]{report_to_redaction_rules()}}.
 }
 \examples{
-# From a list of pidpos reports (the typical folder API use case):
-report1 <- raw_redaction_rules
-report2 <- raw_redaction_rules
-get_distinct_redaction_rules(list(report1, report2))
+\dontrun{
+data(the_one_in_massapequa)
+example_data_head <- head(the_one_in_massapequa, 50)
+example_data_tail <- tail(the_one_in_massapequa, 50)
 
-# From a single data frame:
-get_distinct_redaction_rules(raw_redaction_rules)
+report1 <- pidpos(example_data_head, to_ignore = c("scene", "utterance"))
+report2 <- pidpos(example_data_tail, to_ignore = c("scene", "utterance"))
+
+combined <- list(report1, report2)
+get_distinct_redaction_rules(combined)
+}
 }
