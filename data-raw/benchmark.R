@@ -19,7 +19,7 @@ pid_presido_tags <- filter(
 ) |>
   mutate(`Doc ID` = as.character(`Doc ID`))
 
-nrow(pid_presido_tags) / nrow(presidio_tags) 
+nrow(pid_presido_tags) / nrow(presidio_tags)
 
 lg_tagger <- spacy_factory("en_core_web_lg")
 trf_tagger <- spacy_factory("en_core_web_trf")

@@ -32,7 +32,7 @@
 #' raw_redaction_rules
 #' An example of a redaction rules produced by the `pidpos` function.
 #' It is made using the first 20 rows of `the_one_in_massapequa` data set.
-#' 
+#'
 #' @format  A data frame with 10 rows and 3 columns:
 #' \describe{
 #'  \item{If}{The text to be redacted (character)}
@@ -48,7 +48,7 @@
 #' 6 taggers and a basic ensemble method, run under different preprocessing
 #' conditions.
 #'
-#' @format  A list of 7 data frames for the `LG`, `TRF`, `EWT`, `GUM`, `LINES`, `Regex`, and `Ensemble` models.  
+#' @format  A list of 7 data frames for the `LG`, `TRF`, `EWT`, `GUM`, `LINES`, `Regex`, and `Ensemble` models.
 #' Each consists of:
 #' \describe{
 #'   \item{entity_type}{The Presidio entity tag.}
