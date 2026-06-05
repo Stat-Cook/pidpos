@@ -392,6 +392,10 @@ go figure</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES            0     76.1          0             54.5  72.5          53.2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex           61.8    0            5.4           41.1   0           100  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100     98.3         92.4           98.5  95.7         100</span></span></code></pre></div>
+<p>At the entity level - we can see for the <code>LG</code> model that
+STREET_ADRESS and GPE sensitivity have increased quite strongly and, for
+the <code>Ensemble</code> model, sensitiviety has increased in every
+possible category.</p>
 </div>
 <div class="section level3">
 <h3 id="reduced-data-quality">Reduced data quality<a class="anchor" aria-label="anchor" href="#reduced-data-quality"></a>
@@ -442,6 +446,14 @@ sensitivity it would be at the cost of precision.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES            0              0.3          0      2.3   1.6             0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex           61.8           31           20.7    0     0             100</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100             92.9         90.2   76.6  42.7           100</span></span></code></pre></div>
+<p>At the entity level we first see that the <strong>udpipe</strong>
+models show poor sensitivity across all categories. Interestingly, the
+<strong>spaCy</strong> models show different levels of resilience to the
+loss of casing - while the <code>LG</code> model was the better overall
+performer originall, when it comes to the PERSON entity we can see a
+strong drop in sensitivity for the <code>LG</code> tagger when casing
+was removing (76% vs 93.3%) wheras the <code>TRF</code> model is almost
+independent of casing (91.9% vs 93.6%).</p>
 </div>
 <div class="section level3">
 <h3 id="re-introduction-of-casing">Re-introduction of casing<a class="anchor" aria-label="anchor" href="#re-introduction-of-casing"></a>
@@ -473,6 +485,12 @@ Gelencsér ג€“ Go Figure)</li>
 <span><span class="co">#&gt; 5    LINES        63.2      50.5 60.2</span></span>
 <span><span class="co">#&gt; 6    Regex        17.6      84.4 20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        95.6      51.8 81.8</span></span></code></pre></div>
+<p>The re-introduction of casing greatly increases the sensitivity of
+the <strong>udpipe</strong> models with a caveat that the precision has
+greatly reduced. As a result, the <code>Ensemble</code> model shows a
+greatly improved Sensitivity and hence a larger F2 score though a
+precision of approx. 50% does indicate for every valid token there is an
+invalid token, highlighting there is improvement to be had.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">titlecase_comparison</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
@@ -485,7 +503,25 @@ Gelencsér ג€“ Go Figure)</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES      77.4           63.2         18.5  69.4         0            66  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex       0             31           20.7   0          61.8         100  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble   98.6           95.6         89.1  96.1        80.1         100</span></span></code></pre></div>
+<p>At the entity level, if we compare to the lower case work we note
+that the <code>LG</code> taggers sensitivity to the CREDIT_CARD class
+has dropped on introducing the title case (98.5% with lower case vs
+43.4% with title case). Aside from building an ensemble tagger by
+combination of existing algorithms, a combination of preprocessor
+pipelines may offer improvements.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="conclussions">Conclussions<a class="anchor" aria-label="anchor" href="#conclussions"></a>
+</h2>
+<p>Detection of sensitive data in large quantities of free text presents
+a significant challenge at scale. The benchmarking presented here
+suggests a meaningful level of reliability, particularly when an
+ensemble approach is used to compensate for the systematic gaps each
+individual tagger exhibits. PIDPOS provides a framework for composing
+and comparing taggers — future work will focus on optimising ensemble
+behaviour through tagger weighting and confidence-based conflict
+resolution.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

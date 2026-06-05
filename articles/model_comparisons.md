@@ -314,6 +314,10 @@ summarize_model_by_entity(preprocessed_comparison)
 #> 7 Ensemble       100     98.3         92.4           98.5  95.7         100
 ```
 
+At the entity level - we can see for the `LG` model that STREET_ADRESS
+and GPE sensitivity have increased quite strongly and, for the
+`Ensemble` model, sensitiviety has increased in every possible category.
+
 ### Reduced data quality
 
 The `presidio_text` is a rather clean data set as far as natural
@@ -367,6 +371,14 @@ summarize_model_by_entity(lower_comparison)
 #> 7 Ensemble       100             92.9         90.2   76.6  42.7           100
 ```
 
+At the entity level we first see that the **udpipe** models show poor
+sensitivity across all categories. Interestingly, the **spaCy** models
+show different levels of resilience to the loss of casing - while the
+`LG` model was the better overall performer originall, when it comes to
+the PERSON entity we can see a strong drop in sensitivity for the `LG`
+tagger when casing was removing (76% vs 93.3%) wheras the `TRF` model is
+almost independent of casing (91.9% vs 93.6%).
+
 ### Re-introduction of casing
 
 The reduction in F2 score associated with removal of casing is
@@ -397,6 +409,13 @@ titlecase_comparison |>
 #> 7 Ensemble        95.6      51.8 81.8
 ```
 
+The re-introduction of casing greatly increases the sensitivity of the
+**udpipe** models with a caveat that the precision has greatly reduced.
+As a result, the `Ensemble` model shows a greatly improved Sensitivity
+and hence a larger F2 score though a precision of approx. 50% does
+indicate for every valid token there is an invalid token, highlighting
+there is improvement to be had.
+
 ``` r
 
 summarize_model_by_entity(titlecase_comparison)
@@ -411,3 +430,20 @@ summarize_model_by_entity(titlecase_comparison)
 #> 6 Regex       0             31           20.7   0          61.8         100  
 #> 7 Ensemble   98.6           95.6         89.1  96.1        80.1         100
 ```
+
+At the entity level, if we compare to the lower case work we note that
+the `LG` taggers sensitivity to the CREDIT_CARD class has dropped on
+introducing the title case (98.5% with lower case vs 43.4% with title
+case). Aside from building an ensemble tagger by combination of existing
+algorithms, a combination of preprocessor pipelines may offer
+improvements.
+
+## Conclussions
+
+Detection of sensitive data in large quantities of free text presents a
+significant challenge at scale. The benchmarking presented here suggests
+a meaningful level of reliability, particularly when an ensemble
+approach is used to compensate for the systematic gaps each individual
+tagger exhibits. PIDPOS provides a framework for composing and comparing
+taggers — future work will focus on optimising ensemble behaviour
+through tagger weighting and confidence-based conflict resolution.
