@@ -24,7 +24,10 @@ Data collection and analysis has grown enormously in scale and scope, prompting 
 
 For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII [@pii] address this through pattern matching, which risks missing edge cases.
 
-`pidpos` takes a different approach. Building on *part-of-speech* tagging (by default the udpipe framework [@straka2016udpipe; @udpipecran], with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate,  and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.
+`pidpos` takes a different approach. Building on *part-of-speech* tagging ( 
+by default the **UDPipe** framework [@straka2016udpipe; @udpipecran], but featuring 
+bindings to **spaCy** [@spacy] and the ability to use a custom tagging engine) it extracts PID candidates 
+from a dataset, deliberately accepting a higher false positive rate,  and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss, while remaining auditable and governable. 
 
 # In practice
 
