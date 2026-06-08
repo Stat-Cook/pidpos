@@ -1,8 +1,8 @@
 ---
-title: "Trouble shooting the UDpipe Model"
+title: "Trouble shooting the UDPipe Model"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Trouble shooting the UDpipe Model}
+  %\VignetteIndexEntry{Trouble shooting the UDPipe Model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
