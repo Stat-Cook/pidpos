@@ -18,3 +18,18 @@ spacy_factory(model = "en_core_web_lg")
 ## Value
 
 A tagging function with the signature tagger(doc, doc_id) -\> data.frame
+
+## See also
+
+[redact](https://stat-cook.github.io/pidpos/reference/redact.md),
+[udpipe_factory](https://stat-cook.github.io/pidpos/reference/udpipe_factory.md)
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+spacy_tagger <- spacy_factory()
+
+spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
+} # }
+```

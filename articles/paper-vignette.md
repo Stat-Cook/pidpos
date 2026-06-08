@@ -160,6 +160,9 @@ support batch processing:
 - [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
   to produce redacted copies of the data.
 
+A worked example of which is documented
+[here](https://stat-cook.github.io/pidpos/articles/folder-report.html).
+
 ## Current applications
 
 The `pidpos` package was developed for applications in the NuRS and

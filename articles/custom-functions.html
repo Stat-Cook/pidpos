@@ -318,8 +318,9 @@ If these are not available, the code below will be skipped.</p>
 PID detection is complete, users may also wish to supply a custom
 replacement function for the redaction step.</p>
 <p>Replacements are applied via <code><a href="../reference/auto_replace.html">auto_replace()</a></code>, which
-accepts a user-defined function through the
-<code>replacement_func</code> argument:</p>
+accepts a user-defined replacement function. The examples below use
+<code>raw_redaction_rules</code>, a small demonstration dataset bundled
+with the package:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simple_replace</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="st">"XXX"</span></span>

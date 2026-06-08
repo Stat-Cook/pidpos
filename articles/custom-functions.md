@@ -291,8 +291,9 @@ replacement function for the redaction step.
 
 Replacements are applied via
 [`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md),
-which accepts a user-defined function through the `replacement_func`
-argument:
+which accepts a user-defined replacement function. The examples below
+use `raw_redaction_rules`, a small demonstration dataset bundled with
+the package:
 
 ``` r
 
