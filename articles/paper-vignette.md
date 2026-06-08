@@ -28,12 +28,13 @@ PII (Patterson-Stein 2025) address this through pattern matching, which
 risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
-tagging (by default the udpipe framework (Straka et al. 2016; Wijffels
-2023), with the ability to use a custom tagging engine) it extracts all
-proper nouns from a dataset, deliberately accepting a higher false
-positive rate, and implementing tools to aid human review rather than
-attempting full automation. This makes it robust to the edge cases that
-pattern-matching approaches can miss.
+tagging ( by default the **UDPipe** framework (Straka et al. 2016;
+Wijffels 2023), but featuring bindings to **spaCy** (**spacy?**) and the
+ability to use a custom tagging engine) it extracts PID candidates from
+a dataset, deliberately accepting a higher false positive rate, and
+implementing tools to aid human review rather than attempting full
+automation. This makes it robust to the edge cases that pattern-matching
+approaches can miss, while remaining auditable and governable.
 
 ## In practice
 

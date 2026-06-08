@@ -103,12 +103,14 @@ rarely in a variable can easily be missed. Existing R packages such as
 PII <span class="citation">(Patterson-Stein 2025)</span> address this
 through pattern matching, which risks missing edge cases.</p>
 <p><code>pidpos</code> takes a different approach. Building on
-<em>part-of-speech</em> tagging (by default the udpipe framework <span class="citation">(Straka et al. 2016; Wijffels 2023)</span>, with the
-ability to use a custom tagging engine) it extracts all proper nouns
-from a dataset, deliberately accepting a higher false positive rate, and
-implementing tools to aid human review rather than attempting full
-automation. This makes it robust to the edge cases that pattern-matching
-approaches can miss.</p>
+<em>part-of-speech</em> tagging ( by default the <strong>UDPipe</strong>
+framework <span class="citation">(Straka et al. 2016; Wijffels
+2023)</span>, but featuring bindings to <strong>spaCy</strong> <span class="citation">(<strong>spacy?</strong>)</span> and the ability to use
+a custom tagging engine) it extracts PID candidates from a dataset,
+deliberately accepting a higher false positive rate, and implementing
+tools to aid human review rather than attempting full automation. This
+makes it robust to the edge cases that pattern-matching approaches can
+miss, while remaining auditable and governable.</p>
 </div>
 <div class="section level2">
 <h2 id="in-practice">In practice<a class="anchor" aria-label="anchor" href="#in-practice"></a>
