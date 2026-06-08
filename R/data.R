@@ -67,9 +67,9 @@
 #' tagging:
 #' \describe{
 #'   \item{`baseline_comparison`}{Data as-is, no preprocessing}
-#'   \item{`lower_comparison`}{Text converted to lower case — demonstrates udpipe's sensitivity to case}
+#'   \item{`lower_comparison`}{Text converted to lower case — demonstrates UDPipe's sensitivity to case}
 #'   \item{`preprocessed_comparison`}{Non-ASCII characters removed}
-#'   \item{`titlecase_comparison`}{Text mapped to title case to improve udpipe catch rate}
+#'   \item{`titlecase_comparison`}{Text mapped to title case to improve UDPipe catch rate}
 #' }
 #'
 #' @seealso [presidio_text], [presidio_tags]
