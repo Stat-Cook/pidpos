@@ -88,7 +88,7 @@ The `report_on_folder` function is a high level API for the `pidpos` package and
 allows for various options to control the reporting process.  These optional arguments are:
 
 * `tagger` - The proper noun tagger to use.  The default is the "english-ewt" 
-udpipe model, users can change this by either supplying a character string of an available udpipe model (see) or a custom tagger function.  See ... for details on 
+`udpipe` model, users can change this by either supplying a character string of an available `udpipe` model (see) or a custom tagger function.  See ... for details on 
 implementing a custom tagger.
 * `filter_func` - a function which takes a data frame of tagged tokens and filters it to the tokens of interest.  By default, this is set to filter for proper nouns, but users can implement their own function to filter for other types of tokens e.g. locations, or dates.  If using the udpipe taggers, the `upos` column contains the universal part of speech tags which can be used to filter for a wide range of token types.
 * `chunk_size` - the number of rows to process at a time.  This is designed to help with memory management when processing large files, but can be set to `NULL` to read in the whole file at once.

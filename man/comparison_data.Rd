@@ -50,9 +50,9 @@ The four variants differ only in how the source text was preprocessed before
 tagging:
 \describe{
 \item{\code{baseline_comparison}}{Data as-is, no preprocessing}
-\item{\code{lower_comparison}}{Text converted to lower case — demonstrates udpipe's sensitivity to case}
+\item{\code{lower_comparison}}{Text converted to lower case — demonstrates UDPipe's sensitivity to case}
 \item{\code{preprocessed_comparison}}{Non-ASCII characters removed}
-\item{\code{titlecase_comparison}}{Text mapped to title case to improve udpipe catch rate}
+\item{\code{titlecase_comparison}}{Text mapped to title case to improve UDPipe catch rate}
 }
 }
 \seealso{
