@@ -76,7 +76,7 @@ before tagging:
 
 - `lower_comparison`:
 
-  Text converted to lower case — demonstrates udpipe's sensitivity to
+  Text converted to lower case — demonstrates UDPipe's sensitivity to
   case
 
 - `preprocessed_comparison`:
@@ -85,7 +85,7 @@ before tagging:
 
 - `titlecase_comparison`:
 
-  Text mapped to title case to improve udpipe catch rate
+  Text mapped to title case to improve UDPipe catch rate
 
 ## See also
 

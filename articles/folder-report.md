@@ -813,9 +813,10 @@ package and allows for various options to control the reporting process.
 These optional arguments are:
 
 - `tagger` - The proper noun tagger to use. The default is the
-  “english-ewt” udpipe model, users can change this by either supplying
-  a character string of an available udpipe model (see) or a custom
-  tagger function. See … for details on implementing a custom tagger.
+  “english-ewt” `udpipe` model, users can change this by either
+  supplying a character string of an available `udpipe` model (see) or a
+  custom tagger function. See … for details on implementing a custom
+  tagger.
 - `filter_func` - a function which takes a data frame of tagged tokens
   and filters it to the tokens of interest. By default, this is set to
   filter for proper nouns, but users can implement their own function to

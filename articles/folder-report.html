@@ -39,7 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/paper-vignette.html">pidpos: An R package for the detection of personally identifiable data</a></li>
-    <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDpipe Model</a></li>
+    <li><a class="dropdown-item" href="../articles/udpipe-model.html">Trouble shooting the UDPipe Model</a></li>
     <li><a class="dropdown-item" href="../articles/folder-report.html">Reporting on every file in a folder</a></li>
     <li><a class="dropdown-item" href="../articles/auto-replacement.html">Automatic Replacement Tools</a></li>
     <li><a class="dropdown-item" href="../articles/custom-functions.html">Using custom functions in `pidpos`</a></li>
@@ -887,10 +887,10 @@ control the reporting process. These optional arguments are:</p>
 <ul>
 <li>
 <code>tagger</code> - The proper noun tagger to use. The default is
-the “english-ewt” udpipe model, users can change this by either
-supplying a character string of an available udpipe model (see) or a
-custom tagger function. See … for details on implementing a custom
-tagger.</li>
+the “english-ewt” <code>udpipe</code> model, users can change this by
+either supplying a character string of an available <code>udpipe</code>
+model (see) or a custom tagger function. See … for details on
+implementing a custom tagger.</li>
 <li>
 <code>filter_func</code> - a function which takes a data frame of
 tagged tokens and filters it to the tokens of interest. By default, this

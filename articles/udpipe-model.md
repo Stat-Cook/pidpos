@@ -1,4 +1,4 @@
-# Trouble shooting the UDpipe Model
+# Trouble shooting the UDPipe Model
 
 The part of sentence (POS) tagging performed in `pidpos` leverage’s the
 pretrained `udpipe` model framework. This model is not included in

@@ -26,7 +26,7 @@ detected, the context and which variables of the data set contained it.
 
 The package is built on the
 [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the
-`udpipe` R package. Fetching the appropriate udpipe model is intended to
+`udpipe` R package. Fetching the appropriate UDPipe model is intended to
 be automatic, however if there are issues it is worth reading the
 `Trouble shooting the UDpipe Model` vignette, and looking at the
 functions `browse_udpipe_repo`/ `browse_model_location`.

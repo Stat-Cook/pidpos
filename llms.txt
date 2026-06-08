@@ -26,7 +26,7 @@ detected, the context and which variables of the data set contained it.
 
 The package is built on the
 [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the
-`udpipe` R package. Fetching the appropriate udpipe model is intended to
+`udpipe` R package. Fetching the appropriate UDPipe model is intended to
 be automatic, however if there are issues it is worth reading the
 `Trouble shooting the UDpipe Model` vignette, and looking at the
 functions `browse_udpipe_repo`/ `browse_model_location`.
@@ -186,7 +186,7 @@ or feel free to fork the repository.
 
 - [pidpos: An R package for the detection of personally identifiable
   data](https://stat-cook.github.io/pidpos/articles/paper-vignette.md):
-- [Trouble shooting the UDpipe
+- [Trouble shooting the UDPipe
   Model](https://stat-cook.github.io/pidpos/articles/udpipe-model.md):
 - [Reporting on every file in a
   folder](https://stat-cook.github.io/pidpos/articles/folder-report.md):
