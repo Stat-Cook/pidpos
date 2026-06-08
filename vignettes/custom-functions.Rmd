@@ -205,7 +205,7 @@ pidpos(
 # Custom replacement functions
 The preceding examples demonstrate custom taggers and filters. Once PID detection is complete, users may also wish to supply a custom replacement function for the redaction step.
 
-Replacements are applied via `auto_replace()`, which accepts a user-defined function through the `replacement_func` argument:
+Replacements are applied via `auto_replace()`, which accepts a user-defined replacement function. The examples below use `raw_redaction_rules`, a small demonstration dataset bundled with the package:
 
 ``` {r}
 simple_replace <- function(x) {
