@@ -4,14 +4,14 @@
 #'
 #' @return A tagging function with the signature tagger(doc, doc_id) -> data.frame
 #' @seealso [redact], [udpipe_factory]
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' spacy_tagger <- spacy_factory()
-#' 
+#'
 #' spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
 #' }
-#' 
+#'
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {
   check_reticulate()
