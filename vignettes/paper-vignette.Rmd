@@ -91,6 +91,8 @@ When a project involves multiple files, three additional functions support batch
 * `get_distinct_redaction_rules()` to combine the distinct reports into a single set of raw redactions.
 * `redact_at_folder()` to produce redacted copies of the data.
 
+A worked example of which is documented [here](https://stat-cook.github.io/pidpos/articles/folder-report.html).
+
 # Current applications
 
 The `pidpos` package was developed for applications in the NuRS and AmReS research projects
