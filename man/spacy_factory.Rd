@@ -15,3 +15,14 @@ A tagging function with the signature tagger(doc, doc_id) -> data.frame
 \description{
 pidpos bindings to spacy models
 }
+\examples{
+\dontrun{
+spacy_tagger <- spacy_factory()
+
+spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
+}
+
+}
+\seealso{
+\link{redact}, \link{udpipe_factory}
+}
