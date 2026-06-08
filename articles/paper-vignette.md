@@ -29,12 +29,13 @@ risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
 tagging ( by default the **UDPipe** framework (Straka et al. 2016;
-Wijffels 2023), but featuring bindings to **spaCy** (**spacy?**) and the
-ability to use a custom tagging engine) it extracts PID candidates from
-a dataset, deliberately accepting a higher false positive rate, and
-implementing tools to aid human review rather than attempting full
-automation. This makes it robust to the edge cases that pattern-matching
-approaches can miss, while remaining auditable and governable.
+Wijffels 2023), but featuring bindings to **spaCy** (Honnibal et al.
+2020) and the ability to use a custom tagging engine) it extracts PID
+candidates from a dataset, deliberately accepting a higher false
+positive rate, and implementing tools to aid human review rather than
+attempting full automation. This makes it robust to the edge cases that
+pattern-matching approaches can miss, while remaining auditable and
+governable.
 
 ## In practice
 
@@ -185,7 +186,7 @@ funded by the Health Foundation.
 ## References
 
 Clarke, Roger. 2016. “Big Data, Big Risks.” *Information Systems
-Journal* 26 (1): 77–90.
+Journal* 26 (1): 77–90. <https://doi.org/10.1111/isj.12088>.
 
 European Parliament, and Council of the European Union. 2016.
 “Regulation (EU) 2016/679 of the European Parliament and of the
@@ -194,6 +195,11 @@ Council.” April 27. <https://data.europa.eu/eli/reg/2016/679/oj>.
 Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be
 Identified—Distinguishing Personal from Non-Personal Data Under the
 GDPR.” *International Data Privacy Law* 10 (1): 11–36.
+<https://doi.org/10.1093/idpl/ipz026>.
+
+Honnibal, Matthew, Ines Montani, Sofie Van Landeghem, and Adriane Boyd.
+2020. *spaCy: Industrial-Strength Natural Language Processing in
+Python*. <https://doi.org/10.5281/zenodo.1212303>.
 
 ICO. n.d.-a. “Personal Data Breaches: What Happens If We Fail to Notify
 the ICO of All Notifiable Breaches?”
@@ -209,7 +215,7 @@ Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable
 Pipeline for Processing CoNLL-u Files Performing Tokenization,
 Morphological Analysis, Pos Tagging and Parsing.” *Proceedings of the
 Tenth International Conference on Language Resources and Evaluation
-(LREC’16)*, 4290–97.
+(LREC’16)*, 4290–97. <https://aclanthology.org/L16-1680>.
 
 Wijffels, Jan. 2023. *Udpipe: Tokenization, Parts of Speech Tagging,
 Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit*.
