@@ -71,8 +71,8 @@
 </div>
 <!-- badges: start -->
 
-<p>A package of tools for the detection of personally identifiable data (PID) in data sets via natural language processing. Considers there to be a risk of PID when a data set contains any text element that is considered to be a ‘proper noun’.</p>
-<p>To install from github straight into R, use:</p>
+<p>A package of tools for the detection and redaction of personally identifiable data (PID) in datasets via natural language processing. By default, any text element identified as a proper noun is flagged as a potential PID risk.</p>
+<p>To install from GitHub straight into R, use:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Stat-Cook/pidpos"</span><span class="op">)</span></span></code></pre></div>
 <p>The main entry points for most users are <code><a href="reference/pidpos.html">pidpos()</a></code> for single datasets and <code><a href="reference/report_on_folder.html">report_on_folder()</a></code> for batch processing across multiple files.</p>
@@ -80,7 +80,8 @@
 <div class="section level2">
 <h2 id="troubleshooting">Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"></a>
 </h2>
-<p>The package is built on the <a href="https://lindat.mff.cuni.cz/services/udpipe/" class="external-link">UDPipe</a> tree banks via the <code>udpipe</code> R package. Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the <code>Trouble shooting the UDPipe Model</code> vignette, and looking at the functions <code>browse_udpipe_repo</code>/ <code>browse_model_location</code>.</p>
+<p>The package is built on the <a href="https://lindat.mff.cuni.cz/services/udpipe/" class="external-link">UDPipe</a> tree banks via the <code>udpipe</code> R package.<br>
+Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the <a href="articles/udpipe-model.html">Trouble shooting the UDPipe Model</a> vignette, and looking at the functions <code><a href="reference/browse_udpipe_repo.html">browse_udpipe_repo()</a></code>/ <code><a href="reference/browse_model_location.html">browse_model_location()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
