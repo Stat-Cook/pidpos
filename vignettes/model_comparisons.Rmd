@@ -104,9 +104,9 @@ A seventh tagger has been included to explore if an ensemble may give superior p
 
 ### Metrics
 
-The `presidio` dataset includes several entities made up of multiple tokens (e.g. `FirstName FamilyName`) wheras the taggers may return entities as single tokens. Hence instead of comparing labels to tokens directly, detection will be based on if the candidates overlap with the given NER span.  If any identified token sits within the same span as the known value it will be characterised as 'accurate', and outside the span characterized as 'innacurate'. This is depicted in figure xxx   to aid interpretation.  Where a label has at least one accurate token it will be characterised as 'detected'.
+The `presidio` dataset includes several entities made up of multiple tokens (e.g. `FirstName FamilyName`) whereas the taggers may return entities as single tokens. Hence instead of comparing labels to tokens directly, detection will be based on if the candidates overlap with the given NER span.  If any identified token sits within the same span as the known value it will be characterised as 'accurate', and outside the span characterized as 'inaccurate'. This is depicted in figure 1 to aid interpretation.  Where a label has at least one accurate token it will be characterised as 'detected'.
 
-```{r my-diagram, echo=FALSE, fig.cap="An example of model judgment criteria.  For [1] an example passage of text there may be [2] multiple named entities.  A given tagging model will identify [3] possible candidates, where they can be [4] accurate (green) or innacurate (red).", out.width="80%", fig.dev = "svg"}
+```{r entity-candidates-fig, echo=FALSE, fig.cap="Figure 1. An example of model judgment criteria.  For [1] an example passage of text there may be [2] multiple named entities.  A given tagging model will identify [3] possible candidates, where they can be [4] accurate (green) or inaccurate (red).", out.width="80%", fig.dev = "svg"}
 knitr::include_graphics("figures/EntityCandidates.png")
 ```
 
@@ -183,7 +183,7 @@ summarize_model_by_entity <- function(comparisons) {
 
 ## Analysis 
 
-A script outlining the trials is included in ... to aid reproduction.
+The analysis script used to generate these results is available [here](https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/data-raw/benchmark.R) to aid reproduction.
 
 ### Baseline data
 
@@ -208,7 +208,7 @@ The ensemble (`LG` - `EWT`- `REGEX`) shows a marked increase in model performanc
 summarize_model_by_entity(baseline_comparison)
 ```
 
-At the entity level we can see that the `LG` model has good performance at detecting peoples names (PERSON) and sensitive information (CREDIT_CARD) with poor performance for EMAIL_ADDRESS.  The structured nature of an email address  lends itself well to the REGEX  method - which itself has poor performance where the `LG` model is strong.  The `updpipe` models have moderate performance across the different entity categories, and notably appear to catch edge cases in PERSON resulting in a boosted sensitivity for the `Ensemble` model.  
+At the entity level we can see that the `LG` model has good performance at detecting peoples names (PERSON) and sensitive information (CREDIT_CARD) with poor performance for EMAIL_ADDRESS.  The structured nature of an email address  lends itself well to the REGEX  method - which itself has poor performance where the `LG` model is strong.  The `udpipe` models have moderate performance across the different entity categories, and notably appear to catch edge cases in PERSON resulting in a boosted sensitivity for the `Ensemble` model.  
 
 ### Addition of preprocessing stage
 
@@ -230,14 +230,14 @@ This process resulted in an improvement in F2 score for the **spaCy** models, an
 summarize_model_by_entity(preprocessed_comparison)
 ```
 
-At the entity level - we can see for the `LG` model that STREET_ADRESS and GPE sensitivity have increased quite strongly and, for the `Ensemble` model, sensitiviety has increased in every possible category. 
+At the entity level - we can see for the `LG` model that STREET_ADRESS and GPE sensitivity have increased quite strongly and, for the `Ensemble` model, sensitivity has increased in every possible category. 
 
 ### Reduced data quality
 
 The `presidio_text` is a rather clean data set as far as natural language processing is concerned.  Punctuation is well structured and proper grammatical rules are followed for the most part.  In many real
 world applications, including medical notes and similar sensitive data, this could be a strong assumption.
 
-To mimic one form of information loss, we repeat the experiment with all text converted to lower care, e.g.:
+To mimic one form of information loss, we repeat the experiment with all text converted to lower case, e.g.:
 
 * `Doc 3`: `r tolower(presidio_text$Document[3])`
 * `Doc 40`: `r tolower(presidio_text$Document[40])`
@@ -249,15 +249,15 @@ lower_comparison |>
 ```
 
 While all taggers (excluding the `Regex`) see a reduction in Sensitivity, this is glaringly true for 
-the **udpipe** models.  The udpipe framework relies heavily on proper capitalisation to differentiate a proper noun from all nouns, so while we could reclaim sensitivity it would be at the cost of precision. 
+the **UDPipe** models.  The **UDPipe** framework relies heavily on proper capitalisation to differentiate a proper noun from all nouns, so while we could reclaim sensitivity it would be at the cost of precision. 
 
 
 ``` {r}
 summarize_model_by_entity(lower_comparison)
 ```
 
-At the entity level we first see that the **udpipe** models show poor sensitivity across all categories.  Interestingly, the **spaCy** models  show different levels of resilience to the loss of casing - while the `LG` model was the better overall performer originall, when it comes to the PERSON entity we can see a strong drop in sensitivity for the `LG` tagger when casing 
-was removing (76% vs 93.3%) wheras the `TRF` model is almost independent of casing (91.9% vs 93.6%).   
+At the entity level we first see that the **udpipe** models show poor sensitivity across all categories.  Interestingly, the **spaCy** models  show different levels of resilience to the loss of casing - while the `LG` model was the better overall performer originally, when it comes to the PERSON entity we can see a strong drop in sensitivity for the `LG` tagger when casing 
+was removed (76% vs 93.3%) whereas the `TRF` model is almost independent of casing (91.9% vs 93.6%).   
 
 ### Re-introduction of casing
 
