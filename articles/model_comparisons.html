@@ -179,20 +179,20 @@ this trial the order was <code>LG</code> - <code>EWT</code> -
 <h3 id="metrics">Metrics<a class="anchor" aria-label="anchor" href="#metrics"></a>
 </h3>
 <p>The <code>presidio</code> dataset includes several entities made up
-of multiple tokens (e.g. <code>FirstName FamilyName</code>) wheras the
+of multiple tokens (e.g. <code>FirstName FamilyName</code>) whereas the
 taggers may return entities as single tokens. Hence instead of comparing
 labels to tokens directly, detection will be based on if the candidates
 overlap with the given NER span. If any identified token sits within the
 same span as the known value it will be characterised as ‘accurate’, and
-outside the span characterized as ‘innacurate’. This is depicted in
-figure xxx to aid interpretation. Where a label has at least one
-accurate token it will be characterised as ‘detected’.</p>
+outside the span characterized as ‘inaccurate’. This is depicted in
+figure 1 to aid interpretation. Where a label has at least one accurate
+token it will be characterised as ‘detected’.</p>
 <div class="figure">
-<img src="figures/EntityCandidates.png" class="r-plt" alt="An example of model judgment criteria.  For [1] an example passage of text there may be [2] multiple named entities.  A given tagging model will identify [3] possible candidates, where they can be [4] accurate (green) or innacurate (red)." width="80%"><p class="caption">
-An example of model judgment criteria. For [1] an example passage of
-text there may be [2] multiple named entities. A given tagging model
-will identify [3] possible candidates, where they can be [4] accurate
-(green) or innacurate (red).
+<img src="figures/EntityCandidates.png" class="r-plt" alt="Figure 1. An example of model judgment criteria.  For [1] an example passage of text there may be [2] multiple named entities.  A given tagging model will identify [3] possible candidates, where they can be [4] accurate (green) or inaccurate (red)." width="80%"><p class="caption">
+Figure 1. An example of model judgment criteria. For [1] an example
+passage of text there may be [2] multiple named entities. A given
+tagging model will identify [3] possible candidates, where they can be
+[4] accurate (green) or inaccurate (red).
 </p>
 </div>
 <p>Based on the <code>accurate</code> and <code>detected</code> labels
@@ -284,8 +284,8 @@ greater utility cost than flagging extra candidates.</p>
 <div class="section level2">
 <h2 id="analysis">Analysis<a class="anchor" aria-label="anchor" href="#analysis"></a>
 </h2>
-<p>A script outlining the trials is included in … to aid
-reproduction.</p>
+<p>The analysis script used to generate these results is available <a href="https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/data-raw/benchmark.R" class="external-link">here</a>
+to aid reproduction.</p>
 <div class="section level3">
 <h3 id="baseline-data">Baseline data<a class="anchor" aria-label="anchor" href="#baseline-data"></a>
 </h3>
@@ -339,7 +339,7 @@ good performance at detecting peoples names (PERSON) and sensitive
 information (CREDIT_CARD) with poor performance for EMAIL_ADDRESS. The
 structured nature of an email address lends itself well to the REGEX
 method - which itself has poor performance where the <code>LG</code>
-model is strong. The <code>updpipe</code> models have moderate
+model is strong. The <code>udpipe</code> models have moderate
 performance across the different entity categories, and notably appear
 to catch edge cases in PERSON resulting in a boosted sensitivity for the
 <code>Ensemble</code> model.</p>
@@ -394,7 +394,7 @@ go figure</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100     98.3         92.4           98.5  95.7         100</span></span></code></pre></div>
 <p>At the entity level - we can see for the <code>LG</code> model that
 STREET_ADRESS and GPE sensitivity have increased quite strongly and, for
-the <code>Ensemble</code> model, sensitiviety has increased in every
+the <code>Ensemble</code> model, sensitivity has increased in every
 possible category.</p>
 </div>
 <div class="section level3">
@@ -406,7 +406,7 @@ and proper grammatical rules are followed for the most part. In many
 real world applications, including medical notes and similar sensitive
 data, this could be a strong assumption.</p>
 <p>To mimic one form of information loss, we repeat the experiment with
-all text converted to lower care, e.g.:</p>
+all text converted to lower case, e.g.:</p>
 <ul>
 <li>
 <code>Doc 3</code>: krisztián szöllösy listed his top 20 songs for
@@ -430,10 +430,10 @@ gelencsér ג€“ go figure)</li>
 <span><span class="co">#&gt; 6    Regex        17.6      84.4 20.9</span></span>
 <span><span class="co">#&gt; 7 Ensemble        80.1      72.8 78.5</span></span></code></pre></div>
 <p>While all taggers (excluding the <code>Regex</code>) see a reduction
-in Sensitivity, this is glaringly true for the <strong>udpipe</strong>
-models. The udpipe framework relies heavily on proper capitalisation to
-differentiate a proper noun from all nouns, so while we could reclaim
-sensitivity it would be at the cost of precision.</p>
+in Sensitivity, this is glaringly true for the <strong>UDPipe</strong>
+models. The <strong>UDPipe</strong> framework relies heavily on proper
+capitalisation to differentiate a proper noun from all nouns, so while
+we could reclaim sensitivity it would be at the cost of precision.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">lower_comparison</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
@@ -450,9 +450,9 @@ sensitivity it would be at the cost of precision.</p>
 models show poor sensitivity across all categories. Interestingly, the
 <strong>spaCy</strong> models show different levels of resilience to the
 loss of casing - while the <code>LG</code> model was the better overall
-performer originall, when it comes to the PERSON entity we can see a
+performer originally, when it comes to the PERSON entity we can see a
 strong drop in sensitivity for the <code>LG</code> tagger when casing
-was removing (76% vs 93.3%) wheras the <code>TRF</code> model is almost
+was removed (76% vs 93.3%) whereas the <code>TRF</code> model is almost
 independent of casing (91.9% vs 93.6%).</p>
 </div>
 <div class="section level3">

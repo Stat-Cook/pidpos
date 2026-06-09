@@ -108,24 +108,25 @@ least complex.
 ### Metrics
 
 The `presidio` dataset includes several entities made up of multiple
-tokens (e.g. `FirstName FamilyName`) wheras the taggers may return
+tokens (e.g. `FirstName FamilyName`) whereas the taggers may return
 entities as single tokens. Hence instead of comparing labels to tokens
 directly, detection will be based on if the candidates overlap with the
 given NER span. If any identified token sits within the same span as the
 known value it will be characterised as ‘accurate’, and outside the span
-characterized as ‘innacurate’. This is depicted in figure xxx to aid
+characterized as ‘inaccurate’. This is depicted in figure 1 to aid
 interpretation. Where a label has at least one accurate token it will be
 characterised as ‘detected’.
 
-![An example of model judgment criteria. For \[1\] an example passage of
-text there may be \[2\] multiple named entities. A given tagging model
-will identify \[3\] possible candidates, where they can be \[4\]
-accurate (green) or innacurate (red).](figures/EntityCandidates.png)
+![Figure 1. An example of model judgment criteria. For \[1\] an example
+passage of text there may be \[2\] multiple named entities. A given
+tagging model will identify \[3\] possible candidates, where they can be
+\[4\] accurate (green) or inaccurate
+(red).](figures/EntityCandidates.png)
 
-An example of model judgment criteria. For \[1\] an example passage of
-text there may be \[2\] multiple named entities. A given tagging model
-will identify \[3\] possible candidates, where they can be \[4\]
-accurate (green) or innacurate (red).
+Figure 1. An example of model judgment criteria. For \[1\] an example
+passage of text there may be \[2\] multiple named entities. A given
+tagging model will identify \[3\] possible candidates, where they can be
+\[4\] accurate (green) or inaccurate (red).
 
 Based on the `accurate` and `detected` labels defined above tagger
 performance was expressed as three metrics:
@@ -205,7 +206,9 @@ summarize_model_by_entity <- function(comparisons) {
 
 ## Analysis
 
-A script outlining the trials is included in … to aid reproduction.
+The analysis script used to generate these results is available
+[here](https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/data-raw/benchmark.R)
+to aid reproduction.
 
 ### Baseline data
 
@@ -262,10 +265,10 @@ At the entity level we can see that the `LG` model has good performance
 at detecting peoples names (PERSON) and sensitive information
 (CREDIT_CARD) with poor performance for EMAIL_ADDRESS. The structured
 nature of an email address lends itself well to the REGEX method - which
-itself has poor performance where the `LG` model is strong. The
-`updpipe` models have moderate performance across the different entity
-categories, and notably appear to catch edge cases in PERSON resulting
-in a boosted sensitivity for the `Ensemble` model.
+itself has poor performance where the `LG` model is strong. The `udpipe`
+models have moderate performance across the different entity categories,
+and notably appear to catch edge cases in PERSON resulting in a boosted
+sensitivity for the `Ensemble` model.
 
 ### Addition of preprocessing stage
 
@@ -316,7 +319,7 @@ summarize_model_by_entity(preprocessed_comparison)
 
 At the entity level - we can see for the `LG` model that STREET_ADRESS
 and GPE sensitivity have increased quite strongly and, for the
-`Ensemble` model, sensitiviety has increased in every possible category.
+`Ensemble` model, sensitivity has increased in every possible category.
 
 ### Reduced data quality
 
@@ -327,7 +330,7 @@ world applications, including medical notes and similar sensitive data,
 this could be a strong assumption.
 
 To mimic one form of information loss, we repeat the experiment with all
-text converted to lower care, e.g.:
+text converted to lower case, e.g.:
 
 - `Doc 3`: krisztián szöllösy listed his top 20 songs for entertainment
   weekly and had the balls to list this song at \#15. (what did he put
@@ -351,8 +354,8 @@ lower_comparison |>
 ```
 
 While all taggers (excluding the `Regex`) see a reduction in
-Sensitivity, this is glaringly true for the **udpipe** models. The
-udpipe framework relies heavily on proper capitalisation to
+Sensitivity, this is glaringly true for the **UDPipe** models. The
+**UDPipe** framework relies heavily on proper capitalisation to
 differentiate a proper noun from all nouns, so while we could reclaim
 sensitivity it would be at the cost of precision.
 
@@ -374,9 +377,9 @@ summarize_model_by_entity(lower_comparison)
 At the entity level we first see that the **udpipe** models show poor
 sensitivity across all categories. Interestingly, the **spaCy** models
 show different levels of resilience to the loss of casing - while the
-`LG` model was the better overall performer originall, when it comes to
+`LG` model was the better overall performer originally, when it comes to
 the PERSON entity we can see a strong drop in sensitivity for the `LG`
-tagger when casing was removing (76% vs 93.3%) wheras the `TRF` model is
+tagger when casing was removed (76% vs 93.3%) whereas the `TRF` model is
 almost independent of casing (91.9% vs 93.6%).
 
 ### Re-introduction of casing
