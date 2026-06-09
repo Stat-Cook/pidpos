@@ -5,9 +5,10 @@
 [![R-CMD-check](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-A package of tools for the detection of personally identifiable data (PID) in data sets via natural language processing.  Considers there to be a risk of PID when a data set contains any text element that is considered to be a 'proper noun'.
+A package of tools for the detection and redaction of personally identifiable data (PID) in datasets via 
+natural language processing. By default, any text element identified as a proper noun is flagged as a potential PID risk.
 
-To install from github straight into R, use:
+To install from GitHub straight into R, use:
 
 ```r
 devtools::install_github("Stat-Cook/pidpos")
@@ -22,7 +23,9 @@ but cannot guarantee complete detection. Baseline tag identification rates for v
 
 ## Troubleshooting 
 
-The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the `Trouble shooting the UDPipe Model` vignette, and looking at the functions `browse_udpipe_repo`/ `browse_model_location`.
+The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  
+Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading 
+the [Trouble shooting the UDPipe Model](articles/udpipe-model.html) vignette, and looking at the functions `browse_udpipe_repo()`/ `browse_model_location()`.
 
 ## Getting help
 
