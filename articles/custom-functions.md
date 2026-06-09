@@ -277,7 +277,7 @@ nltk_filter <- function(frm) {
 pidpos(
   example.data,
   tagger = nltk_tagger,
-  filter_function = nltk_filter
+  filter_func = nltk_filter
 )
 ```
 

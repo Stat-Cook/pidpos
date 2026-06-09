@@ -75,11 +75,12 @@
 <p>To install from github straight into R, use:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Stat-Cook/pidpos"</span><span class="op">)</span></span></code></pre></div>
-<p>The point of entry for most users will be the <code>report_on_folder</code> function. This function is designed to allow for the checking of multiple data files in a shared folder structure. If the top level folder path is given as the 1st argument to <code>report_on_folder</code>, the function iterates through each file (csv, xls, xlsx) checking for proper nouns (NB: at present only checks the first sheet of excel files). The variables which contain proper nouns are summarized in an excel report file of the same name as the raw data file - listing the proper noun detected, the context and which variables of the data set contained it.</p>
+<p>The main entry points for most users are <code><a href="reference/pidpos.html">pidpos()</a></code> for single datasets and <code><a href="reference/report_on_folder.html">report_on_folder()</a></code> for batch processing across multiple files.</p>
+<p>Note that natural language processing is rarely perfect — these tools are designed to assist with the identification and anonymisation of personal data, but cannot guarantee complete detection. Baseline tag identification rates for various language models are summarised in the <a href="articles/model_comparisons.html">Model Comparison Vignette</a>.</p>
 <div class="section level2">
 <h2 id="troubleshooting">Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"></a>
 </h2>
-<p>The package is built on the <a href="https://lindat.mff.cuni.cz/services/udpipe/" class="external-link">UDPipe</a> tree banks via the <code>udpipe</code> R package. Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the <code>Trouble shooting the UDpipe Model</code> vignette, and looking at the functions <code>browse_udpipe_repo</code>/ <code>browse_model_location</code>.</p>
+<p>The package is built on the <a href="https://lindat.mff.cuni.cz/services/udpipe/" class="external-link">UDPipe</a> tree banks via the <code>udpipe</code> R package. Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the <code>Trouble shooting the UDPipe Model</code> vignette, and looking at the functions <code>browse_udpipe_repo</code>/ <code>browse_model_location</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>

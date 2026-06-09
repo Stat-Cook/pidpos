@@ -1,6 +1,6 @@
 # Trouble shooting the UDPipe Model
 
-The part of sentence (POS) tagging performed in `pidpos` leverage’s the
+The part-of-speech (POS) tagging performed in `pidpos` leverages the
 pretrained `udpipe` model framework. This model is not included in
 `pidpos` due to its size, and hence has to be downloaded when the
 package is first used. For most users this process is seamless, but if

@@ -102,21 +102,21 @@ scripts for three episodes of season 8:</p>
 <li><code>The One Where Rachel Tells.csv</code></li>
 <li><code>The One with the Red Sweater.csv</code></li>
 </ul>
-<p>With each file consisting of 6 columns:</p>
-<p>With each file consisting of 6 columns:</p>
+<p>Each file contains 6 columns:</p>
 <ul>
 <li>
-<code>text</code> - The line of the script (dialogue or action)</li>
+<code>text</code> — the line of dialogue or stage direction</li>
 <li>
-<code>speaker</code> - The character uttering the line</li>
+<code>speaker</code> — the character delivering the line</li>
 <li>
-<code>season</code> - Numeric ID of which season the episode was
-in</li>
+<code>season</code> — numeric season number</li>
 <li>
-<code>episode</code> - Numeric ID of which episode the dialogue was
-in</li>
-<li><code>scene</code></li>
-<li><code>utterance</code></li>
+<code>episode</code> — numeric episode number within the season</li>
+<li>
+<code>scene</code> — numeric scene index within the episode</li>
+<li>
+<code>utterance</code> — numeric index of the line within the
+scene</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stat-cook.github.io/pidpos/">pidpos</a></span><span class="op">)</span></span>
@@ -127,8 +127,8 @@ in</li>
 <span><span class="co">#&gt; [3] "The_One_with_the_Red_Sweater.csv"</span></span></code></pre></div>
 <p>and we check the files are the intended data:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rachell_tells</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, <span class="st">"The_One_Where_Rachel_Tells.csv"</span>, package <span class="op">=</span> <span class="st">"pidpos"</span><span class="op">)</span></span>
-<span><span class="va">rachell</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">rachell_tells</span>, nrows <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">rachel_tells</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"vignette_data"</span>, <span class="st">"The_One_Where_Rachel_Tells.csv"</span>, package <span class="op">=</span> <span class="st">"pidpos"</span><span class="op">)</span></span>
+<span><span class="va">rachel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">rachel_tells</span>, nrows <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p>To generate reports we call <code>report_on_folder</code> which has
 two key arguments:</p>
 <ul>
@@ -889,8 +889,10 @@ control the reporting process. These optional arguments are:</p>
 <code>tagger</code> - The proper noun tagger to use. The default is
 the “english-ewt” <code>udpipe</code> model, users can change this by
 either supplying a character string of an available <code>udpipe</code>
-model (see) or a custom tagger function. See … for details on
-implementing a custom tagger.</li>
+model (see <code>udpipe:::udpipe_download_model()</code>) or a custom
+tagger function. See <a href="custom-functions.html">Using custom
+functions in <code>pidpos</code></a> for details on implementing a
+custom tagger.</li>
 <li>
 <code>filter_func</code> - a function which takes a data frame of
 tagged tokens and filters it to the tokens of interest. By default, this
@@ -918,7 +920,8 @@ have the reports nested in the same folder structure as the raw data and
 <code>export_flat</code> to flatten the structure and capture the nested
 nature via file naming).</li>
 <li>
-<code>verbose</code> -</li>
+<code>verbose</code> — boolean flag; if <code>TRUE</code>, skipped
+files will be printed to the console.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -981,8 +984,8 @@ the <code>filter</code> argument of <code>auto_replace</code> to
 <p>With the <code>To</code> column set as desired, this frame can now be
 used in <code>redact</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">redacted_rachell</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redact.html">redact</a></span><span class="op">(</span><span class="va">rachell</span>, <span class="va">replaced_rules</span><span class="op">)</span></span>
-<span><span class="va">redacted_rachell</span></span>
+<code class="sourceCode R"><span><span class="va">redacted_rachel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redact.html">redact</a></span><span class="op">(</span><span class="va">rachel</span>, <span class="va">replaced_rules</span><span class="op">)</span></span>
+<span><span class="va">redacted_rachel</span></span>
 <span><span class="co">#&gt;                                                                                                                                                   text</span></span>
 <span><span class="co">#&gt; 1 [Scene: MWLEFOODFI and MWLEFOODFI's, MWLEFOODFI and MWLEFOODFI are getting ready to go on their honeymoon. MWLEFOODFI is entering from the bedroom.]</span></span>
 <span><span class="co">#&gt; 2                                                                                    Hey! MWLEFOODFI! Aren't you excited we're going on our honeymoon?</span></span>

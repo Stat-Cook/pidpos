@@ -24,4 +24,4 @@ find_supported_files(
 
 - verbose:
 
-  Boolean flag - if TRUE will...
+  boolean flag; if `TRUE`, skipped files will be printed to the console.

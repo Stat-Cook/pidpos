@@ -28,16 +28,14 @@ episodes of season 8:
 - `The One Where Rachel Tells.csv`
 - `The One with the Red Sweater.csv`
 
-With each file consisting of 6 columns:
+Each file contains 6 columns:
 
-With each file consisting of 6 columns:
-
-- `text` - The line of the script (dialogue or action)
-- `speaker` - The character uttering the line
-- `season` - Numeric ID of which season the episode was in
-- `episode` - Numeric ID of which episode the dialogue was in
-- `scene`
-- `utterance`
+- `text` — the line of dialogue or stage direction
+- `speaker` — the character delivering the line
+- `season` — numeric season number
+- `episode` — numeric episode number within the season
+- `scene` — numeric scene index within the episode
+- `utterance` — numeric index of the line within the scene
 
 ``` r
 
@@ -53,8 +51,8 @@ and we check the files are the intended data:
 
 ``` r
 
-rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
-rachell <- read.csv(rachell_tells, nrows = 5)
+rachel_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
+rachel <- read.csv(rachel_tells, nrows = 5)
 ```
 
 To generate reports we call `report_on_folder` which has two key
@@ -814,9 +812,11 @@ These optional arguments are:
 
 - `tagger` - The proper noun tagger to use. The default is the
   “english-ewt” `udpipe` model, users can change this by either
-  supplying a character string of an available `udpipe` model (see) or a
-  custom tagger function. See … for details on implementing a custom
-  tagger.
+  supplying a character string of an available `udpipe` model (see
+  `udpipe:::udpipe_download_model()`) or a custom tagger function. See
+  [Using custom functions in
+  `pidpos`](https://stat-cook.github.io/pidpos/articles/custom-functions.md)
+  for details on implementing a custom tagger.
 - `filter_func` - a function which takes a data frame of tagged tokens
   and filters it to the tokens of interest. By default, this is set to
   filter for proper nouns, but users can implement their own function to
@@ -837,7 +837,8 @@ These optional arguments are:
   included in the package (`export_as_tree` to have the reports nested
   in the same folder structure as the raw data and `export_flat` to
   flatten the structure and capture the nested nature via file naming).
-- `verbose` -
+- `verbose` — boolean flag; if `TRUE`, skipped files will be printed to
+  the console.
 
 ## Redacting
 
@@ -911,8 +912,8 @@ With the `To` column set as desired, this frame can now be used in
 
 ``` r
 
-redacted_rachell <- redact(rachell, replaced_rules)
-redacted_rachell
+redacted_rachel <- redact(rachel, replaced_rules)
+redacted_rachel
 #>                                                                                                                                                   text
 #> 1 [Scene: MWLEFOODFI and MWLEFOODFI's, MWLEFOODFI and MWLEFOODFI are getting ready to go on their honeymoon. MWLEFOODFI is entering from the bedroom.]
 #> 2                                                                                    Hey! MWLEFOODFI! Aren't you excited we're going on our honeymoon?

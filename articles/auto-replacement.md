@@ -175,7 +175,7 @@ auto_replace(
 #> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   XXX   ""
 ```
 
-In addition, the user may wish to generate their own pesudo-random
+In addition, the user may wish to generate their own pseudo-random
 replacements.  
 This can be done by wrapping the desired behaviour in
 [`make_replacement_function()`](https://stat-cook.github.io/pidpos/reference/make_replacement_function.md)
@@ -197,7 +197,7 @@ numeric_replacement
 #>   ConsistentMapper<0 of 100 values used>
 ```
 
-This fucntion can then be used in
+This function can then be used in
 [`auto_replace()`](https://stat-cook.github.io/pidpos/reference/auto_replace.md)
 in the same way as the deterministic function:
 
