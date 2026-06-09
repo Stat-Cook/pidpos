@@ -14,11 +14,15 @@ devtools::install_github("Stat-Cook/pidpos")
 
 ```
 
-The point of entry for most users will be the `report_on_folder` function.  This function is designed to allow for the checking of multiple data files in a shared folder structure.  If the top level folder path is given as the 1st argument to `report_on_folder`, the function iterates through each file (csv, xls, xlsx) checking for proper nouns (NB: at present only checks the first sheet of excel files).  The variables which contain proper nouns are summarized in an excel report file of the same name as the raw data file - listing the proper noun detected, the context and which variables of the data set contained it.
+The main entry points for most users are `pidpos()` for single datasets and `report_on_folder()` for batch processing across multiple files.  
+
+Note that natural language processing is rarely perfect — these tools are designed to assist with the identification and anonymisation of personal data, 
+but cannot guarantee complete detection. Baseline tag identification rates for various language models are summarised
+ in the  [Model Comparison Vignette](articles/model_comparisons.html).
 
 ## Troubleshooting 
 
-The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the `Trouble shooting the UDpipe Model` vignette, and looking at the functions `browse_udpipe_repo`/ `browse_model_location`.
+The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading the `Trouble shooting the UDPipe Model` vignette, and looking at the functions `browse_udpipe_repo`/ `browse_model_location`.
 
 ## Getting help
 

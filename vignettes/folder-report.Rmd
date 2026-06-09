@@ -27,16 +27,14 @@ To demonstrate how this function works - we have supplied a collection of data s
 * `The One Where Rachel Tells.csv`
 * `The One with the Red Sweater.csv`
 
-With each file consisting of 6 columns:
+Each file contains 6 columns:
 
-With each file consisting of 6 columns:
-
-* `text` - The line of the script (dialogue or action)
-* `speaker` - The character uttering the line
-* `season` - Numeric ID of which season the episode was in
-* `episode` - Numeric ID of which episode the dialogue was in
-* `scene` 
-* `utterance`
+* `text` — the line of dialogue or stage direction
+* `speaker` — the character delivering the line
+* `season` — numeric season number
+* `episode` — numeric episode number within the season
+* `scene` — numeric scene index within the episode
+* `utterance` — numeric index of the line within the scene
 
 ```{r setup}
 library(pidpos)
@@ -48,8 +46,8 @@ list.files(data_path)
 and we check the files are the intended data:
 
 ``` {r}
-rachell_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
-rachell <- read.csv(rachell_tells, nrows = 5)
+rachel_tells <- system.file("vignette_data", "The_One_Where_Rachel_Tells.csv", package = "pidpos")
+rachel <- read.csv(rachel_tells, nrows = 5)
 ```
 
 To generate reports we call `report_on_folder` which has two key arguments:
@@ -88,14 +86,14 @@ The `report_on_folder` function is a high level API for the `pidpos` package and
 allows for various options to control the reporting process.  These optional arguments are:
 
 * `tagger` - The proper noun tagger to use.  The default is the "english-ewt" 
-`udpipe` model, users can change this by either supplying a character string of an available `udpipe` model (see) or a custom tagger function.  See ... for details on 
+`udpipe` model, users can change this by either supplying a character string of an available `udpipe` model (see `udpipe:::udpipe_download_model()`) or a custom tagger function.  See [Using custom functions in `pidpos`](custom-functions.html) for details on 
 implementing a custom tagger.
 * `filter_func` - a function which takes a data frame of tagged tokens and filters it to the tokens of interest.  By default, this is set to filter for proper nouns, but users can implement their own function to filter for other types of tokens e.g. locations, or dates.  If using the udpipe taggers, the `upos` column contains the universal part of speech tags which can be used to filter for a wide range of token types.
 * `chunk_size` - the number of rows to process at a time.  This is designed to help with memory management when processing large files, but can be set to `NULL` to read in the whole file at once.
 * `to_ignore` - a vector of column names to ignore when searching for proper nouns.  This is designed to help with cases where there are known columns that contain proper nouns e.g. primary keys, or name columns.  By default, this is set to `NULL` and all columns are processed.
 * `export_function` - a function which takes the resulting data frames and exports them to the desired location.  Two export functions are included in the package 
 (`export_as_tree` to have the reports nested in the same folder structure as the raw data and `export_flat` to flatten the structure and capture the nested nature via file naming). 
-* `verbose` - 
+* `verbose` — boolean flag; if `TRUE`, skipped files will be printed to the console.
 
 ## Redacting  
 
@@ -133,8 +131,8 @@ distinct_rules |>
 With the `To` column set as desired, this frame can now be used in `redact`:
 
 ``` {r}
-redacted_rachell <- redact(rachell, replaced_rules)
-redacted_rachell
+redacted_rachel <- redact(rachel, replaced_rules)
+redacted_rachel
 ```
 
 And these redactions rules can be applied over the initial file structure in much the way it was constructed:

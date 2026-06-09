@@ -132,7 +132,7 @@ auto_replace(
 )
 ```
 
-In addition, the user may wish to generate their own pesudo-random replacements.  
+In addition, the user may wish to generate their own pseudo-random replacements.  
 This can be done by wrapping the desired behaviour in `make_replacement_function()` with 
 the added requirement of defining the maximum number of random states that can be generated (e.g. if we used a toy example of the number "00" to "99" there would be 100 max random values).  We implement this as:
 
@@ -145,7 +145,7 @@ numeric_replacement <- make_replacement_function(numeric_replacement, 100)
 
 numeric_replacement
 ```
-This fucntion can then be used in `auto_replace()` in the same way as the deterministic function:
+This function can then be used in `auto_replace()` in the same way as the deterministic function:
 
 ``` {r}
 auto_replace(
