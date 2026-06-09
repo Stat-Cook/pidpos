@@ -38,7 +38,7 @@ IDs or ICD-10 codes.}
 \item{export_function}{A function to control exporting the reports to disk.  Current
 options  are \code{export_as_tree} and \code{export_flat}}
 
-\item{verbose}{Boolean flag - if TRUE will...}
+\item{verbose}{boolean flag; if \code{TRUE}, skipped files will be printed to the console.}
 }
 \description{
 For use as part of the folder level API - this function is the equivalent of

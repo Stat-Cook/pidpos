@@ -15,7 +15,7 @@ find_supported_files(
 
 \item{extensions}{Optional.  The set of file extensions to scanned for.}
 
-\item{verbose}{Boolean flag - if TRUE will...}
+\item{verbose}{boolean flag; if \code{TRUE}, skipped files will be printed to the console.}
 }
 \description{
 Read all supported files in a folder into a named list of data.frames

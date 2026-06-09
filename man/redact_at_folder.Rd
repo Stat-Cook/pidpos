@@ -24,7 +24,7 @@ redact_at_folder(
 
 \item{export_function}{A function to define export}
 
-\item{verbose}{Boolean flag - if TRUE will...}
+\item{verbose}{boolean flag; if \code{TRUE}, skipped files will be printed to the console.}
 }
 \description{
 For use as part of the folder level API - this function is the equivalent of
