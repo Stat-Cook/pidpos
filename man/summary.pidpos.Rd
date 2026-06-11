@@ -23,6 +23,18 @@ A data frame describing any column determined to contain PID.
 \description{
 Summarize a  \code{pidpos} report.
 }
+\examples{
+data(presidio_text)
+example.data <- presidio_text[32:35, ]
+
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
+regex_tagger <- regex_factory()
+
+report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x)
+summary(report)
+
+}
 \seealso{
 \link{pidpos}
 }

@@ -64,8 +64,10 @@ example.data <- head(presidio_text, 50)
 # the udpipe or spaCy taggers are recommended.
 
 regex_tagger <- regex_factory()
-pidpos(example.data, tagger=regex_tagger, 
-                 filter_func = function(x) x)
+pidpos(example.data,
+  tagger = regex_tagger,
+  filter_func = function(x) x
+)
 
 }
 \seealso{

@@ -29,13 +29,13 @@ This is useful for large data frames where the redaction function may be slow.
 }
 \examples{
 data(presidio_text)
-example.data <- presidio_text[32:35,]
+example.data <- presidio_text[32:35, ]
 
 # Using regex_factory for illustration; for real PID detection
 # the udpipe or spaCy taggers are recommended.
 regex_tagger <- regex_factory()
 
-report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)
+report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x)
 report
 redactions.raw <- report_to_redaction_rules(report)
 
