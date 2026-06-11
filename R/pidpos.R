@@ -37,29 +37,16 @@
 #' or force environment only models.
 #'
 #' @examples
-#' \dontrun{
-#' data(the_one_in_massapequa)
-#' example.data <- head(the_one_in_massapequa, 50)
-#' try(
-#'   pidpos(example.data, to_ignore = c("scene", "utterance"))
-#' )
+#' data(presidio_text)
+#' example.data <- head(presidio_text, 50)
+#' 
+#' # Using regex_factory for illustration; for real PID detection
+#' # the udpipe or spaCy taggers are recommended.
+#' 
+#' regex_tagger <- regex_factory()
+#' pidpos(example.data, tagger=regex_tagger, 
+#'                  filter_func = function(x) x)
 #'
-#' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
-#'
-#' tag_ewt <- udpipe_factory("english-ewt")
-#' pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
-#'
-#' filter_to_long_proper_nouns <- function(frm) {
-#'   frm |>
-#'     dplyr::filter(nchar(Token) > 1)
-#'   filter_to_proper_nouns(frm)
-#' }
-#'
-#' pidpos(example.data,
-#'   to_ignore = c("scene", "utterance"),
-#'   tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
-#' )
-#' }
 #' @export
 #' @importFrom magrittr %>%
 #' @importFrom dplyr group_by group_modify left_join where all_of

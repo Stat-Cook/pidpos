@@ -16,16 +16,21 @@
 #' @return A data frame with the same structure as `frm` but with redacted text.
 #'
 #' @examples
-#' \dontrun{
-#' example.data <- head(the_one_in_massapequa)
-#' report <- pidpos(example.data, to_ignore = "speaker")
+#' data(presidio_text)
+#' example.data <- presidio_text[32:35,]
+#' 
+#' # Using regex_factory for illustration; for real PID detection
+#' # the udpipe or spaCy taggers are recommended.
+#' regex_tagger <- regex_factory()
+#' 
+#' report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)
+#' report
 #' redactions.raw <- report_to_redaction_rules(report)
-#'
+#' 
 #' replace_by <- make_random_replacement()
 #' redactions <- auto_replace(redactions.raw, replacement_func = replace_by)
-#' redaction.f <- prepare_redactions(redactions)
+#' redaction.f <- parse_redacter(redactions)
 #' batched_redact(example.data, redaction.f)
-#' }
 #'
 #' @export
 batched_redact <- function(frm, redact, n = NULL, .progress = TRUE) {
