@@ -22,6 +22,8 @@ pidpos_env <- new.env()
 
   options(pidpos_download_approved = FALSE)
   pidpos_setup()
+  
+  utils::globalVariables("pid_patterns")
 
   invisible()
 }
