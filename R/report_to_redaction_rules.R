@@ -49,15 +49,16 @@ report_to_redaction_rules <- function(report, path = NULL,
   }
 
   If <- NA
+  pos <- "POS" %in% colnames(report)
 
   .frm <- report %>%
     mutate(
       If = .data$Document,
       From = .data$Token,
       To = .data$Token,
-      POS = if ("POS" %in% colnames(.data)) .data$POS else "",
-      .keep = "none"
+      POS = if (pos) .data$POS else ""
     ) |>
+    select(If, From, To, POS) |> 
     filter(!is.na(If)) |>
     distinct()
 
