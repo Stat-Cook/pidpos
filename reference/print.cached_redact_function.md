@@ -11,4 +11,4 @@ print(x, ...)
 
 ## Value
 
-(Tnvisibly) The string representation of the function.
+(Invisibly) The string representation of the function.

@@ -13,10 +13,11 @@ parse_redacter(redacter, with_cache = TRUE)
 - redacter:
 
   A data.frame containing `From`, `To` and `If` or a file path to
+  equivalent.
 
 - with_cache:
 
-  A binary flag to control if memoization is required.
+  Logical. If `TRUE`, the resulting function will utilize memoization.
 
 ## Value
 

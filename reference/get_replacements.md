@@ -37,4 +37,43 @@ A named list of the form `list(original = replacement, ...)`
 
 The replacement string for `key`, or `NULL` if not found.
 
-TRUE if `value` is in object
+The key that was pointed to by `value`
+
+## Examples
+
+``` r
+
+replacement <- make_random_replacement()
+
+redaction_rules <- raw_redaction_rules |>
+  auto_replace(replacement)
+
+get_replacement_cache(replacement)
+#> $Central
+#> [1] "RSLSQJLMPG"
+#> 
+#> $Perk
+#> [1] "UDACGQFLGK"
+#> 
+#> $Ross
+#> [1] "JHVQLTORLV"
+#> 
+#> $Mon
+#> [1] "UZJCDMFNBY"
+#> 
+#> $Parker
+#> [1] "ESREJLDSXT"
+#> 
+#> $Chandler
+#> [1] "YQWTXJXWIY"
+#> 
+#> $Monica
+#> [1] "JISYSOQOWE"
+#> 
+
+key_lookup(replacement, "Ross")
+#> [1] "JHVQLTORLV"
+
+value_lookup(replacement, redaction_rules$To[1])
+#> [1] "Central"
+```

@@ -40,11 +40,52 @@
       <small>Source: <a href="https://github.com/Stat-Cook/pidpos/blob/JOSSReviewRecommendations/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-  </main></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.0" id="pidpos-010">pidpos 0.1.0<a class="anchor" aria-label="anchor" href="#pidpos-010"></a></h2>
+<p>Initial release.</p>
+<div class="section level3">
+<h3 id="core-functionality-0-1-0">Core functionality<a class="anchor" aria-label="anchor" href="#core-functionality-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/pidpos.html">pidpos()</a></code> for detecting personally identifiable data in a data frame via POS tagging</li>
+<li>
+<code><a href="../reference/report_to_redaction_rules.html">report_to_redaction_rules()</a></code> to convert a PID report into an editable redaction rule set</li>
+<li>
+<code><a href="../reference/auto_replace.html">auto_replace()</a></code> to automatically populate replacement values</li>
+<li>
+<code><a href="../reference/redact.html">redact()</a></code> to apply redaction rules to a data frame</li>
+</ul></div>
+<div class="section level3">
+<h3 id="taggers-0-1-0">Taggers<a class="anchor" aria-label="anchor" href="#taggers-0-1-0"></a></h3>
+<ul><li>Default UDPipe tagger via <code><a href="../reference/udpipe_factory.html">udpipe_factory()</a></code>
+</li>
+<li>Experimental spaCy support via <code><a href="../reference/spacy_factory.html">spacy_factory()</a></code>
+</li>
+<li>User-extensible interface via <code><a href="../reference/custom_tagger.html">custom_tagger()</a></code>
+</li>
+<li>Regex-based tagger via <code><a href="../reference/regex_factory.html">regex_factory()</a></code> with built-in <code>pid_patterns</code>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="batch-processing-0-1-0">Batch processing<a class="anchor" aria-label="anchor" href="#batch-processing-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/report_on_folder.html">report_on_folder()</a></code>, <code><a href="../reference/get_distinct_redaction_rules.html">get_distinct_redaction_rules()</a></code>, and <code><a href="../reference/redact_at_folder.html">redact_at_folder()</a></code> for processing collections of files</li>
+</ul></div>
+<div class="section level3">
+<h3 id="replacement-strategies-0-1-0">Replacement strategies<a class="anchor" aria-label="anchor" href="#replacement-strategies-0-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/make_random_replacement.html">make_random_replacement()</a></code> for random string replacements</li>
+<li>
+<code><a href="../reference/make_hashing_replacement.html">make_hashing_replacement()</a></code> for deterministic encrypted replacements</li>
+<li>
+<code><a href="../reference/make_replacement_function.html">make_replacement_function()</a></code> for custom encoder wrapping</li>
+</ul></div>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Robert Cook, Md Assaduzaman, Sarahjane Jones.</p>
+  <p>Developed by Robert Cook, Md Asaduzzaman, Sarahjane Jones.</p>
 </div>
 
 <div class="pkgdown-footer-right">

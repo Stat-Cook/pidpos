@@ -139,8 +139,6 @@ or feel free to fork the repository.
 - [`reinstate_default_reader()`](https://stat-cook.github.io/pidpos/reference/reinstate_default_reader.md)
   : Reinstate the default read functionality for csv, tsv, xls, and xlsx
   files.
-- [`merge_redactions()`](https://stat-cook.github.io/pidpos/reference/merge_redactions.md)
-  : Remove PID from a data frame via a merge
 
 ## Experimental: spacy bindings
 

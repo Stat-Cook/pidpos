@@ -78,15 +78,54 @@ in <code><a href="auto_replace.html">auto_replace()</a></code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A named list of the form <code>list(original = replacement, ...)</code></p>
 <p>The replacement string for <code>key</code>, or <code>NULL</code> if not found.</p>
-<p>TRUE if <code>value</code> is in object</p>
+<p>The key that was pointed to by <code>value</code></p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">replacement</span> <span class="op">&lt;-</span> <span class="fu"><a href="make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">redaction_rules</span> <span class="op">&lt;-</span> <span class="va">raw_redaction_rules</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">replacement</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">get_replacement_cache</span><span class="op">(</span><span class="va">replacement</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Central</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "RSLSQJLMPG"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Perk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "UDACGQFLGK"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Ross</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "JHVQLTORLV"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Mon</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "UZJCDMFNBY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Parker</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "ESREJLDSXT"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Chandler</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "YQWTXJXWIY"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Monica</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "JISYSOQOWE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">key_lookup</span><span class="op">(</span><span class="va">replacement</span>, <span class="st">"Ross"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "JHVQLTORLV"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">value_lookup</span><span class="op">(</span><span class="va">replacement</span>, <span class="va">redaction_rules</span><span class="op">$</span><span class="va">To</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Central"</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Robert Cook, Md Assaduzaman, Sarahjane Jones.</p>
+  <p>Developed by Robert Cook, Md Asaduzzaman, Sarahjane Jones.</p>
 </div>
 
 <div class="pkgdown-footer-right">

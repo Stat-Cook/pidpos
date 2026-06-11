@@ -17,3 +17,11 @@ clean_encoding(text)
 ## Value
 
 A character vector
+
+## Examples
+
+``` r
+clean_encoding(c("Hello", "caf\xe9"))
+#> Warning: Non-UTF-8 text detected - attempting conversion. Check results carefully.
+#> [1] "Hello" "caf�" 
+```
