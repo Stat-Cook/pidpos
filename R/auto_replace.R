@@ -24,9 +24,9 @@ auto_replace <- function(frm, replacement_func,
     frm <- dplyr::filter(frm, .data$From != .data$To)
   }
 
-  frm |>
+  frm %>%
     dplyr::mutate(
       To = replacement_func(.data$To),
-      To = ifelse(include_pos, paste(.data$POS, .data$To, sep = "_"), .data$To)
+      To = if (include_pos) paste(.data$POS, .data$To, sep = "_") else .data$To
     )
 }
