@@ -19,6 +19,10 @@ register_reader(fun, ext)
 
   The file extension (e.g., "csv", "txt").
 
+## Value
+
+TRUE
+
 ## Examples
 
 ``` r

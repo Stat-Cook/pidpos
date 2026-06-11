@@ -934,12 +934,4 @@ structure in much the way it was constructed:
 ``` r
 
 redact_at_folder(data_path, replaced_rules)
-#> $The_One_After_I_Do
-#> [1] "Redacted Data/The_One_After_I_Do.csv"
-#> 
-#> $The_One_Where_Rachel_Tells
-#> [1] "Redacted Data/The_One_Where_Rachel_Tells.csv"
-#> 
-#> $The_One_with_the_Red_Sweater
-#> [1] "Redacted Data/The_One_with_the_Red_Sweater.csv"
 ```

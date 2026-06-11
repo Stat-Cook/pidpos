@@ -30,3 +30,11 @@ value_lookup(object, value)
 - value:
 
   The string to lookup what it replaced.
+
+## Value
+
+A named list of the form `list(original = replacement, ...)`
+
+The replacement string for `key`, or `NULL` if not found.
+
+TRUE if `value` is in object

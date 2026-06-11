@@ -40,12 +40,18 @@ A tibble (`tbl_df`) with columns depending on `tagger`s output.
 
 ``` r
 # Sample text
-if (FALSE) { # \dontrun{
 example_text <- c(
   "This is a test sentence.",
   "Here is another sentence."
 )
 
+regex_tagger <- regex_factory()
+pidpos:::tag_documents(example_text, tagger = regex_tagger)
+#> # A tibble: 0 × 6
+#> # ℹ 6 variables: ID <chr>, Token <chr>, POS <chr>, StartIndex <int>,
+#> #   EndIndex <int>, Sentence <chr>
+
+if (FALSE) { # \dontrun{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 ewt_result <- pidpos:::tag_documents(example_text, tagger = ewt_tagger)

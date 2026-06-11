@@ -17,3 +17,8 @@ parse_redacter(redacter, with_cache = TRUE)
 - with_cache:
 
   A binary flag to control if memoization is required.
+
+## Value
+
+A function with the signature `function(x)` that takes a character
+vector and returns the redacted (as defined by `redacter`) equivalent.

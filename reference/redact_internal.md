@@ -17,3 +17,8 @@ redact_internal(object, redaction_func)
 - redaction_func:
 
   A closure/ function to be applied.
+
+## Value
+
+A redacted equivalent of object - either a vector or data frame with all
+character columns converted,

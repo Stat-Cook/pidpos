@@ -99,27 +99,35 @@ to redirect `udpipe` models or force environment only models.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-data(the_one_in_massapequa)
-example.data <- head(the_one_in_massapequa, 50)
-try(
-  pidpos(example.data, to_ignore = c("scene", "utterance"))
-)
+data(presidio_text)
+example.data <- head(presidio_text, 50)
 
-pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
 
-tag_ewt <- udpipe_factory("english-ewt")
-pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
-
-filter_to_long_proper_nouns <- function(frm) {
-  frm |>
-    dplyr::filter(nchar(Token) > 1)
-  filter_to_proper_nouns(frm)
-}
-
-pidpos(example.data,
-  to_ignore = c("scene", "utterance"),
-  tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
-)
-} # }
+regex_tagger <- regex_factory()
+pidpos(example.data, tagger=regex_tagger, 
+                 filter_func = function(x) x)
+#> # A tibble: 18 × 9
+#>    ID                  Token POS   StartIndex EndIndex Sentence Document Repeats
+#>  * <glue>              <chr> <chr>      <int>    <int> <chr>    <chr>      <int>
+#>  1 Col:Document Row:1  "646… post…         82       86 "The ad… "The ad…       1
+#>  2 Col:Document Row:6  "445… card          28       43 "What i… "What i…       1
+#>  3 Col:Document Row:15 "282… post…         36       40 "Billin… "Billin…       1
+#>  4 Col:Document Row:15 "536… post…         93       97 "Billin… "Billin…       1
+#>  5 Col:Document Row:23 "624… post…         67       71 "Willia… "Willia…       1
+#>  6 Col:Document Row:25 "860… post…         27       31 "Tomomi… "Tomomi…       1
+#>  7 Col:Document Row:32 "034… phone         13       23 "My car… "My car…       1
+#>  8 Col:Document Row:33 "400… card          56       71 "Could … "Could …       1
+#>  9 Col:Document Row:33 "070… phone         58       69 "Could … "Could …       1
+#> 10 Col:Document Row:33 "Uta… email         86      109 "Could … "Could …       1
+#> 11 Col:Document Row:34 "423… post…         53       57 "The Av… "The Av…       1
+#> 12 Col:Document Row:35 "Ush… email         24       48 "You sa… "You sa…       1
+#> 13 Col:Document Row:38 "369… post…        122      126 "card n… "card n…       1
+#> 14 Col:Document Row:39 "200… date           7       16 "When: … "When: …       1
+#> 15 Col:Document Row:46 "658… card          16       32 "My cre… "My cre…       1
+#> 16 Col:Document Row:46 "089… phone         21       31 "My cre… "My cre…       1
+#> 17 Col:Document Row:50 "nSz… email        112      131 "Janka … "Janka …       1
+#> 18 Col:Document Row:50 "251… post…        253      257 "Janka … "Janka …       1
+#> # ℹ 1 more variable: `Affected Columns` <chr>
 ```

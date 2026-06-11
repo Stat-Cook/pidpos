@@ -19,3 +19,7 @@ set_SPACY_CONDA_ENV(env_name)
 - env_name:
 
   The name of the conda environment to use.
+
+## Value
+
+The name of the conda environment `pidpos` is using

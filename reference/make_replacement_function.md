@@ -34,3 +34,8 @@ make_replacement_function(
 - elevate_warnings:
 
   If true, cause warnings to raise as errors.
+
+## Value
+
+A function with the signature `function(x)` that takes a vector and
+returns a character vector of replacements the same length as `x`.

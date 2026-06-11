@@ -89,7 +89,35 @@ or a custom tagging function (see <code>udpipe_factory</code> for details of wha
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">presidio_text</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span>  <span class="va">presidio_text</span><span class="op">[</span><span class="fl">32</span><span class="op">:</span><span class="fl">35</span>,<span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using regex_factory for illustration; for real PID detection</span></span></span>
+<span class="r-in"><span><span class="co"># the udpipe or spaCy taggers are recommended.</span></span></span>
+<span class="r-in"><span><span class="va">regex_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="regex_factory.html">regex_factory</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tag_data_frame</span><span class="op">(</span><span class="va">example.data</span>, <span class="va">regex_tagger</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $AllTags</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ID                 Token                    POS   StartIndex EndIndex Sentence</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Col:Document Row:1 03428245880              phone         13       23 <span style="color: #949494;">"</span>My car…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Col:Document Row:2 4007070753690781         card          56       71 <span style="color: #949494;">"</span>Could …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Col:Document Row:2 070707536907             phone         58       69 <span style="color: #949494;">"</span>Could …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Col:Document Row:2 UtaKortig@jourrapide.com email         86      109 <span style="color: #949494;">"</span>Could …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Col:Document Row:3 42323                    post…         53       57 <span style="color: #949494;">"</span>The Av…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Col:Document Row:4 UshurmaDratchev@rhyta.c… email         24       48 <span style="color: #949494;">"</span>You sa…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Documents</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Document                                ID    Repeats `Affected Columns`    PK</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;glu&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">"</span>Could you please send me the last bil… Col:…       1 `Document`             2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">"</span>My card 4131034282458809939 is expiri… Col:…       1 `Document`             1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> <span style="color: #949494;">"</span>The Avalara office is at PSC 0413, Bo… Col:…       1 `Document`             3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> <span style="color: #949494;">"</span>You said your email is UshurmaDratche… Col:…       1 `Document`             4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span>, <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">tag_data_frame</span><span class="op">(</span><span class="va">example.data</span>, tagger <span class="op">=</span> <span class="st">"english-ewt"</span><span class="op">)</span></span></span>

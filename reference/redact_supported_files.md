@@ -30,3 +30,5 @@ redact_supported_files(
 - export_function:
 
   A function to define export
+
+  \#' @return (Invisibly) the list of files redacted

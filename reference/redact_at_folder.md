@@ -40,9 +40,15 @@ redact_at_folder(
 
   A function to define export
 
+  \#' @return (Invisibly) the list of files redacted
+
 - verbose:
 
   boolean flag; if `TRUE`, skipped files will be printed to the console.
+
+## Value
+
+(Invisibly) the list of files redacted
 
 ## Examples
 

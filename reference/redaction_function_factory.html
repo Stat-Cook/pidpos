@@ -58,15 +58,23 @@
 <dd><p>A data.frame with columns <code>If</code>, <code>From</code> and <code>To</code>.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A function with signature <code>function(vec)</code> which applies the rules in
+<code>rules.frm</code> to each element of <code>vec</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">the_one_in_massapequa</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">presidio_text</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span>  <span class="va">presidio_text</span><span class="op">[</span><span class="fl">32</span><span class="op">:</span><span class="fl">35</span>,<span class="op">]</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Using regex_factory for illustration; for real PID detection</span></span></span>
+<span class="r-in"><span><span class="co"># the udpipe or spaCy taggers are recommended.</span></span></span>
+<span class="r-in"><span><span class="va">regex_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="regex_factory.html">regex_factory</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span>, tagger<span class="op">=</span><span class="va">regex_tagger</span>, filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span><span class="co">#'</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">raw_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="report_to_redaction_rules.html">report_to_redaction_rules</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">redaction_rules</span> <span class="op">&lt;-</span> <span class="fu"><a href="auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>,</span></span>
 <span class="r-in"><span>  replacement_func <span class="op">=</span> <span class="fu"><a href="make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span></span>
@@ -74,8 +82,12 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">redaction_func</span> <span class="op">&lt;-</span> <span class="fu">redaction_function_factory</span><span class="op">(</span><span class="va">redaction_rules</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">redaction_func</span><span class="op">(</span><span class="va">example.data</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu">redaction_func</span><span class="op">(</span><span class="va">example.data</span><span class="op">$</span><span class="va">Document</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "My card 4131IMABCRQXIM9939 is expiring this month. Please let me know process to it's extend validity."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Could you please send me the last billed amount for cc IMABCRQXIM on my e-mail IMABCRQXIM?"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "The Avalara office is at PSC 0413, Box 8144\nAPO AA IMABCRQXIM"                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "You said your email is IMABCRQXIM. Is that correct?"                                                   </span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

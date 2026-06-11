@@ -187,6 +187,9 @@ or feel free to fork the repository.
   [`titlecase_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
   : Comparison datasets
 
+- [`pid_patterns`](https://stat-cook.github.io/pidpos/reference/pid_patterns.md)
+  : Default PID regex patterns
+
 # Articles
 
 ### Articles

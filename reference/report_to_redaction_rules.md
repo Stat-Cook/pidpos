@@ -50,9 +50,21 @@ A tibble with columns:
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-example.data <- head(the_one_in_massapequa)
-report <- pidpos(example.data, to_ignore = "speaker")
+data(presidio_text)
+example.data <-  presidio_text[32:35,]
+
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
+regex_tagger <- regex_factory()
+report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)
 report_to_redaction_rules(report)
-} # }
+#> # A tibble: 6 × 4
+#>   If                                                           From  To    POS  
+#> * <chr>                                                        <chr> <chr> <chr>
+#> 1 "My card 4131034282458809939 is expiring this month. Please… 0342… 0342… phone
+#> 2 "Could you please send me the last billed amount for cc 400… 4007… 4007… card 
+#> 3 "Could you please send me the last billed amount for cc 400… 0707… 0707… phone
+#> 4 "Could you please send me the last billed amount for cc 400… UtaK… UtaK… email
+#> 5 "The Avalara office is at PSC 0413, Box 8144\nAPO AA 42323"  42323 42323 post…
+#> 6 "You said your email is UshurmaDratchev@rhyta.com. Is that … Ushu… Ushu… email
 ```

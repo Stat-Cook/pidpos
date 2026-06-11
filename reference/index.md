@@ -135,3 +135,6 @@
   [`preprocessed_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
   [`titlecase_comparison`](https://stat-cook.github.io/pidpos/reference/comparison_data.md)
   : Comparison datasets
+
+- [`pid_patterns`](https://stat-cook.github.io/pidpos/reference/pid_patterns.md)
+  : Default PID regex patterns
