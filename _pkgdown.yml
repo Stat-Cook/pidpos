@@ -45,7 +45,6 @@ reference:
   - register_reader
   - set_udpipe_version
   - reinstate_default_reader
-  - merge_redactions
 - title: "Experimental: spacy bindings"
   desc: > 
   contents:
