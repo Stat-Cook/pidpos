@@ -11,7 +11,7 @@ report_to_redaction_rules(report, path = NULL, include_context = FALSE)
 
 \item{path}{Optional file path to write to.}
 
-\item{include_context}{Binary-flag. If True, adds a \code{Context} column giving a subset
+\item{include_context}{Logical. If \code{TRUE}, adds a \code{Context} column giving a subset
 of the sentence being redacted around the token.}
 }
 \value{

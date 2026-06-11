@@ -11,7 +11,7 @@ redact(object, redacter, in_batches = TRUE, ...)
 
 \item{redacter}{A \code{data.frame} of redaction rules or a function created by \code{redaction_function_factory()}.}
 
-\item{in_batches}{Boolean flag - if True the supplied data will be processed in chunks.}
+\item{in_batches}{Logical. If \code{TRUE} the supplied data will be processed in chunks.}
 
 \item{...}{Other arguments to control batching.}
 }

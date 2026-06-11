@@ -13,6 +13,9 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 
 \item{preprocess}{A function of preprocessing steps to be applied to the text columns.}
 }
+\value{
+A data frame of redacted data
+}
 \description{
 Remove PID from a data frame via a merge
 }
