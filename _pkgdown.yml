@@ -64,6 +64,7 @@ reference:
   - presidio_text
   - presidio_tags
   - comparison_data
+  - pid_patterns
 articles:
 - title: Articles
   navbar: ~
