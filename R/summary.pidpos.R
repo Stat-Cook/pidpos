@@ -17,7 +17,7 @@ most_common <- function(cnt, names) {
 #'   \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
 #' }
 #' 
-#' @example
+#' @examples
 #' data(presidio_text)
 #' example.data <- presidio_text[32:35, ]
 #'
