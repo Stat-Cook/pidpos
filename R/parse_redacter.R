@@ -1,7 +1,7 @@
 #' Parse a data frame into a redaction function with optional caching.
 #'
-#' @param redacter A data.frame containing `From`, `To` and `If` or a file path to
-#' @param with_cache A binary flag to control if memoization is required.
+#' @param redacter A data.frame containing `From`, `To` and `If` or a file path to equivalent.
+#' @param with_cache Logical.  If `TRUE`, the resulting function will utilize memoization.
 #'
 #' @return A function with the signature \code{function(x)} that takes a
 #'   character vector and returns the redacted (as defined by `redacter`) equivalent.
