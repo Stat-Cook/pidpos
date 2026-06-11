@@ -21,9 +21,9 @@ vector_merge_redactions <- function(vec,
 #' @param frm The data frame to be redacted
 #' @param cached_redactions A data frame with `If` and `Then` columns
 #' @param preprocess A function of preprocessing steps to be applied to the text columns.
-#' 
+#'
 #' @return A data frame of redacted data
-#' 
+#'
 #' @export
 merge_redactions <- function(frm,
                              cached_redactions,
