@@ -77,10 +77,10 @@ print.ConsistentMapper <- function(x, ...) {
 #' @param elevate_warnings If true, cause warnings to raise as errors.
 #'
 #' @examples
-#' 
-#' numeric_encoder <- function() paste0(sample(0:9,, 10), collapse="")
+#'
+#' numeric_encoder <- function() paste0(sample(0:9, , 10), collapse = "")
 #' mapper <- make_replacement_function(numeric_encoder, 1000)
-#' 
+#'
 #' @return A function with the signature \code{function(x)} that takes a
 #'   vector and returns a character vector of replacements the same
 #'   length as \code{x}.
