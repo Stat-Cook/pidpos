@@ -123,9 +123,9 @@ head(prepared_replacements)
 #>   If                                        From    To         POS  
 #>   <chr>                                     <chr>   <chr>      <chr>
 #> 1 [Scene: Central Perk, everyone is there.] Central MWLEFOODFI ""   
-#> 2 [Scene: Central Perk, everyone is there.] Perk    MWLEFOODFI ""   
-#> 3 Phoebe Buffay                             Phoebe  MWLEFOODFI ""   
-#> 4 Phoebe Buffay                             Buffay  MWLEFOODFI ""   
+#> 2 [Scene: Central Perk, everyone is there.] Perk    EEXOMBWKKE ""   
+#> 3 Phoebe Buffay                             Phoebe  ULBFDPBCYV ""   
+#> 4 Phoebe Buffay                             Buffay  KGUFIVJUBQ ""   
 #> # ℹ 2 more rows
 ```
 
@@ -143,10 +143,10 @@ head(redacted_data)
 #> # A tibble: 6 × 4
 #>   scene utterance speaker               text                                    
 #>   <int>     <int> <chr>                 <chr>                                   
-#> 1     1         1 Scene Directions      [Scene: MWLEFOODFI MWLEFOODFI, everyone…
-#> 2     1         2 MWLEFOODFI MWLEFOODFI Oh, MWLEFOODFI, MWLEFOODFI, is it okay …
-#> 3     1         3 MWLEFOODFI MWLEFOODFI Yeah.                                   
-#> 4     1         4 MWLEFOODFI MWLEFOODFI Sure. Yeah.                             
+#> 1     1         1 Scene Directions      [Scene: MWLEFOODFI EEXOMBWKKE, everyone…
+#> 2     1         2 ULBFDPBCYV KGUFIVJUBQ Oh, TXVAFBSNAY, OREHALSPKZ, is it okay …
+#> 3     1         3 CBWJCFDJAG FVSYBHAAGL Yeah.                                   
+#> 4     1         4 TXVAFBSNAY FVSYBHAAGL Sure. Yeah.                             
 #> # ℹ 2 more rows
 ```
 

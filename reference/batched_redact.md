@@ -71,7 +71,7 @@ batched_redact(example.data, redaction.f)
 #>   Document                                                     `Doc ID` Template
 #>   <chr>                                                           <int>    <int>
 #> 1 "My card 4131FVSYBHAAGL9939 is expiring this month. Please …       32       11
-#> 2 "Could you please send me the last billed amount for cc FVS…       33       26
-#> 3 "The Avalara office is at PSC 0413, Box 8144\nAPO AA FVSYBH…       34      148
-#> 4 "You said your email is FVSYBHAAGL. Is that correct?"              35       62
+#> 2 "Could you please send me the last billed amount for cc VIJ…       33       26
+#> 3 "The Avalara office is at PSC 0413, Box 8144\nAPO AA XBHISI…       34      148
+#> 4 "You said your email is UCMRWTKDBI. Is that correct?"              35       62
 ```

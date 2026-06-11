@@ -875,11 +875,11 @@ head(replaced_rules)
 #>   If                                                           From  To    POS  
 #>   <chr>                                                        <chr> <chr> <chr>
 #> 1 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Wedd… MWLE… ""   
-#> 2 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Hall  MWLE… ""   
-#> 3 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Moni… MWLE… ""   
-#> 4 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Chan… MWLE… ""   
-#> 5 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Ross  MWLE… ""   
-#> 6 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Joey  MWLE… ""
+#> 2 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Hall  EEXO… ""   
+#> 3 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Moni… ULBF… ""   
+#> 4 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Chan… KGUF… ""   
+#> 5 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Ross  TXVA… ""   
+#> 6 "[Scene: The Wedding Hall, Monica and Chandler have just sa… Joey  OREH… ""
 ```
 
 The user may prefer to set the replacements manually by saving the
@@ -900,11 +900,11 @@ distinct_rules |>
 #>   If                                  From   To         POS  
 #>   <chr>                               <chr>  <chr>      <chr>
 #> 1 Monica Geller                       Geller AQIKIXSHZY ""   
-#> 2 Ross Geller                         Geller AQIKIXSHZY ""   
-#> 3 Dr. Geller?                         Geller AQIKIXSHZY ""   
-#> 4 Dr. Geller, will you dance with me? Geller AQIKIXSHZY ""   
-#> 5 (Mr. Geller dances over.)           Geller AQIKIXSHZY ""   
-#> 6 Jack Geller                         Geller AQIKIXSHZY ""
+#> 2 Ross Geller                         Geller KIHYYMVYUC ""   
+#> 3 Dr. Geller?                         Geller GFNHJDFYIZ ""   
+#> 4 Dr. Geller, will you dance with me? Geller OHATVKZBEF ""   
+#> 5 (Mr. Geller dances over.)           Geller BZUEDBGBIA ""   
+#> 6 Jack Geller                         Geller CMTFKZRLFQ ""
 ```
 
 With the `To` column set as desired, this frame can now be used in
@@ -915,17 +915,17 @@ With the `To` column set as desired, this frame can now be used in
 redacted_rachel <- redact(rachel, replaced_rules)
 redacted_rachel
 #>                                                                                                                                                   text
-#> 1 [Scene: MWLEFOODFI and MWLEFOODFI's, MWLEFOODFI and MWLEFOODFI are getting ready to go on their honeymoon. MWLEFOODFI is entering from the bedroom.]
-#> 2                                                                                    Hey! MWLEFOODFI! Aren't you excited we're going on our honeymoon?
+#> 1 [Scene: QMOXDMPDRU and GUYVOVSPEU's, QMOXDMPDRU and GUYVOVSPEU are getting ready to go on their honeymoon. QMOXDMPDRU is entering from the bedroom.]
+#> 2                                                                                    Hey! HFHRFVJUOY! Aren't you excited we're going on our honeymoon?
 #> 3                                                                                                                                           Yeah I am!
-#> 4                                                                                                       MWLEFOODFI, MWLEFOODFI, come on pretty mama...
+#> 4                                                                                                       XCROWOANSN, MVAEAVNIGI, come on pretty mama...
 #> 5                                                                                           That's right. Get it out of your system while we're alone.
 #>                 speaker season episode scene utterance
 #> 1      Scene Directions      8       3     1         1
-#> 2 MWLEFOODFI MWLEFOODFI      8       3     1         2
-#> 3 MWLEFOODFI MWLEFOODFI      8       3     1         3
-#> 4 MWLEFOODFI MWLEFOODFI      8       3     1         4
-#> 5 MWLEFOODFI MWLEFOODFI      8       3     1         5
+#> 2 UZBIYKAPWO KTAYYJKTVO      8       3     1         2
+#> 3 FVSYBHAAGL VIJBFGLZVN      8       3     1         3
+#> 4 UZBIYKAPWO KTAYYJKTVO      8       3     1         4
+#> 5 FVSYBHAAGL VIJBFGLZVN      8       3     1         5
 ```
 
 And these redactions rules can be applied over the initial file

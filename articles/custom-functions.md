@@ -346,11 +346,11 @@ auto_replace(head(raw_redaction_rules), replacement_func = custom_replacer)
 #>   If                                                                 From  To   
 #>   <chr>                                                              <chr> <chr>
 #> 1 [Scene: Central Perk, everyone is there.]                          Cent… m    
-#> 2 [Scene: Central Perk, everyone is there.]                          Perk  m    
-#> 3 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  m    
-#> 4 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   m    
-#> 5 Well, his name is Parker and I met him at the drycleaners.         Park… m    
-#> 6 Every year Ross makes the toast, and it's always really moving, a… Ross  m
+#> 2 [Scene: Central Perk, everyone is there.]                          Perk  w    
+#> 3 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Ross  l    
+#> 4 Oh, Ross, Mon, is it okay if I bring someone to your parent's ann… Mon   e    
+#> 5 Well, his name is Parker and I met him at the drycleaners.         Park… f    
+#> 6 Every year Ross makes the toast, and it's always really moving, a… Ross  l
 ```
 
 ------------------------------------------------------------------------

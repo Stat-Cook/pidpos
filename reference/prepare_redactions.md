@@ -41,7 +41,7 @@ f <- pidpos:::prepare_redactions(redactions)
 #> ℹ Please use `parse_redacter()` instead.
 f(example.data$Document)
 #> [1] "My card 4131BBIAQAAYRC9939 is expiring this month. Please let me know process to it's extend validity."
-#> [2] "Could you please send me the last billed amount for cc BBIAQAAYRC on my e-mail BBIAQAAYRC?"            
-#> [3] "The Avalara office is at PSC 0413, Box 8144\nAPO AA BBIAQAAYRC"                                        
-#> [4] "You said your email is BBIAQAAYRC. Is that correct?"                                                   
+#> [2] "Could you please send me the last billed amount for cc PILMNEHFAT on my e-mail FJGFCDCFDJ?"            
+#> [3] "The Avalara office is at PSC 0413, Box 8144\nAPO AA PGKPMYIQLN"                                        
+#> [4] "You said your email is RSJMQNMKJE. Is that correct?"                                                   
 ```

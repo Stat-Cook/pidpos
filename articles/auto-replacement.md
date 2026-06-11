@@ -88,10 +88,10 @@ updated_replacement_rules
     #>   If                                                           From  To    POS  
     #>   <chr>                                                        <chr> <chr> <chr>
     #> 1 [Scene: Central Perk, everyone is there.]                    Cent… IYNWQ ""   
-    #> 2 [Scene: Central Perk, everyone is there.]                    Perk  IYNWQ ""   
-    #> 3 Phoebe Buffay                                                Phoe… IYNWQ ""   
-    #> 4 Phoebe Buffay                                                Buff… IYNWQ ""   
-    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  IYNWQ ""
+    #> 2 [Scene: Central Perk, everyone is there.]                    Perk  ZVCCI ""   
+    #> 3 Phoebe Buffay                                                Phoe… CCBTU ""   
+    #> 4 Phoebe Buffay                                                Buff… QNLAM ""   
+    #> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  FXZPU ""
 
 The resulting `updated_replacement_rules` can then be used alongside the
 original data in the
@@ -107,11 +107,11 @@ redact(
 #> # A tibble: 5 × 4
 #>   scene utterance speaker          text                                         
 #>   <int>     <int> <chr>            <chr>                                        
-#> 1     1         1 Scene Directions [Scene: IYNWQ IYNWQ, everyone is there.]     
-#> 2     1         2 IYNWQ IYNWQ      Oh, IYNWQ, IYNWQ, is it okay if I bring some…
-#> 3     1         3 IYNWQ IYNWQ      Yeah.                                        
-#> 4     1         4 IYNWQ IYNWQ      Sure. Yeah.                                  
-#> 5     1         5 IYNWQ IYNWQ      So, who's the guy?
+#> 1     1         1 Scene Directions [Scene: IYNWQ ZVCCI, everyone is there.]     
+#> 2     1         2 CCBTU QNLAM      Oh, FXZPU, JZKUZ, is it okay if I bring some…
+#> 3     1         3 UTNHH TFXGJ      Yeah.                                        
+#> 4     1         4 FXZPU TFXGJ      Sure. Yeah.                                  
+#> 5     1         5 JYZIE QLCZI      So, who's the guy?
 ```
 
 If the quantity of text being redacted is large, and documents are
@@ -211,11 +211,11 @@ auto_replace(
 #>   If                                                           From  To    POS  
 #>   <chr>                                                        <chr> <chr> <chr>
 #> 1 [Scene: Central Perk, everyone is there.]                    Cent… 59    ""   
-#> 2 [Scene: Central Perk, everyone is there.]                    Perk  59    ""   
-#> 3 Phoebe Buffay                                                Phoe… 59    ""   
-#> 4 Phoebe Buffay                                                Buff… 59    ""   
-#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  59    ""   
-#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   59    ""
+#> 2 [Scene: Central Perk, everyone is there.]                    Perk  94    ""   
+#> 3 Phoebe Buffay                                                Phoe… 18    ""   
+#> 4 Phoebe Buffay                                                Buff… 42    ""   
+#> 5 Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  40    ""   
+#> 6 Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   93    ""
 ```
 
 With the added benefit the functional representation tracks how many of

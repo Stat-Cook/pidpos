@@ -143,10 +143,10 @@ generate five-character replacements drawn from upper-case letters:</p>
 <span><span class="co">#&gt;   If                                                           From  To    POS  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                    Cent… IYNWQ <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  IYNWQ <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… IYNWQ <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… IYNWQ <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  IYNWQ <span style="color: #949494;">""</span></span></span></code></pre>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  ZVCCI <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… CCBTU <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… QNLAM <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  FXZPU <span style="color: #949494;">""</span></span></span></code></pre>
 <p>The resulting <code>updated_replacement_rules</code> can then be used
 alongside the original data in the <code><a href="../reference/redact.html">redact()</a></code> function to
 adjust the data:</p>
@@ -158,11 +158,11 @@ adjust the data:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 4</span></span></span>
 <span><span class="co">#&gt;   scene utterance speaker          text                                         </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions [Scene: IYNWQ IYNWQ, everyone is there.]     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 IYNWQ IYNWQ      Oh, IYNWQ, IYNWQ, is it okay if I bring some…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 IYNWQ IYNWQ      Yeah.                                        </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 IYNWQ IYNWQ      Sure. Yeah.                                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1         5 IYNWQ IYNWQ      So, who's the guy?</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1         1 Scene Directions [Scene: IYNWQ ZVCCI, everyone is there.]     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     1         2 CCBTU QNLAM      Oh, FXZPU, JZKUZ, is it okay if I bring some…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     1         3 UTNHH TFXGJ      Yeah.                                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     1         4 FXZPU TFXGJ      Sure. Yeah.                                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     1         5 JYZIE QLCZI      So, who's the guy?</span></span></code></pre></div>
 <p>If the quantity of text being redacted is large, and documents are
 regularly repeated, the user may wish to parse the replacement rules
 into a caching redaction function:</p>
@@ -239,11 +239,11 @@ same way as the deterministic function:</p>
 <span><span class="co">#&gt;   If                                                           From  To    POS  </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> [Scene: Central Perk, everyone is there.]                    Cent… 59    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  59    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… 59    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… 59    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  59    <span style="color: #949494;">""</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   59    <span style="color: #949494;">""</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> [Scene: Central Perk, everyone is there.]                    Perk  94    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Phoebe Buffay                                                Phoe… 18    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Phoebe Buffay                                                Buff… 42    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Ross  40    <span style="color: #949494;">""</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Oh, Ross, Mon, is it okay if I bring someone to your parent… Mon   93    <span style="color: #949494;">""</span></span></span></code></pre></div>
 <p>With the added benefit the functional representation tracks how many
 of the allowed values have been taken:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
