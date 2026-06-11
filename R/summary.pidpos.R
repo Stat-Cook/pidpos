@@ -16,7 +16,7 @@ most_common <- function(cnt, names) {
 #'   \item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
 #'   \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
 #' }
-#' 
+#'
 #' @examples
 #' data(presidio_text)
 #' example.data <- presidio_text[32:35, ]
@@ -33,7 +33,7 @@ most_common <- function(cnt, names) {
 #' @importFrom purrr map
 #' @importFrom stringr str_detect str_extract_all
 #' @exportS3Method
-#' 
+#'
 #'
 #' @seealso [pidpos]
 summary.pidpos <- function(object, ...) {
