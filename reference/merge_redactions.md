@@ -21,3 +21,7 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 - preprocess:
 
   A function of preprocessing steps to be applied to the text columns.
+
+## Value
+
+A data frame of redacted data

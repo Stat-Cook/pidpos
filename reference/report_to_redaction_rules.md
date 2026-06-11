@@ -22,7 +22,7 @@ report_to_redaction_rules(report, path = NULL, include_context = FALSE)
 
 - include_context:
 
-  Binary-flag. If True, adds a `Context` column giving a subset of the
+  Logical. If `TRUE`, adds a `Context` column giving a subset of the
   sentence being redacted around the token.
 
 ## Value

@@ -21,7 +21,7 @@ redact(object, redacter, in_batches = TRUE, ...)
 
 - in_batches:
 
-  Boolean flag - if True the supplied data will be processed in chunks.
+  Logical. If `TRUE` the supplied data will be processed in chunks.
 
 - ...:
 
