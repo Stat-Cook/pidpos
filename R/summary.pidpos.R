@@ -16,13 +16,24 @@ most_common <- function(cnt, names) {
 #'   \item Unique Cases of Proper Nouns - the number of unique sentences with proper nouns in the column
 #'   \item Most Common Proper Noun Sentence - the most commonly occurring sentence containing proper nouns.
 #' }
+#' 
+#' @example
+#' data(presidio_text)
+#' example.data <- presidio_text[32:35, ]
 #'
+#' # Using regex_factory for illustration; for real PID detection
+#' # the udpipe or spaCy taggers are recommended.
+#' regex_tagger <- regex_factory()
+#'
+#' report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x)
+#' summary(report)
 #'
 #' @importFrom dplyr distinct bind_rows summarise
 #' @importFrom dplyr n
 #' @importFrom purrr map
 #' @importFrom stringr str_detect str_extract_all
 #' @exportS3Method
+#' 
 #'
 #' @seealso [pidpos]
 summary.pidpos <- function(object, ...) {
@@ -34,7 +45,7 @@ summary.pidpos <- function(object, ...) {
   map(
     affected.cols,
     ~ object |>
-      filter(str_detect(`Affected Columns`, .x)) |>
+      dplyr::filter(str_detect(`Affected Columns`, .x)) |>
       distinct(Sentence, Repeats) |>
       summarise(
         `Column` = .x,
