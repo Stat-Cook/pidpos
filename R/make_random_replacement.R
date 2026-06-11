@@ -5,7 +5,7 @@
 #'
 #' @param replacement_size The size of the replacement (number of characters in each replacement).
 #' @param replacement_space The space from which to sample replacements (default is `LETTERS`).
-#' @param all If `TRUE`, every value in `To` gets a unique repalcement.  If `FALSE`, replacements are reused.
+#' @param all If `TRUE`, every value in `To` gets a unique replacement.  If `FALSE`, replacements are reused.
 #' @param elevate_warnings If `TRUE`, warnings are boosted to errors.
 #'
 #' @return `function`
