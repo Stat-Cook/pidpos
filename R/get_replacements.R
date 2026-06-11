@@ -27,7 +27,7 @@ key_lookup <- function(object, key) {
 }
 
 #' @rdname get_replacements
-#' @return TRUE if `value` is in object
+#' @return The key that was pointed to by `value`
 #' @export
 value_lookup <- function(object, value) {
   cache <- get_replacement_cache(object)
