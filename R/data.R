@@ -121,3 +121,18 @@ NULL
 #' }
 #'
 "presidio_tags"
+
+
+#' Default PID regex patterns
+#'
+#' A data frame of regular expressions used by [regex_factory()] to detect
+#' common patterns of personally identifiable data.
+#'
+#' @format A data frame with 3 columns:
+#' \describe{
+#'   \item{type}{The category of PID (e.g. `"email"`, `"phone"`, `"date"`).}
+#'   \item{pattern}{A Perl-compatible regular expression.}
+#'   \item{description}{A human-readable description of what the pattern matches.}
+#' }
+#' @seealso [regex_factory()]
+"pid_patterns"
