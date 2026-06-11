@@ -69,13 +69,18 @@ print.ConsistentMapper <- function(x, ...) {
 #' The functionality automates reacalling of the function to avoid collision with existing
 #' replacements, and can toggle between ...
 #'
-#' @param encoder The function to wrap with signature `function()`
+#' @param encoder The function to wrap with signature `function(x)`
 #' @param max_values The maximum number of replacements your encoder can produce
 #' @param all Boolean flag.  If `TRUE` every key replaced gets its own value.  NB:
 #' at present this results in the key stored  having a number appended e.g.
 #' "bob" stored as "bob.1"
 #' @param elevate_warnings If true, cause warnings to raise as errors.
 #'
+#' @examples
+#' 
+#' numeric_encoder <- function() paste0(sample(0:9,, 10), collapse="")
+#' mapper <- make_replacement_function(numeric_encoder, 1000)
+#' 
 #' @return A function with the signature \code{function(x)} that takes a
 #'   vector and returns a character vector of replacements the same
 #'   length as \code{x}.
