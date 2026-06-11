@@ -7,13 +7,13 @@
 #'
 #' @return A function with signature \code{function(doc, doc_id)} that returns
 #'   a data frame with columns: doc_id, type, match, start, end, doc.
-#' 
-#' @examples 
-#' 
+#'
+#' @examples
+#'
 #' regex_tagger <- regex_factory()
-#' 
-#' regex_tagger(c('Send a message to DonaldDuck@gmail.com', 'Arrange the meeting for 2024-07-01'))
-#' 
+#'
+#' regex_tagger(c("Send a message to DonaldDuck@gmail.com", "Arrange the meeting for 2024-07-01"))
+#'
 #' @export
 regex_factory <- function(patterns = pid_patterns) {
   #  Validate patterns at construction time
