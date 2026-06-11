@@ -58,7 +58,7 @@ report_to_redaction_rules <- function(report, path = NULL,
       To = .data$Token,
       POS = if (pos) .data$POS else ""
     ) |>
-    select(If, From, To, POS) |>
+    select(all_of(c("If", "From", "To", "POS"))) |>
     filter(!is.na(If)) |>
     distinct()
 
