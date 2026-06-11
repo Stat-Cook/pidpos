@@ -5,6 +5,7 @@
 #' `set_SPACY_CONDA_ENV()` sets the global environment variable.
 #'
 #' @param env_name The name of the conda environment to use.
+#' @return The name of the conda environment `pidpos` is using
 #' @name spacy-conda-env
 #' @export
 get_pidpos_conda <- function() {
@@ -16,12 +17,14 @@ get_pidpos_conda <- function() {
 #' @export
 set_pidpos_conda <- function(env_name) {
   pidpos_env$conda_env <- env_name
+  pidpos_env$conda_env
 }
 
 #' @rdname spacy-conda-env
 #' @export
 set_SPACY_CONDA_ENV <- function(env_name) {
   Sys.setenv(SPACY_CONDA_ENV = env_name)
+  get_pidpos_conda()
 }
 
 

@@ -57,15 +57,21 @@ rule_logic <- function(df) {
 #' Convert a `data.frame` of redaction rules into a function that can be applied to a character vector.
 #'
 #' @param rules.frm A data.frame with columns `If`, `From` and `To`.
+#' 
+#' @return A function with signature `function(vec)` which applies the rules in 
+#'    `rules.frm` to each element of `vec`.
 #'
 #' @importFrom purrr reduce map2
 #' @examples
-#' \dontrun{
-#' data(the_one_in_massapequa)
-#' example.data <- head(the_one_in_massapequa)
-#'
-#' raw_rules <- pidpos(example.data) |>
-#'   report_to_redaction_rules()
+#' data(presidio_text)
+#' example.data <-  presidio_text[32:35,]
+#' 
+#' # Using regex_factory for illustration; for real PID detection
+#' # the udpipe or spaCy taggers are recommended.
+#' regex_tagger <- regex_factory()
+#' report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)#'
+#' 
+#' raw_rules <- report_to_redaction_rules(report)
 #'
 #' redaction_rules <- auto_replace(raw_rules,
 #'   replacement_func = make_random_replacement()
@@ -73,8 +79,8 @@ rule_logic <- function(df) {
 #'
 #' redaction_func <- redaction_function_factory(redaction_rules)
 #'
-#' redaction_func(example.data)
-#' }
+#' redaction_func(example.data$Document)
+#' 
 #' @export
 redaction_function_factory <- function(rules.frm) {
   grouped <- dplyr::group_split(rules.frm, .data$If)

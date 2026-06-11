@@ -76,6 +76,9 @@ print.ConsistentMapper <- function(x, ...) {
 #' "bob" stored as "bob.1"
 #' @param elevate_warnings If true, cause warnings to raise as errors.
 #'
+#' @return A function with the signature \code{function(x)} that takes a
+#'   vector and returns a character vector of replacements the same
+#'   length as \code{x}.  
 #' @export
 make_replacement_function <- function(encoder, max_values,
                                       all = FALSE,

@@ -4,7 +4,9 @@
 #'
 #' @param object The data structure to be redacted
 #' @param redaction_func A closure/ function to be applied.
-#'
+#' 
+#' @return A redacted equivalent of object - either a vector or data frame with all character columns 
+#'  converted,
 #'
 #' @keywords internal
 redact_internal <- function(object, redaction_func) {

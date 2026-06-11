@@ -3,6 +3,8 @@
 #' @param fun The function to read files with the specified extension.
 #'   The function should take a file path as its first argument and return a data frame.
 #' @param ext The file extension (e.g., "csv", "txt").
+#' 
+#' @return TRUE 
 #'
 #' @export
 #'

@@ -12,12 +12,14 @@
 NULL
 
 #' @rdname get_replacements
+#' @return A named list of the form `list(original = replacement, ...)`
 #' @export
 get_replacement_cache <- function(object) {
   attr(object, "mapper")$cache
 }
 
 #' @rdname get_replacements
+#' @return The replacement string for `key`, or `NULL` if not found.
 #' @export
 key_lookup <- function(object, key) {
   cache <- get_replacement_cache(object)
@@ -25,6 +27,7 @@ key_lookup <- function(object, key) {
 }
 
 #' @rdname get_replacements
+#' @return TRUE if `value` is in object
 #' @export
 value_lookup <- function(object, value) {
   cache <- get_replacement_cache(object)
