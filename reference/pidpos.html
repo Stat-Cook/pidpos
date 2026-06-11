@@ -134,8 +134,10 @@ or force environment only models.</p>
 <span class="r-in"><span><span class="co"># the udpipe or spaCy taggers are recommended.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">regex_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="regex_factory.html">regex_factory</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">pidpos</span><span class="op">(</span><span class="va">example.data</span>, tagger<span class="op">=</span><span class="va">regex_tagger</span>, </span></span>
-<span class="r-in"><span>                 filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pidpos</span><span class="op">(</span><span class="va">example.data</span>,</span></span>
+<span class="r-in"><span>  tagger <span class="op">=</span> <span class="va">regex_tagger</span>,</span></span>
+<span class="r-in"><span>  filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ID                  Token POS   StartIndex EndIndex Sentence Document Repeats</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;glue&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>

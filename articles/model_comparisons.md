@@ -33,27 +33,27 @@ presidio_tags |>
   group_by(entity_type) |>
   summarise(Frequency = n()) |>
   arrange(desc(Frequency))
-#> # A tibble: 17 × 2
-#>    entity_type       Frequency
-#>    <chr>                 <int>
-#>  1 PERSON                  857
-#>  2 STREET_ADDRESS          598
-#>  3 GPE                     411
-#>  4 ORGANIZATION            250
-#>  5 CREDIT_CARD             136
-#>  6 DATE_TIME               119
-#>  7 PHONE_NUMBER             92
-#>  8 TITLE                    92
-#>  9 AGE                      74
-#> 10 NRP                      55
-#> 11 EMAIL_ADDRESS            49
-#> 12 DOMAIN_NAME              37
-#> 13 ZIP_CODE                 37
-#> 14 IBAN_CODE                21
-#> 15 US_SSN                   16
-#> 16 IP_ADDRESS               14
-#> 17 US_DRIVER_LICENSE         5
 ```
+
+| entity_type       | Frequency |
+|:------------------|----------:|
+| PERSON            |       857 |
+| STREET_ADDRESS    |       598 |
+| GPE               |       411 |
+| ORGANIZATION      |       250 |
+| CREDIT_CARD       |       136 |
+| DATE_TIME         |       119 |
+| PHONE_NUMBER      |        92 |
+| TITLE             |        92 |
+| AGE               |        74 |
+| NRP               |        55 |
+| EMAIL_ADDRESS     |        49 |
+| DOMAIN_NAME       |        37 |
+| ZIP_CODE          |        37 |
+| IBAN_CODE         |        21 |
+| US_SSN            |        16 |
+| IP_ADDRESS        |        14 |
+| US_DRIVER_LICENSE |         5 |
 
 In these trials, we limit the definition of personally identifiable data
 to a subset of entity types:
@@ -228,15 +228,17 @@ sequences e.g.:
 baseline_comparison |>
   summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
-#>      Model Sensitivity Precision   F2
-#> 1       LG        85.7      70.7 82.2
-#> 2      TRF        68.9      63.9 67.8
-#> 3      EWT        70.6      74.4 71.3
-#> 4      GUM        71.4      71.4 71.4
-#> 5    LINES        60.5      79.2 63.5
-#> 6    Regex        17.6      84.4 20.9
-#> 7 Ensemble        96.8      72.8 90.8
 ```
+
+| Model    | Sensitivity | Precision |   F2 |
+|:---------|------------:|----------:|-----:|
+| LG       |        85.7 |      70.7 | 82.2 |
+| TRF      |        68.9 |      63.9 | 67.8 |
+| EWT      |        70.6 |      74.4 | 71.3 |
+| GUM      |        71.4 |      71.4 | 71.4 |
+| LINES    |        60.5 |      79.2 | 63.5 |
+| Regex    |        17.6 |      84.4 | 20.9 |
+| Ensemble |        96.8 |      72.8 | 90.8 |
 
 Amongst the out-of-the-box methods, the **spaCy** `LG` model shows the
 best sensitivity and F2 score, while the **udpipe** and **REGEX**
@@ -249,17 +251,17 @@ the `LG` model.
 ``` r
 
 summarize_model_by_entity(baseline_comparison)
-#> # A tibble: 7 × 7
-#>   Model    CREDIT_CARD PERSON STREET_ADDRESS PHONE_NUMBER   GPE EMAIL_ADDRESS
-#>   <fct>          <dbl>  <dbl>          <dbl>        <dbl> <dbl>         <dbl>
-#> 1 LG              98.5   93.3           84.7         83.7  73.7           6.4
-#> 2 TRF             19.9   93.6           60           18.5  71             0  
-#> 3 EWT              0     87.9           70.3         20.7  81.6          29.8
-#> 4 GUM              0     84.8           68.1         48.9  83.5          76.6
-#> 5 LINES            0     74.6           61.6          5.4  69            53.2
-#> 6 Regex           61.8    0             31           20.7   0           100  
-#> 7 Ensemble       100     97.7           96.1         91.3  95.3         100
 ```
+
+| Model    | CREDIT_CARD | PERSON | STREET_ADDRESS | PHONE_NUMBER |  GPE | EMAIL_ADDRESS |
+|:---------|------------:|-------:|---------------:|-------------:|-----:|--------------:|
+| LG       |        98.5 |   93.3 |           84.7 |         83.7 | 73.7 |           6.4 |
+| TRF      |        19.9 |   93.6 |           60.0 |         18.5 | 71.0 |           0.0 |
+| EWT      |         0.0 |   87.9 |           70.3 |         20.7 | 81.6 |          29.8 |
+| GUM      |         0.0 |   84.8 |           68.1 |         48.9 | 83.5 |          76.6 |
+| LINES    |         0.0 |   74.6 |           61.6 |          5.4 | 69.0 |          53.2 |
+| Regex    |        61.8 |    0.0 |           31.0 |         20.7 |  0.0 |         100.0 |
+| Ensemble |       100.0 |   97.7 |           96.1 |         91.3 | 95.3 |         100.0 |
 
 At the entity level we can see that the `LG` model has good performance
 at detecting peoples names (PERSON) and sensitive information
@@ -289,15 +291,17 @@ equivalent size of white space (to keep entity character spans accurate)
 preprocessed_comparison |>
   summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
-#>      Model Sensitivity Precision   F2
-#> 1       LG        89.2      71.7 85.1
-#> 2      TRF        70.1      63.1 68.6
-#> 3      EWT        67.3      70.3 67.9
-#> 4      GUM        68.1      67.8 68.0
-#> 5    LINES        59.2      77.4 62.1
-#> 6    Regex        20.0      96.2 23.8
-#> 7 Ensemble        97.9      71.5 91.1
 ```
+
+| Model    | Sensitivity | Precision |   F2 |
+|:---------|------------:|----------:|-----:|
+| LG       |        89.2 |      71.7 | 85.1 |
+| TRF      |        70.1 |      63.1 | 68.6 |
+| EWT      |        67.3 |      70.3 | 67.9 |
+| GUM      |        68.1 |      67.8 | 68.0 |
+| LINES    |        59.2 |      77.4 | 62.1 |
+| Regex    |        20.0 |      96.2 | 23.8 |
+| Ensemble |        97.9 |      71.5 | 91.1 |
 
 This process resulted in an improvement in F2 score for the **spaCy**
 models, and a reduction for the **udpipe** families.
@@ -305,17 +309,17 @@ models, and a reduction for the **udpipe** families.
 ``` r
 
 summarize_model_by_entity(preprocessed_comparison)
-#> # A tibble: 7 × 7
-#>   Model    CREDIT_CARD PERSON PHONE_NUMBER STREET_ADDRESS   GPE EMAIL_ADDRESS
-#>   <fct>          <dbl>  <dbl>        <dbl>          <dbl> <dbl>         <dbl>
-#> 1 LG              98.5   95.1         90.2           87.9  83.9           8.5
-#> 2 TRF             25     94.2         12             61.9  73.3           0  
-#> 3 EWT              0     89.6          0             59.4  84.7          31.9
-#> 4 GUM              0     86.2          3.3           60.7  86.7          83  
-#> 5 LINES            0     76.1          0             54.5  72.5          53.2
-#> 6 Regex           61.8    0            5.4           41.1   0           100  
-#> 7 Ensemble       100     98.3         92.4           98.5  95.7         100
 ```
+
+| Model    | CREDIT_CARD | PERSON | PHONE_NUMBER | STREET_ADDRESS |  GPE | EMAIL_ADDRESS |
+|:---------|------------:|-------:|-------------:|---------------:|-----:|--------------:|
+| LG       |        98.5 |   95.1 |         90.2 |           87.9 | 83.9 |           8.5 |
+| TRF      |        25.0 |   94.2 |         12.0 |           61.9 | 73.3 |           0.0 |
+| EWT      |         0.0 |   89.6 |          0.0 |           59.4 | 84.7 |          31.9 |
+| GUM      |         0.0 |   86.2 |          3.3 |           60.7 | 86.7 |          83.0 |
+| LINES    |         0.0 |   76.1 |          0.0 |           54.5 | 72.5 |          53.2 |
+| Regex    |        61.8 |    0.0 |          5.4 |           41.1 |  0.0 |         100.0 |
+| Ensemble |       100.0 |   98.3 |         92.4 |           98.5 | 95.7 |         100.0 |
 
 At the entity level - we can see for the `LG` model that STREET_ADRESS
 and GPE sensitivity have increased quite strongly and, for the
@@ -343,15 +347,17 @@ text converted to lower case, e.g.:
 lower_comparison |>
   summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
-#>      Model Sensitivity Precision   F2
-#> 1       LG        76.2      72.0 75.3
-#> 2      TRF        63.4      60.6 62.8
-#> 3      EWT         3.4      76.2  4.2
-#> 4      GUM         2.2      70.8  2.7
-#> 5    LINES         1.3      28.3  1.6
-#> 6    Regex        17.6      84.4 20.9
-#> 7 Ensemble        80.1      72.8 78.5
 ```
+
+| Model    | Sensitivity | Precision |   F2 |
+|:---------|------------:|----------:|-----:|
+| LG       |        76.2 |      72.0 | 75.3 |
+| TRF      |        63.4 |      60.6 | 62.8 |
+| EWT      |         3.4 |      76.2 |  4.2 |
+| GUM      |         2.2 |      70.8 |  2.7 |
+| LINES    |         1.3 |      28.3 |  1.6 |
+| Regex    |        17.6 |      84.4 | 20.9 |
+| Ensemble |        80.1 |      72.8 | 78.5 |
 
 While all taggers (excluding the `Regex`) see a reduction in
 Sensitivity, this is glaringly true for the **UDPipe** models. The
@@ -362,17 +368,17 @@ sensitivity it would be at the cost of precision.
 ``` r
 
 summarize_model_by_entity(lower_comparison)
-#> # A tibble: 7 × 7
-#>   Model    CREDIT_CARD STREET_ADDRESS PHONE_NUMBER PERSON   GPE EMAIL_ADDRESS
-#>   <fct>          <dbl>          <dbl>        <dbl>  <dbl> <dbl>         <dbl>
-#> 1 LG              98.5           90.6         88     76    41.6             0
-#> 2 TRF             19.1           45.9         10.9   91.9  71.4             0
-#> 3 EWT              0              3.2          0      4     5.9             0
-#> 4 GUM              0              4.2          9.8    0.6   1.2             0
-#> 5 LINES            0              0.3          0      2.3   1.6             0
-#> 6 Regex           61.8           31           20.7    0     0             100
-#> 7 Ensemble       100             92.9         90.2   76.6  42.7           100
 ```
+
+| Model    | CREDIT_CARD | STREET_ADDRESS | PHONE_NUMBER | PERSON |  GPE | EMAIL_ADDRESS |
+|:---------|------------:|---------------:|-------------:|-------:|-----:|--------------:|
+| LG       |        98.5 |           90.6 |         88.0 |   76.0 | 41.6 |             0 |
+| TRF      |        19.1 |           45.9 |         10.9 |   91.9 | 71.4 |             0 |
+| EWT      |         0.0 |            3.2 |          0.0 |    4.0 |  5.9 |             0 |
+| GUM      |         0.0 |            4.2 |          9.8 |    0.6 |  1.2 |             0 |
+| LINES    |         0.0 |            0.3 |          0.0 |    2.3 |  1.6 |             0 |
+| Regex    |        61.8 |           31.0 |         20.7 |    0.0 |  0.0 |           100 |
+| Ensemble |       100.0 |           92.9 |         90.2 |   76.6 | 42.7 |           100 |
 
 At the entity level we first see that the **udpipe** models show poor
 sensitivity across all categories. Interestingly, the **spaCy** models
@@ -402,15 +408,17 @@ automatically cased via the
 titlecase_comparison |>
   summarize_model_metrics() |>
   mutate(across(where(is.numeric), ~ round(.x, 1)))
-#>      Model Sensitivity Precision   F2
-#> 1       LG        77.6      62.4 74.0
-#> 2      TRF        69.7      64.7 68.6
-#> 3      EWT        75.6      43.8 66.0
-#> 4      GUM        76.4      33.4 60.8
-#> 5    LINES        63.2      50.5 60.2
-#> 6    Regex        17.6      84.4 20.9
-#> 7 Ensemble        95.6      51.8 81.8
 ```
+
+| Model    | Sensitivity | Precision |   F2 |
+|:---------|------------:|----------:|-----:|
+| LG       |        77.6 |      62.4 | 74.0 |
+| TRF      |        69.7 |      64.7 | 68.6 |
+| EWT      |        75.6 |      43.8 | 66.0 |
+| GUM      |        76.4 |      33.4 | 60.8 |
+| LINES    |        63.2 |      50.5 | 60.2 |
+| Regex    |        17.6 |      84.4 | 20.9 |
+| Ensemble |        95.6 |      51.8 | 81.8 |
 
 The re-introduction of casing greatly increases the sensitivity of the
 **udpipe** models with a caveat that the precision has greatly reduced.
@@ -422,17 +430,17 @@ there is improvement to be had.
 ``` r
 
 summarize_model_by_entity(titlecase_comparison)
-#> # A tibble: 7 × 7
-#>   Model    PERSON STREET_ADDRESS PHONE_NUMBER   GPE CREDIT_CARD EMAIL_ADDRESS
-#>   <fct>     <dbl>          <dbl>        <dbl> <dbl>       <dbl>         <dbl>
-#> 1 LG         87.3           82.8         79.3  67.8        43.4           0  
-#> 2 TRF        92.4           62.2         17.4  68.6        33.8           0  
-#> 3 EWT        93.3           75           27.2  88.2         0            34  
-#> 4 GUM        92.7           70.2         54.3  87.1         2.9          85.1
-#> 5 LINES      77.4           63.2         18.5  69.4         0            66  
-#> 6 Regex       0             31           20.7   0          61.8         100  
-#> 7 Ensemble   98.6           95.6         89.1  96.1        80.1         100
 ```
+
+| Model    | PERSON | STREET_ADDRESS | PHONE_NUMBER |  GPE | CREDIT_CARD | EMAIL_ADDRESS |
+|:---------|-------:|---------------:|-------------:|-----:|------------:|--------------:|
+| LG       |   87.3 |           82.8 |         79.3 | 67.8 |        43.4 |           0.0 |
+| TRF      |   92.4 |           62.2 |         17.4 | 68.6 |        33.8 |           0.0 |
+| EWT      |   93.3 |           75.0 |         27.2 | 88.2 |         0.0 |          34.0 |
+| GUM      |   92.7 |           70.2 |         54.3 | 87.1 |         2.9 |          85.1 |
+| LINES    |   77.4 |           63.2 |         18.5 | 69.4 |         0.0 |          66.0 |
+| Regex    |    0.0 |           31.0 |         20.7 |  0.0 |        61.8 |         100.0 |
+| Ensemble |   98.6 |           95.6 |         89.1 | 96.1 |        80.1 |         100.0 |
 
 At the entity level, if we compare to the lower case work we note that
 the `LG` taggers sensitivity to the CREDIT_CARD class has dropped on

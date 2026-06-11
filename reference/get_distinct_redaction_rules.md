@@ -38,10 +38,14 @@ example_data_tail <- tail(presidio_text, 50)
 # the udpipe or spaCy taggers are recommended.
 
 regex_tagger <- regex_factory()
-report1 <- pidpos(example_data_head, tagger=regex_tagger, 
-                 filter_func = function(x) x)
-report2 <- pidpos(example_data_tail, tagger=regex_tagger, 
-                 filter_func = function(x) x)
+report1 <- pidpos(example_data_head,
+  tagger = regex_tagger,
+  filter_func = function(x) x
+)
+report2 <- pidpos(example_data_tail,
+  tagger = regex_tagger,
+  filter_func = function(x) x
+)
 
 combined <- list(report1, report2)
 get_distinct_redaction_rules(combined)

@@ -99,27 +99,155 @@ total of 2,863 named entities. The entity break down is:</p>
 <code class="sourceCode R"><span><span class="va">presidio_tags</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">entity_type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>Frequency <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">Frequency</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 2</span></span></span>
-<span><span class="co">#&gt;    entity_type       Frequency</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> PERSON                  857</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> STREET_ADDRESS          598</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> GPE                     411</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ORGANIZATION            250</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> CREDIT_CARD             136</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> DATE_TIME               119</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> PHONE_NUMBER             92</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> TITLE                    92</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> AGE                      74</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> NRP                      55</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> EMAIL_ADDRESS            49</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> DOMAIN_NAME              37</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> ZIP_CODE                 37</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> IBAN_CODE                21</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> US_SSN                   16</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> IP_ADDRESS               14</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> US_DRIVER_LICENSE         5</span></span></code></pre></div>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">Frequency</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+entity_type
+</th>
+<th style="text-align:right;">
+Frequency
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PERSON
+</td>
+<td style="text-align:right;">
+857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STREET_ADDRESS
+</td>
+<td style="text-align:right;">
+598
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GPE
+</td>
+<td style="text-align:right;">
+411
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ORGANIZATION
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CREDIT_CARD
+</td>
+<td style="text-align:right;">
+136
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATE_TIME
+</td>
+<td style="text-align:right;">
+119
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PHONE_NUMBER
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TITLE
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AGE
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NRP
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EMAIL_ADDRESS
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DOMAIN_NAME
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZIP_CODE
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IBAN_CODE
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+US_SSN
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IP_ADDRESS
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+US_DRIVER_LICENSE
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
 <p>In these trials, we limit the definition of personally identifiable
 data to a subset of entity types:</p>
 <ul>
@@ -306,15 +434,123 @@ Gelencsér ג€“ go figure)</li>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">baseline_comparison</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      Model Sensitivity Precision   F2</span></span>
-<span><span class="co">#&gt; 1       LG        85.7      70.7 82.2</span></span>
-<span><span class="co">#&gt; 2      TRF        68.9      63.9 67.8</span></span>
-<span><span class="co">#&gt; 3      EWT        70.6      74.4 71.3</span></span>
-<span><span class="co">#&gt; 4      GUM        71.4      71.4 71.4</span></span>
-<span><span class="co">#&gt; 5    LINES        60.5      79.2 63.5</span></span>
-<span><span class="co">#&gt; 6    Regex        17.6      84.4 20.9</span></span>
-<span><span class="co">#&gt; 7 Ensemble        96.8      72.8 90.8</span></span></code></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+Sensitivity
+</th>
+<th style="text-align:right;">
+Precision
+</th>
+<th style="text-align:right;">
+F2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+85.7
+</td>
+<td style="text-align:right;">
+70.7
+</td>
+<td style="text-align:right;">
+82.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+68.9
+</td>
+<td style="text-align:right;">
+63.9
+</td>
+<td style="text-align:right;">
+67.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+70.6
+</td>
+<td style="text-align:right;">
+74.4
+</td>
+<td style="text-align:right;">
+71.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+60.5
+</td>
+<td style="text-align:right;">
+79.2
+</td>
+<td style="text-align:right;">
+63.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+84.4
+</td>
+<td style="text-align:right;">
+20.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+96.8
+</td>
+<td style="text-align:right;">
+72.8
+</td>
+<td style="text-align:right;">
+90.8
+</td>
+</tr>
+</tbody>
+</table>
 <p>Amongst the out-of-the-box methods, the <strong>spaCy</strong>
 <code>LG</code> model shows the best sensitivity and F2 score, while the
 <strong>udpipe</strong> and <strong>REGEX</strong> methods have superior
@@ -323,17 +559,195 @@ precision at the cost of sensitivity.</p>
 shows a marked increase in model performance, achieving over 96%
 sensitivity and precision superior to the <code>LG</code> model.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">baseline_comparison</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
-<span><span class="co">#&gt;   Model    CREDIT_CARD PERSON STREET_ADDRESS PHONE_NUMBER   GPE EMAIL_ADDRESS</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LG              98.5   93.3           84.7         83.7  73.7           6.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> TRF             19.9   93.6           60           18.5  71             0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> EWT              0     87.9           70.3         20.7  81.6          29.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> GUM              0     84.8           68.1         48.9  83.5          76.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES            0     74.6           61.6          5.4  69            53.2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex           61.8    0             31           20.7   0           100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100     97.7           96.1         91.3  95.3         100</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">baseline_comparison</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+CREDIT_CARD
+</th>
+<th style="text-align:right;">
+PERSON
+</th>
+<th style="text-align:right;">
+STREET_ADDRESS
+</th>
+<th style="text-align:right;">
+PHONE_NUMBER
+</th>
+<th style="text-align:right;">
+GPE
+</th>
+<th style="text-align:right;">
+EMAIL_ADDRESS
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+93.3
+</td>
+<td style="text-align:right;">
+84.7
+</td>
+<td style="text-align:right;">
+83.7
+</td>
+<td style="text-align:right;">
+73.7
+</td>
+<td style="text-align:right;">
+6.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+19.9
+</td>
+<td style="text-align:right;">
+93.6
+</td>
+<td style="text-align:right;">
+60.0
+</td>
+<td style="text-align:right;">
+18.5
+</td>
+<td style="text-align:right;">
+71.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+87.9
+</td>
+<td style="text-align:right;">
+70.3
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+81.6
+</td>
+<td style="text-align:right;">
+29.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+84.8
+</td>
+<td style="text-align:right;">
+68.1
+</td>
+<td style="text-align:right;">
+48.9
+</td>
+<td style="text-align:right;">
+83.5
+</td>
+<td style="text-align:right;">
+76.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+74.6
+</td>
+<td style="text-align:right;">
+61.6
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+69.0
+</td>
+<td style="text-align:right;">
+53.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+31.0
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+<td style="text-align:right;">
+97.7
+</td>
+<td style="text-align:right;">
+96.1
+</td>
+<td style="text-align:right;">
+91.3
+</td>
+<td style="text-align:right;">
+95.3
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+</tbody>
+</table>
 <p>At the entity level we can see that the <code>LG</code> model has
 good performance at detecting peoples names (PERSON) and sensitive
 information (CREDIT_CARD) with poor performance for EMAIL_ADDRESS. The
@@ -368,30 +782,316 @@ go figure</li>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">preprocessed_comparison</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      Model Sensitivity Precision   F2</span></span>
-<span><span class="co">#&gt; 1       LG        89.2      71.7 85.1</span></span>
-<span><span class="co">#&gt; 2      TRF        70.1      63.1 68.6</span></span>
-<span><span class="co">#&gt; 3      EWT        67.3      70.3 67.9</span></span>
-<span><span class="co">#&gt; 4      GUM        68.1      67.8 68.0</span></span>
-<span><span class="co">#&gt; 5    LINES        59.2      77.4 62.1</span></span>
-<span><span class="co">#&gt; 6    Regex        20.0      96.2 23.8</span></span>
-<span><span class="co">#&gt; 7 Ensemble        97.9      71.5 91.1</span></span></code></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+Sensitivity
+</th>
+<th style="text-align:right;">
+Precision
+</th>
+<th style="text-align:right;">
+F2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+89.2
+</td>
+<td style="text-align:right;">
+71.7
+</td>
+<td style="text-align:right;">
+85.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+70.1
+</td>
+<td style="text-align:right;">
+63.1
+</td>
+<td style="text-align:right;">
+68.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+67.3
+</td>
+<td style="text-align:right;">
+70.3
+</td>
+<td style="text-align:right;">
+67.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+68.1
+</td>
+<td style="text-align:right;">
+67.8
+</td>
+<td style="text-align:right;">
+68.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+59.2
+</td>
+<td style="text-align:right;">
+77.4
+</td>
+<td style="text-align:right;">
+62.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+96.2
+</td>
+<td style="text-align:right;">
+23.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+97.9
+</td>
+<td style="text-align:right;">
+71.5
+</td>
+<td style="text-align:right;">
+91.1
+</td>
+</tr>
+</tbody>
+</table>
 <p>This process resulted in an improvement in F2 score for the
 <strong>spaCy</strong> models, and a reduction for the
 <strong>udpipe</strong> families.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">preprocessed_comparison</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
-<span><span class="co">#&gt;   Model    CREDIT_CARD PERSON PHONE_NUMBER STREET_ADDRESS   GPE EMAIL_ADDRESS</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LG              98.5   95.1         90.2           87.9  83.9           8.5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> TRF             25     94.2         12             61.9  73.3           0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> EWT              0     89.6          0             59.4  84.7          31.9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> GUM              0     86.2          3.3           60.7  86.7          83  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES            0     76.1          0             54.5  72.5          53.2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex           61.8    0            5.4           41.1   0           100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100     98.3         92.4           98.5  95.7         100</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">preprocessed_comparison</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+CREDIT_CARD
+</th>
+<th style="text-align:right;">
+PERSON
+</th>
+<th style="text-align:right;">
+PHONE_NUMBER
+</th>
+<th style="text-align:right;">
+STREET_ADDRESS
+</th>
+<th style="text-align:right;">
+GPE
+</th>
+<th style="text-align:right;">
+EMAIL_ADDRESS
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+95.1
+</td>
+<td style="text-align:right;">
+90.2
+</td>
+<td style="text-align:right;">
+87.9
+</td>
+<td style="text-align:right;">
+83.9
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+94.2
+</td>
+<td style="text-align:right;">
+12.0
+</td>
+<td style="text-align:right;">
+61.9
+</td>
+<td style="text-align:right;">
+73.3
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+89.6
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+59.4
+</td>
+<td style="text-align:right;">
+84.7
+</td>
+<td style="text-align:right;">
+31.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+86.2
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+60.7
+</td>
+<td style="text-align:right;">
+86.7
+</td>
+<td style="text-align:right;">
+83.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+76.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+54.5
+</td>
+<td style="text-align:right;">
+72.5
+</td>
+<td style="text-align:right;">
+53.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+41.1
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+<td style="text-align:right;">
+98.3
+</td>
+<td style="text-align:right;">
+92.4
+</td>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+95.7
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+</tbody>
+</table>
 <p>At the entity level - we can see for the <code>LG</code> model that
 STREET_ADRESS and GPE sensitivity have increased quite strongly and, for
 the <code>Ensemble</code> model, sensitivity has increased in every
@@ -420,32 +1120,318 @@ gelencsér ג€“ go figure)</li>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lower_comparison</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      Model Sensitivity Precision   F2</span></span>
-<span><span class="co">#&gt; 1       LG        76.2      72.0 75.3</span></span>
-<span><span class="co">#&gt; 2      TRF        63.4      60.6 62.8</span></span>
-<span><span class="co">#&gt; 3      EWT         3.4      76.2  4.2</span></span>
-<span><span class="co">#&gt; 4      GUM         2.2      70.8  2.7</span></span>
-<span><span class="co">#&gt; 5    LINES         1.3      28.3  1.6</span></span>
-<span><span class="co">#&gt; 6    Regex        17.6      84.4 20.9</span></span>
-<span><span class="co">#&gt; 7 Ensemble        80.1      72.8 78.5</span></span></code></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+Sensitivity
+</th>
+<th style="text-align:right;">
+Precision
+</th>
+<th style="text-align:right;">
+F2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+76.2
+</td>
+<td style="text-align:right;">
+72.0
+</td>
+<td style="text-align:right;">
+75.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+63.4
+</td>
+<td style="text-align:right;">
+60.6
+</td>
+<td style="text-align:right;">
+62.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+76.2
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+70.8
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+28.3
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+84.4
+</td>
+<td style="text-align:right;">
+20.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+80.1
+</td>
+<td style="text-align:right;">
+72.8
+</td>
+<td style="text-align:right;">
+78.5
+</td>
+</tr>
+</tbody>
+</table>
 <p>While all taggers (excluding the <code>Regex</code>) see a reduction
 in Sensitivity, this is glaringly true for the <strong>UDPipe</strong>
 models. The <strong>UDPipe</strong> framework relies heavily on proper
 capitalisation to differentiate a proper noun from all nouns, so while
 we could reclaim sensitivity it would be at the cost of precision.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">lower_comparison</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
-<span><span class="co">#&gt;   Model    CREDIT_CARD STREET_ADDRESS PHONE_NUMBER PERSON   GPE EMAIL_ADDRESS</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LG              98.5           90.6         88     76    41.6             0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> TRF             19.1           45.9         10.9   91.9  71.4             0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> EWT              0              3.2          0      4     5.9             0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> GUM              0              4.2          9.8    0.6   1.2             0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES            0              0.3          0      2.3   1.6             0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex           61.8           31           20.7    0     0             100</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble       100             92.9         90.2   76.6  42.7           100</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">lower_comparison</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+CREDIT_CARD
+</th>
+<th style="text-align:right;">
+STREET_ADDRESS
+</th>
+<th style="text-align:right;">
+PHONE_NUMBER
+</th>
+<th style="text-align:right;">
+PERSON
+</th>
+<th style="text-align:right;">
+GPE
+</th>
+<th style="text-align:right;">
+EMAIL_ADDRESS
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+98.5
+</td>
+<td style="text-align:right;">
+90.6
+</td>
+<td style="text-align:right;">
+88.0
+</td>
+<td style="text-align:right;">
+76.0
+</td>
+<td style="text-align:right;">
+41.6
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+19.1
+</td>
+<td style="text-align:right;">
+45.9
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+91.9
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+4.2
+</td>
+<td style="text-align:right;">
+9.8
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2.3
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+31.0
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+<td style="text-align:right;">
+92.9
+</td>
+<td style="text-align:right;">
+90.2
+</td>
+<td style="text-align:right;">
+76.6
+</td>
+<td style="text-align:right;">
+42.7
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+</tbody>
+</table>
 <p>At the entity level we first see that the <strong>udpipe</strong>
 models show poor sensitivity across all categories. Interestingly, the
 <strong>spaCy</strong> models show different levels of resilience to the
@@ -476,15 +1462,123 @@ Gelencsér ג€“ Go Figure)</li>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">titlecase_comparison</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize_model_metrics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      Model Sensitivity Precision   F2</span></span>
-<span><span class="co">#&gt; 1       LG        77.6      62.4 74.0</span></span>
-<span><span class="co">#&gt; 2      TRF        69.7      64.7 68.6</span></span>
-<span><span class="co">#&gt; 3      EWT        75.6      43.8 66.0</span></span>
-<span><span class="co">#&gt; 4      GUM        76.4      33.4 60.8</span></span>
-<span><span class="co">#&gt; 5    LINES        63.2      50.5 60.2</span></span>
-<span><span class="co">#&gt; 6    Regex        17.6      84.4 20.9</span></span>
-<span><span class="co">#&gt; 7 Ensemble        95.6      51.8 81.8</span></span></code></pre></div>
+<span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+Sensitivity
+</th>
+<th style="text-align:right;">
+Precision
+</th>
+<th style="text-align:right;">
+F2
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+77.6
+</td>
+<td style="text-align:right;">
+62.4
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+69.7
+</td>
+<td style="text-align:right;">
+64.7
+</td>
+<td style="text-align:right;">
+68.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+75.6
+</td>
+<td style="text-align:right;">
+43.8
+</td>
+<td style="text-align:right;">
+66.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+76.4
+</td>
+<td style="text-align:right;">
+33.4
+</td>
+<td style="text-align:right;">
+60.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+63.2
+</td>
+<td style="text-align:right;">
+50.5
+</td>
+<td style="text-align:right;">
+60.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+84.4
+</td>
+<td style="text-align:right;">
+20.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+95.6
+</td>
+<td style="text-align:right;">
+51.8
+</td>
+<td style="text-align:right;">
+81.8
+</td>
+</tr>
+</tbody>
+</table>
 <p>The re-introduction of casing greatly increases the sensitivity of
 the <strong>udpipe</strong> models with a caveat that the precision has
 greatly reduced. As a result, the <code>Ensemble</code> model shows a
@@ -492,17 +1586,195 @@ greatly improved Sensitivity and hence a larger F2 score though a
 precision of approx. 50% does indicate for every valid token there is an
 invalid token, highlighting there is improvement to be had.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">titlecase_comparison</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
-<span><span class="co">#&gt;   Model    PERSON STREET_ADDRESS PHONE_NUMBER   GPE CREDIT_CARD EMAIL_ADDRESS</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> LG         87.3           82.8         79.3  67.8        43.4           0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> TRF        92.4           62.2         17.4  68.6        33.8           0  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> EWT        93.3           75           27.2  88.2         0            34  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> GUM        92.7           70.2         54.3  87.1         2.9          85.1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> LINES      77.4           63.2         18.5  69.4         0            66  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Regex       0             31           20.7   0          61.8         100  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Ensemble   98.6           95.6         89.1  96.1        80.1         100</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">summarize_model_by_entity</span><span class="op">(</span><span class="va">titlecase_comparison</span><span class="op">)</span></span></code></pre></div>
+<table class="table table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+Model
+</th>
+<th style="text-align:right;">
+PERSON
+</th>
+<th style="text-align:right;">
+STREET_ADDRESS
+</th>
+<th style="text-align:right;">
+PHONE_NUMBER
+</th>
+<th style="text-align:right;">
+GPE
+</th>
+<th style="text-align:right;">
+CREDIT_CARD
+</th>
+<th style="text-align:right;">
+EMAIL_ADDRESS
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+LG
+</td>
+<td style="text-align:right;">
+87.3
+</td>
+<td style="text-align:right;">
+82.8
+</td>
+<td style="text-align:right;">
+79.3
+</td>
+<td style="text-align:right;">
+67.8
+</td>
+<td style="text-align:right;">
+43.4
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRF
+</td>
+<td style="text-align:right;">
+92.4
+</td>
+<td style="text-align:right;">
+62.2
+</td>
+<td style="text-align:right;">
+17.4
+</td>
+<td style="text-align:right;">
+68.6
+</td>
+<td style="text-align:right;">
+33.8
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EWT
+</td>
+<td style="text-align:right;">
+93.3
+</td>
+<td style="text-align:right;">
+75.0
+</td>
+<td style="text-align:right;">
+27.2
+</td>
+<td style="text-align:right;">
+88.2
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+34.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUM
+</td>
+<td style="text-align:right;">
+92.7
+</td>
+<td style="text-align:right;">
+70.2
+</td>
+<td style="text-align:right;">
+54.3
+</td>
+<td style="text-align:right;">
+87.1
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+85.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINES
+</td>
+<td style="text-align:right;">
+77.4
+</td>
+<td style="text-align:right;">
+63.2
+</td>
+<td style="text-align:right;">
+18.5
+</td>
+<td style="text-align:right;">
+69.4
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+66.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regex
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+31.0
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+98.6
+</td>
+<td style="text-align:right;">
+95.6
+</td>
+<td style="text-align:right;">
+89.1
+</td>
+<td style="text-align:right;">
+96.1
+</td>
+<td style="text-align:right;">
+80.1
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+</tbody>
+</table>
 <p>At the entity level, if we compare to the lower case work we note
 that the <code>LG</code> taggers sensitivity to the CREDIT_CARD class
 has dropped on introducing the title case (98.5% with lower case vs

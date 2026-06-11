@@ -81,10 +81,14 @@ Can be a path to a folder of <code>pid</code> reports, a list of <code>pid</code
 <span class="r-in"><span><span class="co"># the udpipe or spaCy taggers are recommended.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">regex_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="regex_factory.html">regex_factory</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">report1</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data_head</span>, tagger<span class="op">=</span><span class="va">regex_tagger</span>, </span></span>
-<span class="r-in"><span>                 filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">report2</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data_tail</span>, tagger<span class="op">=</span><span class="va">regex_tagger</span>, </span></span>
-<span class="r-in"><span>                 filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">report1</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data_head</span>,</span></span>
+<span class="r-in"><span>  tagger <span class="op">=</span> <span class="va">regex_tagger</span>,</span></span>
+<span class="r-in"><span>  filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">report2</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example_data_tail</span>,</span></span>
+<span class="r-in"><span>  tagger <span class="op">=</span> <span class="va">regex_tagger</span>,</span></span>
+<span class="r-in"><span>  filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">combined</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">report1</span>, <span class="va">report2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">get_distinct_redaction_rules</span><span class="op">(</span><span class="va">combined</span><span class="op">)</span></span></span>

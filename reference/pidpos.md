@@ -106,8 +106,10 @@ example.data <- head(presidio_text, 50)
 # the udpipe or spaCy taggers are recommended.
 
 regex_tagger <- regex_factory()
-pidpos(example.data, tagger=regex_tagger, 
-                 filter_func = function(x) x)
+pidpos(example.data,
+  tagger = regex_tagger,
+  filter_func = function(x) x
+)
 #> # A tibble: 18 × 9
 #>    ID                  Token POS   StartIndex EndIndex Sentence Document Repeats
 #>  * <glue>              <chr> <chr>      <int>    <int> <chr>    <chr>      <int>

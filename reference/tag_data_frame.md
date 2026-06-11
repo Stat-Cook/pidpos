@@ -49,7 +49,7 @@ A list with two elements:
 
 ``` r
 data(presidio_text)
-example.data <-  presidio_text[32:35,]
+example.data <- presidio_text[32:35, ]
 
 # Using regex_factory for illustration; for real PID detection
 # the udpipe or spaCy taggers are recommended.

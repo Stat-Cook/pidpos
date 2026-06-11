@@ -75,6 +75,26 @@
     <div class="dont-index"><p><a href="pidpos.html">pidpos</a></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">presidio_text</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">example.data</span> <span class="op">&lt;-</span> <span class="va">presidio_text</span><span class="op">[</span><span class="fl">32</span><span class="op">:</span><span class="fl">35</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using regex_factory for illustration; for real PID detection</span></span></span>
+<span class="r-in"><span><span class="co"># the udpipe or spaCy taggers are recommended.</span></span></span>
+<span class="r-in"><span><span class="va">regex_tagger</span> <span class="op">&lt;-</span> <span class="fu"><a href="regex_factory.html">regex_factory</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="pidpos.html">pidpos</a></span><span class="op">(</span><span class="va">example.data</span>, tagger <span class="op">=</span> <span class="va">regex_tagger</span>, filter_func <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Column    Cases of Proper Noun…¹ Unique Cases of Prop…² Most Common Proper N…³</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> `Documen…                      4                      4 My card 4131034282458…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated names: ¹​`Cases of Proper Nouns`,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​`Unique Cases of Proper Nouns`, ³​`Most Common Proper Noun Sentence`</span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

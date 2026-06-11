@@ -51,12 +51,12 @@ A tibble with columns:
 
 ``` r
 data(presidio_text)
-example.data <-  presidio_text[32:35,]
+example.data <- presidio_text[32:35, ]
 
 # Using regex_factory for illustration; for real PID detection
 # the udpipe or spaCy taggers are recommended.
 regex_tagger <- regex_factory()
-report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)
+report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x)
 report_to_redaction_rules(report)
 #> # A tibble: 6 × 4
 #>   If                                                           From  To    POS  
