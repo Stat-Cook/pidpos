@@ -1,6 +1,9 @@
 #' Create a PID detection function from a named list of regex patterns
 #'
-#' @param patterns A data frame requiring two columns (`type` and `pattern`)
+#' @param patterns A data frame with columns `type`, `pattern`, and optionally
+#'   `description`. Defaults to the built-in [pid_patterns]. Note that a
+#'   `pid_patterns` variable in the calling environment will not override the
+#'   default; pass it explicitly if you wish to use a modified version.
 #'
 #' @return A function with signature \code{function(doc, doc_id)} that returns
 #'   a data frame with columns: doc_id, type, match, start, end, doc.
