@@ -57,29 +57,16 @@ This behaviour can be altered via \code{\link[=pidpos_setup]{pidpos_setup()}} to
 or force environment only models.
 }
 \examples{
-\dontrun{
-data(the_one_in_massapequa)
-example.data <- head(the_one_in_massapequa, 50)
-try(
-  pidpos(example.data, to_ignore = c("scene", "utterance"))
-)
+data(presidio_text)
+example.data <- head(presidio_text, 50)
 
-pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = "english-gum")
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
 
-tag_ewt <- udpipe_factory("english-ewt")
-pidpos(example.data, to_ignore = c("scene", "utterance"), tagger = tag_ewt)
+regex_tagger <- regex_factory()
+pidpos(example.data, tagger=regex_tagger, 
+                 filter_func = function(x) x)
 
-filter_to_long_proper_nouns <- function(frm) {
-  frm |>
-    dplyr::filter(nchar(Token) > 1)
-  filter_to_proper_nouns(frm)
-}
-
-pidpos(example.data,
-  to_ignore = c("scene", "utterance"),
-  tagger = tag_ewt, filter_func = filter_to_long_proper_nouns
-)
-}
 }
 \seealso{
 \itemize{

@@ -9,16 +9,23 @@ redaction_function_factory(rules.frm)
 \arguments{
 \item{rules.frm}{A data.frame with columns \code{If}, \code{From} and \code{To}.}
 }
+\value{
+A function with signature \verb{function(vec)} which applies the rules in
+\code{rules.frm} to each element of \code{vec}.
+}
 \description{
 Convert a \code{data.frame} of redaction rules into a function that can be applied to a character vector.
 }
 \examples{
-\dontrun{
-data(the_one_in_massapequa)
-example.data <- head(the_one_in_massapequa)
+data(presidio_text)
+example.data <-  presidio_text[32:35,]
 
-raw_rules <- pidpos(example.data) |>
-  report_to_redaction_rules()
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
+regex_tagger <- regex_factory()
+report <- pidpos(example.data, tagger=regex_tagger, filter_func = function(x) x)#'
+
+raw_rules <- report_to_redaction_rules(report)
 
 redaction_rules <- auto_replace(raw_rules,
   replacement_func = make_random_replacement()
@@ -26,6 +33,6 @@ redaction_rules <- auto_replace(raw_rules,
 
 redaction_func <- redaction_function_factory(redaction_rules)
 
-redaction_func(example.data)
-}
+redaction_func(example.data$Document)
+
 }

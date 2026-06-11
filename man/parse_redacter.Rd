@@ -11,6 +11,10 @@ parse_redacter(redacter, with_cache = TRUE)
 
 \item{with_cache}{A binary flag to control if memoization is required.}
 }
+\value{
+A function with the signature \code{function(x)} that takes a
+character vector and returns the redacted (as defined by \code{redacter}) equivalent.
+}
 \description{
 Parse a data frame into a redaction function with optional caching.
 }

@@ -22,9 +22,14 @@ redact_at_folder(
 
 \item{extensions}{Optional.  The set of file extensions to scanned for.}
 
-\item{export_function}{A function to define export}
+\item{export_function}{A function to define export
+
+#' @return (Invisibly) the list of files redacted}
 
 \item{verbose}{boolean flag; if \code{TRUE}, skipped files will be printed to the console.}
+}
+\value{
+(Invisibly) the list of files redacted
 }
 \description{
 For use as part of the folder level API - this function is the equivalent of

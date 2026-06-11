@@ -32,6 +32,14 @@ A list with two elements:
 Tags a data frame with part of speech tags
 }
 \examples{
+data(presidio_text)
+example.data <-  presidio_text[32:35,]
+
+# Using regex_factory for illustration; for real PID detection
+# the udpipe or spaCy taggers are recommended.
+regex_tagger <- regex_factory()
+tag_data_frame(example.data, regex_tagger)
+
 \dontrun{
 example.data <- head(the_one_in_massapequa, 20)
 

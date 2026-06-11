@@ -16,6 +16,9 @@ set_SPACY_CONDA_ENV(env_name)
 \arguments{
 \item{env_name}{The name of the conda environment to use.}
 }
+\value{
+The name of the conda environment \code{pidpos} is using
+}
 \description{
 \code{get_pidpos_conda()} returns the current conda environment name.
 \code{set_pidpos_conda()} sets the session-level environment.

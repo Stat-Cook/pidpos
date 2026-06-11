@@ -22,6 +22,11 @@ at present this results in the key stored  having a number appended e.g.
 
 \item{elevate_warnings}{If true, cause warnings to raise as errors.}
 }
+\value{
+A function with the signature \code{function(x)} that takes a
+vector and returns a character vector of replacements the same
+length as \code{x}.
+}
 \description{
 Convert a function for producing a random replacement into a \code{memoized} version.
 The functionality automates reacalling of the function to avoid collision with existing

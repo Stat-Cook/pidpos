@@ -12,6 +12,9 @@ The function should take a file path as its first argument and return a data fra
 
 \item{ext}{The file extension (e.g., "csv", "txt").}
 }
+\value{
+TRUE
+}
 \description{
 Add a reader function for a specific file extension.
 }

@@ -27,12 +27,15 @@ The function returns a tibble containing tokens, sentences, and token-level meta
 }
 \examples{
 # Sample text
-\dontrun{
 example_text <- c(
   "This is a test sentence.",
   "Here is another sentence."
 )
 
+regex_tagger <- regex_factory()
+pidpos:::tag_documents(example_text, tagger = regex_tagger)
+
+\dontrun{
 # Create a tagger for the English EWT model
 ewt_tagger <- udpipe_factory("english-ewt")
 ewt_result <- pidpos:::tag_documents(example_text, tagger = ewt_tagger)

@@ -18,7 +18,9 @@ redact_supported_files(
 
 \item{redacter}{A redaction rules data frame or redaction function}
 
-\item{export_function}{A function to define export}
+\item{export_function}{A function to define export
+
+#' @return (Invisibly) the list of files redacted}
 }
 \description{
 Apply a redaction to a list of files.

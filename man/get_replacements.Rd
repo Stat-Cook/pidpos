@@ -21,6 +21,13 @@ in \code{\link[=auto_replace]{auto_replace()}}.}
 
 \item{value}{The string to lookup what it replaced.}
 }
+\value{
+A named list of the form \code{list(original = replacement, ...)}
+
+The replacement string for \code{key}, or \code{NULL} if not found.
+
+TRUE if \code{value} is in object
+}
 \description{
 Tools for accessing the replacements inside a \code{\link[=make_replacement_function]{make_replacement_function()}}
 function.
