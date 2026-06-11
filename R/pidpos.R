@@ -39,13 +39,15 @@
 #' @examples
 #' data(presidio_text)
 #' example.data <- head(presidio_text, 50)
-#' 
+#'
 #' # Using regex_factory for illustration; for real PID detection
 #' # the udpipe or spaCy taggers are recommended.
-#' 
+#'
 #' regex_tagger <- regex_factory()
-#' pidpos(example.data, tagger=regex_tagger, 
-#'                  filter_func = function(x) x)
+#' pidpos(example.data,
+#'   tagger = regex_tagger,
+#'   filter_func = function(x) x
+#' )
 #'
 #' @export
 #' @importFrom magrittr %>%

@@ -2,10 +2,10 @@
 #'
 #' @param redacter A data.frame containing `From`, `To` and `If` or a file path to
 #' @param with_cache A binary flag to control if memoization is required.
-#' 
+#'
 #' @return A function with the signature \code{function(x)} that takes a
 #'   character vector and returns the redacted (as defined by `redacter`) equivalent.
-#' 
+#'
 #' @export
 parse_redacter <- function(redacter, with_cache = TRUE) {
   UseMethod("parse_redacter")

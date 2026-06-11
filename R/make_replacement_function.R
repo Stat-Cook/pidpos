@@ -78,7 +78,7 @@ print.ConsistentMapper <- function(x, ...) {
 #'
 #' @return A function with the signature \code{function(x)} that takes a
 #'   vector and returns a character vector of replacements the same
-#'   length as \code{x}.  
+#'   length as \code{x}.
 #' @export
 make_replacement_function <- function(encoder, max_values,
                                       all = FALSE,

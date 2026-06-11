@@ -1,5 +1,3 @@
-
-
 #' Create a PID detection function from a named list of regex patterns
 #'
 #' @param patterns A data frame requiring two columns (`type` and `pattern`)
