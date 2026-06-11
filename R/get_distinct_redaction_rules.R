@@ -13,19 +13,23 @@
 #' data(presidio_text)
 #' example_data_head <- head(presidio_text, 50)
 #' example_data_tail <- tail(presidio_text, 50)
-#' 
+#'
 #' # Using regex_factory for illustration; for real PID detection
 #' # the udpipe or spaCy taggers are recommended.
-#' 
+#'
 #' regex_tagger <- regex_factory()
-#' report1 <- pidpos(example_data_head, tagger=regex_tagger, 
-#'                  filter_func = function(x) x)
-#' report2 <- pidpos(example_data_tail, tagger=regex_tagger, 
-#'                  filter_func = function(x) x)
-#' 
+#' report1 <- pidpos(example_data_head,
+#'   tagger = regex_tagger,
+#'   filter_func = function(x) x
+#' )
+#' report2 <- pidpos(example_data_tail,
+#'   tagger = regex_tagger,
+#'   filter_func = function(x) x
+#' )
+#'
 #' combined <- list(report1, report2)
 #' get_distinct_redaction_rules(combined)
-#' 
+#'
 #' @export
 get_distinct_redaction_rules <- function(object, include_context = FALSE) {
   UseMethod("get_distinct_redaction_rules")

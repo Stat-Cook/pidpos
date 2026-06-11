@@ -21,7 +21,7 @@
 #'   "This is a test sentence.",
 #'   "Here is another sentence."
 #' )
-#' 
+#'
 #' regex_tagger <- regex_factory()
 #' pidpos:::tag_documents(example_text, tagger = regex_tagger)
 #'
