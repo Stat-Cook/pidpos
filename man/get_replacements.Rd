@@ -26,9 +26,23 @@ A named list of the form \code{list(original = replacement, ...)}
 
 The replacement string for \code{key}, or \code{NULL} if not found.
 
-TRUE if \code{value} is in object
+The key that was pointed to by \code{value}
 }
 \description{
 Tools for accessing the replacements inside a \code{\link[=make_replacement_function]{make_replacement_function()}}
 function.
+}
+\examples{
+
+replacement <- make_random_replacement()
+
+redaction_rules <- raw_redaction_rules |>
+  auto_replace(replacement)
+
+get_replacement_cache(replacement)
+
+key_lookup(replacement, "Ross")
+
+value_lookup(replacement, redaction_rules$To[1])
+
 }

@@ -15,3 +15,7 @@ A character vector
 \description{
 Encode non utf8 text
 }
+\examples{
+clean_encoding(c("Hello", "caf\xe9"))
+
+}

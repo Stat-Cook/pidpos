@@ -7,7 +7,7 @@
 \method{print}{cached_redact_function}(x, ...)
 }
 \value{
-(Tnvisibly) The string representation of the function.
+(Invisibly) The string representation of the function.
 }
 \description{
 Print method for cached_redact_function

@@ -16,7 +16,7 @@ make_random_replacement(
 
 \item{replacement_space}{The space from which to sample replacements (default is \code{LETTERS}).}
 
-\item{all}{If \code{TRUE}, every value in \code{To} gets a unique repalcement.  If \code{FALSE}, replacements are reused.}
+\item{all}{If \code{TRUE}, every value in \code{To} gets a unique replacement.  If \code{FALSE}, replacements are reused.}
 
 \item{elevate_warnings}{If \code{TRUE}, warnings are boosted to errors.}
 }

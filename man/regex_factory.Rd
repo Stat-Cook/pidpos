@@ -7,7 +7,10 @@
 regex_factory(patterns = pid_patterns)
 }
 \arguments{
-\item{patterns}{A data frame requiring two columns (\code{type} and \code{pattern})}
+\item{patterns}{A data frame with columns \code{type}, \code{pattern}, and optionally
+\code{description}. Defaults to the built-in \link{pid_patterns}. Note that a
+\code{pid_patterns} variable in the calling environment will not override the
+default; pass it explicitly if you wish to use a modified version.}
 }
 \value{
 A function with signature \code{function(doc, doc_id)} that returns
@@ -15,4 +18,11 @@ a data frame with columns: doc_id, type, match, start, end, doc.
 }
 \description{
 Create a PID detection function from a named list of regex patterns
+}
+\examples{
+
+regex_tagger <- regex_factory()
+
+regex_tagger(c("Send a message to DonaldDuck@gmail.com", "Arrange the meeting for 2024-07-01"))
+
 }

@@ -17,5 +17,8 @@ merge_redactions(frm, cached_redactions, preprocess = utf8::utf8_encode)
 A data frame of redacted data
 }
 \description{
-Remove PID from a data frame via a merge
+Higher-speed alternative to the function-based redaction pipeline for
+reapplying existing redaction rules. Not yet benchmarked against the
+standard pipeline - kept internal until performance advantage is confirmed.
 }
+\keyword{internal}

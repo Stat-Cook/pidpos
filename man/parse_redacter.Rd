@@ -7,9 +7,9 @@
 parse_redacter(redacter, with_cache = TRUE)
 }
 \arguments{
-\item{redacter}{A data.frame containing \code{From}, \code{To} and \code{If} or a file path to}
+\item{redacter}{A data.frame containing \code{From}, \code{To} and \code{If} or a file path to equivalent.}
 
-\item{with_cache}{A binary flag to control if memoization is required.}
+\item{with_cache}{Logical.  If \code{TRUE}, the resulting function will utilize memoization.}
 }
 \value{
 A function with the signature \code{function(x)} that takes a
