@@ -14,17 +14,14 @@
 #'
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {
-  check_reticulate()
-
-  tryCatch(
-    reticulate::use_condaenv(get_pidpos_conda()),
-    error = function(e) {
-      stop(e$message, "\nYou may need to run `create_spacy_env()` or
-           restart your R session.")
-    }
+  
+  rlang::inform(
+    "This function requires Python via reticulate. Be aware environment setup applies.",
+    .frequency = "once",
+    .frequency_id = "python_setup_notice"
   )
-
-  check_spacy()
+  
+  install_spacy_model(model)
 
   spacy <- reticulate::import("spacy")
   tagger <- spacy$load(model)
