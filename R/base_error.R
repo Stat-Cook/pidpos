@@ -9,7 +9,7 @@
 #'
 #' @importFrom rlang abort caller_env
 #' @keywords internal
-#'
+#' @noRd
 base_error <- function(subclass,
                        message,
                        ...,
@@ -25,6 +25,7 @@ base_error <- function(subclass,
 }
 
 #' @importFrom rlang warn
+#' @noRd
 base_warn <- function(subclass,
                       message,
                       ...,
@@ -48,6 +49,7 @@ base_warn <- function(subclass,
 #'
 #' @return A new error closure with signature `f(message)`
 #' @keywords internal
+#' @noRd
 new_error_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(
@@ -74,6 +76,7 @@ new_error_type <- function(name, parent = NULL) {
 #'
 #' @return A new warning closure with signature `f(message)`
 #' @keywords internal
+#' @noRd
 new_warn_type <- function(name, parent = NULL) {
   function(message, ..., call = caller_env()) {
     subclass <- c(
