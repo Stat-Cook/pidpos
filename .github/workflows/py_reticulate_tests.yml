@@ -35,3 +35,10 @@ jobs:
       - name: Tests with `reticulate`
         run: devtools::test()
         shell: Rscript {0}
+
+      - name: Standalone Check
+        run: |
+          library(pidpos)
+          tagger <- spacy_factory()
+          tagger(head(the_one_in_massapequa$text))
+        shell: Rscript {0}
