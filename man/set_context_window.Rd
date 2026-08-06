@@ -13,4 +13,3 @@ before and after the token in the context.}
 \description{
 Set the context window size for the \code{get_context} function.
 }
-\keyword{internal}
