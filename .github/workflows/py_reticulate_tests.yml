@@ -39,6 +39,12 @@ jobs:
       - name: Standalone Check
         run: |
           library(pidpos)
-          tagger <- spacy_factory()
-          tagger(head(the_one_in_massapequa$text))
+          testthat::test_that("Expect error",{
+            expect_error(spacy_factory(), "Model download required")
+          })
+
+           options(pidpos_download_approved = TRUE)
+           tagger <- spacy_factory()
+           tagger(head(the_one_in_massapequa$text))
+
         shell: Rscript {0}
