@@ -36,7 +36,7 @@ get_context <- function(sentence, token,
 #'
 #' @param x  An integer specifying the number of characters to include
 #'   before and after the token in the context.
-#'   
+#'
 #' @return TRUE on success
 #'
 #' @export
@@ -44,6 +44,6 @@ set_context_window <- function(x) {
   .opt <- list("pidpos_context_window" = x)
 
   options(.opt)
-  
+
   TRUE
 }
