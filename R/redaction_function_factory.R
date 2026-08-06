@@ -16,6 +16,7 @@ if_function_factory <- function(df) {
 print.if_function <- function(x, ...) {
   sprintf("`if_function` for %s", attr(x, "If")) |>
     print()
+  invisible(x)
 }
 
 #' @keywords internal
@@ -32,6 +33,7 @@ then_function_factory <- function(from, to) {
 print.then_function <- function(x, ...) {
   sprintf("`then_function` for %s -> %s", attr(x, "from"), attr(x, "to")) |>
     print()
+  invisible(x)
 }
 
 #' @keywords internal
@@ -113,4 +115,6 @@ print.redact_function <- function(x, ...) {
     attr(x, "NRules"), attr(x, "NBlocks")
   ) |>
     print()
+  
+  invisible(x)
 }
