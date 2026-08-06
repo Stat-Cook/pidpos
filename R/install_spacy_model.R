@@ -38,7 +38,7 @@ install_spacy_model <- function(model = c("en_core_web_lg", "en_core_web_trf"), 
 
   message("Installing `", model, "`")
   withCallingHandlers(
-    reticulate::py_install(dest, pip = T, pip_ignore_installed = T),
+    reticulate::py_install(dest, pip = TRUE, pip_ignore_installed = TRUE),
     warning = function(w) {
       if (grepl("ephemeral virtual environment", conditionMessage(w))) {
         invokeRestart("muffleWarning")
