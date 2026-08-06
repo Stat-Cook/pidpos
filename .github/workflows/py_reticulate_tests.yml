@@ -14,7 +14,7 @@ jobs:
       
       - name: Install R dependencies
         run: |
-          install.packages(c("reticulate", "callr", "devtools"))
+          install.packages(c("reticulate"))
           devtools::install_deps()
         shell: Rscript {0}
 
