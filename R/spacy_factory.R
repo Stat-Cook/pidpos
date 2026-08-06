@@ -9,7 +9,7 @@
 #' \dontrun{
 #' spacy_tagger <- spacy_factory()
 #'
-#' spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
+#' pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
 #' }
 #'
 #' @export
@@ -35,16 +35,32 @@ spacy_factory <- function(model = "en_core_web_lg") {
         dplyr::mutate(ID = .y)
     ) |>
       dplyr::bind_rows() |>
-      dplyr::select(all_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")))
+      dplyr::select(any_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")))
   }
 }
 
-
+#' A default filter for the spaCy language models
+#' 
+#' Filters to 'PERSON' and 'DATE' entities.
+#' 
+#' @param frm A data frame containing at least the column `POS` 
+#' 
+#' @return 
+#' 
+#' @examples
+#' \dontrun{
+#' spacy_tagger <- spacy_factory()
+#'
+#' pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
+#' }
+#' 
+#' @export
 spacy_filter <- function(frm) {
   dplyr::filter(frm, .data$POS %in% c("PERSON", "DATE"))
 }
 
-
+#' @keywords internal
+#' @noRd
 spacy_process <- function(doc, tagger) {
   tagged <- tagger(doc)
 
