@@ -40,7 +40,6 @@ get_context <- function(sentence, token,
 #' @export
 set_context_window <- function(x) {
   .opt <- list("pidpos_context_window" = x)
-  
+
   options(.opt)
 }
-

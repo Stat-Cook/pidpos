@@ -14,13 +14,12 @@
 #'
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {
-  
   rlang::inform(
     "This function requires Python via reticulate. Be aware environment setup applies.",
     .frequency = "once",
     .frequency_id = "python_setup_notice"
   )
-  
+
   install_spacy_model(model)
 
   spacy <- reticulate::import("spacy")
@@ -40,20 +39,20 @@ spacy_factory <- function(model = "en_core_web_lg") {
 }
 
 #' A default filter for the spaCy language models
-#' 
+#'
 #' Filters to 'PERSON' and 'DATE' entities.
-#' 
-#' @param frm A data frame containing at least the column `POS` 
-#' 
+#'
+#' @param frm A data frame containing at least the column `POS`
+#'
 #' @return Filtered data frame
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' spacy_tagger <- spacy_factory()
 #'
 #' pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
 #' }
-#' 
+#'
 #' @export
 spacy_filter <- function(frm) {
   dplyr::filter(frm, .data$POS %in% c("PERSON", "DATE"))

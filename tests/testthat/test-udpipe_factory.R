@@ -43,7 +43,7 @@ test_that("tagger errors cleanly when UDPipe fails", withr::with_options(list(pi
 #   # Inject the failing fake
 #   withr::with_options(list(pidpos_download_approved = TRUE), {
 #     tagger <- udpipe_factory(model = "english-ewt")
-# 
+#
 #     result <- tagger("This is a test.")
 #     expect_equal(nrow(result), 5)
 #   })

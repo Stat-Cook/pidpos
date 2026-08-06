@@ -52,7 +52,7 @@ test_that("call is captured correctly", {
   # optionally inspect call environment
   e <- tryCatch(f(), error = function(e) e)
   expect_true(inherits(e, "env_test"))
-  
+
   expect_true(!is.null(e$call)) # call exists
 })
 
