@@ -40,7 +40,7 @@ jobs:
         run: |
           library(pidpos)
           testthat::test_that("Expect error",{
-            expect_error(spacy_factory(), "Model download required")
+            testthat::expect_error(spacy_factory(), "Model download required")
           })
 
            options(pidpos_download_approved = TRUE)
