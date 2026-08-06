@@ -34,7 +34,7 @@ spacy_factory <- function(model = "en_core_web_lg") {
         dplyr::mutate(ID = .y)
     ) |>
       dplyr::bind_rows() |>
-      dplyr::select(any_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")))
+      dplyr::select(all_of(c("ID", "Token", "Sentence", "POS", "StartIndex", "EndIndex")))
   }
 }
 
