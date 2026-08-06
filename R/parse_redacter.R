@@ -5,6 +5,13 @@
 #'
 #' @return A function with the signature \code{function(x)} that takes a
 #'   character vector and returns the redacted (as defined by `redacter`) equivalent.
+#'   
+#' @examples
+#' replace_by <- make_random_replacement()
+#' redaction_rules <- auto_replace(raw_redaction_rules, replacement_func = replace_by)
+#' 
+#' redacter <- parse_redacter(redaction_rules)
+#' redact(head(the_one_in_massapequa), redacter)
 #'
 #' @export
 parse_redacter <- function(redacter, with_cache = TRUE) {

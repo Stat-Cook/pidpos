@@ -40,6 +40,10 @@ get_context <- function(sentence, token,
 #' @return TRUE on success
 #'
 #' @export
+#' 
+#' @examples
+#' set_context_window(25)
+#' 
 set_context_window <- function(x) {
   .opt <- list("pidpos_context_window" = x)
 
