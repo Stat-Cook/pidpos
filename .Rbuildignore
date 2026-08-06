@@ -20,6 +20,7 @@ Main.R
 ^CONTRIBUTING
 
 ^vignettes/Redacted Data$
+
 JOSS_utilities\.*
 
 paper.md
