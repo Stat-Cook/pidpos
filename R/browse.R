@@ -7,10 +7,10 @@
 #' @return (Invisibly) The url path to the requested model repository.
 #' @export
 #' @importFrom utils browseURL
-#' 
+#'
 #' @examples
 #' \dontrun{
-#'   browse_udpipe_repo()
+#' browse_udpipe_repo()
 #' }
 #'
 browse_udpipe_repo <- function(model = "english-ewt") {
@@ -37,10 +37,10 @@ browse_udpipe_repo <- function(model = "english-ewt") {
 #' Intended for usage in `udpipe` fails to download automatically.
 #' @return (Invisibly) The file path to your active model repository.
 #' @export
-#' 
+#'
 #' @examples
 #' \dontrun{
-#'   browse_model_location()
+#' browse_model_location()
 #' }
 browse_model_location <- function() {
   browseURL(pidpos_env$model_folder)
