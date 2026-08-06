@@ -98,7 +98,7 @@ pidpos <- function(frm,
 
   filtered_tags <- filter_func(tagged$AllTags)
 
-  report <- left_join(filtered_tags, tagged$Documents, by = "ID") %>%
+  report <- left_join(filtered_tags, tagged$Documents, by = "ID") |>
     as_tibble() |>
     arrange(.data$PK) |>
     select(-all_of("PK"))

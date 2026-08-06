@@ -58,14 +58,14 @@ tag_data_frame <- function(frm,
     type_error("`chunk_size` must be a positive integer.")
   }
 
-  if (is.character(tagger) | inherits(tagger, "udpipe_model")) {
+  if (is.character(tagger) || inherits(tagger, "udpipe_model")) {
     .tagger <- udpipe_factory(tagger)
   } else {
     .tagger <- tagger
   }
 
-  character_frm <- frm %>%
-    select(where(is.character)) %>%
+  character_frm <- frm |>
+    select(where(is.character)) |>
     remove_if_exists(to_ignore)
 
   if (!nrow(character_frm) || !ncol(character_frm)) {
@@ -77,13 +77,13 @@ tag_data_frame <- function(frm,
 
   new_col <- make_unique_col(character_frm)
 
-  doc_grid <- character_frm %>%
-    mutate("{new_col}" := dplyr::row_number()) %>%
+  doc_grid <- character_frm |>
+    mutate("{new_col}" := dplyr::row_number()) |>
     pivot_longer(-all_of(new_col), names_to = "Column", values_to = "Document") |>
     rename(Row = all_of(new_col)) |>
     mutate(PK = row_number())
 
-  document_frm <- group_by(doc_grid, .data$Document) %>%
+  document_frm <- group_by(doc_grid, .data$Document) |>
     group_modify(summarize_repeated_sentences) |>
     ungroup() |>
     mutate(ID = glue("Col:{Column} Row:{Row}")) |>
