@@ -25,6 +25,7 @@ register_reader <- function(fun, ext) {
 
 #' Reinstate the default read functionality for csv, tsv, xls, and xlsx files.
 #'
+#' @return (Invisibly) a list of the configured readers
 #' @export
 #'
 #' @examples

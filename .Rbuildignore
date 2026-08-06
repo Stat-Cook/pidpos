@@ -19,10 +19,11 @@ Main.R
 ^CODE_OF_CONDUCT
 ^CONTRIBUTING
 
-vignettes\Redacted Data\.*
+^vignettes/Redacted Data$
 JOSS_utilities\.*
 
 paper.md
 ^doc$
 ^Meta$
 ^cran-comments\.md$
+
