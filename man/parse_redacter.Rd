@@ -18,3 +18,11 @@ character vector and returns the redacted (as defined by \code{redacter}) equiva
 \description{
 Parse a data frame into a redaction function with optional caching.
 }
+\examples{
+replace_by <- make_random_replacement()
+redaction_rules <- auto_replace(raw_redaction_rules, replacement_func = replace_by)
+
+redacter <- parse_redacter(redaction_rules)
+redact(head(the_one_in_massapequa), redacter)
+
+}

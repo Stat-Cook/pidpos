@@ -25,3 +25,17 @@ The path to the output file
 Utilities for writing \code{pidpos} reports in a folder structure when using \code{report_on_folder}.
 To mimic the file tree on read use \code{export_as_tree}, or for a  flat structure use  \code{export_flat}.
 }
+\examples{
+\dontrun{
+  report_on_folder(
+    "path/to/data",
+    export_function = export_as_tree
+  )
+  
+  report_on_folder(
+    "path/to/data",
+    export_function = export_flat
+  )
+}
+NULL
+}

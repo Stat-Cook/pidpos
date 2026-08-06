@@ -40,6 +40,9 @@ options  are \code{export_as_tree} and \code{export_flat}}
 
 \item{verbose}{boolean flag; if \code{TRUE}, skipped files will be printed to the console.}
 }
+\value{
+(Invisibly) the reporting folder
+}
 \description{
 For use as part of the folder level API - this function is the equivalent of
 \code{\link[=pidpos]{pidpos()}}.  The reports are saved in the specified \code{report_dir}.

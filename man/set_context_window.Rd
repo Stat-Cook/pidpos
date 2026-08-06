@@ -10,6 +10,13 @@ set_context_window(x)
 \item{x}{An integer specifying the number of characters to include
 before and after the token in the context.}
 }
+\value{
+TRUE on success
+}
 \description{
 Set the context window size for the \code{get_context} function.
+}
+\examples{
+set_context_window(25)
+
 }

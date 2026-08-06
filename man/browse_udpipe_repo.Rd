@@ -15,3 +15,9 @@ browse_udpipe_repo(model = "english-ewt")
 \description{
 Intended for user download where \code{udpipe} fails to download automatically.
 }
+\examples{
+\dontrun{
+  browse_udpipe_repo()
+}
+
+}
