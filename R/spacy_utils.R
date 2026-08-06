@@ -1,7 +1,7 @@
 #' List available spacy models
 #' 
 #' @return Boolean of which models are available
-#' @example
+#' @examples
 #' \dontrun{
 #' spacy_models()
 #' }

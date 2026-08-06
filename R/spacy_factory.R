@@ -45,7 +45,7 @@ spacy_factory <- function(model = "en_core_web_lg") {
 #' 
 #' @param frm A data frame containing at least the column `POS` 
 #' 
-#' @return 
+#' @return Filtered data frame
 #' 
 #' @examples
 #' \dontrun{

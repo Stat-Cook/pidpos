@@ -2,7 +2,7 @@ pidpos_env <- new.env()
 utils::globalVariables("pid_patterns")
 
 #' @noRd
-#' @keyword internal
+#' @keywords internal
 .onLoad <- function(libname, pkgname) {
   op <- options()
   if (is.null(op[["pidpos_context_window"]])) options(pidpos_context_window = 25)
