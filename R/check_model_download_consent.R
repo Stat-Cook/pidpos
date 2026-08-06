@@ -23,8 +23,10 @@ check_model_download_consent <- function(model) {
       )
     }
 
-    answer <- readline(paste0("pidpos needs to download '", model, 
-                              "'.  Do you consent to downloads? [yes/no/once]: "))
+    answer <- readline(paste0(
+      "pidpos needs to download '", model,
+      "'.  Do you consent to downloads? [yes/no/once]: "
+    ))
     if (!tolower(trimws(answer)) %in% c("y", "yes", "once")) {
       stop("Download cancelled. ",
         call. = FALSE
@@ -33,7 +35,6 @@ check_model_download_consent <- function(model) {
     if (tolower(trimws(answer)) %in% c("y", "yes")) {
       options(pidpos_download_approved = TRUE)
     }
-   
   }
 
   invisible(TRUE)

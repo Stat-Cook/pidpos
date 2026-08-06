@@ -115,6 +115,6 @@ print.redact_function <- function(x, ...) {
     attr(x, "NRules"), attr(x, "NBlocks")
   ) |>
     print()
-  
+
   invisible(x)
 }
