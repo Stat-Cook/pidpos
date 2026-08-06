@@ -18,7 +18,7 @@ jobs:
      
       - name: Install pidpos
         run: |
-          install.packages(c("devtools", "testthat", "pak"))
+          install.packages(c("testthat", "pak", "mockery"))
           pak::pak("local::.", dependencies = NA)
         shell: Rscript {0}
 
