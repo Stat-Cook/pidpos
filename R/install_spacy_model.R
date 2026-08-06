@@ -27,6 +27,8 @@ install_spacy_model <- function(model = c("en_core_web_lg", "en_core_web_trf"), 
 
   if (!file.exists(dest)) {
     check_model_download_consent(model)
+    
+    rlang::check_installed("httr2", reason = "to download the spaCy model")
 
     message("Downloading ", model)
 
