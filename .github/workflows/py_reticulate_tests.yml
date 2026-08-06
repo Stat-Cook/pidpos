@@ -18,8 +18,8 @@ jobs:
      
       - name: Install pidpos
         run: |
-          install.packages(c("devtools", "testthat"))
-          devtools::install_local(dependencies = c("Depends", "Imports", "LinkingTo"))
+          install.packages(c("devtools", "testthat", "pak"))
+          pak::pak("local::path", dependencies = NA)
         shell: Rscript {0}
 
       - name: Tests without `reticulate`
