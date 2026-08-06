@@ -52,7 +52,9 @@ spacy_process <- function(doc, tagger) {
     return(tibble::tibble(
       Sentence = doc,
       Token = NA_character_,
-      POS = NA_character_
+      POS = NA_character_,
+      StartIndex = NA_integer_,
+      EndIndex = NA_integer_
     ))
   }
 
