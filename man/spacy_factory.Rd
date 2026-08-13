@@ -19,7 +19,7 @@ pidpos bindings to spacy models
 \dontrun{
 spacy_tagger <- spacy_factory()
 
-spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
+pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
 }
 
 }

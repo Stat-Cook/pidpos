@@ -17,7 +17,7 @@ empty.report <- data.frame(
 #'  options  are `export_as_tree` and `export_flat`
 #' @param report_dir The location to write PID reports to
 #'
-#' @return NULL
+#' @return (Invisibly) the reporting folder
 #'
 #' @export
 #'

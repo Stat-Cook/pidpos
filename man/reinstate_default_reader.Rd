@@ -6,6 +6,9 @@
 \usage{
 reinstate_default_reader()
 }
+\value{
+(Invisibly) a list of the configured readers
+}
 \description{
 Reinstate the default read functionality for csv, tsv, xls, and xlsx files.
 }

@@ -29,6 +29,7 @@ CachedRedact <- R6::R6Class("CachedRedact", list(
 print.CachedRedact <- function(x, ...) {
   sprintf("CachedRedact Object [size=%s]", length(x$redacted)) |>
     print()
+  invisible(x)
 }
 
 #' Stateful recoding template function
@@ -40,6 +41,7 @@ print.CachedRedact <- function(x, ...) {
 #'
 #' @return A function
 #' @keywords internal
+#' @noRd
 cached_redact_factory <- function(redact.function) {
   cr <- CachedRedact$new(redact.function)
 
@@ -66,4 +68,5 @@ print.cached_redact_function <- function(x, ...) {
     length(attr(x, "cache")$redacted)
   ) |>
     print()
+  invisible(x)
 }

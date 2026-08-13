@@ -9,22 +9,18 @@
 #' \dontrun{
 #' spacy_tagger <- spacy_factory()
 #'
-#' spacy_tagger("John, Paul, George and Ringo made the Cavern Club famous")
+#' pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
 #' }
 #'
 #' @export
 spacy_factory <- function(model = "en_core_web_lg") {
-  check_reticulate()
-
-  tryCatch(
-    reticulate::use_condaenv(get_pidpos_conda()),
-    error = function(e) {
-      stop(e$message, "\nYou may need to run `create_spacy_env()` or
-           restart your R session.")
-    }
+  rlang::inform(
+    "This function requires Python via reticulate. Be aware environment setup applies.",
+    .frequency = "once",
+    .frequency_id = "python_setup_notice"
   )
 
-  check_spacy()
+  install_spacy_model(model)
 
   spacy <- reticulate::import("spacy")
   tagger <- spacy$load(model)
@@ -42,12 +38,28 @@ spacy_factory <- function(model = "en_core_web_lg") {
   }
 }
 
-
+#' A default filter for the spaCy language models
+#'
+#' Filters to 'PERSON' and 'DATE' entities.
+#'
+#' @param frm A data frame containing at least the column `POS`
+#'
+#' @return Filtered data frame
+#'
+#' @examples
+#' \dontrun{
+#' spacy_tagger <- spacy_factory()
+#'
+#' pidpos(the_one_in_massapequa, tagger = spacy_tagger, filter_func = spacy_filter)
+#' }
+#'
+#' @export
 spacy_filter <- function(frm) {
   dplyr::filter(frm, .data$POS %in% c("PERSON", "DATE"))
 }
 
-
+#' @keywords internal
+#' @noRd
 spacy_process <- function(doc, tagger) {
   tagged <- tagger(doc)
 
@@ -55,7 +67,9 @@ spacy_process <- function(doc, tagger) {
     return(tibble::tibble(
       Sentence = doc,
       Token = NA_character_,
-      POS = NA_character_
+      POS = NA_character_,
+      StartIndex = NA_integer_,
+      EndIndex = NA_integer_
     ))
   }
 

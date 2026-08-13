@@ -51,7 +51,8 @@ test_that("call is captured correctly", {
   expect_error(f(), "inside function")
   # optionally inspect call environment
   e <- tryCatch(f(), error = function(e) e)
-  expect_true("env_test" %in% class(e)) # basic check
+  expect_true(inherits(e, "env_test"))
+
   expect_true(!is.null(e$call)) # call exists
 })
 

@@ -16,6 +16,7 @@ if_function_factory <- function(df) {
 print.if_function <- function(x, ...) {
   sprintf("`if_function` for %s", attr(x, "If")) |>
     print()
+  invisible(x)
 }
 
 #' @keywords internal
@@ -32,6 +33,7 @@ then_function_factory <- function(from, to) {
 print.then_function <- function(x, ...) {
   sprintf("`then_function` for %s -> %s", attr(x, "from"), attr(x, "to")) |>
     print()
+  invisible(x)
 }
 
 #' @keywords internal
@@ -69,8 +71,8 @@ rule_logic <- function(df) {
 #' # Using regex_factory for illustration; for real PID detection
 #' # the udpipe or spaCy taggers are recommended.
 #' regex_tagger <- regex_factory()
-#' report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x) #'
-#'
+#' report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x) 
+#' 
 #' raw_rules <- report_to_redaction_rules(report)
 #'
 #' redaction_rules <- auto_replace(raw_rules,
@@ -113,4 +115,6 @@ print.redact_function <- function(x, ...) {
     attr(x, "NRules"), attr(x, "NBlocks")
   ) |>
     print()
+
+  invisible(x)
 }

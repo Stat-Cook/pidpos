@@ -41,7 +41,7 @@ custom_tagger <- function(pos_function) {
   if (length(.formals) == 0) validation_error("`pos_function` must have at least one argument.")
 
   required_args <- .formals[names(.formals) != "..."]
-  n_required <- sum(sapply(required_args, is.symbol))
+  n_required <- sum(vapply(required_args, is.symbol, TRUE))
   if (n_required > 1) validation_error("`pos_function` can't have more than one required argument.")
 
   function(docs, doc_ids = seq_along(docs)) {

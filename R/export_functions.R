@@ -10,7 +10,20 @@
 #'
 #' @return The path to the output file
 #' @name export_utilites
-NULL
+#'
+#' @examples
+#' \dontrun{
+#' report_on_folder(
+#'   "path/to/data",
+#'   export_function = export_as_tree
+#' )
+#'
+#' report_on_folder(
+#'   "path/to/data",
+#'   export_function = export_flat
+#' )
+#' }
+#' NULL
 
 #' @rdname export_utilites
 #' @export

@@ -44,16 +44,14 @@ reference:
   - clean_encoding
   - register_reader
   - set_udpipe_version
+  - set_context_window
   - reinstate_default_reader
 - title: "Experimental: spacy bindings"
   desc: > 
   contents:
   - spacy_factory
-  - create_spacy_env
-  - spacy-conda-env
+  - spacy_filter 
   - spacy_models
-  - check_python
-  - check_spacy
 - title: "Datasets"
   desc: >
   contents:

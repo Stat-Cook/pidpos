@@ -6,6 +6,14 @@
 \usage{
 spacy_models()
 }
+\value{
+Boolean of which models are available
+}
 \description{
 List available spacy models
+}
+\examples{
+\dontrun{
+spacy_models()
+}
 }

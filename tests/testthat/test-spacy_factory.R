@@ -8,14 +8,15 @@ mock_tagger <- function(...) {
 mock_spacy_process <- function(.x, tagger) tagger(.x)
 
 test_that("spacy_factory tests", {
-  mockery::stub(spacy_factory, "check_reticulate", function(...) TRUE)
-  mockery::stub(spacy_factory, "reticulate::use_condaenv", function(...) TRUE)
-  mockery::stub(spacy_factory, "check_spacy", function(...) TRUE)
-
+  mockery::stub(spacy_factory, "install_spacy_model", function(...) TRUE)
   mockery::stub(spacy_factory, "reticulate::import", function(...) TRUE)
   mockery::stub(spacy_factory, "spacy$load", function(.x) .x)
   mockery::stub(spacy_factory, "spacy_process", mock_spacy_process)
 
+  rlang::reset_message_verbosity("python_setup_notice")
+  expect_message(
+    spacy_factory(mock_tagger)
+  )
   spacy_tagger <- spacy_factory(mock_tagger)
 
   expect_true(is.function(spacy_tagger))
@@ -52,7 +53,7 @@ test_that("spacy_process tests", {
   mock_null_tagger <- function(doc) list(ents = c())
 
   null_test <- spacy_process("Bob", mock_null_tagger)
-  expect_equal(dim(null_test), c(1, 3))
+  expect_equal(dim(null_test), c(1, 5))
   expect_true(is.na(null_test$Token))
 })
 

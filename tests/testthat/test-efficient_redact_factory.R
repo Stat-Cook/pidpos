@@ -50,15 +50,15 @@ test_that("batched & cached redaction", {
   method1 <- batched_redact(top100, .redact)
 
   expect_equal(
-    str_length(method1$speaker),
-    str_length(top100$speaker)
+    stringr::str_length(method1$speaker),
+    stringr::str_length(top100$speaker)
   )
 
   .eff.redact <- cached_redact_factory(.redact)
   method2 <- batched_redact(top100, .eff.redact)
 
   expect_equal(
-    str_length(method2$speaker),
-    str_length(top100$speaker)
+    stringr::str_length(method2$speaker),
+    stringr::str_length(top100$speaker)
   )
 })

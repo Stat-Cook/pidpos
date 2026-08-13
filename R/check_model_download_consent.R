@@ -23,15 +23,18 @@ check_model_download_consent <- function(model) {
       )
     }
 
-    answer <- readline(paste0("pidpos needs to download '", model, "'. Consent? [y/n]: "))
-    if (!tolower(trimws(answer)) %in% c("y", "yes")) {
-      stop("Download cancelled. Models can be used manually via ",
-        "`udpipe::udpipe_download_model()` ",
-        "and `udpipe::udpipe_load_model()`",
+    answer <- readline(paste0(
+      "pidpos needs to download '", model,
+      "'.  Do you consent to downloads? [yes/no/once]: "
+    ))
+    if (!tolower(trimws(answer)) %in% c("y", "yes", "once")) {
+      stop("Download cancelled. ",
         call. = FALSE
       )
     }
-    options(pidpos_download_approved = TRUE)
+    if (tolower(trimws(answer)) %in% c("y", "yes")) {
+      options(pidpos_download_approved = TRUE)
+    }
   }
 
   invisible(TRUE)
