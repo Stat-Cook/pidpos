@@ -65,6 +65,10 @@ report_on_folder(
 
   boolean flag; if `TRUE`, skipped files will be printed to the console.
 
+## Value
+
+(Invisibly) the reporting folder
+
 ## Examples
 
 ``` r

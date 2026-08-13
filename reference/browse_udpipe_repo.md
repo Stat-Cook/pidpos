@@ -20,3 +20,11 @@ browse_udpipe_repo(model = "english-ewt")
 ## Value
 
 (Invisibly) The url path to the requested model repository.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+  browse_udpipe_repo()
+} # }
+```

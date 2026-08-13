@@ -9,6 +9,10 @@ files.
 reinstate_default_reader()
 ```
 
+## Value
+
+(Invisibly) a list of the configured readers
+
 ## Examples
 
 ``` r

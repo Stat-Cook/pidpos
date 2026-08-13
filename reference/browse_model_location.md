@@ -11,3 +11,11 @@ browse_model_location()
 ## Value
 
 (Invisibly) The file path to your active model repository.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+  browse_model_location()
+} # }
+```

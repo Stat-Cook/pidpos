@@ -126,16 +126,27 @@ or feel free to fork the repository.
 
 - [`pidpos_setup()`](https://stat-cook.github.io/pidpos/reference/pidpos_setup.md)
   : Configure model storage for pidpos
+
 - [`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md)
   : Browse user to folder for UDPipe models.
+
 - [`browse_udpipe_repo()`](https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.md)
   : Open github link to the 'english-ewt-2.5' UD model.
+
 - [`clean_encoding()`](https://stat-cook.github.io/pidpos/reference/clean_encoding.md)
   : Encode non utf8 text
+
 - [`register_reader()`](https://stat-cook.github.io/pidpos/reference/register_reader.md)
   : Add a reader function for a specific file extension.
+
 - [`set_udpipe_version()`](https://stat-cook.github.io/pidpos/reference/set_udpipe_version.md)
   : Set the udpipe model repository version.
+
+- [`set_context_window()`](https://stat-cook.github.io/pidpos/reference/set_context_window.md)
+  :
+
+  Set the context window size for the `get_context` function.
+
 - [`reinstate_default_reader()`](https://stat-cook.github.io/pidpos/reference/reinstate_default_reader.md)
   : Reinstate the default read functionality for csv, tsv, xls, and xlsx
   files.
@@ -144,18 +155,10 @@ or feel free to fork the repository.
 
 - [`spacy_factory()`](https://stat-cook.github.io/pidpos/reference/spacy_factory.md)
   : pidpos bindings to spacy models
-- [`create_spacy_env()`](https://stat-cook.github.io/pidpos/reference/create_spacy_env.md)
-  : Initialize a minimum spacy environment
-- [`get_pidpos_conda()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
-  [`set_pidpos_conda()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
-  [`set_SPACY_CONDA_ENV()`](https://stat-cook.github.io/pidpos/reference/spacy-conda-env.md)
-  : Get and set the conda environment for pidpos
+- [`spacy_filter()`](https://stat-cook.github.io/pidpos/reference/spacy_filter.md)
+  : A default filter for the spaCy language models
 - [`spacy_models()`](https://stat-cook.github.io/pidpos/reference/spacy_models.md)
   : List available spacy models
-- [`check_python()`](https://stat-cook.github.io/pidpos/reference/check_python.md)
-  : Verify python
-- [`check_spacy()`](https://stat-cook.github.io/pidpos/reference/check_spacy.md)
-  : Verify spacy install
 
 ## Datasets
 

@@ -40,8 +40,8 @@ redaction_rules <- auto_replace(raw_rules,
 redaction_func <- redaction_function_factory(redaction_rules)
 
 redaction_func(example.data$Document)
-#> [1] "My card 4131UVZWSHWBQQ9939 is expiring this month. Please let me know process to it's extend validity."
-#> [2] "Could you please send me the last billed amount for cc IJCKNJTXHE on my e-mail TESAAOSYTC?"            
-#> [3] "The Avalara office is at PSC 0413, Box 8144\nAPO AA QAXTVMNZBA"                                        
-#> [4] "You said your email is GTWLCQWSNG. Is that correct?"                                                   
+#> [1] "My card 4131GDKNPGQNKV9939 is expiring this month. Please let me know process to it's extend validity."
+#> [2] "Could you please send me the last billed amount for cc JKYBYIQKAS on my e-mail LANFZYRLXF?"            
+#> [3] "The Avalara office is at PSC 0413, Box 8144\nAPO AA ZPDISGPLRC"                                        
+#> [4] "You said your email is ZTVIJONOOM. Is that correct?"                                                   
 ```
