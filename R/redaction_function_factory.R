@@ -71,8 +71,8 @@ rule_logic <- function(df) {
 #' # Using regex_factory for illustration; for real PID detection
 #' # the udpipe or spaCy taggers are recommended.
 #' regex_tagger <- regex_factory()
-#' report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x) 
-#' 
+#' report <- pidpos(example.data, tagger = regex_tagger, filter_func = function(x) x)
+#'
 #' raw_rules <- report_to_redaction_rules(report)
 #'
 #' redaction_rules <- auto_replace(raw_rules,
