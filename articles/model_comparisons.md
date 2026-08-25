@@ -13,8 +13,8 @@ investment, we supply a broad characterisation of several models.
 
 Here we present out of the box tagging for a synthetic data set drawn
 from a openly available `presidio-research` data set
-[synth_dataset_v2](https://stat-cook.github.io/pidpos/articles/). The
-data set consists of free text with associated tagged entities. The
+[synth_dataset_v2](https://github.com/data-privacy-stack/presidio-research/blob/main/data/synth_dataset_v2.json).
+The data set consists of free text with associated tagged entities. The
 challenge, how well does each model provided perform on this data and
 are there edge cases, common flaws, or preprocessing steps that effect
 performance.

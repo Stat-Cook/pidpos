@@ -184,7 +184,7 @@ Journal* 26 (1): 77–90. <https://doi.org/10.1111/isj.12088>.
 
 European Parliament, and Council of the European Union. 2016.
 “Regulation (EU) 2016/679 of the European Parliament and of the
-Council.” April 27. <https://data.europa.eu/eli/reg/2016/679/oj>.
+Council.” April 27. <https://eur-lex.europa.eu/eli/reg/2016/679/oj>.
 
 Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be
 Identified—Distinguishing Personal from Non-Personal Data Under the
@@ -209,7 +209,7 @@ Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable
 Pipeline for Processing CoNLL-u Files Performing Tokenization,
 Morphological Analysis, Pos Tagging and Parsing.” *Proceedings of the
 Tenth International Conference on Language Resources and Evaluation
-(LREC’16)*, 4290–97. <https://aclanthology.org/L16-1680>.
+(LREC’16)*, 4290–97. <https://aclanthology.org/L16-1680/>.
 
 Wijffels, Jan. 2023. *Udpipe: Tokenization, Parts of Speech Tagging,
 Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit*.

@@ -236,7 +236,7 @@ def nltk_pos_tagger(sentence):
 ```
 
 We can bridge this into R using `reticulate` (see [this
-vignette](https://cran.r-project.org/web/packages/reticulate/vignettes/calling_python.html)
+vignette](https://rstudio.github.io/reticulate/articles/calling_python.html)
 for an intro to using `reticulate`).
 
 > **Note:** This section requires a working Python installation and the

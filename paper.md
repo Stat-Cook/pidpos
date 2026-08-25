@@ -12,11 +12,11 @@ Data collection and analysis has grown enormously in scale and scope,
 prompting international legislation to protect individuals’ rights over
 their own data (European Parliament and Council of the European Union
 2016). This has heightened awareness of the responsibilities of data
-controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke
+controllers (ICO, n.d.-b) and the risks posed by large datasets (Clarke
 2016). A central concern is personal identifiability — the ability to
 directly or indirectly identify an individual from a dataset (Finck and
 Pallas 2020) — with breaches carrying significant reputational and
-financial consequences (ICO, n.d.a).
+financial consequences (ICO, n.d.-a).
 
 For small, structured datasets, manual inspection can identify
 personally identifiable data (PID) with reasonable effort. In large
@@ -26,12 +26,14 @@ PII (Patterson-Stein 2025) address this through pattern matching, which
 risks missing edge cases.
 
 `pidpos` takes a different approach. Building on *part-of-speech*
-tagging (by default the udpipe framework (Straka, Hajic, and Straková
-2016; Wijffels 2023), with the ability to use a custom tagging engine)
-it extracts all proper nouns from a dataset, deliberately accepting a
-higher false positive rate, and implementing tools to aid human review
-rather than attempting full automation. This makes it robust to the edge
-cases that pattern-matching approaches can miss.
+tagging ( by default the **UDPipe** framework (Straka et al. 2016;
+Wijffels 2023), but featuring bindings to **spaCy** (Honnibal et al.
+2020) and the ability to use a custom tagging engine) it extracts PID
+candidates from a dataset, deliberately accepting a higher false
+positive rate, and implementing tools to aid human review rather than
+attempting full automation. This makes it robust to the edge cases that
+pattern-matching approaches can miss, while remaining auditable and
+governable.
 
 # In practice
 
@@ -110,13 +112,13 @@ prepared_replacements <- auto_replace(raw_rules, replacement_func)
 head(prepared_replacements)
 ```
 
-| If | From | To |
-|:---|:---|:---|
-| \[Scene: Central Perk, everyone is there.\] | Central | EQDBKGTPNC |
-| \[Scene: Central Perk, everyone is there.\] | Perk | YARKFBYZOZ |
-| Phoebe Buffay | Phoebe | XPMJIAOHSW |
-| Phoebe Buffay | Buffay | JQAFEQYLVB |
-| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross | XAKVUFWDAK |
+| If | From | To | POS |
+|:---|:---|:---|:---|
+| \[Scene: Central Perk, everyone is there.\] | Central | MHWHHRYHJZ |  |
+| \[Scene: Central Perk, everyone is there.\] | Perk | CXEMTMJVFB |  |
+| Phoebe Buffay | Phoebe | HJNVAGOVVF |  |
+| Phoebe Buffay | Buffay | ZLCXCWRAWK |  |
+| Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party? | Ross | GKHETDIGUB |  |
 
 Users may define replacement values manually or use the built-in
 automatic replacement tools, which include options such as random
@@ -133,11 +135,11 @@ head(redacted_data)
 
 | scene | utterance | speaker | text |
 |---:|---:|:---|:---|
-| 1 | 1 | Scene Directions | \[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.\] |
-| 1 | 2 | XPMJIAOHSW JQAFEQYLVB | Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party? |
-| 1 | 3 | WKWRASBHEB PQVJAKTCDP | Yeah. |
-| 1 | 4 | XAKVUFWDAK PQVJAKTCDP | Sure. Yeah. |
-| 1 | 5 | IRGPSNTIXK MMXCBEYDQK | So, who’s the guy? |
+| 1 | 1 | Scene Directions | \[Scene: MHWHHRYHJZ CXEMTMJVFB, everyone is there.\] |
+| 1 | 2 | HJNVAGOVVF ZLCXCWRAWK | Oh, GKHETDIGUB, CQPBQBIYFD, is it okay if I bring someone to your parent’s anniversary party? |
+| 1 | 3 | MHCWPKTBER DFSKKVXDQE | Yeah. |
+| 1 | 4 | GKHETDIGUB DFSKKVXDQE | Sure. Yeah. |
+| 1 | 5 | VPREXNJNTE WPCIWCDJPW | So, who’s the guy? |
 
 # Multiple file API
 
@@ -150,6 +152,9 @@ support batch processing:
   to combine the distinct reports into a single set of raw redactions.
 - [`redact_at_folder()`](https://stat-cook.github.io/pidpos/reference/redact_at_folder.md)
   to produce redacted copies of the data.
+
+A worked example of which is documented
+[here](https://stat-cook.github.io/pidpos/articles/folder-report.html).
 
 # Current applications
 
@@ -172,21 +177,26 @@ funded by the Health Foundation.
 # References
 
 Clarke, Roger. 2016. “Big Data, Big Risks.” *Information Systems
-Journal* 26 (1): 77–90.
+Journal* 26 (1): 77–90. <https://doi.org/10.1111/isj.12088>.
 
 European Parliament, and Council of the European Union. 2016.
 “Regulation (EU) 2016/679 of the European Parliament and of the
-Council.” April 27, 2016. <https://data.europa.eu/eli/reg/2016/679/oj>.
+Council.” April 27. <https://data.europa.eu/eli/reg/2016/679/oj>.
 
 Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be
 Identified—Distinguishing Personal from Non-Personal Data Under the
 GDPR.” *International Data Privacy Law* 10 (1): 11–36.
+<https://doi.org/10.1093/idpl/ipz026>.
 
-ICO. n.d.a. “Personal Data Breaches: What Happens If We Fail to Notify
+Honnibal, Matthew, Ines Montani, Sofie Van Landeghem, and Adriane Boyd.
+2020. *spaCy: Industrial-Strength Natural Language Processing in
+Python*. <https://doi.org/10.5281/zenodo.1212303>.
+
+ICO. n.d.-a. “Personal Data Breaches: What Happens If We Fail to Notify
 the ICO of All Notifiable Breaches?”
 <https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi>.
 
-———. n.d.b. “What Does It Mean If You Are a Controller?”
+ICO. n.d.-b. “What Does It Mean If You Are a Controller?”
 <https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/>.
 
 Patterson-Stein, Jacob. 2025. *Pii: Search Data Frames for Personally
@@ -194,9 +204,9 @@ Identifiable Information*. <https://CRAN.R-project.org/package=pii>.
 
 Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable
 Pipeline for Processing CoNLL-u Files Performing Tokenization,
-Morphological Analysis, Pos Tagging and Parsing.” In *Proceedings of the
+Morphological Analysis, Pos Tagging and Parsing.” *Proceedings of the
 Tenth International Conference on Language Resources and Evaluation
-(LREC’16)*, 4290–97.
+(LREC’16)*, 4290–97. <https://aclanthology.org/L16-1680>.
 
 Wijffels, Jan. 2023. *Udpipe: Tokenization, Parts of Speech Tagging,
 Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit*.

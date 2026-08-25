@@ -23,7 +23,7 @@ are designed to assist with the identification and anonymisation of
 personal data, but cannot guarantee complete detection. Baseline tag
 identification rates for various language models are summarised in the
 [Model Comparison
-Vignette](https://stat-cook.github.io/pidpos/articles/model_comparisons.md).
+Vignette](https://stat-cook.github.io/pidpos/articles/model_comparisons.html).
 
 ## Troubleshooting
 
@@ -33,7 +33,7 @@ The package is built on the
 Fetching the appropriate UDPipe model is intended to be automatic,
 however if there are issues it is worth reading the [Trouble shooting
 the UDPipe
-Model](https://stat-cook.github.io/pidpos/articles/udpipe-model.md)
+Model](https://stat-cook.github.io/pidpos/articles/udpipe-model.html)
 vignette, and looking at the functions
 [`browse_udpipe_repo()`](https://stat-cook.github.io/pidpos/reference/browse_udpipe_repo.md)/
 [`browse_model_location()`](https://stat-cook.github.io/pidpos/reference/browse_model_location.md).

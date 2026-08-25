@@ -47,9 +47,9 @@
 </div>
 <div class="section level1">
 <h1 id="statement-of-need">Statement of need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a></h1>
-<p>Data collection and analysis has grown enormously in scale and scope, prompting international legislation to protect individuals’ rights over their own data (European Parliament and Council of the European Union 2016). This has heightened awareness of the responsibilities of data controllers (ICO, n.d.b) and the risks posed by large datasets (Clarke 2016). A central concern is personal identifiability — the ability to directly or indirectly identify an individual from a dataset (Finck and Pallas 2020) — with breaches carrying significant reputational and financial consequences (ICO, n.d.a).</p>
+<p>Data collection and analysis has grown enormously in scale and scope, prompting international legislation to protect individuals’ rights over their own data (European Parliament and Council of the European Union 2016). This has heightened awareness of the responsibilities of data controllers (ICO, n.d.-b) and the risks posed by large datasets (Clarke 2016). A central concern is personal identifiability — the ability to directly or indirectly identify an individual from a dataset (Finck and Pallas 2020) — with breaches carrying significant reputational and financial consequences (ICO, n.d.-a).</p>
 <p>For small, structured datasets, manual inspection can identify personally identifiable data (PID) with reasonable effort. In large datasets, however, PID embedded within free-text fields or appearing rarely in a variable can easily be missed. Existing R packages such as PII (Patterson-Stein 2025) address this through pattern matching, which risks missing edge cases.</p>
-<p><code>pidpos</code> takes a different approach. Building on <em>part-of-speech</em> tagging (by default the udpipe framework (Straka, Hajic, and Straková 2016; Wijffels 2023), with the ability to use a custom tagging engine) it extracts all proper nouns from a dataset, deliberately accepting a higher false positive rate, and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss.</p>
+<p><code>pidpos</code> takes a different approach. Building on <em>part-of-speech</em> tagging ( by default the <strong>UDPipe</strong> framework (Straka et al. 2016; Wijffels 2023), but featuring bindings to <strong>spaCy</strong> (Honnibal et al. 2020) and the ability to use a custom tagging engine) it extracts PID candidates from a dataset, deliberately accepting a higher false positive rate, and implementing tools to aid human review rather than attempting full automation. This makes it robust to the edge cases that pattern-matching approaches can miss, while remaining auditable and governable.</p>
 </div>
 <div class="section level1">
 <h1 id="in-practice">In practice<a class="anchor" aria-label="anchor" href="#in-practice"></a></h1>
@@ -140,24 +140,30 @@
 <span><span class="va">replacement_func</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/make_random_replacement.html">make_random_replacement</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prepared_replacements</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/auto_replace.html">auto_replace</a></span><span class="op">(</span><span class="va">raw_rules</span>, <span class="va">replacement_func</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prepared_replacements</span><span class="op">)</span></span></code></pre></div>
-<table class="table"><colgroup><col width="78%"><col width="9%"><col width="12%"></colgroup><thead><tr><th align="left">If</th>
+<table class="table"><colgroup><col width="72%"><col width="9%"><col width="12%"><col width="5%"></colgroup><thead><tr><th align="left">If</th>
 <th align="left">From</th>
 <th align="left">To</th>
+<th align="left">POS</th>
 </tr></thead><tbody><tr><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Central</td>
-<td align="left">EQDBKGTPNC</td>
+<td align="left">MHWHHRYHJZ</td>
+<td align="left"></td>
 </tr><tr><td align="left">[Scene: Central Perk, everyone is there.]</td>
 <td align="left">Perk</td>
-<td align="left">YARKFBYZOZ</td>
+<td align="left">CXEMTMJVFB</td>
+<td align="left"></td>
 </tr><tr><td align="left">Phoebe Buffay</td>
 <td align="left">Phoebe</td>
-<td align="left">XPMJIAOHSW</td>
+<td align="left">HJNVAGOVVF</td>
+<td align="left"></td>
 </tr><tr><td align="left">Phoebe Buffay</td>
 <td align="left">Buffay</td>
-<td align="left">JQAFEQYLVB</td>
+<td align="left">ZLCXCWRAWK</td>
+<td align="left"></td>
 </tr><tr><td align="left">Oh, Ross, Mon, is it okay if I bring someone to your parent’s anniversary party?</td>
 <td align="left">Ross</td>
-<td align="left">XAKVUFWDAK</td>
+<td align="left">GKHETDIGUB</td>
+<td align="left"></td>
 </tr></tbody></table><p>Users may define replacement values manually or use the built-in automatic replacement tools, which include options such as random replacement and encryption. Full documentation of the available replacement strategies is provided in <a href="https://stat-cook.github.io/pidpos/articles/auto-replacement.html">Automatic Replacement Tools</a>. Finally, apply the rules to produce a redacted dataset:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">redacted_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/redact.html">redact</a></span><span class="op">(</span><span class="va">example_data</span>, <span class="va">prepared_replacements</span><span class="op">)</span></span>
@@ -169,22 +175,22 @@
 </tr></thead><tbody><tr><td align="right">1</td>
 <td align="right">1</td>
 <td align="left">Scene Directions</td>
-<td align="left">[Scene: EQDBKGTPNC YARKFBYZOZ, everyone is there.]</td>
+<td align="left">[Scene: MHWHHRYHJZ CXEMTMJVFB, everyone is there.]</td>
 </tr><tr><td align="right">1</td>
 <td align="right">2</td>
-<td align="left">XPMJIAOHSW JQAFEQYLVB</td>
-<td align="left">Oh, XAKVUFWDAK, JWQZZDXOTU, is it okay if I bring someone to your parent’s anniversary party?</td>
+<td align="left">HJNVAGOVVF ZLCXCWRAWK</td>
+<td align="left">Oh, GKHETDIGUB, CQPBQBIYFD, is it okay if I bring someone to your parent’s anniversary party?</td>
 </tr><tr><td align="right">1</td>
 <td align="right">3</td>
-<td align="left">WKWRASBHEB PQVJAKTCDP</td>
+<td align="left">MHCWPKTBER DFSKKVXDQE</td>
 <td align="left">Yeah.</td>
 </tr><tr><td align="right">1</td>
 <td align="right">4</td>
-<td align="left">XAKVUFWDAK PQVJAKTCDP</td>
+<td align="left">GKHETDIGUB DFSKKVXDQE</td>
 <td align="left">Sure. Yeah.</td>
 </tr><tr><td align="right">1</td>
 <td align="right">5</td>
-<td align="left">IRGPSNTIXK MMXCBEYDQK</td>
+<td align="left">VPREXNJNTE WPCIWCDJPW</td>
 <td align="left">So, who’s the guy?</td>
 </tr></tbody></table></div>
 <div class="section level1">
@@ -196,7 +202,8 @@
 <code><a href="reference/get_distinct_redaction_rules.html">get_distinct_redaction_rules()</a></code> to combine the distinct reports into a single set of raw redactions.</li>
 <li>
 <code><a href="reference/redact_at_folder.html">redact_at_folder()</a></code> to produce redacted copies of the data.</li>
-</ul></div>
+</ul><p>A worked example of which is documented <a href="https://stat-cook.github.io/pidpos/articles/folder-report.html">here</a>.</p>
+</div>
 <div class="section level1">
 <h1 id="current-applications">Current applications<a class="anchor" aria-label="anchor" href="#current-applications"></a></h1>
 <p>The <code>pidpos</code> package was developed for applications in the NuRS and AmReS research projects which aim to extract and analyse retrospective operational data from NHS Trusts to understand staff retention and patient safety.</p>
@@ -211,13 +218,14 @@
 </div>
 <div class="section level1">
 <h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h1>
-<p>Clarke, Roger. 2016. “Big Data, Big Risks.” <em>Information Systems Journal</em> 26 (1): 77–90.</p>
-<p>European Parliament, and Council of the European Union. 2016. “Regulation (EU) 2016/679 of the European Parliament and of the Council.” April 27, 2016. <a href="https://data.europa.eu/eli/reg/2016/679/oj" class="external-link uri">https://data.europa.eu/eli/reg/2016/679/oj</a>.</p>
-<p>Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be Identified—Distinguishing Personal from Non-Personal Data Under the GDPR.” <em>International Data Privacy Law</em> 10 (1): 11–36.</p>
-<p>ICO. n.d.a. “Personal Data Breaches: What Happens If We Fail to Notify the ICO of All Notifiable Breaches?” <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi" class="external-link uri">https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi</a>.</p>
-<p>———. n.d.b. “What Does It Mean If You Are a Controller?” <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/" class="external-link uri">https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/</a>.</p>
+<p>Clarke, Roger. 2016. “Big Data, Big Risks.” <em>Information Systems Journal</em> 26 (1): 77–90. <a href="https://doi.org/10.1111/isj.12088" class="external-link uri">https://doi.org/10.1111/isj.12088</a>.</p>
+<p>European Parliament, and Council of the European Union. 2016. “Regulation (EU) 2016/679 of the European Parliament and of the Council.” April 27. <a href="https://data.europa.eu/eli/reg/2016/679/oj" class="external-link uri">https://data.europa.eu/eli/reg/2016/679/oj</a>.</p>
+<p>Finck, Michèle, and Frank Pallas. 2020. “They Who Must Not Be Identified—Distinguishing Personal from Non-Personal Data Under the GDPR.” <em>International Data Privacy Law</em> 10 (1): 11–36. <a href="https://doi.org/10.1093/idpl/ipz026" class="external-link uri">https://doi.org/10.1093/idpl/ipz026</a>.</p>
+<p>Honnibal, Matthew, Ines Montani, Sofie Van Landeghem, and Adriane Boyd. 2020. <em><span class="nocase">spaCy</span>: Industrial-Strength Natural Language Processing in Python</em>. <a href="https://doi.org/10.5281/zenodo.1212303" class="external-link uri">https://doi.org/10.5281/zenodo.1212303</a>.</p>
+<p>ICO. n.d.-a. “Personal Data Breaches: What Happens If We Fail to Notify the ICO of All Notifiable Breaches?” <a href="https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi" class="external-link uri">https://ico.org.uk/for-organisations/report-a-breach/personal-data-breach/personal-data-breaches-a-guide/#whathappensi</a>.</p>
+<p>ICO. n.d.-b. “What Does It Mean If You Are a Controller?” <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/" class="external-link uri">https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-controller/</a>.</p>
 <p>Patterson-Stein, Jacob. 2025. <em>Pii: Search Data Frames for Personally Identifiable Information</em>. <a href="https://CRAN.R-project.org/package=pii" class="external-link uri">https://CRAN.R-project.org/package=pii</a>.</p>
-<p>Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable Pipeline for Processing CoNLL-u Files Performing Tokenization, Morphological Analysis, Pos Tagging and Parsing.” In <em>Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC’16)</em>, 4290–97.</p>
+<p>Straka, Milan, Jan Hajic, and Jana Straková. 2016. “UDPipe: Trainable Pipeline for Processing CoNLL-u Files Performing Tokenization, Morphological Analysis, Pos Tagging and Parsing.” <em>Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC’16)</em>, 4290–97. <a href="https://aclanthology.org/L16-1680" class="external-link uri">https://aclanthology.org/L16-1680</a>.</p>
 <p>Wijffels, Jan. 2023. <em>Udpipe: Tokenization, Parts of Speech Tagging, Lemmatization and Dependency Parsing with the ’UDPipe’ ’NLP’ Toolkit</em>. <a href="https://CRAN.R-project.org/package=udpipe" class="external-link uri">https://CRAN.R-project.org/package=udpipe</a>.</p>
 </div>
 
