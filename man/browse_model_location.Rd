@@ -14,6 +14,6 @@ Intended for usage in \code{udpipe} fails to download automatically.
 }
 \examples{
 \dontrun{
-  browse_model_location()
+browse_model_location()
 }
 }

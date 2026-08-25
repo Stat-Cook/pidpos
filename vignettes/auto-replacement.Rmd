@@ -15,17 +15,11 @@ knitr::opts_chunk$set(
   comment = "#>",
   rows.print = 6
 )
+
 library(pidpos)
 
-.tmp <- tempdir()
-pidpos:::set_model_folder(.tmp)
-options(pidpos_download_approved = TRUE)
-{
-  model <- "english-ewt-ud-2.5-191206.udpipe"
-  to <- file.path(.tmp, model)
-  url <- file.path("https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/", model)
-  curl::curl_download(url, to, mode = "wb")
-}
+.rds <- readRDS("auto-replacement-cache.rds")
+report <- .rds$massapequa_report
 ```
 
 This package is designed to support the identification and redaction of personally identifiable data (PID) within textual datasets.
@@ -55,7 +49,6 @@ replacement_rules
 ```
 
 ```{r, echo=FALSE, message=FALSE}
-report <- pidpos(the_one_in_massapequa)
 replacement_rules <- report_to_redaction_rules(report)
 
 head(replacement_rules, 5)
