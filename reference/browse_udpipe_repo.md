@@ -25,6 +25,6 @@ browse_udpipe_repo(model = "english-ewt")
 
 ``` r
 if (FALSE) { # \dontrun{
-  browse_udpipe_repo()
+browse_udpipe_repo()
 } # }
 ```

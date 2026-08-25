@@ -16,6 +16,6 @@ browse_model_location()
 
 ``` r
 if (FALSE) { # \dontrun{
-  browse_model_location()
+browse_model_location()
 } # }
 ```

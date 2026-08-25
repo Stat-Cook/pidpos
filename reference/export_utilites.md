@@ -35,15 +35,15 @@ The path to the output file
 
 ``` r
 if (FALSE) { # \dontrun{
-  report_on_folder(
-    "path/to/data",
-    export_function = export_as_tree
-  )
-  
-  report_on_folder(
-    "path/to/data",
-    export_function = export_flat
-  )
+report_on_folder(
+  "path/to/data",
+  export_function = export_as_tree
+)
+
+report_on_folder(
+  "path/to/data",
+  export_function = export_flat
+)
 } # }
 NULL
 #> NULL

@@ -67,38 +67,32 @@ set:
 library(pidpos)
 example_data <- head(the_one_in_massapequa, 20)
 example_data
+#> # A tibble: 20 × 4
+#>   scene utterance speaker          text                                         
+#>   <int>     <int> <chr>            <chr>                                        
+#> 1     1         1 Scene Directions [Scene: Central Perk, everyone is there.]    
+#> 2     1         2 Phoebe Buffay    Oh, Ross, Mon, is it okay if I bring someone…
+#> 3     1         3 Monica Geller    Yeah.                                        
+#> 4     1         4 Ross Geller      Sure. Yeah.                                  
+#> # ℹ 16 more rows
 ```
-
-    #> # A tibble: 20 × 4
-    #>   scene utterance speaker          text                                         
-    #>   <int>     <int> <chr>            <chr>                                        
-    #> 1     1         1 Scene Directions [Scene: Central Perk, everyone is there.]    
-    #> 2     1         2 Phoebe Buffay    Oh, Ross, Mon, is it okay if I bring someone…
-    #> 3     1         3 Monica Geller    Yeah.                                        
-    #> 4     1         4 Ross Geller      Sure. Yeah.                                  
-    #> # ℹ 16 more rows
 
 First, generate a PID report:
 
 ``` r
 
 report <- pidpos(example_data)
-#> Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-ewt-ud-2.5-191206.udpipe to /home/runner/.cache/R/pidpos/english-ewt-ud-2.5-191206.udpipe
-#>  - This model has been trained on version 2.5 of data from https://universaldependencies.org
-#>  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
-#>  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
-#>  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-#> Downloading finished, model stored at '/home/runner/.cache/R/pidpos/english-ewt-ud-2.5-191206.udpipe'
 head(report)
-#> # A tibble: 6 × 6
-#>   ID                Token   Sentence         Document Repeats `Affected Columns`
-#>   <glue>            <chr>   <chr>            <chr>      <int> <chr>             
-#> 1 Col:text Row:1    Central [Scene: Central… [Scene:…       1 `text`            
-#> 2 Col:text Row:1    Perk    [Scene: Central… [Scene:…       1 `text`            
-#> 3 Col:speaker Row:2 Phoebe  Phoebe Buffay    Phoebe …       3 `speaker`         
-#> 4 Col:speaker Row:2 Buffay  Phoebe Buffay    Phoebe …       3 `speaker`         
-#> # ℹ 2 more rows
 ```
+
+    #> # A tibble: 6 × 6
+    #>   ID                Token   Sentence         Document Repeats `Affected Columns`
+    #>   <glue>            <chr>   <chr>            <chr>      <int> <chr>             
+    #> 1 Col:text Row:1    Central [Scene: Central… [Scene:…       1 `text`            
+    #> 2 Col:text Row:1    Perk    [Scene: Central… [Scene:…       1 `text`            
+    #> 3 Col:speaker Row:2 Phoebe  Phoebe Buffay    Phoebe …       3 `speaker`         
+    #> 4 Col:speaker Row:2 Buffay  Phoebe Buffay    Phoebe …       3 `speaker`         
+    #> # ℹ 2 more rows
 
 The report lists all detected proper nouns alongside their source
 variable and position. By default,
