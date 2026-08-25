@@ -28,7 +28,11 @@ check_model_download_consent <- function(model) {
       "'.  Do you consent to downloads? [yes/no/once]: "
     ))
     if (!tolower(trimws(answer)) %in% c("y", "yes", "once")) {
-      stop("Download cancelled. ",
+      stop(
+        "Download cancelled for '", model, "'. ",
+        "To use pidpos without downloads, call `pidpos_setup(\"env\")` and pass ",
+        "a pre-loaded model object directly (e.g. via udpipe::udpipe_load_model() ",
+        "or reticulate, depending on your tagger).",
         call. = FALSE
       )
     }
