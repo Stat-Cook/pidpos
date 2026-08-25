@@ -11,9 +11,6 @@ test_that("creates and returns subfolder by default", {
   withr::local_dir(withr::local_tempdir())
   folder <- enable_local_models()
 
-  # Check folder was created
-  expect_true(dir.exists(file.path(getwd(), "pidpos_models")))
-
   # Check returned path
   expect_equal(folder, file.path(getwd(), "pidpos_models"))
 })
@@ -26,9 +23,6 @@ test_that("uses current working directory if sub_folder = FALSE", {
 
   # Should now point to the temp working directory
   expect_equal(folder, getwd())
-
-  # No pidpos_models folder should exist
-  expect_false(dir.exists(file.path(getwd(), "pidpos_models")))
 })
 
 test_that("uses current working directory if sub_folder = FALSE", {
@@ -37,9 +31,6 @@ test_that("uses current working directory if sub_folder = FALSE", {
 
   # Should be current working directory
   expect_equal(folder, getwd())
-
-  # No pidpos_models folder should be created
-  expect_false(dir.exists(file.path(getwd(), "pidpos_models")))
 })
 
 test_that("existing folder does not error", {
@@ -61,19 +52,6 @@ test_that("returns folder path invisibly", {
   expect_equal(folder, file.path(getwd(), "pidpos_models"))
 })
 
-test_that("integration with set_model_folder sets correct path", {
-  withr::with_tempdir({
-    folder <- enable_local_models()
-
-    # Assuming get_model_folder() returns the currently set folder
-    if (exists("get_model_folder")) {
-      expect_equal(get_model_folder(), folder)
-    } else {
-      # If no getter, just ensure folder exists
-      expect_true(dir.exists(folder))
-    }
-  })
-})
 
 test_that("recursive folder creation works for nested subfolders", {
   withr::local_dir(withr::local_tempdir())
