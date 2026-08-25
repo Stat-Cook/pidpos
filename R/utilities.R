@@ -32,12 +32,6 @@ enable_local_models <- function(sub_folder = TRUE) {
     local_dir <- file.path(local_dir, "pidpos_models")
   }
 
-  if (!dir.exists(local_dir)) {
-    if (!dir.create(local_dir, recursive = TRUE)) {
-      stop("Could not create local model folder: ", local_dir)
-    }
-  }
-
   set_model_folder(local_dir)
   invisible(local_dir)
 }
@@ -52,11 +46,6 @@ enable_local_models <- function(sub_folder = TRUE) {
 enable_package_models <- function() {
   cache_dir <- tools::R_user_dir("pidpos", which = "cache")
 
-  if (!dir.exists(cache_dir)) {
-    if (!dir.create(cache_dir, recursive = TRUE)) {
-      stop("Could not create local model folder: ", cache_dir)
-    }
-  }
   set_model_folder(cache_dir)
 }
 
@@ -70,12 +59,16 @@ enable_package_models <- function() {
 enable_temp_models <- function() {
   temp_dir <- tempdir()
 
-  if (!dir.exists(temp_dir)) {
-    if (!dir.create(temp_dir, recursive = TRUE)) {
-      stop("Could not create model folder: ", temp_dir)
+  set_model_folder(temp_dir)
+}
+
+#' @keywords internal
+create_model_folder <- function(dir){
+  if (!dir.exists(dir)) {
+    if (!dir.create(dir, recursive = TRUE)) {
+      stop("Could not create model folder: ", dir)
     }
   }
-  set_model_folder(temp_dir)
 }
 
 
