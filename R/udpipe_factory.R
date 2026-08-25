@@ -50,8 +50,8 @@ udpipe_factory <- function(model = "english-ewt",
       "caching option in `pidpos_setup()` or load a pretrained udpipe model."
     )
   }
-  
-  if (getOption("pidpos_caching")){
+
+  if (getOption("pidpos_caching")) {
     create_model_folder(model_dir)
   }
 
