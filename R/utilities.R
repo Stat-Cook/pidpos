@@ -63,7 +63,7 @@ enable_temp_models <- function() {
 }
 
 #' @keywords internal
-create_model_folder <- function(dir){
+create_model_folder <- function(dir) {
   if (!dir.exists(dir)) {
     if (!dir.create(dir, recursive = TRUE)) {
       stop("Could not create model folder: ", dir)
