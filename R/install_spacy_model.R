@@ -10,6 +10,7 @@
 #'
 #' @keywords internal
 install_spacy_model <- function(model = c("en_core_web_lg", "en_core_web_trf"), force = FALSE) {
+  
   spacy_require()
   is_ephemeral_reticulate()
 
@@ -27,6 +28,13 @@ install_spacy_model <- function(model = c("en_core_web_lg", "en_core_web_trf"), 
 
   if (!file.exists(dest)) {
     check_model_download_consent(model)
+    
+    if (!getOption("pidpos_caching")){
+      stop("Installing spaCy models requires caching to be enabled. ",
+           " Please set a caching option with `pidpos_setup`")
+    }
+    
+    create_model_folder(pidpos_env$model_folder)
 
     rlang::check_installed("httr2", reason = "to download the spaCy model")
 
