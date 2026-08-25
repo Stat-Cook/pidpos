@@ -1,7 +1,7 @@
 # pidpos <a href="https://stat-cook.github.io/pidpos/"><img src="man/figures/logo.png" align="right" height="136" /></a>
 
 <!-- badges: start -->
-[![codecov: master](https://codecov.io/gh/Stat-Cook/pidpos/graph/badge.svg?token=MU68U4JMP3)](https://codecov.io/gh/Stat-Cook/pidpos)
+[![codecov: master](https://codecov.io/gh/Stat-Cook/pidpos/graph/badge.svg?token=MU68U4JMP3)](https://app.codecov.io/gh/Stat-Cook/pidpos)
 [![R-CMD-check](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Stat-Cook/pidpos/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -19,13 +19,13 @@ The main entry points for most users are `pidpos()` for single datasets and `rep
 
 Note that natural language processing is rarely perfect — these tools are designed to assist with the identification and anonymisation of personal data, 
 but cannot guarantee complete detection. Baseline tag identification rates for various language models are summarised
- in the  [Model Comparison Vignette](articles/model_comparisons.html).
+ in the  [Model Comparison Vignette](https://stat-cook.github.io/pidpos/articles/model_comparisons.html).
 
 ## Troubleshooting 
 
 The package is built on the [UDPipe](https://lindat.mff.cuni.cz/services/udpipe/) tree banks via the `udpipe` R package.  
 Fetching the appropriate UDPipe model is intended to be automatic, however if there are issues it is worth reading 
-the [Trouble shooting the UDPipe Model](articles/udpipe-model.html) vignette, and looking at the functions `browse_udpipe_repo()`/ `browse_model_location()`.
+the [Trouble shooting the UDPipe Model](https://stat-cook.github.io/pidpos/articles/udpipe-model.html) vignette, and looking at the functions `browse_udpipe_repo()`/ `browse_model_location()`.
 
 ## Getting help
 
